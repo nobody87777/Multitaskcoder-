@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-047",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Pointers",
+  "bugType": "dangling-pointer",
+  "title": "Fix the Pointer to a Destroyed Stack Frame",
+  "description": "The program should return a pointer to a value from a function and use it safely.",
+  "buggyCode": "#include <stdio.h>\n\nint* makeValue() {\n    int local = 42;\n    return &local;\n}\n\nint main() {\n    int *p = makeValue();\n    printf(\"%d\\n\", *p);\n    return 0;\n}",
+  "expectedBehavior": "The program should safely obtain and print the value 42.",
+  "actualProblem": "local is a local (stack) variable that only exists for the duration of makeValue()'s call. Returning &local gives the caller the address of memory that is destroyed the instant the function returns, so dereferencing p in main reads memory that is no longer valid.",
+  "correctedCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint* makeValue() {\n    int *heapValue = malloc(sizeof(int));\n    *heapValue = 42;\n    return heapValue;\n}\n\nint main() {\n    int *p = makeValue();\n    printf(\"%d\\n\", *p);\n    free(p);\n    return 0;\n}",
+  "expectedOutput": "42",
+  "explanation": "A function should never return the address of one of its own local variables, since that memory is reclaimed as soon as the function returns. If a value needs to outlive the function call, it must be allocated on the heap (with malloc) and explicitly freed later by the caller.",
+  "concepts": [
+    "dangling pointer",
+    "stack memory",
+    "malloc()"
+  ]
+}

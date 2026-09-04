@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-016",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "What does the continue statement do inside a loop?",
+  "options": [
+    "Immediately exits the loop",
+    "Pauses the loop until user input",
+    "Skips the rest of the current iteration and moves to the next one",
+    "Restarts the loop from the very first iteration"
+  ],
+  "correctAnswer": 2,
+  "explanation": "continue skips the remaining code in the current iteration and jumps to the loop's next iteration check.",
+  "concepts": [
+    "continue",
+    "loops"
+  ]
+}

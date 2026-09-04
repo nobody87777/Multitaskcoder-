@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-023",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "key-error",
+  "title": "Fix the Word Frequency Counter",
+  "description": "The program should count how many times each word appears in a list. Fix the bug.",
+  "buggyCode": "words = [\"cat\", \"dog\", \"cat\", \"bird\"]\nfrequency = {}\nfor word in words:\n    frequency[word] += 1\nprint(frequency)",
+  "expectedBehavior": "The program should print {'cat': 2, 'dog': 1, 'bird': 1}.",
+  "actualProblem": "frequency[word] += 1 tries to read frequency[word] before it exists for a new word, raising a KeyError on the very first word encountered.",
+  "correctedCode": "words = [\"cat\", \"dog\", \"cat\", \"bird\"]\nfrequency = {}\nfor word in words:\n    frequency[word] = frequency.get(word, 0) + 1\nprint(frequency)",
+  "expectedOutput": "{'cat': 2, 'dog': 1, 'bird': 1}",
+  "explanation": "Incrementing a dictionary value requires that key to already exist. Using dict.get(word, 0) supplies a default of 0 for keys seen for the first time, avoiding the KeyError.",
+  "concepts": [
+    "dictionaries",
+    "KeyError",
+    "dict.get()"
+  ]
+}

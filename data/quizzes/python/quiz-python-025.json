@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-025",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Functions",
+  "question": "What is the purpose of a default parameter value in a Python function definition, e.g. def greet(name='World')?",
+  "options": [
+    "It lets the function be called without providing that argument, using the default instead",
+    "It forces the caller to always pass that argument",
+    "It converts the argument to a global variable",
+    "It makes the parameter immutable"
+  ],
+  "correctAnswer": 0,
+  "explanation": "A default parameter value is used automatically when the caller omits that argument, making the parameter optional.",
+  "concepts": [
+    "functions",
+    "default parameters"
+  ]
+}

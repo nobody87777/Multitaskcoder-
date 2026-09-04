@@ -1,0 +1,58 @@
+{
+  "id": "python-modules-and-packages-001",
+  "language": "python",
+  "section": "python",
+  "module": "Modules and Packages",
+  "moduleNumber": 14,
+  "lessonNumber": 15,
+  "title": "Modules and Packages",
+  "difficulty": "intermediate",
+  "description": "Organizing code with import, creating your own modules and packages, and basic environment/dependency concepts.",
+  "objectives": [
+    "Use import and from...import to bring in code from other modules",
+    "Create your own modules and understand __name__ == \"__main__\"",
+    "Understand packages and __init__.py",
+    "Know what virtual environments and pip are for"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Importing Code",
+      "body": "A module is simply a .py file; importing it (import math) makes its names accessible via math.something. from math import sqrt imports a specific name directly, usable without the module prefix. import numpy as np creates an alias, a common convention for frequently-used or long module names. Python searches for modules along a list of directories called the module search path (sys.path), which includes the current script's directory, installed package locations, and any directories listed in the PYTHONPATH environment variable.\n\nThe standard library ships with Python itself (modules like math, os, json, datetime — no installation needed), while third-party packages must be installed separately."
+    },
+    {
+      "type": "text",
+      "heading": "Writing Modules and Packages",
+      "body": "Any .py file you write can be imported by another file in the same project, exactly like a standard library module. Every module has a built-in variable __name__, which equals \"__main__\" only when that file is run directly (not when it's imported by something else). Wrapping a module's 'script' behavior in `if __name__ == \"__main__\":` lets a file be both a reusable importable module and a standalone runnable script, without the script part executing on import.\n\nA package is a directory of modules with an __init__.py file inside it (marking the directory as a package and optionally running initialization code or defining what's exposed on import). pip is Python's standard package installer, used to fetch third-party packages from the Python Package Index (PyPI): pip install requests. A virtual environment (created with python -m venv) is an isolated Python installation with its own set of installed packages, keeping one project's dependencies from conflicting with another's — a standard practice for any real Python project."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# my_module.py\ndef greet(name):\n    return f\"Hello, {name}\"\n\nif __name__ == \"__main__\":\n    print(greet(\"World\"))   # only runs when this file is executed directly\n\n# another_file.py\n# import my_module\n# print(my_module.greet(\"Asha\"))   # \"greet\" runs, the __main__ block does not",
+      "explanation": "The if __name__ == \"__main__\": guard ensures the demo print() only fires when my_module.py is run directly, not when another file imports greet from it."
+    }
+  ],
+  "keyPoints": [
+    "import module or from module import name bring in external code",
+    "__name__ == \"__main__\" is True only when a file is run directly, not when imported",
+    "A package is a directory containing an __init__.py, holding related modules",
+    "pip installs third-party packages; virtual environments isolate a project's dependencies"
+  ],
+  "commonMistakes": [
+    "Writing top-level code that runs on import when it was only meant for direct execution (missing the __main__ guard)",
+    "Confusing the standard library (built-in, no install needed) with third-party packages (must be pip-installed)",
+    "Not using a virtual environment, leading to dependency version conflicts across projects"
+  ],
+  "concepts": [
+    "import",
+    "modules",
+    "packages",
+    "__init__.py",
+    "__name__",
+    "__main__",
+    "pip",
+    "virtual environments"
+  ],
+  "previousLesson": "python-recursion-001",
+  "nextLesson": "python-exceptions-001"
+}

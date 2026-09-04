@@ -1,0 +1,19 @@
+{
+  "id": "quiz-java-047",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "true-false",
+  "topic": "Concurrency",
+  "question": "True or False: Two threads can safely modify the same shared, unsynchronized variable at exactly the same time without any risk of a data race.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Concurrent, unsynchronized access to shared mutable state can cause data races, where the final result depends unpredictably on thread timing; synchronization (e.g. the synchronized keyword) is needed to prevent this.",
+  "concepts": [
+    "threads",
+    "synchronization",
+    "data races"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-049",
+  "language": "python",
+  "title": "Mini Contact Manager",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Build an in-memory contact manager class that can add and list contacts.",
+  "code": "class ContactManager:\n    def __init__(self):\n        self.contacts = {}\n\n    def add_contact(self, name, phone):\n        self.contacts[name] = phone\n\n    def list_contacts(self):\n        for name, phone in self.contacts.items():\n            print(f\"{name}: {phone}\")\n\n\nmanager = ContactManager()\nmanager.add_contact(\"Asha\", \"9876543210\")\nmanager.add_contact(\"Ravi\", \"9123456780\")\nmanager.list_contacts()",
+  "expectedOutput": "Asha: 9876543210\nRavi: 9123456780",
+  "concepts": [
+    "classes",
+    "dictionaries",
+    "encapsulation"
+  ]
+}

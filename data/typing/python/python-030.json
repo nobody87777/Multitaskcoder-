@@ -1,0 +1,15 @@
+{
+  "id": "python-030",
+  "language": "python",
+  "title": "Character Frequency Counter",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Count how many times each character appears in a string.",
+  "code": "text = \"banana\"\nfrequency = {}\n\nfor ch in text:\n    frequency[ch] = frequency.get(ch, 0) + 1\n\nfor ch, count in frequency.items():\n    print(f\"'{ch}': {count}\")",
+  "expectedOutput": "'b': 1\n'a': 3\n'n': 2",
+  "concepts": [
+    "dictionaries",
+    "strings",
+    "counting pattern"
+  ]
+}

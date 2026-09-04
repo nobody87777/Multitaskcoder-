@@ -1,0 +1,15 @@
+{
+  "id": "c-050",
+  "language": "c",
+  "title": "Contact Manager Using Structures and Files",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Store contacts in an array of structures, save them to a file, then read them back.",
+  "code": "#include <stdio.h>\n\nstruct Contact {\n    char name[30];\n    char phone[15];\n};\n\nint main() {\n    struct Contact contacts[2] = {\n        {\"Asha\", \"9876543210\"},\n        {\"Ravi\", \"9123456780\"}\n    };\n\n    FILE *fp = fopen(\"contacts.txt\", \"w\");\n    for (int i = 0; i < 2; i++) {\n        fprintf(fp, \"%s,%s\\n\", contacts[i].name, contacts[i].phone);\n    }\n    fclose(fp);\n\n    fp = fopen(\"contacts.txt\", \"r\");\n    char line[50];\n    printf(\"Saved contacts:\\n\");\n    while (fgets(line, sizeof(line), fp) != NULL) {\n        printf(\"%s\", line);\n    }\n    fclose(fp);\n\n    return 0;\n}",
+  "expectedOutput": "Saved contacts:\nAsha,9876543210\nRavi,9123456780",
+  "concepts": [
+    "struct arrays",
+    "file I/O",
+    "fgets()"
+  ]
+}

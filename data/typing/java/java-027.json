@@ -1,0 +1,14 @@
+{
+  "id": "java-027",
+  "language": "java",
+  "title": "Count Vowels in a String",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Count the number of vowels present in a string.",
+  "code": "public class CountVowels {\n    public static void main(String[] args) {\n        String text = \"Programming is fun\";\n        String vowels = \"aeiouAEIOU\";\n        int count = 0;\n\n        for (char ch : text.toCharArray()) {\n            if (vowels.indexOf(ch) != -1) {\n                count++;\n            }\n        }\n\n        System.out.println(\"Number of vowels: \" + count);\n    }\n}",
+  "expectedOutput": "Number of vowels: 5",
+  "concepts": [
+    "toCharArray()",
+    "String.indexOf()"
+  ]
+}

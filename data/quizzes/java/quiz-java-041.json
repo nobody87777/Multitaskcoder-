@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-041",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Functional",
+  "question": "What does the lambda expression (a, b) -> a + b represent when assigned to a functional interface reference?",
+  "options": [
+    "A block of code that takes two parameters and returns their sum, implementing that interface's single abstract method",
+    "A new class definition",
+    "A syntax error since Java doesn't support lambdas",
+    "A static method reference"
+  ],
+  "correctAnswer": 0,
+  "explanation": "A lambda expression provides a concise implementation of a functional interface's single abstract method; here it takes a and b and returns a + b.",
+  "concepts": [
+    "lambda expressions",
+    "functional interfaces"
+  ]
+}

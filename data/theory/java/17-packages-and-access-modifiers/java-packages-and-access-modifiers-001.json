@@ -1,0 +1,54 @@
+{
+  "id": "java-packages-and-access-modifiers-001",
+  "language": "java",
+  "section": "java",
+  "module": "Packages and Access Modifiers",
+  "moduleNumber": 17,
+  "lessonNumber": 17,
+  "title": "Packages and Access Modifiers",
+  "difficulty": "intermediate",
+  "description": "Organizing classes into packages, importing them, and the four access levels revisited in that context.",
+  "objectives": [
+    "Declare and use packages",
+    "Import classes from other packages",
+    "Understand how access modifiers interact with package structure"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Declaring and Importing Packages",
+      "body": "A package groups related classes together and creates a namespace, avoiding naming collisions between classes from different parts of a large project or different libraries entirely. A file declares its package with package com.example.banking; as its very first line (before any import or class declaration), and the containing directory structure must physically match the package name (com/example/banking/). To use a class from a different package, either import its fully-qualified name (import java.util.ArrayList;) or reference it fully qualified inline (java.util.ArrayList list = ...), without an import at all. import java.util.*; imports every class in that package (a wildcard import), generally discouraged in favor of explicit imports for clarity, though harmless functionally."
+    },
+    {
+      "type": "text",
+      "heading": "Access Modifiers in Package Context",
+      "body": "Revisiting the four access levels through the lens of packages: private is visible only within the declaring class. Package-private (no modifier) is visible to any class within the same package, but not from outside it — useful for helper classes/methods meant only for internal use within a module. protected is visible within the same package and also to subclasses in other packages (an important nuance: it's package-private plus subclass access, not simply 'more open than package-private in every direction'). public is visible everywhere. Well-organized packages, combined with careful choice of access levels, form the backbone of a maintainable large Java codebase — deciding what's part of a package's public API versus its internal implementation detail."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "// File: com/example/banking/Account.java\npackage com.example.banking;\n\npublic class Account {\n    private double balance;      // only Account itself can touch this\n    public double getBalance() { return balance; }\n}\n\n// File: com/example/Main.java\npackage com.example;\nimport com.example.banking.Account;\n\npublic class Main {\n    public static void main(String[] args) {\n        Account acc = new Account();\n        System.out.println(acc.getBalance());\n    }\n}",
+      "explanation": "This example spans two separate source files (marked by the // File: comments) to show how package/directory structure and import work together — it is not meant to compile as a single file. Account.java's directory (com/example/banking/) matches its package declaration exactly, and Main.java, in a different package, needs the import statement to reference Account by its simple name."
+    }
+  ],
+  "keyPoints": [
+    "package declares a class's namespace; the directory structure must match the package name",
+    "import brings a class from another package into scope by its simple name",
+    "Package-private (no modifier) restricts access to classes in the same package only",
+    "protected extends package-private access to subclasses in other packages as well"
+  ],
+  "commonMistakes": [
+    "Mismatching the package declaration and the actual directory structure",
+    "Overusing wildcard imports (import java.util.*;), reducing clarity about exactly what's used",
+    "Assuming protected is simply 'wider than package-private' in every direction, rather than package-private-plus-subclasses specifically"
+  ],
+  "concepts": [
+    "packages",
+    "import",
+    "access modifiers",
+    "package-private",
+    "protected"
+  ],
+  "previousLesson": "java-abstraction-001",
+  "nextLesson": "java-interfaces-001"
+}

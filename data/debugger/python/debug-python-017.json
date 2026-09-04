@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-017",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Functions",
+  "bugType": "missing-return",
+  "title": "Fix the Missing Return Value",
+  "description": "The program should define a function that squares a number and print the result. Fix the bug.",
+  "buggyCode": "def square(n):\n    result = n * n\n\nprint(square(5))",
+  "expectedBehavior": "The program should print 25, the square of 5.",
+  "actualProblem": "The function computes result but never returns it, so the function implicitly returns None, and the program prints None instead of 25.",
+  "correctedCode": "def square(n):\n    result = n * n\n    return result\n\nprint(square(5))",
+  "expectedOutput": "25",
+  "explanation": "A function only sends a value back to its caller via an explicit return statement. Without one, Python functions return None by default, no matter what was computed inside.",
+  "concepts": [
+    "functions",
+    "return statement",
+    "None"
+  ]
+}

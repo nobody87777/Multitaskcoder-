@@ -1,0 +1,15 @@
+{
+  "id": "c-037",
+  "language": "c",
+  "title": "Recursive Factorial",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "description": "Compute the factorial of a number using a recursive function.",
+  "code": "#include <stdio.h>\n\nlong long factorial(int n) {\n    if (n == 0 || n == 1) {\n        return 1;\n    }\n    return n * factorial(n - 1);\n}\n\nint main() {\n    printf(\"Factorial of 6 is %lld\\n\", factorial(6));\n    return 0;\n}",
+  "expectedOutput": "Factorial of 6 is 720",
+  "concepts": [
+    "recursion",
+    "base case",
+    "long long"
+  ]
+}

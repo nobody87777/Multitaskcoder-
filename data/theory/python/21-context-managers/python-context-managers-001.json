@@ -1,0 +1,56 @@
+{
+  "id": "python-context-managers-001",
+  "language": "python",
+  "section": "python",
+  "module": "Context Managers",
+  "moduleNumber": 21,
+  "lessonNumber": 23,
+  "title": "Context Managers",
+  "difficulty": "advanced",
+  "description": "The with statement, the __enter__/__exit__ protocol, and writing custom context managers for resource management.",
+  "objectives": [
+    "Understand what problem the with statement solves",
+    "Implement a custom context manager with __enter__ and __exit__",
+    "Understand how __exit__ can suppress exceptions",
+    "Use contextlib for simpler context managers"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "The with Statement and the Protocol",
+      "body": "The with statement guarantees that setup and cleanup code run around a block, even if an exception occurs inside it — the classic example is a file, which must be closed whether or not reading/writing it succeeds. Any object usable in a with statement is a context manager: it implements __enter__(self), called when entering the block (its return value becomes the as variable, if used), and __exit__(self, exc_type, exc_value, traceback), called when leaving the block, whether normally or via an exception.\n\nIf __exit__ returns a truthy value, any exception that occurred inside the with block is suppressed (treated as handled) rather than propagating further — a powerful but easy-to-misuse feature, since silently swallowing exceptions can hide real bugs if used carelessly."
+    },
+    {
+      "type": "text",
+      "heading": "Writing Custom Context Managers",
+      "body": "Any resource that needs reliable setup/teardown is a good candidate for a custom context manager: database connections, locks, timers, temporary state changes. Beyond writing a class with __enter__/__exit__, the contextlib module offers a much shorter alternative using a generator function decorated with @contextlib.contextmanager: code before the single yield acts as __enter__, the yielded value becomes the as variable, and code after yield (typically in a try/finally) acts as __exit__."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import contextlib, time\n\nclass Timer:\n    def __enter__(self):\n        self.start = time.time()\n        return self\n    def __exit__(self, exc_type, exc_value, traceback):\n        print(f\"Elapsed: {time.time() - self.start:.4f}s\")\n        return False   # do not suppress exceptions\n\nwith Timer():\n    total = sum(range(100000))\n\n@contextlib.contextmanager\ndef timer():\n    start = time.time()\n    yield\n    print(f\"Elapsed: {time.time() - start:.4f}s\")\n\nwith timer():\n    total = sum(range(100000))",
+      "explanation": "Both the class-based Timer and the generator-based timer() achieve the same thing: guaranteed 'print elapsed time' cleanup, even if the code inside the with block raised an exception."
+    }
+  ],
+  "keyPoints": [
+    "with guarantees setup/cleanup even when an exception occurs inside the block",
+    "A context manager implements __enter__ (setup) and __exit__ (cleanup)",
+    "__exit__ returning a truthy value suppresses the exception it was given",
+    "@contextlib.contextmanager turns a simple generator function into a context manager"
+  ],
+  "commonMistakes": [
+    "Implementing only __enter__ and forgetting __exit__, breaking the with protocol",
+    "Accidentally suppressing exceptions by returning a truthy value from __exit__ unintentionally",
+    "Using a plain try/finally everywhere instead of a reusable context manager for a repeated setup/teardown pattern"
+  ],
+  "concepts": [
+    "context managers",
+    "with statement",
+    "__enter__",
+    "__exit__",
+    "contextlib",
+    "resource management"
+  ],
+  "previousLesson": "python-decorators-001",
+  "nextLesson": "python-data-model-001"
+}

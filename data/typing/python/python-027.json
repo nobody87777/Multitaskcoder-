@@ -1,0 +1,16 @@
+{
+  "id": "python-027",
+  "language": "python",
+  "title": "Count Vowels in a String",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Count the number of vowels present in a string.",
+  "code": "text = input(\"Enter a sentence: \")\nvowels = \"aeiouAEIOU\"\ncount = 0\n\nfor ch in text:\n    if ch in vowels:\n        count += 1\n\nprint(\"Number of vowels:\", count)",
+  "exampleInput": "Programming is fun",
+  "expectedOutput": "Enter a sentence: Number of vowels: 5",
+  "concepts": [
+    "strings",
+    "iteration",
+    "membership operator"
+  ]
+}

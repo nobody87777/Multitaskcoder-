@@ -1,0 +1,15 @@
+{
+  "id": "python-035",
+  "language": "python",
+  "title": "Bubble Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort a list of numbers in ascending order using bubble sort.",
+  "code": "numbers = [64, 34, 25, 12, 22, 11, 90]\nn = len(numbers)\n\nfor i in range(n - 1):\n    for j in range(n - 1 - i):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\n\nprint(\"Sorted list:\", numbers)",
+  "expectedOutput": "Sorted list: [11, 12, 22, 25, 34, 64, 90]",
+  "concepts": [
+    "bubble sort",
+    "nested loops",
+    "swapping"
+  ]
+}

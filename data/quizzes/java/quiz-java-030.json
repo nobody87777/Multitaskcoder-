@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-030",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "Which access modifier restricts a member so it is visible only within its own class?",
+  "options": [
+    "public",
+    "protected",
+    "default (no modifier)",
+    "private"
+  ],
+  "correctAnswer": 3,
+  "explanation": "private members are accessible only from within the same class that declares them, the most restrictive of Java's access levels.",
+  "concepts": [
+    "access modifiers",
+    "private"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-024",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Comprehensions",
+  "question": "What will this code print?",
+  "code": "squares = [x * x for x in range(5) if x % 2 == 0]\nprint(squares)",
+  "options": [
+    "[0, 1, 4, 9, 16]",
+    "[1, 4, 16]",
+    "[0, 4, 16, 36]",
+    "[0, 4, 16]"
+  ],
+  "correctAnswer": 3,
+  "explanation": "The comprehension keeps only even x values from range(5) — 0, 2, 4 — and squares each, producing [0, 4, 16].",
+  "concepts": [
+    "list comprehension",
+    "filtering"
+  ]
+}

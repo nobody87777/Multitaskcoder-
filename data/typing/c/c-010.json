@@ -1,0 +1,15 @@
+{
+  "id": "c-010",
+  "language": "c",
+  "title": "Largest of Three Numbers",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Find and print the largest of three numbers using nested conditionals.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int a, b, c, largest;\n    scanf(\"%d %d %d\", &a, &b, &c);\n\n    if (a >= b && a >= c)\n        largest = a;\n    else if (b >= a && b >= c)\n        largest = b;\n    else\n        largest = c;\n\n    printf(\"Largest number is: %d\\n\", largest);\n    return 0;\n}",
+  "exampleInput": "4\n9\n7",
+  "expectedOutput": "Largest number is: 9",
+  "concepts": [
+    "logical operators",
+    "nested conditionals"
+  ]
+}

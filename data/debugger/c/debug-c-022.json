@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-022",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "bugType": "buffer-overflow",
+  "title": "Fix the Overflowing String Copy",
+  "description": "The program should safely combine a name into a fixed-size greeting buffer.",
+  "buggyCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char greeting[10] = \"Hi \";\n    char name[] = \"Alexandria\";\n    strcat(greeting, name);\n    printf(\"%s\\n\", greeting);\n    return 0;\n}",
+  "expectedBehavior": "The program should safely produce a greeting without corrupting memory, even for a long name.",
+  "actualProblem": "greeting only has 10 bytes total, already partly used by \"Hi \". Appending the 10-character name \"Alexandria\" plus its terminator needs far more space than remains, so strcat writes well past the end of the buffer — a serious buffer overflow.",
+  "correctedCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char greeting[20] = \"Hi \";\n    char name[] = \"Alexandria\";\n    strncat(greeting, name, sizeof(greeting) - strlen(greeting) - 1);\n    printf(\"%s\\n\", greeting);\n    return 0;\n}",
+  "expectedOutput": "Hi Alexandria",
+  "explanation": "Buffers used with strcat must be large enough to hold the combined result, including the null terminator. Using strncat with an explicit remaining-space limit (and sizing the buffer generously) prevents writing past the buffer's end.",
+  "concepts": [
+    "strings",
+    "buffer overflow",
+    "strcat()"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-047",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Advanced OOP",
+  "question": "What is the purpose of defining a __str__ method on a custom class?",
+  "options": [
+    "It controls how many instances of the class can exist",
+    "It is called automatically when the object is deleted",
+    "It defines the human-readable string returned when the object is passed to print() or str()",
+    "It makes the class immutable"
+  ],
+  "correctAnswer": 2,
+  "explanation": "__str__ is invoked by str() and print() to produce a readable, user-facing string representation of the object.",
+  "concepts": [
+    "dunder methods",
+    "__str__"
+  ]
+}

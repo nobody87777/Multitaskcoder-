@@ -1,0 +1,356 @@
+{
+  "language": "python",
+  "count": 50,
+  "challenges": [
+    {
+      "id": "debug-python-001",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "bugType": "missing-quote",
+      "file": "debug-python-001.json"
+    },
+    {
+      "id": "debug-python-002",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "bugType": "uninitialized-variable",
+      "file": "debug-python-002.json"
+    },
+    {
+      "id": "debug-python-003",
+      "difficulty": "beginner",
+      "topic": "Input",
+      "bugType": "type-error",
+      "file": "debug-python-003.json"
+    },
+    {
+      "id": "debug-python-004",
+      "difficulty": "beginner",
+      "topic": "Operators",
+      "bugType": "operator-precedence",
+      "file": "debug-python-004.json"
+    },
+    {
+      "id": "debug-python-005",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "bugType": "assignment-in-condition",
+      "file": "debug-python-005.json"
+    },
+    {
+      "id": "debug-python-006",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "bugType": "wrong-condition-order",
+      "file": "debug-python-006.json"
+    },
+    {
+      "id": "debug-python-007",
+      "difficulty": "beginner",
+      "topic": "Syntax",
+      "bugType": "indentation-error",
+      "file": "debug-python-007.json"
+    },
+    {
+      "id": "debug-python-008",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-python-008.json"
+    },
+    {
+      "id": "debug-python-009",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "infinite-loop",
+      "file": "debug-python-009.json"
+    },
+    {
+      "id": "debug-python-010",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-python-010.json"
+    },
+    {
+      "id": "debug-python-011",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "wrong-loop-control-statement",
+      "file": "debug-python-011.json"
+    },
+    {
+      "id": "debug-python-012",
+      "difficulty": "beginner",
+      "topic": "Strings",
+      "bugType": "index-out-of-bounds",
+      "file": "debug-python-012.json"
+    },
+    {
+      "id": "debug-python-013",
+      "difficulty": "beginner",
+      "topic": "Arrays",
+      "bugType": "index-out-of-bounds",
+      "file": "debug-python-013.json"
+    },
+    {
+      "id": "debug-python-014",
+      "difficulty": "beginner",
+      "topic": "Strings",
+      "bugType": "off-by-one-logic",
+      "file": "debug-python-014.json"
+    },
+    {
+      "id": "debug-python-015",
+      "difficulty": "beginner",
+      "topic": "Lists",
+      "bugType": "attribute-error",
+      "file": "debug-python-015.json"
+    },
+    {
+      "id": "debug-python-016",
+      "difficulty": "beginner",
+      "topic": "Lists",
+      "bugType": "wrong-method-choice",
+      "file": "debug-python-016.json"
+    },
+    {
+      "id": "debug-python-017",
+      "difficulty": "beginner",
+      "topic": "Functions",
+      "bugType": "missing-return",
+      "file": "debug-python-017.json"
+    },
+    {
+      "id": "debug-python-018",
+      "difficulty": "beginner",
+      "topic": "Functions",
+      "bugType": "wrong-return-value",
+      "file": "debug-python-018.json"
+    },
+    {
+      "id": "debug-python-019",
+      "difficulty": "beginner",
+      "topic": "Recursion",
+      "bugType": "missing-base-case",
+      "file": "debug-python-019.json"
+    },
+    {
+      "id": "debug-python-020",
+      "difficulty": "beginner",
+      "topic": "Exceptions",
+      "bugType": "division-by-zero",
+      "file": "debug-python-020.json"
+    },
+    {
+      "id": "debug-python-021",
+      "difficulty": "intermediate",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-python-021.json"
+    },
+    {
+      "id": "debug-python-022",
+      "difficulty": "intermediate",
+      "topic": "Lists",
+      "bugType": "wrong-condition",
+      "file": "debug-python-022.json"
+    },
+    {
+      "id": "debug-python-023",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "key-error",
+      "file": "debug-python-023.json"
+    },
+    {
+      "id": "debug-python-024",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "type-error",
+      "file": "debug-python-024.json"
+    },
+    {
+      "id": "debug-python-025",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "type-error",
+      "file": "debug-python-025.json"
+    },
+    {
+      "id": "debug-python-026",
+      "difficulty": "intermediate",
+      "topic": "Comprehensions",
+      "bugType": "missing-filter-condition",
+      "file": "debug-python-026.json"
+    },
+    {
+      "id": "debug-python-027",
+      "difficulty": "intermediate",
+      "topic": "Functions",
+      "bugType": "wrong-argument-order",
+      "file": "debug-python-027.json"
+    },
+    {
+      "id": "debug-python-028",
+      "difficulty": "intermediate",
+      "topic": "Functions",
+      "bugType": "scope-error",
+      "file": "debug-python-028.json"
+    },
+    {
+      "id": "debug-python-029",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "bugType": "incorrect-recursive-step",
+      "file": "debug-python-029.json"
+    },
+    {
+      "id": "debug-python-030",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "bugType": "wrong-comparison-operator",
+      "file": "debug-python-030.json"
+    },
+    {
+      "id": "debug-python-031",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "bugType": "infinite-loop",
+      "file": "debug-python-031.json"
+    },
+    {
+      "id": "debug-python-032",
+      "difficulty": "intermediate",
+      "topic": "Files",
+      "bugType": "incorrect-file-mode",
+      "file": "debug-python-032.json"
+    },
+    {
+      "id": "debug-python-033",
+      "difficulty": "intermediate",
+      "topic": "Exceptions",
+      "bugType": "wrong-exception-type",
+      "file": "debug-python-033.json"
+    },
+    {
+      "id": "debug-python-034",
+      "difficulty": "intermediate",
+      "topic": "Modules",
+      "bugType": "missing-import",
+      "file": "debug-python-034.json"
+    },
+    {
+      "id": "debug-python-035",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "missing-self-parameter",
+      "file": "debug-python-035.json"
+    },
+    {
+      "id": "debug-python-036",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "missing-eq-method",
+      "file": "debug-python-036.json"
+    },
+    {
+      "id": "debug-python-037",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "constructor-error",
+      "file": "debug-python-037.json"
+    },
+    {
+      "id": "debug-python-038",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "inheritance-error",
+      "file": "debug-python-038.json"
+    },
+    {
+      "id": "debug-python-039",
+      "difficulty": "intermediate",
+      "topic": "Functions",
+      "bugType": "mutable-default-argument",
+      "file": "debug-python-039.json"
+    },
+    {
+      "id": "debug-python-040",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "list-mutation-during-iteration",
+      "file": "debug-python-040.json"
+    },
+    {
+      "id": "debug-python-041",
+      "difficulty": "advanced",
+      "topic": "Generators",
+      "bugType": "generator-misuse",
+      "file": "debug-python-041.json"
+    },
+    {
+      "id": "debug-python-042",
+      "difficulty": "advanced",
+      "topic": "Decorators",
+      "bugType": "decorator-bug",
+      "file": "debug-python-042.json"
+    },
+    {
+      "id": "debug-python-043",
+      "difficulty": "advanced",
+      "topic": "Iterators",
+      "bugType": "missing-stopiteration",
+      "file": "debug-python-043.json"
+    },
+    {
+      "id": "debug-python-044",
+      "difficulty": "advanced",
+      "topic": "Context Managers",
+      "bugType": "context-manager-bug",
+      "file": "debug-python-044.json"
+    },
+    {
+      "id": "debug-python-045",
+      "difficulty": "advanced",
+      "topic": "Advanced OOP",
+      "bugType": "shallow-copy-bug",
+      "file": "debug-python-045.json"
+    },
+    {
+      "id": "debug-python-046",
+      "difficulty": "advanced",
+      "topic": "Exceptions",
+      "bugType": "silent-exception-swallowing",
+      "file": "debug-python-046.json"
+    },
+    {
+      "id": "debug-python-047",
+      "difficulty": "advanced",
+      "topic": "Advanced OOP",
+      "bugType": "overriding-mistake",
+      "file": "debug-python-047.json"
+    },
+    {
+      "id": "debug-python-048",
+      "difficulty": "advanced",
+      "topic": "Functions",
+      "bugType": "mutable-default-argument",
+      "file": "debug-python-048.json"
+    },
+    {
+      "id": "debug-python-049",
+      "difficulty": "advanced",
+      "topic": "Data Processing",
+      "bugType": "key-error",
+      "file": "debug-python-049.json"
+    },
+    {
+      "id": "debug-python-050",
+      "difficulty": "advanced",
+      "topic": "Advanced OOP",
+      "bugType": "identity-vs-equality",
+      "file": "debug-python-050.json"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-033",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Memory",
+  "question": "What will this code print?",
+  "code": "void counter() {\n    static int count = 0;\n    count++;\n    printf(\"%d \", count);\n}\n\nint main() {\n    counter();\n    counter();\n    counter();\n    return 0;\n}",
+  "options": [
+    "1 1 1 ",
+    "0 1 2 ",
+    "1 2 3 ",
+    "3 3 3 "
+  ],
+  "correctAnswer": 2,
+  "explanation": "A static local variable retains its value between function calls instead of being reinitialized each time, so count keeps incrementing across the three calls: 1, 2, 3.",
+  "concepts": [
+    "static storage duration",
+    "local variables"
+  ]
+}

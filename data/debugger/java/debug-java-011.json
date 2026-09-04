@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-011",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "infinite-loop",
+  "title": "Fix the Stuck Countdown",
+  "description": "The program should count down from 5 to 1 and then stop.",
+  "buggyCode": "public class Countdown {\n    public static void main(String[] args) {\n        int n = 5;\n        while (n > 0) {\n            System.out.println(n);\n        }\n    }\n}",
+  "expectedBehavior": "The program should print 5, 4, 3, 2, 1 and then terminate.",
+  "actualProblem": "n is never changed inside the loop body, so the condition n > 0 remains true forever — the program runs an infinite loop, endlessly printing 5.",
+  "correctedCode": "public class Countdown {\n    public static void main(String[] args) {\n        int n = 5;\n        while (n > 0) {\n            System.out.println(n);\n            n--;\n        }\n    }\n}",
+  "expectedOutput": "5\n4\n3\n2\n1",
+  "explanation": "A while loop keeps running as long as its condition stays true. The loop body must change the variable being tested (here, decrementing n) so the condition eventually becomes false and the loop can end.",
+  "concepts": [
+    "while loop",
+    "infinite loop",
+    "loop variable update"
+  ]
+}

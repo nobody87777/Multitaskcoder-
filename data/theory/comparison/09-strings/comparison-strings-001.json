@@ -1,0 +1,59 @@
+{
+  "id": "comparison-strings-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Strings",
+  "topic": "Strings",
+  "topicNumber": 9,
+  "lessonNumber": 9,
+  "title": "Strings: Mutability, Indexing, and Memory Behavior",
+  "difficulty": "intermediate",
+  "description": "How strings differ in mutability, indexing/slicing, available methods, and underlying memory representation.",
+  "objectives": [
+    "Compare string mutability across the three languages",
+    "Compare indexing/slicing support",
+    "Compare underlying memory representation"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "str is immutable — every transformation (replace, upper, etc.) returns a new string. Indexing (text[0]) and rich slicing (text[1:4], text[::-1]) are both built in, with negative indices supported. A large, built-in set of methods (split, join, strip, format, ...) covers most common needs directly, with no separate import required."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "String is immutable, exactly like Python's str — every 'modifying' method returns a new String. Indexing uses a method, charAt(i), not bracket syntax (Java has no [] operator overloading for arbitrary types); there's no negative indexing or slice syntax — substring(begin, end) covers slicing but with a more verbose call. For frequent concatenation, StringBuilder provides a genuinely mutable buffer, working around String's immutability performance cost."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "A 'string' is just a mutable char array with a null terminator — there's no distinct string type, so mutability is unrestricted (and unmanaged) at the language level: individual characters can be directly assigned (str[0] = 'X';), unlike Python's or Java's immutable strings. Indexing uses array syntax (str[i]), but there's no slicing at all — extracting a substring requires manual copying with strncpy or similar. Memory is the programmer's full responsibility: buffer sizing, the null terminator, and any resizing must all be handled manually."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python's str and Java's String are both immutable, safe, garbage-collected objects with rich built-in support; C's strings are raw, mutable, manually-managed char arrays with essentially no built-in safety. Python's slicing syntax has no equivalent in Java (which needs substring() calls) or C (which needs manual buffer manipulation)."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "String-heavy code ported from Python to C requires the most rework by far, since virtually none of Python's convenient string operations (slicing, rich methods, automatic memory management) exist natively in C — they must be reimplemented, carefully, with explicit buffer size management."
+    }
+  ],
+  "keyPoints": [
+    "Python's str and Java's String are both immutable and memory-managed automatically; C strings are mutable, raw char arrays managed manually",
+    "Python supports rich slicing (text[1:4]); Java requires substring() calls; C requires manual buffer copying",
+    "C string handling carries real safety risks (buffer overflows) that simply don't exist in Python or Java"
+  ],
+  "concepts": [
+    "strings",
+    "mutability",
+    "indexing",
+    "slicing",
+    "string methods",
+    "memory management"
+  ],
+  "previousLesson": "comparison-functions-and-methods-001",
+  "nextLesson": "comparison-arrays-001"
+}

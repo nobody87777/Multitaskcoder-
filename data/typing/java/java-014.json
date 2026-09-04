@@ -1,0 +1,15 @@
+{
+  "id": "java-014",
+  "language": "java",
+  "title": "Sum of First N Natural Numbers",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Calculate the sum of the first N natural numbers using a loop.",
+  "code": "import java.util.Scanner;\n\npublic class SumOfNaturals {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int total = 0;\n\n        for (int i = 1; i <= n; i++) {\n            total += i;\n        }\n\n        System.out.println(\"Sum: \" + total);\n    }\n}",
+  "exampleInput": "10",
+  "expectedOutput": "Sum: 55",
+  "concepts": [
+    "for loop",
+    "accumulator pattern"
+  ]
+}

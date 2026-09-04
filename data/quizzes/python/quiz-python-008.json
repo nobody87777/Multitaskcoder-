@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-008",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Operators",
+  "question": "What is the value of 2 ** 3 in Python?",
+  "options": [
+    "6",
+    "9",
+    "5",
+    "8"
+  ],
+  "correctAnswer": 3,
+  "explanation": "** is the exponentiation operator, so 2 ** 3 means 2 raised to the power 3, which is 8.",
+  "concepts": [
+    "exponentiation",
+    "operators"
+  ]
+}

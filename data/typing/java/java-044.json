@@ -1,0 +1,15 @@
+{
+  "id": "java-044",
+  "language": "java",
+  "title": "Writing to a File",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Write text to a file using FileWriter and confirm the write succeeded.",
+  "code": "import java.io.FileWriter;\nimport java.io.IOException;\n\npublic class FileWriteExample {\n    public static void main(String[] args) {\n        try (FileWriter writer = new FileWriter(\"output.txt\")) {\n            writer.write(\"MultitaskCoder file handling demo\");\n            System.out.println(\"File written successfully\");\n        } catch (IOException e) {\n            System.out.println(\"Error writing file: \" + e.getMessage());\n        }\n    }\n}",
+  "expectedOutput": "File written successfully",
+  "concepts": [
+    "FileWriter",
+    "try-with-resources",
+    "IOException"
+  ]
+}

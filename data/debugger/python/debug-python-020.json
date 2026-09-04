@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-020",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Exceptions",
+  "bugType": "division-by-zero",
+  "title": "Fix the Unhandled Division",
+  "description": "The program should safely divide two numbers, printing an error message if the divisor is zero. Fix the bug.",
+  "buggyCode": "a = 10\nb = 0\nprint(a / b)",
+  "expectedBehavior": "The program should print 'Cannot divide by zero' instead of crashing when b is 0.",
+  "actualProblem": "Dividing by zero raises a ZeroDivisionError that is never caught, so the program crashes instead of handling the situation gracefully.",
+  "correctedCode": "a = 10\nb = 0\ntry:\n    print(a / b)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")",
+  "expectedOutput": "Cannot divide by zero",
+  "explanation": "Operations that can fail at runtime, like division by a value that might be zero, should be wrapped in a try/except block so the program can respond sensibly instead of crashing.",
+  "concepts": [
+    "exceptions",
+    "try/except",
+    "ZeroDivisionError"
+  ]
+}

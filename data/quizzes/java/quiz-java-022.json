@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-022",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What is a constructor in Java primarily used for?",
+  "options": [
+    "Destroying an object when it's no longer needed",
+    "Declaring static fields",
+    "Overriding inherited methods",
+    "Initializing a newly created object's state"
+  ],
+  "correctAnswer": 3,
+  "explanation": "A constructor runs automatically when an object is created with new, and is used to set up the object's initial field values.",
+  "concepts": [
+    "constructors",
+    "object initialization"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "c-pointers-002",
+  "language": "c",
+  "section": "c",
+  "module": "Pointers",
+  "moduleNumber": 12,
+  "lessonNumber": 13,
+  "title": "Pointer Arithmetic, Pointers with Arrays/Strings/Functions, and Common Mistakes",
+  "difficulty": "intermediate",
+  "description": "Pointer arithmetic, pointer comparison, pointers to pointers, pointers with functions, and mistakes to avoid.",
+  "objectives": [
+    "Perform correct pointer arithmetic",
+    "Understand the relationship between pointers, arrays, and strings",
+    "Use pointers to pointers and pointers as function parameters",
+    "Recognize the most common pointer mistakes"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Pointer Arithmetic, and Pointers with Arrays/Strings",
+      "body": "Pointer arithmetic is automatically scaled by the pointed-to type's size: for int *p, p + 1 advances by sizeof(int) bytes, not 1 byte, pointing at the next int — this is what makes ptr + i equivalent to indexing arr[i] when ptr points into an array. Pointers can be compared (==, <, >) when they point into the same array (or one-past its end); comparing pointers into unrelated objects is undefined behavior. An array name, used by itself (not combined with &), decays into a pointer to its first element in most expressions — which is exactly why arr[i] and *(arr + i) are equivalent, interchangeable ways to access the same element.\n\nA string literal or char array is naturally accessed through a char* — string-handling functions (strlen, strcpy, etc.) all operate through such pointers, walking forward until they hit the null terminator."
+    },
+    {
+      "type": "text",
+      "heading": "Pointer to Pointer, Pointers with Functions, and Common Mistakes",
+      "body": "A pointer to a pointer, int **pp;, holds the address of another pointer variable — used, for example, when a function needs to modify a caller's pointer itself (not just the data it points to), such as updating a linked list's head pointer from inside an insert function. Pointers are the mechanism behind C's 'pass by reference' effect: a function receiving int *out can write through it to modify the caller's original variable, since the function has that variable's address, not just a copy of its value.\n\nCommon pointer mistakes to actively guard against: dereferencing before initialization (wild pointers); using a pointer after the memory it points to has been freed (dangling pointers, covered in Dynamic Memory); returning the address of a local (stack) variable from a function, which becomes invalid the instant the function returns; and double-scaling pointer arithmetic by manually multiplying by sizeof() when the compiler already does that scaling automatically."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nvoid increment(int *value) {   // pointer parameter lets this modify the CALLER's variable\n    (*value)++;\n}\n\nint main() {\n    int arr[3] = {10, 20, 30};\n    int *p = arr;                          // decays to &arr[0]\n    printf(\"%d %d\\n\", arr[1], *(p + 1));    // 20 20 — equivalent access\n\n    int x = 5;\n    increment(&x);\n    printf(\"%d\\n\", x);                       // 6 — modified through the pointer\n\n    int **pp = &p;                          // pointer to a pointer\n    printf(\"%d\\n\", **pp);                    // dereference twice: 10\n    return 0;\n}",
+      "explanation": "arr[1] and *(p + 1) access the identical element, since p decayed from the array and pointer arithmetic already accounts for int's size. increment(&x) demonstrates the pointer-based 'pass by reference' pattern."
+    }
+  ],
+  "keyPoints": [
+    "Pointer arithmetic (p + 1) is scaled by the pointed-to type's size automatically",
+    "arr[i] and *(arr + i) are equivalent, since an array name decays into a pointer to its first element",
+    "A pointer to a pointer (T **) lets a function modify the caller's pointer variable itself",
+    "Never return the address of a local (stack) variable, and never manually re-multiply a pointer offset by sizeof()"
+  ],
+  "commonMistakes": [
+    "Manually multiplying a pointer offset by sizeof(), double-scaling an already-scaled pointer arithmetic expression",
+    "Returning &localVariable from a function, producing a dangling pointer to a destroyed stack frame",
+    "Comparing or subtracting pointers that don't point into the same array"
+  ],
+  "concepts": [
+    "pointer arithmetic",
+    "pointer comparison",
+    "pointers and arrays",
+    "pointers and strings",
+    "pointer to pointer",
+    "pointers and functions",
+    "pointer mistakes"
+  ],
+  "previousLesson": "c-pointers-001",
+  "nextLesson": "c-arrays-and-pointers-001"
+}

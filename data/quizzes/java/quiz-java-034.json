@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-034",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Collections",
+  "question": "What will this code print?",
+  "code": "import java.util.HashSet;\n\nHashSet<Integer> set = new HashSet<>();\nset.add(5);\nset.add(5);\nset.add(7);\nSystem.out.println(set.size());",
+  "options": [
+    "3",
+    "1",
+    "0",
+    "2"
+  ],
+  "correctAnswer": 3,
+  "explanation": "A HashSet does not store duplicate elements; adding 5 twice only keeps one copy, so the set contains {5, 7}, giving a size of 2.",
+  "concepts": [
+    "HashSet",
+    "uniqueness"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "debug-python-035",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "missing-self-parameter",
+  "title": "Fix the Missing Self Parameter",
+  "description": "The program should define a class with a method that greets using the object's name. Fix the bug.",
+  "buggyCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet():\n        print(f\"Hello, {self.name}\")\n\np = Person(\"Asha\")\np.greet()",
+  "expectedBehavior": "The program should print 'Hello, Asha'.",
+  "actualProblem": "Instance methods must accept self as their first parameter to receive the calling object. greet() is missing it, so calling p.greet() passes p as an unexpected extra argument, raising a TypeError.",
+  "correctedCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(f\"Hello, {self.name}\")\n\np = Person(\"Asha\")\np.greet()",
+  "expectedOutput": "Hello, Asha",
+  "explanation": "When you call an object's method with p.greet(), Python automatically passes p in as the first argument. The method definition must include a matching parameter (conventionally named self) to receive it.",
+  "concepts": [
+    "classes",
+    "self",
+    "instance methods",
+    "TypeError"
+  ]
+}

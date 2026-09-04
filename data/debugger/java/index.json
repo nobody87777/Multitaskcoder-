@@ -1,0 +1,356 @@
+{
+  "language": "java",
+  "count": 50,
+  "challenges": [
+    {
+      "id": "debug-java-001",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "bugType": "syntax-error",
+      "file": "debug-java-001.json"
+    },
+    {
+      "id": "debug-java-002",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "bugType": "incorrect-main-signature",
+      "file": "debug-java-002.json"
+    },
+    {
+      "id": "debug-java-003",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "bugType": "uninitialized-variable",
+      "file": "debug-java-003.json"
+    },
+    {
+      "id": "debug-java-004",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "bugType": "incompatible-types",
+      "file": "debug-java-004.json"
+    },
+    {
+      "id": "debug-java-005",
+      "difficulty": "beginner",
+      "topic": "Type Conversion",
+      "bugType": "integer-division-bug",
+      "file": "debug-java-005.json"
+    },
+    {
+      "id": "debug-java-006",
+      "difficulty": "beginner",
+      "topic": "Operators",
+      "bugType": "assignment-in-condition",
+      "file": "debug-java-006.json"
+    },
+    {
+      "id": "debug-java-007",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "bugType": "scanner-newline-bug",
+      "file": "debug-java-007.json"
+    },
+    {
+      "id": "debug-java-008",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "bugType": "wrong-condition-order",
+      "file": "debug-java-008.json"
+    },
+    {
+      "id": "debug-java-009",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "bugType": "missing-break-fallthrough",
+      "file": "debug-java-009.json"
+    },
+    {
+      "id": "debug-java-010",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-java-010.json"
+    },
+    {
+      "id": "debug-java-011",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "infinite-loop",
+      "file": "debug-java-011.json"
+    },
+    {
+      "id": "debug-java-012",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-java-012.json"
+    },
+    {
+      "id": "debug-java-013",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "wrong-loop-control-statement",
+      "file": "debug-java-013.json"
+    },
+    {
+      "id": "debug-java-014",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "infinite-loop",
+      "file": "debug-java-014.json"
+    },
+    {
+      "id": "debug-java-015",
+      "difficulty": "beginner",
+      "topic": "Arrays",
+      "bugType": "index-out-of-bounds",
+      "file": "debug-java-015.json"
+    },
+    {
+      "id": "debug-java-016",
+      "difficulty": "beginner",
+      "topic": "Strings",
+      "bugType": "string-equality-bug",
+      "file": "debug-java-016.json"
+    },
+    {
+      "id": "debug-java-017",
+      "difficulty": "beginner",
+      "topic": "Strings",
+      "bugType": "index-out-of-bounds",
+      "file": "debug-java-017.json"
+    },
+    {
+      "id": "debug-java-018",
+      "difficulty": "beginner",
+      "topic": "Functions",
+      "bugType": "missing-return",
+      "file": "debug-java-018.json"
+    },
+    {
+      "id": "debug-java-019",
+      "difficulty": "beginner",
+      "topic": "Functions",
+      "bugType": "wrong-return-value",
+      "file": "debug-java-019.json"
+    },
+    {
+      "id": "debug-java-020",
+      "difficulty": "beginner",
+      "topic": "Syntax",
+      "bugType": "missing-semicolon",
+      "file": "debug-java-020.json"
+    },
+    {
+      "id": "debug-java-021",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "bugType": "index-out-of-bounds",
+      "file": "debug-java-021.json"
+    },
+    {
+      "id": "debug-java-022",
+      "difficulty": "intermediate",
+      "topic": "Loops",
+      "bugType": "variable-shadowing-bug",
+      "file": "debug-java-022.json"
+    },
+    {
+      "id": "debug-java-023",
+      "difficulty": "intermediate",
+      "topic": "Functions",
+      "bugType": "pass-by-value-misunderstanding",
+      "file": "debug-java-023.json"
+    },
+    {
+      "id": "debug-java-024",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "bugType": "missing-base-case",
+      "file": "debug-java-024.json"
+    },
+    {
+      "id": "debug-java-025",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "wrong-return-value",
+      "file": "debug-java-025.json"
+    },
+    {
+      "id": "debug-java-026",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "null-pointer",
+      "file": "debug-java-026.json"
+    },
+    {
+      "id": "debug-java-027",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "constructor-error",
+      "file": "debug-java-027.json"
+    },
+    {
+      "id": "debug-java-028",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "missing-this-keyword",
+      "file": "debug-java-028.json"
+    },
+    {
+      "id": "debug-java-029",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "encapsulation-violation",
+      "file": "debug-java-029.json"
+    },
+    {
+      "id": "debug-java-030",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "inheritance-error",
+      "file": "debug-java-030.json"
+    },
+    {
+      "id": "debug-java-031",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "overriding-mistake",
+      "file": "debug-java-031.json"
+    },
+    {
+      "id": "debug-java-032",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "invalid-overload",
+      "file": "debug-java-032.json"
+    },
+    {
+      "id": "debug-java-033",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "abstract-instantiation-error",
+      "file": "debug-java-033.json"
+    },
+    {
+      "id": "debug-java-034",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "bugType": "missing-interface-method",
+      "file": "debug-java-034.json"
+    },
+    {
+      "id": "debug-java-035",
+      "difficulty": "intermediate",
+      "topic": "Exceptions",
+      "bugType": "overly-broad-catch",
+      "file": "debug-java-035.json"
+    },
+    {
+      "id": "debug-java-036",
+      "difficulty": "intermediate",
+      "topic": "Collections",
+      "bugType": "concurrent-modification",
+      "file": "debug-java-036.json"
+    },
+    {
+      "id": "debug-java-037",
+      "difficulty": "intermediate",
+      "topic": "Collections",
+      "bugType": "missing-equals-hashcode",
+      "file": "debug-java-037.json"
+    },
+    {
+      "id": "debug-java-038",
+      "difficulty": "intermediate",
+      "topic": "Collections",
+      "bugType": "null-pointer",
+      "file": "debug-java-038.json"
+    },
+    {
+      "id": "debug-java-039",
+      "difficulty": "intermediate",
+      "topic": "Files",
+      "bugType": "resource-not-closed",
+      "file": "debug-java-039.json"
+    },
+    {
+      "id": "debug-java-040",
+      "difficulty": "intermediate",
+      "topic": "Exceptions",
+      "bugType": "number-format-exception",
+      "file": "debug-java-040.json"
+    },
+    {
+      "id": "debug-java-041",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "bugType": "class-cast-exception",
+      "file": "debug-java-041.json"
+    },
+    {
+      "id": "debug-java-042",
+      "difficulty": "advanced",
+      "topic": "Functional",
+      "bugType": "lambda-signature-mismatch",
+      "file": "debug-java-042.json"
+    },
+    {
+      "id": "debug-java-043",
+      "difficulty": "advanced",
+      "topic": "Generics",
+      "bugType": "generics-type-safety-violation",
+      "file": "debug-java-043.json"
+    },
+    {
+      "id": "debug-java-044",
+      "difficulty": "advanced",
+      "topic": "Functional",
+      "bugType": "lambda-capture-error",
+      "file": "debug-java-044.json"
+    },
+    {
+      "id": "debug-java-045",
+      "difficulty": "advanced",
+      "topic": "Functional",
+      "bugType": "stream-reuse-error",
+      "file": "debug-java-045.json"
+    },
+    {
+      "id": "debug-java-046",
+      "difficulty": "advanced",
+      "topic": "Exceptions",
+      "bugType": "unreachable-catch-block",
+      "file": "debug-java-046.json"
+    },
+    {
+      "id": "debug-java-047",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "bugType": "unhandled-file-exception",
+      "file": "debug-java-047.json"
+    },
+    {
+      "id": "debug-java-048",
+      "difficulty": "advanced",
+      "topic": "Concurrency",
+      "bugType": "race-condition",
+      "file": "debug-java-048.json"
+    },
+    {
+      "id": "debug-java-049",
+      "difficulty": "advanced",
+      "topic": "Concurrency",
+      "bugType": "incorrect-lock-object",
+      "file": "debug-java-049.json"
+    },
+    {
+      "id": "debug-java-050",
+      "difficulty": "advanced",
+      "topic": "JVM",
+      "bugType": "integer-overflow",
+      "file": "debug-java-050.json"
+    }
+  ]
+}

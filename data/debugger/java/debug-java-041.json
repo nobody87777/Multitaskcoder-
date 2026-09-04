@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-041",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "bugType": "class-cast-exception",
+  "title": "Fix the Invalid Downcast",
+  "description": "The program should store different Shape subclasses in an array and process them by their actual type.",
+  "buggyCode": "class Shape {}\nclass Circle extends Shape {}\nclass Square extends Shape {}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape[] shapes = { new Circle(), new Square() };\n        Circle c = (Circle) shapes[1];\n        System.out.println(\"Got a circle\");\n    }\n}",
+  "expectedBehavior": "The program should only cast an array element to Circle when it is actually a Circle instance.",
+  "actualProblem": "shapes[1] actually holds a Square object, not a Circle. Casting it to Circle compiles fine (since both extend Shape) but fails at runtime with a ClassCastException, because the object's real type doesn't match the cast.",
+  "correctedCode": "class Shape {}\nclass Circle extends Shape {}\nclass Square extends Shape {}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape[] shapes = { new Circle(), new Square() };\n        if (shapes[1] instanceof Circle) {\n            Circle c = (Circle) shapes[1];\n            System.out.println(\"Got a circle\");\n        } else {\n            System.out.println(\"Not a circle\");\n        }\n    }\n}",
+  "expectedOutput": "Not a circle",
+  "explanation": "Casting a reference to a more specific subclass only succeeds at runtime if the object's actual type matches (or is a subclass of) the target type. Checking with instanceof before casting avoids a ClassCastException.",
+  "concepts": [
+    "casting",
+    "ClassCastException",
+    "instanceof"
+  ]
+}

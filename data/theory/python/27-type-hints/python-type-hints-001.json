@@ -1,0 +1,57 @@
+{
+  "id": "python-type-hints-001",
+  "language": "python",
+  "section": "python",
+  "module": "Type Hints",
+  "moduleNumber": 27,
+  "lessonNumber": 29,
+  "title": "Type Hints",
+  "difficulty": "advanced",
+  "description": "Adding optional static type annotations to variables and functions, and the tools that check them.",
+  "objectives": [
+    "Add type hints to variables and function signatures",
+    "Use Optional and Union to express more complex types",
+    "Use generic collection type hints",
+    "Understand the benefits and limitations of type hints"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Annotating Variables and Functions",
+      "body": "Python remains dynamically typed at runtime, but since Python 3.5 it supports optional type hints (also called type annotations) — a way to document, and let external tools check, what type a variable, parameter, or return value is expected to be, without the interpreter enforcing it at runtime. A variable annotation looks like age: int = 21. A function annotation looks like def greet(name: str) -> str:, declaring name should be a str and the function returns a str. These hints are purely informational to the Python interpreter itself; nothing stops you from passing the 'wrong' type at runtime — enforcement comes from separate static type checkers."
+    },
+    {
+      "type": "text",
+      "heading": "Optional, Union, and Generic Collections",
+      "body": "Optional[X] (from the typing module, or the newer X | None syntax in Python 3.10+) means 'a value of type X, or None' — commonly used for parameters or return values that might be absent. Union[X, Y] (or X | Y) means 'either type X or type Y'. Generic collection types express what's inside a container: list[int] is a list whose elements are all expected to be int, dict[str, float] a dict mapping strings to floats (in Python 3.9+, the built-in list/dict/etc. can be parameterized directly; older code uses typing.List, typing.Dict).\n\nThe main benefit of type hints is tooling: editors can offer better autocomplete, and static type checkers like mypy can catch a whole class of type-related bugs before the code even runs, without any runtime cost. The main limitation is exactly that they are not enforced by the Python interpreter itself — a type-hinted function will still happily accept the 'wrong' type at runtime unless a separate checker is run as part of your workflow."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from typing import Optional\n\ndef find_user(user_id: int) -> Optional[str]:\n    users = {1: \"Asha\", 2: \"Ravi\"}\n    return users.get(user_id)      # returns str, or None if missing\n\ndef total_price(items: list[float]) -> float:\n    return sum(items)\n\nname: str = \"Asha\"\nscores: dict[str, int] = {\"Asha\": 88}",
+      "explanation": "Optional[str] documents that find_user might return None. list[float] and dict[str, int] describe the expected element/key/value types of the collections — none of this is checked at runtime by Python itself."
+    }
+  ],
+  "keyPoints": [
+    "Type hints (x: int, def f(x: int) -> str:) are optional and not enforced by the Python runtime",
+    "Optional[X] means X or None; Union[X, Y] (or X | Y) means either type",
+    "list[int], dict[str, float], etc. express the expected contents of a collection",
+    "Static type checkers (like mypy) are what actually catch type mismatches — hints alone are just documentation"
+  ],
+  "commonMistakes": [
+    "Believing a type hint actually prevents the wrong type from being passed at runtime",
+    "Forgetting Optional[X] when a function can genuinely return None",
+    "Mixing old-style typing.List/typing.Dict and new-style list/dict hints inconsistently across a codebase without a version reason"
+  ],
+  "concepts": [
+    "type hints",
+    "type annotations",
+    "Optional",
+    "Union",
+    "generic collections",
+    "mypy",
+    "static type checking"
+  ],
+  "previousLesson": "python-json-and-csv-001",
+  "nextLesson": "python-advanced-python-001"
+}

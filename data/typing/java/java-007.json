@@ -1,0 +1,15 @@
+{
+  "id": "java-007",
+  "language": "java",
+  "title": "Even or Odd Checker",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Check whether a given number is even or odd.",
+  "code": "import java.util.Scanner;\n\npublic class EvenOddChecker {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int num = scanner.nextInt();\n\n        if (num % 2 == 0) {\n            System.out.println(num + \" is Even\");\n        } else {\n            System.out.println(num + \" is Odd\");\n        }\n    }\n}",
+  "exampleInput": "13",
+  "expectedOutput": "13 is Odd",
+  "concepts": [
+    "modulus operator",
+    "if/else"
+  ]
+}

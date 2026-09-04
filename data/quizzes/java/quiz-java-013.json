@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-013",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Arrays",
+  "question": "How do you correctly declare and create an array of 5 integers in Java?",
+  "options": [
+    "int arr[5];",
+    "array int arr = new int(5);",
+    "int[] arr = int[5];",
+    "int[] arr = new int[5];"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Java arrays are created with `new type[size]`, so `int[] arr = new int[5];` declares and allocates an array of 5 ints.",
+  "concepts": [
+    "arrays",
+    "array declaration"
+  ]
+}

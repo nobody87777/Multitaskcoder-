@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-017",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "code-analysis",
+  "topic": "Functions",
+  "question": "Why does this program print 5 instead of 6?",
+  "code": "void increment(int x) {\n    x = x + 1;\n}\n\nint main() {\n    int num = 5;\n    increment(num);\n    printf(\"%d\\n\", num);\n    return 0;\n}",
+  "options": [
+    "Because increment() was never actually called",
+    "Because printf() rounds down",
+    "Because C requires a return statement to update num",
+    "Because C passes arguments by value, so x inside increment() is a separate copy, and modifying it does not affect the caller's num"
+  ],
+  "correctAnswer": 3,
+  "explanation": "C passes function arguments by value by default — increment() receives a copy of num in its local variable x, so changes to x have no effect on the original num back in main().",
+  "concepts": [
+    "pass by value",
+    "functions"
+  ]
+}

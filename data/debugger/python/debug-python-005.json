@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-005",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "bugType": "assignment-in-condition",
+  "title": "Fix the Age Check",
+  "description": "The program should check whether age equals 18 and print a message. Fix the bug.",
+  "buggyCode": "age = 18\nif age = 18:\n    print(\"You are eighteen\")",
+  "expectedBehavior": "The program should print 'You are eighteen' when age is 18.",
+  "actualProblem": "A single = is the assignment operator in Python, not comparison; using it inside an if condition is a SyntaxError.",
+  "correctedCode": "age = 18\nif age == 18:\n    print(\"You are eighteen\")",
+  "expectedOutput": "You are eighteen",
+  "explanation": "Python deliberately disallows assignment inside a condition to prevent this exact mistake. Comparisons must use ==, the double-equals equality operator.",
+  "concepts": [
+    "comparison operators",
+    "== vs =",
+    "SyntaxError"
+  ]
+}

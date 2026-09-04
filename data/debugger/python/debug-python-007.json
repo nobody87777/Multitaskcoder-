@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-007",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Syntax",
+  "bugType": "indentation-error",
+  "title": "Fix the Indentation Error",
+  "description": "The program should print a message only if the number is positive. Fix the bug.",
+  "buggyCode": "num = 5\nif num > 0:\nprint(\"Positive number\")",
+  "expectedBehavior": "The program should print 'Positive number' when num is greater than 0.",
+  "actualProblem": "The body of the if statement is not indented, so Python raises an IndentationError — it expects an indented block after a colon.",
+  "correctedCode": "num = 5\nif num > 0:\n    print(\"Positive number\")",
+  "expectedOutput": "Positive number",
+  "explanation": "Python uses indentation, not braces, to define blocks of code. Every statement inside an if, loop, or function body must be indented consistently under the line ending in a colon.",
+  "concepts": [
+    "indentation",
+    "IndentationError",
+    "blocks"
+  ]
+}

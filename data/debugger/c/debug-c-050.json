@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-050",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Data Structures",
+  "bugType": "unchecked-stack-overflow",
+  "title": "Fix the Unchecked Array-Based Stack Overflow",
+  "description": "The program should push values onto a fixed-size stack, rejecting pushes once it's full.",
+  "buggyCode": "#include <stdio.h>\n\n#define MAX 3\n\nint stack[MAX];\nint top = -1;\n\nvoid push(int value) {\n    stack[++top] = value;\n}\n\nint main() {\n    push(1);\n    push(2);\n    push(3);\n    push(4);\n    printf(\"%d\\n\", stack[top]);\n    return 0;\n}",
+  "expectedBehavior": "After the stack is full (3 elements), a fourth push should be rejected instead of corrupting memory.",
+  "actualProblem": "push() never checks whether top has already reached the array's last valid index (MAX - 1) before writing. The fourth push writes to stack[3], one element past the end of the 3-element array — a buffer overflow.",
+  "correctedCode": "#include <stdio.h>\n\n#define MAX 3\n\nint stack[MAX];\nint top = -1;\n\nvoid push(int value) {\n    if (top == MAX - 1) {\n        printf(\"Stack overflow, cannot push %d\\n\", value);\n        return;\n    }\n    stack[++top] = value;\n}\n\nint main() {\n    push(1);\n    push(2);\n    push(3);\n    push(4);\n    printf(\"%d\\n\", stack[top]);\n    return 0;\n}",
+  "expectedOutput": "Stack overflow, cannot push 4\n3",
+  "explanation": "A fixed-size, array-based stack must check for the full condition (top == MAX - 1) before every push, and reject the operation instead of writing past the array's bounds.",
+  "concepts": [
+    "stack implementation",
+    "buffer overflow",
+    "bounds checking"
+  ]
+}

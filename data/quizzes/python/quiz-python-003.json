@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-003",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Variables",
+  "question": "What happens when you assign a new value of a different type to an existing Python variable?",
+  "options": [
+    "Python raises a TypeError",
+    "The variable keeps its original type",
+    "The variable is rebound to the new value and type",
+    "The program must redeclare the variable with a type keyword"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Python variables are dynamically typed — a name is just a reference that can be rebound to a value of any type at any time.",
+  "concepts": [
+    "dynamic typing",
+    "variables"
+  ]
+}

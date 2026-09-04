@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-033",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Files",
+  "question": "What is the main advantage of opening a file using `with open('file.txt') as f:` instead of a plain open() call?",
+  "options": [
+    "The file is automatically closed when the with block ends, even if an exception occurs",
+    "It opens the file faster",
+    "It automatically converts the file to JSON",
+    "It prevents the file from being read more than once"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The with statement is a context manager that guarantees f.close() is called automatically when the block exits, even if an error occurs inside it.",
+  "concepts": [
+    "file handling",
+    "context managers",
+    "with statement"
+  ]
+}

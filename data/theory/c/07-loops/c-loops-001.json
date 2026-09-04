@@ -1,0 +1,56 @@
+{
+  "id": "c-loops-001",
+  "language": "c",
+  "section": "c",
+  "module": "Loops",
+  "moduleNumber": 7,
+  "lessonNumber": 7,
+  "title": "Loops",
+  "difficulty": "beginner",
+  "description": "for, while, and do-while loops, break/continue, nested loops, and infinite loops.",
+  "objectives": [
+    "Write for, while, and do-while loops",
+    "Use break and continue",
+    "Recognize and intentionally write infinite loops when appropriate"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "for, while, and do-while",
+      "body": "for (init; condition; update) { ... } is C's classic counted loop: init runs once before the loop starts, condition is checked before each iteration, and update runs after each iteration's body. while (condition) { ... } checks its condition before each iteration, suited to loops with an unknown iteration count. do { ... } while (condition); checks its condition after each iteration, guaranteeing at least one execution — useful for input-validation loops that must run their body at least once."
+    },
+    {
+      "type": "text",
+      "heading": "break, continue, and Infinite Loops",
+      "body": "break immediately exits the nearest enclosing loop or switch. continue skips the rest of the current iteration and jumps to the loop's update/condition check. Nested loops (a loop inside another) are common for grid-like problems, and (as in most C-family languages) break/continue only affect the innermost loop by default — C has no labeled break/continue like Java, so escaping multiple nested loops at once typically requires a flag variable or a goto (used sparingly).\n\nfor (;;) { ... } or while (1) { ... } are idiomatic, intentional infinite loops in C, typically paired with an internal break condition to exit — common in event loops or servers that should run indefinitely until an explicit stop condition. An unintentional infinite loop (forgetting to update the loop's controlling variable) is one of the most common beginner bugs."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    for (int i = 0; i < 5; i++) {\n        if (i == 3) break;\n        printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n\n    int n = 0;\n    while (1) {                  // intentional infinite loop\n        if (n >= 3) break;\n        printf(\"n=%d \", n);\n        n++;\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "explanation": "The first loop stops early via break. The while (1) loop is intentionally infinite in structure, but reliably terminates via its own internal break once n reaches 3."
+    }
+  ],
+  "keyPoints": [
+    "for is best for a known iteration count; while is best when the count isn't known ahead of time",
+    "do-while guarantees the loop body runs at least once",
+    "break/continue affect only the nearest enclosing loop — C has no labeled loop control like Java",
+    "while (1) / for (;;) is idiomatic C for an intentional infinite loop, exited via an internal break"
+  ],
+  "commonMistakes": [
+    "Forgetting to update the loop-controlling variable in a while loop, causing an unintentional infinite loop",
+    "Off-by-one errors in a for loop's condition (< vs <=)",
+    "Assuming break/continue can target an outer loop directly, as in Java's labeled loops"
+  ],
+  "concepts": [
+    "for loop",
+    "while loop",
+    "do-while",
+    "break",
+    "continue",
+    "infinite loops",
+    "nested loops"
+  ],
+  "previousLesson": "c-control-flow-001",
+  "nextLesson": "c-functions-001"
+}

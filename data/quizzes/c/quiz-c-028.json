@@ -1,0 +1,22 @@
+{
+  "id": "quiz-c-028",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "code-analysis",
+  "topic": "Pointers",
+  "question": "What does *(p + 2) evaluate to, and why?",
+  "code": "int arr[4] = {1, 2, 3, 4};\nint *p = arr;\nprintf(\"%d\\n\", *(p + 2));",
+  "options": [
+    "1, because pointers always start counting from 1",
+    "3, because p points to arr[0], so p + 2 points to arr[2], and dereferencing gives its value",
+    "A garbage/undefined value",
+    "A compile-time error, since arrays cannot be assigned to pointers"
+  ],
+  "correctAnswer": 1,
+  "explanation": "An array name decays to a pointer to its first element, so p == &arr[0]. p + 2 points to arr[2] (value 3), and *(p + 2) dereferences that address to get 3 — equivalent to arr[2].",
+  "concepts": [
+    "pointers",
+    "arrays and pointers",
+    "dereferencing"
+  ]
+}

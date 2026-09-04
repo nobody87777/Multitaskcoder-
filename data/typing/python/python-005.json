@@ -1,0 +1,16 @@
+{
+  "id": "python-005",
+  "language": "python",
+  "title": "Celsius to Fahrenheit Converter",
+  "difficulty": "beginner",
+  "topic": "Conversion",
+  "description": "Convert a temperature from Celsius to Fahrenheit using the standard formula.",
+  "code": "celsius = float(input(\"Enter temperature in Celsius: \"))\nfahrenheit = (celsius * 9 / 5) + 32\nprint(f\"{celsius}C is equal to {fahrenheit}F\")",
+  "exampleInput": "100",
+  "expectedOutput": "Enter temperature in Celsius: 100.0C is equal to 212.0F",
+  "concepts": [
+    "type casting",
+    "f-strings",
+    "formulas"
+  ]
+}

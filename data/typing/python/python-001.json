@@ -1,0 +1,14 @@
+{
+  "id": "python-001",
+  "language": "python",
+  "title": "Hello World",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "description": "Write a Python program that prints Hello, World! to the console.",
+  "code": "print(\"Hello, World!\")",
+  "expectedOutput": "Hello, World!",
+  "concepts": [
+    "print()",
+    "basic syntax"
+  ]
+}

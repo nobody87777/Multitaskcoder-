@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-044",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Context Managers",
+  "question": "Which two dunder methods must a class implement to be usable in a `with` statement as a custom context manager?",
+  "options": [
+    "__init__ and __del__",
+    "__open__ and __close__",
+    "__start__ and __stop__",
+    "__enter__ and __exit__"
+  ],
+  "correctAnswer": 3,
+  "explanation": "The context manager protocol requires __enter__ (run when entering the with block) and __exit__ (run when leaving it, even on error) to be defined.",
+  "concepts": [
+    "context managers",
+    "with statement",
+    "dunder methods"
+  ]
+}

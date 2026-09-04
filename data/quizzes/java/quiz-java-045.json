@@ -1,0 +1,22 @@
+{
+  "id": "quiz-java-045",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "code-analysis",
+  "topic": "JVM",
+  "question": "Why can repeatedly calling add() on this class eventually cause a memory problem, even though Java has automatic garbage collection?",
+  "code": "public class Leak {\n    static List<Object> cache = new ArrayList<>();\n\n    void add(Object o) {\n        cache.add(o);\n    }\n}",
+  "options": [
+    "Because the objects are still reachable through the static cache list, so the garbage collector cannot reclaim them even if nothing else references them",
+    "Because Java cannot garbage collect static fields at all",
+    "Because ArrayList has a hard-coded maximum size of 10",
+    "Because add() copies each object twice"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Garbage collection only reclaims objects that are unreachable. Since cache is static and keeps growing, every added object remains reachable through it, preventing collection and causing unbounded memory growth — a classic memory leak despite GC.",
+  "concepts": [
+    "garbage collection",
+    "memory leaks",
+    "reachability"
+  ]
+}

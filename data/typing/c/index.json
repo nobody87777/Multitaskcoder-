@@ -1,0 +1,356 @@
+{
+  "language": "c",
+  "count": 50,
+  "programs": [
+    {
+      "id": "c-001",
+      "title": "Hello World",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "file": "c-001.json"
+    },
+    {
+      "id": "c-002",
+      "title": "Reading User Input",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "file": "c-002.json"
+    },
+    {
+      "id": "c-003",
+      "title": "Variables and Data Types",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "file": "c-003.json"
+    },
+    {
+      "id": "c-004",
+      "title": "Arithmetic Operators",
+      "difficulty": "beginner",
+      "topic": "Operators",
+      "file": "c-004.json"
+    },
+    {
+      "id": "c-005",
+      "title": "Celsius to Fahrenheit Converter",
+      "difficulty": "beginner",
+      "topic": "Conversion",
+      "file": "c-005.json"
+    },
+    {
+      "id": "c-006",
+      "title": "Simple Calculator",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-006.json"
+    },
+    {
+      "id": "c-007",
+      "title": "Even or Odd Checker",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-007.json"
+    },
+    {
+      "id": "c-008",
+      "title": "Positive, Negative or Zero",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-008.json"
+    },
+    {
+      "id": "c-009",
+      "title": "Largest of Two Numbers",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-009.json"
+    },
+    {
+      "id": "c-010",
+      "title": "Largest of Three Numbers",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-010.json"
+    },
+    {
+      "id": "c-011",
+      "title": "Leap Year Checker",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-011.json"
+    },
+    {
+      "id": "c-012",
+      "title": "Grade Calculator",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "c-012.json"
+    },
+    {
+      "id": "c-013",
+      "title": "Multiplication Table",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-013.json"
+    },
+    {
+      "id": "c-014",
+      "title": "Sum of First N Natural Numbers",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-014.json"
+    },
+    {
+      "id": "c-015",
+      "title": "Factorial Using a Loop",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-015.json"
+    },
+    {
+      "id": "c-016",
+      "title": "Fibonacci Series (Iterative)",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-016.json"
+    },
+    {
+      "id": "c-017",
+      "title": "Prime Number Checker",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-017.json"
+    },
+    {
+      "id": "c-018",
+      "title": "Reverse a Number",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-018.json"
+    },
+    {
+      "id": "c-019",
+      "title": "Palindrome Number Checker",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-019.json"
+    },
+    {
+      "id": "c-020",
+      "title": "Count Digits in a Number",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "c-020.json"
+    },
+    {
+      "id": "c-021",
+      "title": "Array Sum",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "c-021.json"
+    },
+    {
+      "id": "c-022",
+      "title": "Array Maximum",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "c-022.json"
+    },
+    {
+      "id": "c-023",
+      "title": "Array Minimum",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "c-023.json"
+    },
+    {
+      "id": "c-024",
+      "title": "Array Reversal",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "c-024.json"
+    },
+    {
+      "id": "c-025",
+      "title": "String Length Without strlen",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "c-025.json"
+    },
+    {
+      "id": "c-026",
+      "title": "String Reversal",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "c-026.json"
+    },
+    {
+      "id": "c-027",
+      "title": "Count Vowels in a String",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "c-027.json"
+    },
+    {
+      "id": "c-028",
+      "title": "Character Frequency Counter",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "c-028.json"
+    },
+    {
+      "id": "c-029",
+      "title": "Matrix Addition",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "c-029.json"
+    },
+    {
+      "id": "c-030",
+      "title": "Matrix Transpose",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "c-030.json"
+    },
+    {
+      "id": "c-031",
+      "title": "Linear Search",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "file": "c-031.json"
+    },
+    {
+      "id": "c-032",
+      "title": "Binary Search",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "file": "c-032.json"
+    },
+    {
+      "id": "c-033",
+      "title": "Bubble Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "c-033.json"
+    },
+    {
+      "id": "c-034",
+      "title": "Selection Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "c-034.json"
+    },
+    {
+      "id": "c-035",
+      "title": "Insertion Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "c-035.json"
+    },
+    {
+      "id": "c-036",
+      "title": "Function-Based Calculator",
+      "difficulty": "intermediate",
+      "topic": "Functions",
+      "file": "c-036.json"
+    },
+    {
+      "id": "c-037",
+      "title": "Recursive Factorial",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "file": "c-037.json"
+    },
+    {
+      "id": "c-038",
+      "title": "Recursive Fibonacci",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "file": "c-038.json"
+    },
+    {
+      "id": "c-039",
+      "title": "Structure for Student",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "file": "c-039.json"
+    },
+    {
+      "id": "c-040",
+      "title": "Array of Structures",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "file": "c-040.json"
+    },
+    {
+      "id": "c-041",
+      "title": "Pointer Basics",
+      "difficulty": "advanced",
+      "topic": "Pointers",
+      "file": "c-041.json"
+    },
+    {
+      "id": "c-042",
+      "title": "Swap Using Pointers",
+      "difficulty": "advanced",
+      "topic": "Pointers",
+      "file": "c-042.json"
+    },
+    {
+      "id": "c-043",
+      "title": "Dynamic Memory Allocation",
+      "difficulty": "advanced",
+      "topic": "Memory",
+      "file": "c-043.json"
+    },
+    {
+      "id": "c-044",
+      "title": "Structure With Functions",
+      "difficulty": "advanced",
+      "topic": "Data Structures",
+      "file": "c-044.json"
+    },
+    {
+      "id": "c-045",
+      "title": "File Writing",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "c-045.json"
+    },
+    {
+      "id": "c-046",
+      "title": "File Reading",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "c-046.json"
+    },
+    {
+      "id": "c-047",
+      "title": "Singly Linked List",
+      "difficulty": "advanced",
+      "topic": "Data Structures",
+      "file": "c-047.json"
+    },
+    {
+      "id": "c-048",
+      "title": "Stack Using an Array",
+      "difficulty": "advanced",
+      "topic": "Data Structures",
+      "file": "c-048.json"
+    },
+    {
+      "id": "c-049",
+      "title": "Queue Using an Array",
+      "difficulty": "advanced",
+      "topic": "Data Structures",
+      "file": "c-049.json"
+    },
+    {
+      "id": "c-050",
+      "title": "Contact Manager Using Structures and Files",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "c-050.json"
+    }
+  ]
+}

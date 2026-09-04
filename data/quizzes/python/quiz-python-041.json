@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-041",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Iterators & Generators",
+  "question": "What must an object implement to be considered an iterator in Python?",
+  "options": [
+    "__next__() (and __iter__() returning itself)",
+    "Only __len__()",
+    "Only __getitem__()",
+    "A public method called next() with no underscores"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The iterator protocol requires an object to implement __next__() to produce successive values, and __iter__() that returns itself so it can be used in for loops.",
+  "concepts": [
+    "iterators",
+    "iterator protocol"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-027",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "constructor-error",
+  "title": "Fix the Mistyped Constructor Name",
+  "description": "The program should create a Book object with a title set through its constructor.",
+  "buggyCode": "public class Book {\n    String title;\n\n    public void Book(String title) {\n        this.title = title;\n    }\n\n    public static void main(String[] args) {\n        Book b = new Book(\"1984\");\n        System.out.println(b.title);\n    }\n}",
+  "expectedBehavior": "The program should print '1984', the book's title.",
+  "actualProblem": "A real constructor cannot have a return type — writing 'public void Book(...)' makes this an ordinary method named Book, not a constructor. Java then only has the implicit no-argument default constructor, so new Book(\"1984\") fails to compile because no constructor accepts a String.",
+  "correctedCode": "public class Book {\n    String title;\n\n    public Book(String title) {\n        this.title = title;\n    }\n\n    public static void main(String[] args) {\n        Book b = new Book(\"1984\");\n        System.out.println(b.title);\n    }\n}",
+  "expectedOutput": "1984",
+  "explanation": "A constructor is defined with the exact same name as the class and no return type at all — not even void. Adding a return type like void turns it into a regular method instead, so it's never called automatically when the object is created.",
+  "concepts": [
+    "constructors",
+    "class structure",
+    "compile error"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "c-018",
+  "language": "c",
+  "title": "Reverse a Number",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Reverse the digits of an integer using a loop.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int num, original, reversed = 0;\n    scanf(\"%d\", &num);\n    original = num;\n\n    while (num > 0) {\n        int digit = num % 10;\n        reversed = reversed * 10 + digit;\n        num /= 10;\n    }\n\n    printf(\"Reverse of %d is %d\\n\", original, reversed);\n    return 0;\n}",
+  "exampleInput": "1234",
+  "expectedOutput": "Reverse of 1234 is 4321",
+  "concepts": [
+    "while loop",
+    "modulus",
+    "integer division"
+  ]
+}

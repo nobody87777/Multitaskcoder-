@@ -1,0 +1,22 @@
+{
+  "id": "quiz-python-036",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "code-analysis",
+  "topic": "OOP",
+  "question": "Why does creating two Dog objects below not share the same `name` attribute value?",
+  "code": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Fido\")",
+  "options": [
+    "Because Python classes cannot have more than one instance",
+    "Because __init__ is called once for the whole class, not per object",
+    "Because self.name is a class-level variable shared by all instances",
+    "Because __init__ runs separately for each object and assigns to that object's own self.name"
+  ],
+  "correctAnswer": 3,
+  "explanation": "__init__ runs once per object creation, and `self` refers to that specific instance, so each Dog gets its own independent name attribute.",
+  "concepts": [
+    "constructors",
+    "__init__",
+    "instance attributes"
+  ]
+}

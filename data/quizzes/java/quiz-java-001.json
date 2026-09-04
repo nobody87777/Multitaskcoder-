@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-001",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "What must every Java application have in order to run as a standalone program?",
+  "options": [
+    "A main method with signature public static void main(String[] args)",
+    "A constructor named main",
+    "A class named Main only",
+    "An import statement for java.lang"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The JVM looks for a method with the exact signature `public static void main(String[] args)` as the entry point of execution.",
+  "concepts": [
+    "main method",
+    "program structure"
+  ]
+}

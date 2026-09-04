@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-005",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Type Conversion",
+  "bugType": "integer-division-bug",
+  "title": "Fix the Truncated Average",
+  "description": "The program should calculate and print the average of two integers as a decimal.",
+  "buggyCode": "public class Average {\n    public static void main(String[] args) {\n        int a = 7;\n        int b = 4;\n        double average = (a + b) / 2;\n        System.out.println(average);\n    }\n}",
+  "expectedBehavior": "The program should print 5.5, the true average of 7 and 4.",
+  "actualProblem": "Since a and b are both int, (a + b) / 2 performs integer division first, producing 5 (truncated), which is only afterward converted to a double — so the result is 5.0 instead of the correct 5.5.",
+  "correctedCode": "public class Average {\n    public static void main(String[] args) {\n        int a = 7;\n        int b = 4;\n        double average = (a + b) / 2.0;\n        System.out.println(average);\n    }\n}",
+  "expectedOutput": "5.5",
+  "explanation": "Java decides whether division is integer or floating-point based on the operand types at the moment the division happens, not the type of the variable it's later assigned to. Dividing by 2.0 (a double) forces floating-point division before any truncation occurs.",
+  "concepts": [
+    "integer division",
+    "type conversion",
+    "operator evaluation order"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "java-025",
+  "language": "java",
+  "title": "Remove Duplicates From an Array",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Remove duplicate values from an array while preserving order, using a LinkedHashSet.",
+  "code": "import java.util.LinkedHashSet;\n\npublic class RemoveDuplicates {\n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 2, 3, 4, 4, 4, 5, 1};\n        LinkedHashSet<Integer> unique = new LinkedHashSet<>();\n\n        for (int n : numbers) {\n            unique.add(n);\n        }\n\n        System.out.println(\"Unique: \" + unique);\n    }\n}",
+  "expectedOutput": "Unique: [1, 2, 3, 4, 5]",
+  "concepts": [
+    "LinkedHashSet",
+    "deduplication",
+    "generics"
+  ]
+}

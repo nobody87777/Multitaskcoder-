@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-037",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "code-analysis",
+  "topic": "Recursion",
+  "question": "What prevents this recursive factorial method from recursing forever?",
+  "code": "public class Factorial {\n    static long factorial(int n) {\n        if (n <= 1) return 1;\n        return n * factorial(n - 1);\n    }\n}",
+  "options": [
+    "The static keyword",
+    "Java automatically limits recursion depth to 10",
+    "The base case `if (n <= 1) return 1;`, which stops further recursive calls once n reaches 1 or less",
+    "The long return type"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Every correct recursive function needs a base case that stops the recursion; here, once n <= 1 the method returns 1 directly instead of calling itself again.",
+  "concepts": [
+    "recursion",
+    "base case"
+  ]
+}

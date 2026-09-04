@@ -1,0 +1,22 @@
+{
+  "id": "quiz-python-017",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "code-analysis",
+  "topic": "Strings",
+  "question": "What happens when this code runs, and why?",
+  "code": "text = \"Python\"\ntext[0] = \"J\"",
+  "options": [
+    "It prints 'Jython' after replacing the first character",
+    "It silently ignores the assignment and text remains 'Python'",
+    "It creates a new variable named text[0]",
+    "It raises a TypeError because strings are immutable"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Python strings are immutable, so attempting item assignment on a string raises a TypeError; you must build a new string instead.",
+  "concepts": [
+    "strings",
+    "immutability",
+    "TypeError"
+  ]
+}

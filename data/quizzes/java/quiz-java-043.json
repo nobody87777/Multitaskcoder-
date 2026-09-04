@@ -1,0 +1,22 @@
+{
+  "id": "quiz-java-043",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "output",
+  "topic": "Functional",
+  "question": "What will this code print?",
+  "code": "import java.util.List;\n\nList<Integer> nums = List.of(1, 2, 3, 4);\nlong count = nums.stream().filter(n -> n > 2).count();\nSystem.out.println(count);",
+  "options": [
+    "4",
+    "3",
+    "2",
+    "1"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The stream filters out values not greater than 2, leaving [3, 4], and count() reports the number of remaining elements: 2.",
+  "concepts": [
+    "Stream API",
+    "filter()",
+    "count()"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-042",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Iterators & Generators",
+  "question": "What is the key advantage of a generator function (using yield) over building and returning a full list?",
+  "options": [
+    "Generators guarantee sorted output",
+    "Generators produce values lazily, one at a time, without holding the entire sequence in memory",
+    "Generators run faster on every possible workload",
+    "Generators can only be used once inside classes"
+  ],
+  "correctAnswer": 1,
+  "explanation": "yield pauses the function and produces one value at a time on demand, so a generator never needs to hold the whole sequence in memory at once — unlike a list.",
+  "concepts": [
+    "generators",
+    "yield",
+    "lazy evaluation"
+  ]
+}

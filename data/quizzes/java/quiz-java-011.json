@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-011",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "What is the key difference between a while loop and a do-while loop in Java?",
+  "options": [
+    "They are functionally identical",
+    "do-while cannot contain a condition",
+    "A do-while loop always executes its body at least once, even if the condition is false",
+    "while loops cannot use break"
+  ],
+  "correctAnswer": 2,
+  "explanation": "A do-while loop checks its condition after running the body, guaranteeing at least one execution, whereas a while loop may never run if the condition starts false.",
+  "concepts": [
+    "do-while",
+    "loops"
+  ]
+}

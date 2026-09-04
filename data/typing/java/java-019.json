@@ -1,0 +1,15 @@
+{
+  "id": "java-019",
+  "language": "java",
+  "title": "Palindrome Number Checker",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Check whether a given number reads the same forwards and backwards.",
+  "code": "import java.util.Scanner;\n\npublic class PalindromeNumber {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int num = scanner.nextInt();\n        int original = num;\n        int reversed = 0;\n\n        while (num > 0) {\n            int digit = num % 10;\n            reversed = reversed * 10 + digit;\n            num /= 10;\n        }\n\n        if (original == reversed) {\n            System.out.println(original + \" is a palindrome\");\n        } else {\n            System.out.println(original + \" is not a palindrome\");\n        }\n    }\n}",
+  "exampleInput": "1221",
+  "expectedOutput": "1221 is a palindrome",
+  "concepts": [
+    "while loop",
+    "digit reversal"
+  ]
+}

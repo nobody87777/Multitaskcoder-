@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-036",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Collections",
+  "question": "What is the main benefit of using generics, like List<String> instead of a raw List?",
+  "options": [
+    "Generics make the code run in parallel automatically",
+    "Generics provide compile-time type safety, catching type mismatches before runtime",
+    "Generics remove the need for a return type",
+    "Generics only work with primitive types"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Generics let the compiler enforce that a collection only holds a specific type, catching type errors at compile time instead of causing a ClassCastException later at runtime.",
+  "concepts": [
+    "generics",
+    "type safety"
+  ]
+}

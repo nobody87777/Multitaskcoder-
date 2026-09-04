@@ -1,0 +1,58 @@
+{
+  "id": "comparison-variables-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Variables",
+  "topic": "Variables",
+  "topicNumber": 3,
+  "lessonNumber": 3,
+  "title": "Variables: Declaration, Initialization, and Typing Discipline",
+  "difficulty": "beginner",
+  "description": "How variable declaration, initialization, and static vs. dynamic typing differ across the three languages.",
+  "objectives": [
+    "Compare variable declaration syntax",
+    "Compare default initialization behavior",
+    "Compare dynamic vs. static typing at the variable level"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Variables need no declared type — a name simply comes into existence the moment it's assigned: x = 5. There's no way to 'declare but not initialize' a variable in the C/Java sense; reading a name before it's ever been assigned raises a NameError. The same name can be rebound to a completely different type later."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Local variables must be declared with an explicit type (or var, for compiler-inferred typing) and must be definitely assigned before use — reading an unassigned local variable is a compile error. Instance/class fields, if not explicitly initialized, get automatic defaults (0, false, null)."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Variables must be declared with an explicit type. Local variables are NOT automatically initialized — reading one before assignment yields indeterminate garbage (undefined behavior), a sharp contrast to Java's compile-time enforcement. Global variables do get automatic zero-initialization, similar to Java's fields."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python needs no type declaration at all and rebinds names dynamically. Java requires a declared (or inferred) type and enforces at compile time that locals are assigned before use. C requires a declared type but does NOT enforce initialization for locals — an uninitialized local variable is a live bug waiting to happen, not a caught error."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "This is one of the starkest safety differences among the three: a C program can silently misbehave from an uninitialized variable, something both Java (compile-time check) and Python (no uninitialized state possible) prevent by construction."
+    }
+  ],
+  "keyPoints": [
+    "Python: no type declaration, dynamic rebinding, no uninitialized-variable state is possible",
+    "Java: explicit (or inferred) type, compiler enforces locals are assigned before use",
+    "C: explicit type required, but local variable initialization is NOT enforced — a real safety gap"
+  ],
+  "concepts": [
+    "variable declaration",
+    "initialization",
+    "dynamic typing",
+    "static typing",
+    "uninitialized variables"
+  ],
+  "previousLesson": "comparison-syntax-001",
+  "nextLesson": "comparison-data-types-001"
+}

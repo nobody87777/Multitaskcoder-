@@ -1,0 +1,16 @@
+{
+  "id": "c-020",
+  "language": "c",
+  "title": "Count Digits in a Number",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Count how many digits a given integer has.",
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int num, temp, count = 0;\n    scanf(\"%d\", &num);\n    temp = abs(num);\n\n    if (temp == 0) {\n        count = 1;\n    } else {\n        while (temp > 0) {\n            count++;\n            temp /= 10;\n        }\n    }\n\n    printf(\"%d has %d digits\\n\", num, count);\n    return 0;\n}",
+  "exampleInput": "987654",
+  "expectedOutput": "987654 has 6 digits",
+  "concepts": [
+    "while loop",
+    "abs()",
+    "edge case handling"
+  ]
+}

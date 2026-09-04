@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-020",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Functions",
+  "question": "Why is a function prototype (like int add(int, int);) often placed before main() in a C file?",
+  "options": [
+    "It is only for documentation and has no effect on compilation",
+    "It tells the compiler the function's signature in advance, so calls to it before its full definition can be type-checked",
+    "It automatically implements the function body",
+    "It is required by the operating system"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A prototype declares a function's name, return type, and parameter types ahead of its actual definition, letting the compiler validate calls to it that appear earlier in the file.",
+  "concepts": [
+    "function prototypes",
+    "declarations"
+  ]
+}

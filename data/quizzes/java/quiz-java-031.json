@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-031",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Exceptions",
+  "question": "What will this code print?",
+  "code": "try {\n    int[] arr = new int[3];\n    System.out.println(arr[5]);\n} catch (ArrayIndexOutOfBoundsException e) {\n    System.out.println(\"Caught: bad index\");\n}",
+  "options": [
+    "Caught: bad index",
+    "0",
+    "The program crashes with an uncaught exception",
+    "Compilation error"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Accessing index 5 of a 3-element array throws ArrayIndexOutOfBoundsException, which is caught by the matching catch block, printing 'Caught: bad index'.",
+  "concepts": [
+    "exceptions",
+    "ArrayIndexOutOfBoundsException"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "java-030",
+  "language": "java",
+  "title": "Matrix Addition",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Add two 2x2 matrices represented as two-dimensional arrays.",
+  "code": "import java.util.Arrays;\n\npublic class MatrixAddition {\n    public static void main(String[] args) {\n        int[][] a = {{1, 2}, {3, 4}};\n        int[][] b = {{5, 6}, {7, 8}};\n        int[][] result = new int[2][2];\n\n        for (int i = 0; i < 2; i++) {\n            for (int j = 0; j < 2; j++) {\n                result[i][j] = a[i][j] + b[i][j];\n            }\n        }\n\n        for (int[] row : result) {\n            System.out.println(Arrays.toString(row));\n        }\n    }\n}",
+  "expectedOutput": "[6, 8]\n[10, 12]",
+  "concepts": [
+    "2D arrays",
+    "nested loops",
+    "matrices"
+  ]
+}

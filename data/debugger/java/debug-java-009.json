@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-009",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "bugType": "missing-break-fallthrough",
+  "title": "Fix the Switch Fall-Through",
+  "description": "The program should print the name of a day of the week based on a number.",
+  "buggyCode": "public class DayName {\n    public static void main(String[] args) {\n        int day = 2;\n        switch (day) {\n            case 1:\n                System.out.println(\"Monday\");\n            case 2:\n                System.out.println(\"Tuesday\");\n            case 3:\n                System.out.println(\"Wednesday\");\n            default:\n                System.out.println(\"Unknown\");\n        }\n    }\n}",
+  "expectedBehavior": "For day = 2, the program should print only 'Tuesday'.",
+  "actualProblem": "None of the cases end with a break statement, so once execution matches case 2, it 'falls through' and keeps running the code for case 3 and default too, printing three lines instead of one.",
+  "correctedCode": "public class DayName {\n    public static void main(String[] args) {\n        int day = 2;\n        switch (day) {\n            case 1:\n                System.out.println(\"Monday\");\n                break;\n            case 2:\n                System.out.println(\"Tuesday\");\n                break;\n            case 3:\n                System.out.println(\"Wednesday\");\n                break;\n            default:\n                System.out.println(\"Unknown\");\n        }\n    }\n}",
+  "expectedOutput": "Tuesday",
+  "explanation": "Without a break, Java's switch statement continues executing every subsequent case's code regardless of its label, until it hits a break or the end of the switch. Adding break after each case's logic stops this fall-through.",
+  "concepts": [
+    "switch",
+    "fall-through",
+    "break"
+  ]
+}

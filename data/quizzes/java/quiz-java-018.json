@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-018",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "What does declaring a method with the void return type mean?",
+  "options": [
+    "The method returns no value",
+    "The method can only be called once",
+    "The method must be static",
+    "The method returns null by default"
+  ],
+  "correctAnswer": 0,
+  "explanation": "void indicates the method performs an action but does not return any value to its caller.",
+  "concepts": [
+    "methods",
+    "void"
+  ]
+}

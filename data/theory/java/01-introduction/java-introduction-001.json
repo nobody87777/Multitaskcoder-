@@ -1,0 +1,57 @@
+{
+  "id": "java-introduction-001",
+  "language": "java",
+  "section": "java",
+  "module": "Introduction to Java",
+  "moduleNumber": 1,
+  "lessonNumber": 1,
+  "title": "Introduction to Java",
+  "difficulty": "beginner",
+  "description": "Java's history, its 'write once, run anywhere' model, and the roles of the JVM, JRE, and JDK.",
+  "objectives": [
+    "Understand Java's design goals and history",
+    "Understand the JVM, JRE, and JDK and how they relate",
+    "Understand bytecode and platform independence",
+    "Understand the compile-then-run execution model"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Java's History and Design Goals",
+      "body": "Java was released by Sun Microsystems in 1995, designed around the principle of 'write once, run anywhere' (WORA): a program compiled on one platform should run unmodified on any platform with a compatible Java runtime. It is a statically typed, class-based, object-oriented language (though it has steadily added functional-style features, like lambdas and streams, since Java 8). Java's key strengths are portability, a strong standard library, automatic memory management via garbage collection, and strong tooling/ecosystem support for large, long-lived enterprise codebases."
+    },
+    {
+      "type": "text",
+      "heading": "JVM, JRE, JDK, and Bytecode",
+      "body": "These three acronyms are frequently confused: the JDK (Java Development Kit) is the full toolkit for developers — includes the compiler (javac) and everything needed to build Java programs. The JRE (Java Runtime Environment) is what's needed to run (not build) Java programs — the JVM plus the core class libraries. The JVM (Java Virtual Machine) is the actual engine that executes compiled Java programs; it's what makes 'write once, run anywhere' possible, since a JVM implementation is built separately for each platform, but all of them execute the same bytecode.\n\nCompilation in Java happens in two conceptual stages: javac compiles .java source files into .class files containing bytecode — a platform-independent intermediate representation, not native machine code. When you run a program (java ClassName), the JVM loads that bytecode and executes it, either by interpreting it directly or by compiling hot code paths to native machine code at runtime via Just-In-Time (JIT) compilation for better performance."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n// Compile:  javac HelloWorld.java   -> produces HelloWorld.class (bytecode)\n// Run:      java HelloWorld          -> the JVM executes the bytecode",
+      "explanation": "javac performs the source-to-bytecode compilation step; java then launches the JVM to execute that bytecode. The same .class file could be copied to a different operating system's JVM and would run unmodified."
+    }
+  ],
+  "keyPoints": [
+    "'Write once, run anywhere' means compiled bytecode runs on any platform with a compatible JVM",
+    "JDK = development toolkit (includes javac); JRE = runtime environment; JVM = the execution engine itself",
+    "javac compiles .java source into platform-independent .class bytecode",
+    "The JVM interprets bytecode and JIT-compiles hot paths to native code at runtime"
+  ],
+  "commonMistakes": [
+    "Confusing the JDK, JRE, and JVM as if they were interchangeable terms",
+    "Assuming Java 'compiles to machine code' the same way C does — it compiles to bytecode, executed by the JVM",
+    "Trying to run java on a .java source file instead of the compiled .class file (or the class name)"
+  ],
+  "concepts": [
+    "JVM",
+    "JRE",
+    "JDK",
+    "bytecode",
+    "platform independence",
+    "compilation",
+    "JIT compilation"
+  ],
+  "previousLesson": null,
+  "nextLesson": "java-syntax-and-structure-001"
+}

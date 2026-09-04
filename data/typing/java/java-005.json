@@ -1,0 +1,16 @@
+{
+  "id": "java-005",
+  "language": "java",
+  "title": "Celsius to Fahrenheit Converter",
+  "difficulty": "beginner",
+  "topic": "Conversion",
+  "description": "Convert a temperature from Celsius to Fahrenheit using the standard formula.",
+  "code": "import java.util.Scanner;\n\npublic class TemperatureConverter {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter temperature in Celsius: \");\n        double celsius = scanner.nextDouble();\n        double fahrenheit = (celsius * 9 / 5) + 32;\n        System.out.println(celsius + \"C is equal to \" + fahrenheit + \"F\");\n    }\n}",
+  "exampleInput": "100",
+  "expectedOutput": "Enter temperature in Celsius: 100.0C is equal to 212.0F",
+  "concepts": [
+    "Scanner",
+    "double",
+    "formulas"
+  ]
+}

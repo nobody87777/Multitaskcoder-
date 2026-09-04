@@ -1,0 +1,15 @@
+{
+  "id": "python-031",
+  "language": "python",
+  "title": "Matrix Addition",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Add two 2x2 matrices represented as nested lists.",
+  "code": "matrix_a = [[1, 2], [3, 4]]\nmatrix_b = [[5, 6], [7, 8]]\nresult = [[0, 0], [0, 0]]\n\nfor i in range(2):\n    for j in range(2):\n        result[i][j] = matrix_a[i][j] + matrix_b[i][j]\n\nfor row in result:\n    print(row)",
+  "expectedOutput": "[6, 8]\n[10, 12]",
+  "concepts": [
+    "nested lists",
+    "nested loops",
+    "matrices"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-010",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Loops",
+  "question": "What will this code print?",
+  "code": "int i = 0;\nwhile (i < 3) {\n    System.out.print(i + \" \");\n    i++;\n}",
+  "options": [
+    "0 1 2 3 ",
+    "0 1 2 ",
+    "1 2 3 ",
+    "Infinite loop"
+  ],
+  "correctAnswer": 1,
+  "explanation": "The loop prints i and increments it while i < 3, producing 0, 1, and 2 before the condition fails.",
+  "concepts": [
+    "while loop",
+    "loop condition"
+  ]
+}

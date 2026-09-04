@@ -1,0 +1,14 @@
+{
+  "id": "java-032",
+  "language": "java",
+  "title": "Linear Search",
+  "difficulty": "intermediate",
+  "topic": "Searching",
+  "description": "Search for a target value in an array using linear search.",
+  "code": "public class LinearSearch {\n    public static void main(String[] args) {\n        int[] numbers = {4, 8, 15, 16, 23, 42};\n        int target = 23;\n        int index = -1;\n\n        for (int i = 0; i < numbers.length; i++) {\n            if (numbers[i] == target) {\n                index = i;\n                break;\n            }\n        }\n\n        if (index != -1) {\n            System.out.println(\"Found \" + target + \" at index \" + index);\n        } else {\n            System.out.println(target + \" not found\");\n        }\n    }\n}",
+  "expectedOutput": "Found 23 at index 4",
+  "concepts": [
+    "linear search",
+    "loop with break"
+  ]
+}

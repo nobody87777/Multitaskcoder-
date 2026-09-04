@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-042",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Functional",
+  "question": "What defines a 'functional interface' in Java?",
+  "options": [
+    "Any interface with any number of methods",
+    "An interface with exactly one abstract method, which can be implemented with a lambda",
+    "An interface that cannot be implemented by classes",
+    "An interface with only static methods"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A functional interface declares exactly one abstract method (it may have default/static methods too), making it a valid target type for a lambda expression.",
+  "concepts": [
+    "functional interfaces",
+    "lambda"
+  ]
+}

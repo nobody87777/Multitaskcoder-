@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-032",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "invalid-enum-comparison",
+  "title": "Fix the Invalid Enum Value Comparison",
+  "description": "The program should check a traffic light's color using an enum.",
+  "buggyCode": "#include <stdio.h>\n\nenum Light { RED, YELLOW, GREEN };\n\nint main() {\n    enum Light current = GREEN;\n    if (current == 5) {\n        printf(\"Go\\n\");\n    } else {\n        printf(\"Stop or wait\\n\");\n    }\n    return 0;\n}",
+  "expectedBehavior": "Since current is GREEN, the program should print 'Go'.",
+  "actualProblem": "GREEN is enum value 2 (RED=0, YELLOW=1, GREEN=2 by default), but the code compares current to the raw number 5, which doesn't correspond to any defined enum constant. C's weak enum type checking allows this nonsensical comparison to compile silently, and it never matches.",
+  "correctedCode": "#include <stdio.h>\n\nenum Light { RED, YELLOW, GREEN };\n\nint main() {\n    enum Light current = GREEN;\n    if (current == GREEN) {\n        printf(\"Go\\n\");\n    } else {\n        printf(\"Stop or wait\\n\");\n    }\n    return 0;\n}",
+  "expectedOutput": "Go",
+  "explanation": "C enum constants are really just named integers, and the compiler does not stop you from comparing an enum variable to an unrelated numeric literal. Comparisons should always use the enum's own named constants (like GREEN) instead of magic numbers.",
+  "concepts": [
+    "enums",
+    "type safety",
+    "magic numbers"
+  ]
+}

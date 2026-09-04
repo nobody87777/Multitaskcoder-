@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-032",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "invalid-overload",
+  "title": "Fix the Invalid Overload by Return Type",
+  "description": "The program should define two versions of a method that computes an area, for integer and decimal dimensions.",
+  "buggyCode": "public class AreaCalculator {\n    int computeArea(int w, int h) {\n        return w * h;\n    }\n\n    double computeArea(int w, int h) {\n        return w * h * 1.0;\n    }\n\n    public static void main(String[] args) {\n        AreaCalculator calc = new AreaCalculator();\n        System.out.println(calc.computeArea(4, 5));\n    }\n}",
+  "expectedBehavior": "The program should compile and print the computed area.",
+  "actualProblem": "Both computeArea methods have the exact same name and parameter list (int, int) and differ only in return type. Java does not allow overloading based on return type alone, so the compiler rejects this as 'method computeArea(int,int) is already defined'.",
+  "correctedCode": "public class AreaCalculator {\n    int computeArea(int w, int h) {\n        return w * h;\n    }\n\n    double computeArea(double w, double h) {\n        return w * h;\n    }\n\n    public static void main(String[] args) {\n        AreaCalculator calc = new AreaCalculator();\n        System.out.println(calc.computeArea(4, 5));\n    }\n}",
+  "expectedOutput": "20",
+  "explanation": "Method overloading in Java is distinguished by the parameter list (number, order, or types of parameters), never by return type alone. Giving the double version genuinely different parameter types resolves the conflict.",
+  "concepts": [
+    "method overloading",
+    "compile error",
+    "method signatures"
+  ]
+}

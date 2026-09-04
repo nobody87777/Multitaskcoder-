@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-015",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Arrays",
+  "bugType": "index-out-of-bounds",
+  "title": "Fix the Array Sum Bounds",
+  "description": "The program should sum all elements of an array.",
+  "buggyCode": "public class ArraySum {\n    public static void main(String[] args) {\n        int[] numbers = {5, 10, 15};\n        int sum = 0;\n        for (int i = 1; i <= numbers.length; i++) {\n            sum += numbers[i];\n        }\n        System.out.println(sum);\n    }\n}",
+  "expectedBehavior": "The program should print 30, the sum of 5, 10, and 15.",
+  "actualProblem": "The loop starts at index 1 (skipping numbers[0], the value 5) and runs through i = numbers.length (3), which is out of bounds for a 3-element array, throwing an ArrayIndexOutOfBoundsException.",
+  "correctedCode": "public class ArraySum {\n    public static void main(String[] args) {\n        int[] numbers = {5, 10, 15};\n        int sum = 0;\n        for (int i = 0; i < numbers.length; i++) {\n            sum += numbers[i];\n        }\n        System.out.println(sum);\n    }\n}",
+  "expectedOutput": "30",
+  "explanation": "Array iteration should start at index 0 and use < numbers.length as the bound, covering every valid index exactly once without going out of range.",
+  "concepts": [
+    "arrays",
+    "for loop",
+    "ArrayIndexOutOfBoundsException"
+  ]
+}

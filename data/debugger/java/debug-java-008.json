@@ -1,0 +1,19 @@
+{
+  "id": "debug-java-008",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "bugType": "wrong-condition-order",
+  "title": "Fix the Grade Boundaries",
+  "description": "The program should assign letter grades: 90+ is A, 80+ is B, 70+ is C, otherwise F.",
+  "buggyCode": "public class GradeCalculator {\n    public static void main(String[] args) {\n        int score = 95;\n        String grade;\n        if (score >= 70) {\n            grade = \"C\";\n        } else if (score >= 80) {\n            grade = \"B\";\n        } else if (score >= 90) {\n            grade = \"A\";\n        } else {\n            grade = \"F\";\n        }\n        System.out.println(grade);\n    }\n}",
+  "expectedBehavior": "A score of 95 should be graded 'A'.",
+  "actualProblem": "Because the conditions are checked from loosest to strictest, a score of 95 satisfies score >= 70 on the very first check and is graded 'C' — the later, more specific branches for 'B' and 'A' never get evaluated.",
+  "correctedCode": "public class GradeCalculator {\n    public static void main(String[] args) {\n        int score = 95;\n        String grade;\n        if (score >= 90) {\n            grade = \"A\";\n        } else if (score >= 80) {\n            grade = \"B\";\n        } else if (score >= 70) {\n            grade = \"C\";\n        } else {\n            grade = \"F\";\n        }\n        System.out.println(grade);\n    }\n}",
+  "expectedOutput": "A",
+  "explanation": "An if/else if chain evaluates top to bottom and stops at the first true condition. Range checks must be ordered from most restrictive (highest threshold) down to least restrictive, so higher scores aren't captured by an earlier, looser condition.",
+  "concepts": [
+    "if/else if",
+    "conditional order"
+  ]
+}

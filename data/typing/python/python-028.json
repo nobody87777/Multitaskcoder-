@@ -1,0 +1,16 @@
+{
+  "id": "python-028",
+  "language": "python",
+  "title": "Word Counter",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Count the number of words in a sentence using split().",
+  "code": "sentence = input(\"Enter a sentence: \")\nwords = sentence.split()\n\nprint(\"Word count:\", len(words))\nprint(\"Words:\", words)",
+  "exampleInput": "Python is fun to learn",
+  "expectedOutput": "Enter a sentence: Word count: 5\nWords: ['Python', 'is', 'fun', 'to', 'learn']",
+  "concepts": [
+    "strings",
+    "split()",
+    "len()"
+  ]
+}

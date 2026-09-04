@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-021",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Arrays",
+  "question": "How are the elements of a C array indexed?",
+  "options": [
+    "Starting from 1",
+    "Starting from -1",
+    "Starting from 0",
+    "Determined randomly at runtime"
+  ],
+  "correctAnswer": 2,
+  "explanation": "C arrays use zero-based indexing — the first element is at index 0, and an array of size n has valid indices 0 through n-1.",
+  "concepts": [
+    "arrays",
+    "indexing"
+  ]
+}

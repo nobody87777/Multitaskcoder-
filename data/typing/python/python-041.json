@@ -1,0 +1,15 @@
+{
+  "id": "python-041",
+  "language": "python",
+  "title": "Word Count From a Text File",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Write text to a file, then read it back and count the number of words in it.",
+  "code": "with open(\"sample.txt\", \"w\") as f:\n    f.write(\"Python makes file handling simple and readable\")\n\nwith open(\"sample.txt\", \"r\") as f:\n    content = f.read()\n\nword_count = len(content.split())\nprint(\"Word count:\", word_count)",
+  "expectedOutput": "Word count: 7",
+  "concepts": [
+    "file I/O",
+    "with statement",
+    "context managers"
+  ]
+}

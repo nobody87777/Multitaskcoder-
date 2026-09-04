@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-013",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "What guarantee does a do-while loop provide that a while loop does not?",
+  "options": [
+    "The loop body executes at least once, since the condition is checked after the first execution",
+    "It can never be exited with break",
+    "It runs the loop body zero times if the condition is initially false",
+    "It doesn't require a semicolon"
+  ],
+  "correctAnswer": 0,
+  "explanation": "A do-while loop tests its condition after running the body once, guaranteeing at least one execution, unlike a while loop which may skip the body entirely.",
+  "concepts": [
+    "do-while",
+    "loops"
+  ]
+}

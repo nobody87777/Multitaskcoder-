@@ -1,0 +1,15 @@
+{
+  "id": "c-025",
+  "language": "c",
+  "title": "String Length Without strlen",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Compute the length of a string manually without using the strlen() function.",
+  "code": "#include <stdio.h>\n\nint main() {\n    char text[] = \"MultitaskCoder\";\n    int length = 0;\n\n    while (text[length] != '\\0') {\n        length++;\n    }\n\n    printf(\"Length of \\\"%s\\\" is %d\\n\", text, length);\n    return 0;\n}",
+  "expectedOutput": "Length of \"MultitaskCoder\" is 14",
+  "concepts": [
+    "char arrays",
+    "null terminator",
+    "while loop"
+  ]
+}

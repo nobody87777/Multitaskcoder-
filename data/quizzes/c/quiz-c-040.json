@@ -1,0 +1,18 @@
+{
+  "id": "quiz-c-040",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "true-false",
+  "topic": "Pointers",
+  "question": "True or False: In C, array names automatically decay into pointers to their first element when passed as function arguments.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "When an array is passed to a function, it decays into a pointer to its first element — the function does not receive a full copy of the array, only that pointer, which is why array size information is lost inside the function.",
+  "concepts": [
+    "arrays and pointers",
+    "array decay"
+  ]
+}

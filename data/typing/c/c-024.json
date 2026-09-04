@@ -1,0 +1,14 @@
+{
+  "id": "c-024",
+  "language": "c",
+  "title": "Array Reversal",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Reverse the elements of an array in place.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {1, 2, 3, 4, 5};\n    int n = sizeof(numbers) / sizeof(numbers[0]);\n\n    for (int i = 0; i < n / 2; i++) {\n        int temp = numbers[i];\n        numbers[i] = numbers[n - 1 - i];\n        numbers[n - 1 - i] = temp;\n    }\n\n    printf(\"Reversed array: \");\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", numbers[i]);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}",
+  "expectedOutput": "Reversed array: 5 4 3 2 1 ",
+  "concepts": [
+    "arrays",
+    "in-place swapping"
+  ]
+}

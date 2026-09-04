@@ -1,0 +1,15 @@
+{
+  "id": "c-033",
+  "language": "c",
+  "title": "Bubble Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort an array of numbers in ascending order using bubble sort.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {64, 34, 25, 12, 22, 11, 90};\n    int n = sizeof(numbers) / sizeof(numbers[0]);\n\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (numbers[j] > numbers[j + 1]) {\n                int temp = numbers[j];\n                numbers[j] = numbers[j + 1];\n                numbers[j + 1] = temp;\n            }\n        }\n    }\n\n    printf(\"Sorted array: \");\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", numbers[i]);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}",
+  "expectedOutput": "Sorted array: 11 12 22 25 34 64 90 ",
+  "concepts": [
+    "bubble sort",
+    "nested loops",
+    "swapping"
+  ]
+}

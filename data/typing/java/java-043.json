@@ -1,0 +1,14 @@
+{
+  "id": "java-043",
+  "language": "java",
+  "title": "Exception Handling: Safe Division",
+  "difficulty": "advanced",
+  "topic": "Exceptions",
+  "description": "Perform division safely, handling division-by-zero using try/catch/finally.",
+  "code": "public class SafeDivision {\n    static void divide(int a, int b) {\n        try {\n            int result = a / b;\n            System.out.println(\"Result: \" + result);\n        } catch (ArithmeticException e) {\n            System.out.println(\"Error: \" + e.getMessage());\n        } finally {\n            System.out.println(\"Division attempt complete\");\n        }\n    }\n\n    public static void main(String[] args) {\n        divide(10, 2);\n        divide(10, 0);\n    }\n}",
+  "expectedOutput": "Result: 5\nDivision attempt complete\nError: / by zero\nDivision attempt complete",
+  "concepts": [
+    "try/catch/finally",
+    "ArithmeticException"
+  ]
+}

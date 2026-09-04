@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-048",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Functions",
+  "bugType": "mutable-default-argument",
+  "title": "Fix the Shared Cache Dictionary",
+  "description": "The program should cache computed results per Calculator instance, not share them across every instance. Fix the bug.",
+  "buggyCode": "class Calculator:\n    def __init__(self, cache={}):\n        self.cache = cache\n\n    def remember(self, key, value):\n        self.cache[key] = value\n\nc1 = Calculator()\nc1.remember(\"a\", 1)\nc2 = Calculator()\nprint(c2.cache)",
+  "expectedBehavior": "c2 should start with an empty cache, unaffected by anything stored in c1's cache.",
+  "actualProblem": "The default value cache={} is created once when the class is defined and shared by every instance that doesn't pass its own dictionary. Because dictionaries are mutable, c1.remember(\"a\", 1) also silently affects c2, whose cache is actually the very same dictionary object.",
+  "correctedCode": "class Calculator:\n    def __init__(self, cache=None):\n        self.cache = cache if cache is not None else {}\n\n    def remember(self, key, value):\n        self.cache[key] = value\n\nc1 = Calculator()\nc1.remember(\"a\", 1)\nc2 = Calculator()\nprint(c2.cache)",
+  "expectedOutput": "{}",
+  "explanation": "Just like mutable default list arguments, a mutable default dictionary argument is created once and shared across every call (or, here, every object) that relies on the default. Using None as the default and building a fresh dict per instance avoids the unintended sharing.",
+  "concepts": [
+    "mutable default arguments",
+    "classes",
+    "shared state bug"
+  ]
+}

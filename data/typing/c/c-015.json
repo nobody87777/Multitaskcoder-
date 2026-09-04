@@ -1,0 +1,16 @@
+{
+  "id": "c-015",
+  "language": "c",
+  "title": "Factorial Using a Loop",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Compute the factorial of a number using an iterative loop.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    long long factorial = 1;\n    scanf(\"%d\", &n);\n\n    for (int i = 1; i <= n; i++) {\n        factorial *= i;\n    }\n\n    printf(\"Factorial of %d is %lld\\n\", n, factorial);\n    return 0;\n}",
+  "exampleInput": "6",
+  "expectedOutput": "Factorial of 6 is 720",
+  "concepts": [
+    "for loop",
+    "long long",
+    "accumulator pattern"
+  ]
+}

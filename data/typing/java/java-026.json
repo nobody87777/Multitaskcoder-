@@ -1,0 +1,14 @@
+{
+  "id": "java-026",
+  "language": "java",
+  "title": "String Reversal",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Reverse a string using the StringBuilder class.",
+  "code": "public class StringReversal {\n    public static void main(String[] args) {\n        String text = \"MultitaskCoder\";\n        String reversed = new StringBuilder(text).reverse().toString();\n\n        System.out.println(\"Original: \" + text);\n        System.out.println(\"Reversed: \" + reversed);\n    }\n}",
+  "expectedOutput": "Original: MultitaskCoder\nReversed: redoCksatitluM",
+  "concepts": [
+    "StringBuilder",
+    "method chaining"
+  ]
+}

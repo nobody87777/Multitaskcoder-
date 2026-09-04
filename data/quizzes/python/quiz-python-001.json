@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-001",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "Which keyword is used to define a function in Python?",
+  "options": [
+    "def",
+    "func",
+    "function",
+    "lambda"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Python uses the def keyword followed by a function name and parentheses to define a function.",
+  "concepts": [
+    "def",
+    "function definition"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "quiz-python-015",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "true-false",
+  "topic": "Loops",
+  "question": "True or False: In a nested loop, a break statement inside the inner loop exits both the inner and outer loop.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "break only exits the innermost loop it is directly inside; the outer loop continues running normally.",
+  "concepts": [
+    "break",
+    "nested loops"
+  ]
+}

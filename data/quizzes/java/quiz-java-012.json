@@ -1,0 +1,18 @@
+{
+  "id": "quiz-java-012",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "true-false",
+  "topic": "Loops",
+  "question": "True or False: In Java, the continue statement immediately terminates the loop it is inside.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "continue skips the rest of the current iteration and proceeds to the loop's next iteration check; break is what terminates a loop.",
+  "concepts": [
+    "continue",
+    "break"
+  ]
+}

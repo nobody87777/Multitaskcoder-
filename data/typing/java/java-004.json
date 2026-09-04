@@ -1,0 +1,14 @@
+{
+  "id": "java-004",
+  "language": "java",
+  "title": "Arithmetic Operators",
+  "difficulty": "beginner",
+  "topic": "Operators",
+  "description": "Demonstrate the basic arithmetic operators on two integers.",
+  "code": "public class ArithmeticOperators {\n    public static void main(String[] args) {\n        int a = 17;\n        int b = 5;\n\n        System.out.println(\"Sum: \" + (a + b));\n        System.out.println(\"Difference: \" + (a - b));\n        System.out.println(\"Product: \" + (a * b));\n        System.out.println(\"Division: \" + (a / b));\n        System.out.println(\"Modulus: \" + (a % b));\n    }\n}",
+  "expectedOutput": "Sum: 22\nDifference: 12\nProduct: 85\nDivision: 3\nModulus: 2",
+  "concepts": [
+    "arithmetic operators",
+    "integer division"
+  ]
+}

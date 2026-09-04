@@ -1,0 +1,16 @@
+{
+  "id": "python-029",
+  "language": "python",
+  "title": "Anagram Checker",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Check whether two strings are anagrams of each other.",
+  "code": "s1 = input(\"Enter first word: \").replace(\" \", \"\").lower()\ns2 = input(\"Enter second word: \").replace(\" \", \"\").lower()\n\nif sorted(s1) == sorted(s2):\n    print(\"They are anagrams\")\nelse:\n    print(\"They are not anagrams\")",
+  "exampleInput": "listen\nsilent",
+  "expectedOutput": "Enter first word: Enter second word: They are anagrams",
+  "concepts": [
+    "strings",
+    "sorted()",
+    "string methods"
+  ]
+}

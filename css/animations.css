@@ -1,0 +1,69 @@
+/* MultitaskCoder - Animations & Transitions */
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cursorPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-bounce { animation: bounce 1s infinite; }
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-float { animation: subtleFloat 3s ease-in-out infinite; }
+.fa-spin { animation: spin 1s linear infinite; }
+
+/* Slide Menu Item Entrance Animation */
+.menu-item-animate {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.menu-open .menu-item-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+.menu-open .menu-item-animate:nth-child(1) { transition-delay: 0.05s; }
+.menu-open .menu-item-animate:nth-child(2) { transition-delay: 0.10s; }
+.menu-open .menu-item-animate:nth-child(3) { transition-delay: 0.15s; }
+.menu-open .menu-item-animate:nth-child(4) { transition-delay: 0.20s; }
+.menu-open .menu-item-animate:nth-child(5) { transition-delay: 0.25s; }
+.menu-open .menu-item-animate:nth-child(6) { transition-delay: 0.30s; }
+.menu-open .menu-item-animate:nth-child(7) { transition-delay: 0.35s; }
+.menu-open .menu-item-animate:nth-child(8) { transition-delay: 0.40s; }
+.menu-open .menu-item-animate:nth-child(9) { transition-delay: 0.45s; }
+.menu-open .menu-item-animate:nth-child(10) { transition-delay: 0.50s; }

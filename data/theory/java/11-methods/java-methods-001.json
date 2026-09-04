@@ -1,0 +1,58 @@
+{
+  "id": "java-methods-001",
+  "language": "java",
+  "section": "java",
+  "module": "Methods",
+  "moduleNumber": 11,
+  "lessonNumber": 11,
+  "title": "Methods",
+  "difficulty": "intermediate",
+  "description": "Declaring methods, parameters, return values, overloading, varargs, static vs. instance methods, and recursion.",
+  "objectives": [
+    "Declare methods with parameters and return types",
+    "Overload methods and use varargs",
+    "Distinguish static and instance methods",
+    "Write a recursive method"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Declaration, Overloading, and Varargs",
+      "body": "A method declaration specifies (in order) an access modifier, an optional static, a return type (or void), a name, and a parameter list: public static int add(int a, int b) { return a + b; }. Java is pass-by-value for everything, including object references: a reference-type parameter receives a copy of the reference (both point to the same object, so mutating that object's state through the parameter is visible to the caller, but reassigning the parameter itself to point elsewhere is not).\n\nMethod overloading lets multiple methods share the same name as long as their parameter lists differ (in number, order, or type) — the compiler picks the matching overload based on the arguments at each call site; overloading cannot be distinguished by return type alone. Varargs (Type... name) let a method accept a variable number of arguments of that type, collected internally as an array — max(int... numbers) can be called as max(1), max(1, 2, 3), or even max() with zero arguments."
+    },
+    {
+      "type": "text",
+      "heading": "static vs. Instance Methods, and Recursion",
+      "body": "A static method belongs to the class itself and is called via ClassName.method(...) — it cannot directly access instance fields or call instance methods without an explicit object reference, since there's no implicit 'current object' (this) inside it. An instance method belongs to a specific object, is called via object.method(...), and can freely access that object's fields via an implicit this.\n\nRecursion works the same as in other languages: a method that calls itself needs a base case to stop, and a recursive case that progresses toward it. Java has no tail-call optimization, so very deep recursion risks a StackOverflowError, same caveat as in Python."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Methods {\n    static int add(int a, int b) {          // static: no object needed\n        return a + b;\n    }\n    static int add(int a, int b, int c) {    // overload: different parameter count\n        return a + b + c;\n    }\n    static int sum(int... numbers) {         // varargs\n        int total = 0;\n        for (int n : numbers) total += n;\n        return total;\n    }\n    static long factorial(int n) {           // recursion\n        if (n <= 1) return 1;\n        return n * factorial(n - 1);\n    }\n\n    public static void main(String[] args) {\n        System.out.println(add(2, 3) + \" \" + add(2, 3, 4) + \" \" + sum(1, 2, 3, 4) + \" \" + factorial(5));\n    }\n}",
+      "explanation": "The two add() overloads are distinguished by parameter count. sum(int... numbers) can accept any number of int arguments, treated as an array inside the method."
+    }
+  ],
+  "keyPoints": [
+    "Java is strictly pass-by-value, even for object references (the reference itself is copied)",
+    "Overloaded methods share a name but differ in parameter list — never by return type alone",
+    "Varargs (Type... name) let a method accept any number of arguments of that type",
+    "static methods belong to the class; instance methods belong to a specific object and can use this"
+  ],
+  "commonMistakes": [
+    "Trying to overload two methods that differ only by return type (a compile error)",
+    "Calling an instance method from inside a static method without first creating/referencing an object",
+    "Assuming pass-by-value for a reference type means the method can't affect the caller's object at all (it can, via the shared reference's state — it just can't reassign the caller's variable)"
+  ],
+  "concepts": [
+    "methods",
+    "parameters",
+    "return values",
+    "method overloading",
+    "varargs",
+    "static methods",
+    "instance methods",
+    "recursion"
+  ],
+  "previousLesson": "java-strings-001",
+  "nextLesson": "java-classes-and-objects-001"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-018",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Functions",
+  "bugType": "missing-return",
+  "title": "Fix the Method Missing a Return Path",
+  "description": "The program should classify a number's sign and return a description string.",
+  "buggyCode": "public class SignChecker {\n    static String describe(int n) {\n        if (n > 0) {\n            return \"positive\";\n        } else if (n < 0) {\n            return \"negative\";\n        }\n    }\n\n    public static void main(String[] args) {\n        System.out.println(describe(5));\n    }\n}",
+  "expectedBehavior": "The program should compile and print 'positive' for describe(5).",
+  "actualProblem": "The method has no return statement for the case where n is exactly 0, so not every code path returns a value. The compiler rejects this with 'missing return statement'.",
+  "correctedCode": "public class SignChecker {\n    static String describe(int n) {\n        if (n > 0) {\n            return \"positive\";\n        } else if (n < 0) {\n            return \"negative\";\n        } else {\n            return \"zero\";\n        }\n    }\n\n    public static void main(String[] args) {\n        System.out.println(describe(5));\n    }\n}",
+  "expectedOutput": "positive",
+  "explanation": "A Java method declared to return a value must guarantee a return on every possible execution path. Adding the missing else branch (for n == 0) ensures the method always returns something.",
+  "concepts": [
+    "methods",
+    "return statement",
+    "compile error"
+  ]
+}

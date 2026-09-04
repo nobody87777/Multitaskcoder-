@@ -1,0 +1,16 @@
+{
+  "id": "java-006",
+  "language": "java",
+  "title": "Simple Calculator",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Build a calculator that performs +, -, * or / based on a user-chosen operator.",
+  "code": "import java.util.Scanner;\n\npublic class SimpleCalculator {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        double a = scanner.nextDouble();\n        double b = scanner.nextDouble();\n        String op = scanner.next();\n        double result = 0;\n\n        if (op.equals(\"+\")) {\n            result = a + b;\n        } else if (op.equals(\"-\")) {\n            result = a - b;\n        } else if (op.equals(\"*\")) {\n            result = a * b;\n        } else if (op.equals(\"/\")) {\n            result = a / b;\n        }\n\n        System.out.println(\"Result: \" + result);\n    }\n}",
+  "exampleInput": "10\n4\n*",
+  "expectedOutput": "Result: 40.0",
+  "concepts": [
+    "if/else if",
+    "Scanner",
+    "String.equals()"
+  ]
+}

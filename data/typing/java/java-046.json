@@ -1,0 +1,15 @@
+{
+  "id": "java-046",
+  "language": "java",
+  "title": "HashMap Frequency Counter",
+  "difficulty": "advanced",
+  "topic": "Collections",
+  "description": "Count word frequency in a sentence using a HashMap, printed in sorted order.",
+  "code": "import java.util.HashMap;\nimport java.util.TreeMap;\n\npublic class WordFrequency {\n    public static void main(String[] args) {\n        String text = \"the quick fox jumps over the lazy fox\";\n        HashMap<String, Integer> frequency = new HashMap<>();\n\n        for (String word : text.split(\" \")) {\n            frequency.put(word, frequency.getOrDefault(word, 0) + 1);\n        }\n\n        TreeMap<String, Integer> sorted = new TreeMap<>(frequency);\n        for (var entry : sorted.entrySet()) {\n            System.out.println(entry.getKey() + \": \" + entry.getValue());\n        }\n    }\n}",
+  "expectedOutput": "fox: 2\njumps: 1\nlazy: 1\nover: 1\nquick: 1\nthe: 2",
+  "concepts": [
+    "HashMap",
+    "TreeMap",
+    "split()"
+  ]
+}

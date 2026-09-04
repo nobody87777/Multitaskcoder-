@@ -1,0 +1,19 @@
+{
+  "id": "debug-c-028",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Pointers",
+  "bugType": "pointer-arithmetic-error",
+  "title": "Fix the Double-Scaled Pointer Arithmetic",
+  "description": "The program should access the third element of an array using pointer arithmetic.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int arr[5] = {10, 20, 30, 40, 50};\n    int *p = arr;\n    int third = *(p + 2 * sizeof(int));\n    printf(\"%d\\n\", third);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 30, the third element of the array.",
+  "actualProblem": "Pointer arithmetic in C already scales by the pointed-to type's size automatically, so p + 2 correctly points 2 ints ahead. Multiplying by sizeof(int) again (p + 2 * sizeof(int)) double-scales the offset, landing far outside the array and reading unrelated (garbage) memory.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int arr[5] = {10, 20, 30, 40, 50};\n    int *p = arr;\n    int third = *(p + 2);\n    printf(\"%d\\n\", third);\n    return 0;\n}",
+  "expectedOutput": "30",
+  "explanation": "When you write p + n on a typed pointer, C automatically advances the address by n * sizeof(*p) bytes — the scaling by the element size is already built in. Manually multiplying by sizeof() as well applies the scaling twice.",
+  "concepts": [
+    "pointer arithmetic",
+    "arrays and pointers"
+  ]
+}

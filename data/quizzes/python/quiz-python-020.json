@@ -1,0 +1,18 @@
+{
+  "id": "quiz-python-020",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "true-false",
+  "topic": "Data Structures",
+  "question": "True or False: Once created, the elements of a tuple cannot be reassigned.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Tuples are immutable in Python — you cannot reassign, add, or remove elements after creation.",
+  "concepts": [
+    "tuples",
+    "immutability"
+  ]
+}

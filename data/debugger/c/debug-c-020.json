@@ -1,0 +1,21 @@
+{
+  "id": "debug-c-020",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "bugType": "unchecked-scanf-return",
+  "title": "Fix the Unchecked Scanf Result",
+  "description": "The program should read an integer and double it, reporting an error for invalid input.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int number;\n    printf(\"Enter a number: \");\n    scanf(\"%d\", &number);\n    printf(\"Double: %d\\n\", number * 2);\n    return 0;\n}",
+  "expectedBehavior": "For valid numeric input the program should print double the value; for non-numeric input, it should report the problem instead of using an undefined value.",
+  "actualProblem": "scanf()'s return value (how many items it successfully read) is never checked. If the user types something non-numeric, scanf fails to assign anything to number, which is then used while still uninitialized, producing an undefined result silently.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int number;\n    printf(\"Enter a number: \");\n    if (scanf(\"%d\", &number) != 1) {\n        printf(\"Invalid input\\n\");\n        return 1;\n    }\n    printf(\"Double: %d\\n\", number * 2);\n    return 0;\n}",
+  "exampleInput": "7",
+  "expectedOutput": "Enter a number: Double: 14",
+  "explanation": "scanf() returns the number of values it successfully parsed. Checking that return value against the expected count catches invalid or missing input before it's used, rather than silently proceeding with garbage data.",
+  "concepts": [
+    "scanf()",
+    "return value checking",
+    "input validation"
+  ]
+}

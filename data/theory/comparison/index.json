@@ -1,0 +1,294 @@
+{
+  "language": "comparison",
+  "section": "comparison",
+  "topicCount": 22,
+  "lessonCount": 22,
+  "topics": [
+    {
+      "topicNumber": 1,
+      "topic": "Fundamentals",
+      "topicSlug": "01-fundamentals",
+      "lessons": [
+        {
+          "id": "comparison-fundamentals-001",
+          "title": "Fundamentals: Philosophy, Execution Model, and Portability",
+          "difficulty": "beginner",
+          "file": "01-fundamentals/comparison-fundamentals-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 2,
+      "topic": "Syntax",
+      "topicSlug": "02-syntax",
+      "lessons": [
+        {
+          "id": "comparison-syntax-001",
+          "title": "Syntax: Program Structure, Blocks, and Comments",
+          "difficulty": "beginner",
+          "file": "02-syntax/comparison-syntax-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 3,
+      "topic": "Variables",
+      "topicSlug": "03-variables",
+      "lessons": [
+        {
+          "id": "comparison-variables-001",
+          "title": "Variables: Declaration, Initialization, and Typing Discipline",
+          "difficulty": "beginner",
+          "file": "03-variables/comparison-variables-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 4,
+      "topic": "Data Types",
+      "topicSlug": "04-data-types",
+      "lessons": [
+        {
+          "id": "comparison-data-types-001",
+          "title": "Data Types: Numbers, Characters, Strings, Booleans, and Aggregates",
+          "difficulty": "beginner",
+          "file": "04-data-types/comparison-data-types-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 5,
+      "topic": "Type Systems",
+      "topicSlug": "05-type-systems",
+      "lessons": [
+        {
+          "id": "comparison-type-systems-001",
+          "title": "Type Systems: Static vs. Dynamic Typing, Inference, and Casting",
+          "difficulty": "intermediate",
+          "file": "05-type-systems/comparison-type-systems-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 6,
+      "topic": "Memory",
+      "topicSlug": "06-memory",
+      "lessons": [
+        {
+          "id": "comparison-memory-001",
+          "title": "Memory: Stack, Heap, References, Pointers, and Garbage Collection",
+          "difficulty": "advanced",
+          "file": "06-memory/comparison-memory-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 7,
+      "topic": "Control Flow",
+      "topicSlug": "07-control-flow",
+      "lessons": [
+        {
+          "id": "comparison-control-flow-001",
+          "title": "Control Flow: if, switch, and Loops",
+          "difficulty": "beginner",
+          "file": "07-control-flow/comparison-control-flow-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 8,
+      "topic": "Functions and Methods",
+      "topicSlug": "08-functions-and-methods",
+      "lessons": [
+        {
+          "id": "comparison-functions-and-methods-001",
+          "title": "Functions and Methods: Parameters, Overloading, and Recursion",
+          "difficulty": "intermediate",
+          "file": "08-functions-and-methods/comparison-functions-and-methods-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 9,
+      "topic": "Strings",
+      "topicSlug": "09-strings",
+      "lessons": [
+        {
+          "id": "comparison-strings-001",
+          "title": "Strings: Mutability, Indexing, and Memory Behavior",
+          "difficulty": "intermediate",
+          "file": "09-strings/comparison-strings-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 10,
+      "topic": "Arrays",
+      "topicSlug": "10-arrays",
+      "lessons": [
+        {
+          "id": "comparison-arrays-001",
+          "title": "Arrays: Declaration, Indexing, Size, and Dynamic Alternatives",
+          "difficulty": "intermediate",
+          "file": "10-arrays/comparison-arrays-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 11,
+      "topic": "Data Structures",
+      "topicSlug": "11-data-structures",
+      "lessons": [
+        {
+          "id": "comparison-data-structures-001",
+          "title": "Data Structures: Lists, Sets, Maps, Linked Lists, Stacks, and Queues",
+          "difficulty": "intermediate",
+          "file": "11-data-structures/comparison-data-structures-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 12,
+      "topic": "OOP",
+      "topicSlug": "12-oop",
+      "lessons": [
+        {
+          "id": "comparison-oop-001",
+          "title": "OOP: Classes, Inheritance, Polymorphism, and C's Manual Approach",
+          "difficulty": "intermediate",
+          "file": "12-oop/comparison-oop-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 13,
+      "topic": "Error Handling",
+      "topicSlug": "13-error-handling",
+      "lessons": [
+        {
+          "id": "comparison-error-handling-001",
+          "title": "Error Handling: Exceptions vs. Return Codes",
+          "difficulty": "intermediate",
+          "file": "13-error-handling/comparison-error-handling-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 14,
+      "topic": "File Handling",
+      "topicSlug": "14-file-handling",
+      "lessons": [
+        {
+          "id": "comparison-file-handling-001",
+          "title": "File Handling: Opening, Reading, Writing, and Resource Management",
+          "difficulty": "intermediate",
+          "file": "14-file-handling/comparison-file-handling-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 15,
+      "topic": "Modules and Packages",
+      "topicSlug": "15-modules-and-packages",
+      "lessons": [
+        {
+          "id": "comparison-modules-and-packages-001",
+          "title": "Modules and Packages: Organizing Code Across Files",
+          "difficulty": "intermediate",
+          "file": "15-modules-and-packages/comparison-modules-and-packages-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 16,
+      "topic": "Generics / Generic Programming",
+      "topicSlug": "16-generics",
+      "lessons": [
+        {
+          "id": "comparison-generics-001",
+          "title": "Generics and Generic Programming",
+          "difficulty": "advanced",
+          "file": "16-generics/comparison-generics-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 17,
+      "topic": "Functional Features",
+      "topicSlug": "17-functional-features",
+      "lessons": [
+        {
+          "id": "comparison-functional-features-001",
+          "title": "Functional Features: Lambdas, Higher-Order Functions, and Streams",
+          "difficulty": "advanced",
+          "file": "17-functional-features/comparison-functional-features-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 18,
+      "topic": "Concurrency",
+      "topicSlug": "18-concurrency",
+      "lessons": [
+        {
+          "id": "comparison-concurrency-001",
+          "title": "Concurrency: Threads, the GIL, and Manual Synchronization",
+          "difficulty": "advanced",
+          "file": "18-concurrency/comparison-concurrency-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 19,
+      "topic": "Performance",
+      "topicSlug": "19-performance",
+      "lessons": [
+        {
+          "id": "comparison-performance-001",
+          "title": "Performance: Execution Speed, Memory Usage, and Tradeoffs",
+          "difficulty": "advanced",
+          "file": "19-performance/comparison-performance-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 20,
+      "topic": "Common Use Cases",
+      "topicSlug": "20-common-use-cases",
+      "lessons": [
+        {
+          "id": "comparison-common-use-cases-001",
+          "title": "Common Use Cases Across Domains",
+          "difficulty": "beginner",
+          "file": "20-common-use-cases/comparison-common-use-cases-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 21,
+      "topic": "Learning Difficulty",
+      "topicSlug": "21-learning-difficulty",
+      "lessons": [
+        {
+          "id": "comparison-learning-difficulty-001",
+          "title": "Learning Difficulty: What Makes Each Language Easier or Harder",
+          "difficulty": "beginner",
+          "file": "21-learning-difficulty/comparison-learning-difficulty-001.json"
+        }
+      ]
+    },
+    {
+      "topicNumber": 22,
+      "topic": "Common Mistakes",
+      "topicSlug": "22-common-mistakes",
+      "lessons": [
+        {
+          "id": "comparison-common-mistakes-001",
+          "title": "Common Beginner Mistakes, Compared",
+          "difficulty": "intermediate",
+          "file": "22-common-mistakes/comparison-common-mistakes-001.json"
+        }
+      ]
+    }
+  ]
+}

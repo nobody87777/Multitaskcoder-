@@ -1,0 +1,56 @@
+{
+  "id": "python-files-001",
+  "language": "python",
+  "section": "python",
+  "module": "File Handling",
+  "moduleNumber": 16,
+  "lessonNumber": 17,
+  "title": "File Handling",
+  "difficulty": "intermediate",
+  "description": "Reading and writing files safely with open(), file modes, and the with statement.",
+  "objectives": [
+    "Open files in the correct mode for the task",
+    "Read and write text and binary files",
+    "Use the with statement for automatic cleanup",
+    "Handle common file errors"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Opening and Reading Files",
+      "body": "open(path, mode) returns a file object. Common modes: \"r\" (read text, default, error if the file doesn't exist), \"w\" (write text, creates the file or truncates an existing one), \"a\" (append text to the end), and their binary counterparts \"rb\"/\"wb\"/\"ab\" for non-text data. read() returns the entire file's contents as one string; readline() reads one line at a time; readlines() returns a list of all lines. Iterating directly over a file object (for line in f:) is the most memory-efficient way to process a large file line by line, since it doesn't load the whole file into memory at once.\n\nFor writing, write(text) writes a single string (it does not add a newline automatically — you must include \\n yourself), and writelines(list_of_strings) writes each string in the list in sequence (also without inserting newlines between them)."
+    },
+    {
+      "type": "text",
+      "heading": "with, Encoding, and Common Errors",
+      "body": "The with statement is the standard, idiomatic way to work with files: with open(path) as f: ... automatically calls f.close() when the block exits, even if an exception occurs inside it — this guarantees the file handle is released and any buffered writes are flushed. Forgetting to close a file (or not using with) can leave writes unflushed or exhaust the OS's limit on open file handles in a long-running program.\n\nFor text files, specifying encoding=\"utf-8\" explicitly (open(path, \"r\", encoding=\"utf-8\")) avoids relying on the platform's default encoding, which can differ between systems. Common file errors include FileNotFoundError (opening a missing file for reading), PermissionError (insufficient OS permissions), and IsADirectoryError (opening a directory as if it were a file) — these are all subclasses of OSError and can be caught accordingly."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "with open(\"notes.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Line one\\n\")\n    f.write(\"Line two\\n\")\n\ntry:\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as f:\n        for line in f:\n            print(line.strip())\nexcept FileNotFoundError:\n    print(\"File not found\")",
+      "explanation": "The with statement guarantees the file is closed after each block, even though there's no explicit f.close() call. strip() removes the trailing newline each readline includes."
+    }
+  ],
+  "keyPoints": [
+    "\"r\"/\"w\"/\"a\" are the core text modes; add \"b\" for binary data",
+    "with open(...) as f: guarantees the file is closed, even on an exception",
+    "write() does not add newlines automatically — include \\n explicitly",
+    "Specify encoding=\"utf-8\" explicitly for portable text file handling"
+  ],
+  "commonMistakes": [
+    "Opening a file without with and forgetting to close it",
+    "Opening a file in \"r\" mode and then trying to write to it",
+    "Not catching FileNotFoundError when a file's existence isn't guaranteed"
+  ],
+  "concepts": [
+    "file handling",
+    "open()",
+    "with statement",
+    "file modes",
+    "encoding",
+    "FileNotFoundError"
+  ],
+  "previousLesson": "python-exceptions-001",
+  "nextLesson": "python-oop-001"
+}

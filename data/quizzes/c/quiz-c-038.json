@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-038",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Memory",
+  "question": "What is the key difference between a variable declared inside a function without static, versus one declared with static?",
+  "options": [
+    "There is no difference",
+    "static variables cannot be modified",
+    "Non-static locals are always faster",
+    "A plain local variable is created fresh (and its value lost) on each function call, while a static local retains its value between calls"
+  ],
+  "correctAnswer": 3,
+  "explanation": "An ordinary local variable's storage is allocated on the stack and destroyed when the function returns; a static local variable instead persists in fixed storage for the life of the program, preserving its value across calls.",
+  "concepts": [
+    "static keyword",
+    "storage duration"
+  ]
+}

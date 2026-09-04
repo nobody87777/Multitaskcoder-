@@ -1,0 +1,56 @@
+{
+  "id": "java-date-and-time-001",
+  "language": "java",
+  "section": "java",
+  "module": "Date and Time",
+  "moduleNumber": 27,
+  "lessonNumber": 28,
+  "title": "Date and Time",
+  "difficulty": "intermediate",
+  "description": "The modern java.time API: LocalDate, LocalTime, LocalDateTime, Duration, Period, and formatting/parsing.",
+  "objectives": [
+    "Create and manipulate LocalDate, LocalTime, and LocalDateTime",
+    "Distinguish Duration (time-based) from Period (date-based)",
+    "Format and parse dates/times with DateTimeFormatter"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "LocalDate, LocalTime, and LocalDateTime",
+      "body": "Since Java 8, java.time is the standard, immutable, thread-safe date/time API, replacing the older, mutable and famously error-prone java.util.Date/Calendar. LocalDate represents a date with no time component (2024-03-15); LocalTime represents a time with no date (14:30:00); LocalDateTime combines both. All are immutable — methods like plusDays(n) or minusHours(n) return a new instance rather than modifying the original, exactly like String's immutability model. LocalDate.now()/LocalTime.now()/LocalDateTime.now() capture the current value from the system clock."
+    },
+    {
+      "type": "text",
+      "heading": "Duration, Period, and Formatting",
+      "body": "Duration measures a time-based amount (hours, minutes, seconds — appropriate between two LocalTime or LocalDateTime instants): Duration.between(start, end). Period measures a date-based amount (years, months, days — appropriate between two LocalDate values): Period.between(startDate, endDate). Using the wrong one for the wrong context (e.g., Period for elapsed seconds) doesn't fit the data conceptually, since months/years don't have a fixed length in seconds the way Duration expects.\n\nDateTimeFormatter controls how these types convert to and from text: date.format(DateTimeFormatter.ofPattern(\"dd/MM/yyyy\")) produces a formatted string; LocalDate.parse(text, formatter) does the reverse, parsing text back into a LocalDate (throwing DateTimeParseException for malformed input)."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.time.*;\nimport java.time.format.DateTimeFormatter;\n\npublic class DateTimeDemo {\n    public static void main(String[] args) {\n        LocalDate today = LocalDate.of(2024, 3, 15);\n        LocalDate nextWeek = today.plusDays(7);\n        System.out.println(nextWeek);                     // 2024-03-22\n\n        Period age = Period.between(LocalDate.of(2000, 1, 1), today);\n        System.out.println(age.getYears() + \" years\");     // 24 years\n\n        DateTimeFormatter fmt = DateTimeFormatter.ofPattern(\"dd/MM/yyyy\");\n        System.out.println(today.format(fmt));              // 15/03/2024\n    }\n}",
+      "explanation": "plusDays(7) returns a new LocalDate rather than mutating today. Period.between measures the date-based gap in years/months/days; DateTimeFormatter converts a LocalDate to a custom text format."
+    }
+  ],
+  "keyPoints": [
+    "java.time (LocalDate/LocalTime/LocalDateTime) is immutable and the modern standard, replacing Date/Calendar",
+    "Duration measures time-based amounts (hours/minutes/seconds); Period measures date-based amounts (years/months/days)",
+    "DateTimeFormatter handles both formatting (date -> text) and parsing (text -> date)",
+    "All java.time manipulation methods (plusDays, minusHours, ...) return new instances"
+  ],
+  "commonMistakes": [
+    "Using the legacy Date/Calendar classes in new code instead of java.time",
+    "Using Period where Duration was needed (or vice versa) for the kind of quantity being measured",
+    "Not catching DateTimeParseException when parsing text that might not match the expected format"
+  ],
+  "concepts": [
+    "LocalDate",
+    "LocalTime",
+    "LocalDateTime",
+    "Duration",
+    "Period",
+    "DateTimeFormatter",
+    "java.time"
+  ],
+  "previousLesson": "java-stream-api-001",
+  "nextLesson": "java-multithreading-001"
+}

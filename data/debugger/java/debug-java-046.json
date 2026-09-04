@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-046",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Exceptions",
+  "bugType": "unreachable-catch-block",
+  "title": "Fix the Unreachable Catch Block",
+  "description": "The program should catch a specific file-related exception separately from general exceptions.",
+  "buggyCode": "import java.io.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            FileReader fr = new FileReader(\"missing.txt\");\n        } catch (Exception e) {\n            System.out.println(\"General error\");\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found specifically\");\n        }\n    }\n}",
+  "expectedBehavior": "The program should compile and print 'File not found specifically' when the file is missing.",
+  "actualProblem": "FileNotFoundException is a subclass of Exception, so ordering the general Exception catch block before it means the specific catch block can never be reached — the compiler rejects this as unreachable code.",
+  "correctedCode": "import java.io.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            FileReader fr = new FileReader(\"missing.txt\");\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found specifically\");\n        } catch (Exception e) {\n            System.out.println(\"General error\");\n        }\n    }\n}",
+  "expectedOutput": "File not found specifically",
+  "explanation": "When catching exceptions with an inheritance relationship, the more specific subclass must be caught first. Catching the general parent type earlier would silently swallow every subclass exception too, so Java flags it as unreachable instead.",
+  "concepts": [
+    "exception hierarchy",
+    "catch block order",
+    "compile error"
+  ]
+}

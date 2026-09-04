@@ -1,0 +1,16 @@
+{
+  "id": "python-044",
+  "language": "python",
+  "title": "Custom Class: BankAccount",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Create a BankAccount class with deposit, withdraw, and balance-checking methods.",
+  "code": "class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount > self.balance:\n            print(\"Insufficient funds\")\n        else:\n            self.balance -= amount\n\n    def __str__(self):\n        return f\"{self.owner}'s balance: {self.balance}\"\n\n\naccount = BankAccount(\"Asha\", 100)\naccount.deposit(50)\naccount.withdraw(30)\nprint(account)",
+  "expectedOutput": "Asha's balance: 120",
+  "concepts": [
+    "classes",
+    "constructors",
+    "methods",
+    "__str__"
+  ]
+}

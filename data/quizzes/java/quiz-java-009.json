@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-009",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "How many times does this loop body execute? for (int i = 0; i < 5; i++)",
+  "options": [
+    "5",
+    "4",
+    "6",
+    "Infinite"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The loop runs while i < 5, starting at i=0, so it executes for i = 0,1,2,3,4 — 5 times total.",
+  "concepts": [
+    "for loop",
+    "loop bounds"
+  ]
+}

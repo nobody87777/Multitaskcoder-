@@ -1,0 +1,14 @@
+{
+  "id": "c-032",
+  "language": "c",
+  "title": "Binary Search",
+  "difficulty": "intermediate",
+  "topic": "Searching",
+  "description": "Search for a target value in a sorted array using binary search.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {2, 5, 8, 12, 16, 23, 38, 45, 56, 72};\n    int n = sizeof(numbers) / sizeof(numbers[0]);\n    int target = 23, low = 0, high = n - 1, index = -1;\n\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (numbers[mid] == target) {\n            index = mid;\n            break;\n        } else if (numbers[mid] < target) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n\n    if (index != -1)\n        printf(\"Found %d at index %d\\n\", target, index);\n    else\n        printf(\"%d not found\\n\", target);\n\n    return 0;\n}",
+  "expectedOutput": "Found 23 at index 5",
+  "concepts": [
+    "binary search",
+    "divide and conquer"
+  ]
+}

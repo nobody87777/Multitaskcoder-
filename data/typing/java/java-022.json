@@ -1,0 +1,15 @@
+{
+  "id": "java-022",
+  "language": "java",
+  "title": "Array Maximum",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Find the maximum value in an array without using a library method.",
+  "code": "public class ArrayMaximum {\n    public static void main(String[] args) {\n        int[] numbers = {12, 45, 3, 89, 27, 56};\n        int largest = numbers[0];\n\n        for (int n : numbers) {\n            if (n > largest) {\n                largest = n;\n            }\n        }\n\n        System.out.println(\"Largest number: \" + largest);\n    }\n}",
+  "expectedOutput": "Largest number: 89",
+  "concepts": [
+    "arrays",
+    "iteration",
+    "comparison"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-002",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Input/Output",
+  "question": "Which function is used to display output to the console in Python?",
+  "options": [
+    "display()",
+    "print()",
+    "echo()",
+    "console.log()"
+  ],
+  "correctAnswer": 1,
+  "explanation": "print() writes its arguments to standard output, which is how Python programs display text to the console.",
+  "concepts": [
+    "print()",
+    "output"
+  ]
+}

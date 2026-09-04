@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-049",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Concurrency",
+  "bugType": "incorrect-lock-object",
+  "title": "Fix the Ineffective Synchronization",
+  "description": "The program should ensure only one thread at a time can execute a critical section, using a shared lock.",
+  "buggyCode": "public class Main {\n    static int total = 0;\n\n    static void addToTotal(int amount) {\n        synchronized (new Object()) {\n            total += amount;\n        }\n    }\n\n    public static void main(String[] args) throws InterruptedException {\n        Runnable task = () -> {\n            for (int i = 0; i < 50000; i++) {\n                addToTotal(1);\n            }\n        };\n        Thread t1 = new Thread(task);\n        Thread t2 = new Thread(task);\n        t1.start();\n        t2.start();\n        t1.join();\n        t2.join();\n        System.out.println(total);\n    }\n}",
+  "expectedBehavior": "After both threads finish, total should reliably equal 100000.",
+  "actualProblem": "synchronized (new Object()) creates a brand-new lock object on every single call, so no two threads ever actually contend for the same lock — the synchronized block provides no real mutual exclusion at all, and updates to total can still be lost.",
+  "correctedCode": "public class Main {\n    static int total = 0;\n    static final Object lock = new Object();\n\n    static void addToTotal(int amount) {\n        synchronized (lock) {\n            total += amount;\n        }\n    }\n\n    public static void main(String[] args) throws InterruptedException {\n        Runnable task = () -> {\n            for (int i = 0; i < 50000; i++) {\n                addToTotal(1);\n            }\n        };\n        Thread t1 = new Thread(task);\n        Thread t2 = new Thread(task);\n        t1.start();\n        t2.start();\n        t1.join();\n        t2.join();\n        System.out.println(total);\n    }\n}",
+  "expectedOutput": "100000",
+  "explanation": "synchronized only provides mutual exclusion between threads that lock on the exact same object. A lock object shared across all calls (like a single static final field) is required — creating a fresh lock object per call defeats the purpose entirely.",
+  "concepts": [
+    "synchronization",
+    "locks",
+    "threads"
+  ]
+}

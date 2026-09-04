@@ -1,0 +1,14 @@
+{
+  "id": "java-033",
+  "language": "java",
+  "title": "Binary Search",
+  "difficulty": "intermediate",
+  "topic": "Searching",
+  "description": "Search for a target value in a sorted array using binary search.",
+  "code": "public class BinarySearch {\n    public static void main(String[] args) {\n        int[] numbers = {2, 5, 8, 12, 16, 23, 38, 45, 56, 72};\n        int target = 23;\n        int low = 0, high = numbers.length - 1, index = -1;\n\n        while (low <= high) {\n            int mid = (low + high) / 2;\n            if (numbers[mid] == target) {\n                index = mid;\n                break;\n            } else if (numbers[mid] < target) {\n                low = mid + 1;\n            } else {\n                high = mid - 1;\n            }\n        }\n\n        if (index != -1) {\n            System.out.println(\"Found \" + target + \" at index \" + index);\n        } else {\n            System.out.println(target + \" not found\");\n        }\n    }\n}",
+  "expectedOutput": "Found 23 at index 5",
+  "concepts": [
+    "binary search",
+    "divide and conquer"
+  ]
+}

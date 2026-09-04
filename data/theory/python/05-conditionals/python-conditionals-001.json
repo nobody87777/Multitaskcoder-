@@ -1,0 +1,55 @@
+{
+  "id": "python-conditionals-001",
+  "language": "python",
+  "section": "python",
+  "module": "Conditional Statements",
+  "moduleNumber": 5,
+  "lessonNumber": 5,
+  "title": "Conditional Statements",
+  "difficulty": "beginner",
+  "description": "Branching logic with if/elif/else, conditional expressions, and Python's notion of truthiness.",
+  "objectives": [
+    "Write if/elif/else chains and nested conditionals",
+    "Use the conditional (ternary) expression",
+    "Understand truthy and falsy values",
+    "Use chained comparisons idiomatically"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "if / elif / else",
+      "body": "Python's conditional statement is if, optionally followed by any number of elif (short for 'else if') branches, and an optional final else. Only the first branch whose condition is true executes; once a branch runs, the rest are skipped — so the order of elif checks matters when ranges overlap (checking score >= 90 before score >= 70, for instance). Conditions can be nested (an if inside another if's body), though deeply nested conditionals are usually a sign the logic could be restructured (e.g., using elif, or extracting a function).\n\nFor a simple two-way choice assigned to a value, Python offers the conditional expression (informally called the ternary operator): value_if_true if condition else value_if_false. It's an expression, not a statement, so it can appear anywhere a value is expected, like inside an assignment or a function call argument."
+    },
+    {
+      "type": "text",
+      "heading": "Truthiness",
+      "body": "Every Python object has an implicit boolean value when used in a condition. The following are all considered falsy: False, None, 0, 0.0, empty sequences and collections (\"\", [], (), {}, set()), and any custom object whose __bool__ or __len__ method says so. Everything else is truthy. This means `if my_list:` is idiomatic Python for 'if the list is not empty', rather than the more verbose `if len(my_list) > 0:`."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "score = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelse:\n    grade = \"C\"\n\nstatus = \"adult\" if score >= 18 else \"minor\"   # conditional expression\n\nitems = []\nif not items:          # relies on truthiness — empty list is falsy\n    print(\"No items\")",
+      "explanation": "The elif chain checks the highest threshold first so a score of 85 doesn't get mis-caught by a looser check. `if not items:` relies on the fact that an empty list is falsy."
+    }
+  ],
+  "keyPoints": [
+    "elif chains stop at the first true condition — order matters for overlapping ranges",
+    "The conditional expression `a if cond else b` is an expression, usable inline",
+    "Falsy values: False, None, 0, 0.0, and empty collections/strings",
+    "Comparisons can be chained: 0 <= x < 100"
+  ],
+  "commonMistakes": [
+    "Ordering elif conditions loosest-first, so a specific case is caught by an earlier, broader one",
+    "Writing `if len(x) > 0:` instead of the more idiomatic `if x:`",
+    "Confusing the conditional expression's order (`a if cond else b`) with other languages' `cond ? a : b`"
+  ],
+  "concepts": [
+    "if/elif/else",
+    "truthiness",
+    "falsy values",
+    "conditional expression",
+    "chained comparisons"
+  ],
+  "previousLesson": "python-input-output-001",
+  "nextLesson": "python-loops-001"
+}

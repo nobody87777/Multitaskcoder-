@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-012",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "Which loop is best suited for iterating directly over the elements of a list?",
+  "options": [
+    "do-while loop",
+    "repeat loop",
+    "for element in list",
+    "while loop with an index"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Python's for loop can iterate directly over any iterable, including lists, without needing manual index management.",
+  "concepts": [
+    "for loop",
+    "iteration"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "java-interfaces-001",
+  "language": "java",
+  "section": "java",
+  "module": "Interfaces",
+  "moduleNumber": 18,
+  "lessonNumber": 18,
+  "title": "Interfaces in Depth",
+  "difficulty": "intermediate",
+  "description": "Interface declarations, multiple interface implementation, default methods, and functional interfaces.",
+  "objectives": [
+    "Declare and implement interfaces thoroughly, including multiple interfaces",
+    "Use default methods to evolve an interface without breaking implementers",
+    "Understand what makes an interface a functional interface"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Multiple Interfaces and Default Methods",
+      "body": "A single class can implement multiple interfaces, separated by commas: class Duck implements Swimmable, Flyable { ... } — this is how Java achieves a form of multiple inheritance of behavior/contract without the ambiguity of multiple class inheritance, since interfaces (mostly) only specify what must be done, not shared mutable state. If two implemented interfaces both declare a default method with the same signature, the implementing class must explicitly override it to resolve the conflict, or the code fails to compile — Java forces this ambiguity to be resolved explicitly rather than picking one arbitrarily.\n\nDefault methods exist largely to let library authors add new methods to an existing, widely-implemented interface without breaking every class that already implements it — a class that doesn't override the new default method simply inherits the interface's provided implementation instead of failing to compile."
+    },
+    {
+      "type": "text",
+      "heading": "Functional Interfaces",
+      "body": "A functional interface is one with exactly one abstract method (it may still have default and static methods) — this single-abstract-method shape is exactly what allows a lambda expression to implement it concisely, since the lambda's body directly supplies that one method's implementation. The @FunctionalInterface annotation is optional but documents intent and causes a compile error if the interface accidentally gains a second abstract method. java.util.function provides many ready-made functional interfaces (Predicate, Function, Consumer, Supplier — covered further in the Lambda Expressions lesson) so you rarely need to declare your own for common shapes."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "interface Swimmable { void swim(); }\ninterface Flyable { void fly(); }\n\nclass Duck implements Swimmable, Flyable {\n    public void swim() { System.out.println(\"Swimming\"); }\n    public void fly() { System.out.println(\"Flying\"); }\n}\n\n@FunctionalInterface\ninterface Calculator {\n    int calculate(int a, int b);\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        new Duck().swim();\n        Calculator add = (a, b) -> a + b;   // lambda implementing the single abstract method\n        System.out.println(add.calculate(2, 3));\n    }\n}",
+      "explanation": "Duck implements two unrelated interfaces at once. Calculator's single abstract method makes it a valid target for the lambda (a, b) -> a + b, which supplies calculate()'s implementation directly."
+    }
+  ],
+  "keyPoints": [
+    "A class can implement multiple interfaces, separated by commas",
+    "Default methods let an interface evolve without breaking existing implementers",
+    "A functional interface has exactly one abstract method, making it a valid lambda target",
+    "@FunctionalInterface documents intent and enforces the single-abstract-method rule at compile time"
+  ],
+  "commonMistakes": [
+    "Adding a second abstract method to what was meant to be a functional interface, silently breaking lambda usages",
+    "Not resolving a default-method conflict when implementing two interfaces that both provide one with the same signature",
+    "Confusing an interface's default methods with an abstract class's regular concrete methods (interfaces still can't hold instance state)"
+  ],
+  "concepts": [
+    "interfaces",
+    "multiple interfaces",
+    "default methods",
+    "functional interfaces",
+    "@FunctionalInterface"
+  ],
+  "previousLesson": "java-packages-and-access-modifiers-001",
+  "nextLesson": "java-exception-handling-001"
+}

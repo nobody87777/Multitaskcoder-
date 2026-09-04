@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-010",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Array Bounds Loop",
+  "description": "The program should print every element of a 5-element array.",
+  "buggyCode": "public class ArrayPrinter {\n    public static void main(String[] args) {\n        int[] numbers = {10, 20, 30, 40, 50};\n        for (int i = 0; i <= numbers.length; i++) {\n            System.out.println(numbers[i]);\n        }\n    }\n}",
+  "expectedBehavior": "The program should print all five numbers: 10, 20, 30, 40, 50.",
+  "actualProblem": "The loop condition i <= numbers.length allows i to reach 5, but valid indices for a 5-element array only go up to 4. Accessing numbers[5] throws an ArrayIndexOutOfBoundsException.",
+  "correctedCode": "public class ArrayPrinter {\n    public static void main(String[] args) {\n        int[] numbers = {10, 20, 30, 40, 50};\n        for (int i = 0; i < numbers.length; i++) {\n            System.out.println(numbers[i]);\n        }\n    }\n}",
+  "expectedOutput": "10\n20\n30\n40\n50",
+  "explanation": "Array indices run from 0 to length - 1. Using < (strictly less than) instead of <= against .length ensures the loop stops exactly at the last valid index.",
+  "concepts": [
+    "for loop",
+    "arrays",
+    "ArrayIndexOutOfBoundsException"
+  ]
+}

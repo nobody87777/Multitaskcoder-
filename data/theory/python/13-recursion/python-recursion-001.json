@@ -1,0 +1,56 @@
+{
+  "id": "python-recursion-001",
+  "language": "python",
+  "section": "python",
+  "module": "Recursion",
+  "moduleNumber": 13,
+  "lessonNumber": 14,
+  "title": "Recursion",
+  "difficulty": "intermediate",
+  "description": "Writing recursive functions correctly: base cases, the call stack, and common recursion patterns.",
+  "objectives": [
+    "Understand the base case and recursive case of a recursive function",
+    "Trace how the call stack grows and unwinds during recursion",
+    "Write classic recursive algorithms (factorial, Fibonacci)",
+    "Recognize recursion's limitations in Python"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Base Case, Recursive Case, and the Call Stack",
+      "body": "A recursive function is one that calls itself to solve smaller instances of the same problem. Every correct recursive function needs two parts: a base case, a condition simple enough to answer directly without further recursion (stopping the recursion), and a recursive case, where the function calls itself with an input that moves measurably closer to the base case. Omitting or mis-specifying the base case is the single most common recursion bug, leading to infinite recursion and eventually a RecursionError once Python's recursion depth limit (a few thousand calls by default, configurable via sys.setrecursionlimit()) is exceeded.\n\nEach recursive call adds a new frame to the call stack, holding that call's local variables and where to resume once the call returns. This is why deeply recursive solutions can use significant memory and, in CPython, are generally slower than an equivalent iterative loop — Python does not perform tail-call optimization."
+    },
+    {
+      "type": "text",
+      "heading": "Classic Examples and Recursive Traversal",
+      "body": "The canonical teaching examples are factorial (n! = n * (n-1)! with base case 0! = 1! = 1) and Fibonacci (fib(n) = fib(n-1) + fib(n-2) with base cases fib(0)=0, fib(1)=1). The naive recursive Fibonacci is instructive but inefficient — it recomputes the same sub-values exponentially many times; caching results (memoization, e.g. with functools.lru_cache) fixes this. Recursion is also a very natural fit for searching and traversing branching structures, such as directory trees, nested lists, or tree/graph data structures, where the 'smaller subproblem' is naturally 'the same operation on a child node'."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "def factorial(n):\n    if n <= 1:          # base case\n        return 1\n    return n * factorial(n - 1)   # recursive case\n\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n\nprint(factorial(5), fibonacci(6))   # 120 8",
+      "explanation": "Both functions check their base case first, before making any recursive call — this ordering is essential, since checking it too late (or not at all) leads to infinite recursion."
+    }
+  ],
+  "keyPoints": [
+    "Every recursive function needs a base case that stops the recursion",
+    "The recursive case must move measurably closer to the base case on each call",
+    "Each call adds a stack frame; excessive depth raises RecursionError",
+    "Python has no tail-call optimization, so deep or repetitive recursion (like naive Fibonacci) can be slow or memory-heavy"
+  ],
+  "commonMistakes": [
+    "Omitting the base case entirely, or checking a condition that's never actually reached",
+    "Writing a recursive case that doesn't shrink the problem (e.g., calling factorial(n) instead of factorial(n - 1))",
+    "Using naive recursion for Fibonacci-like problems without memoization, causing exponential blowup"
+  ],
+  "concepts": [
+    "recursion",
+    "base case",
+    "recursive case",
+    "call stack",
+    "RecursionError",
+    "memoization"
+  ],
+  "previousLesson": "python-functions-001",
+  "nextLesson": "python-modules-and-packages-001"
+}

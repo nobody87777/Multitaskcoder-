@@ -1,0 +1,59 @@
+{
+  "id": "c-variables-and-data-types-001",
+  "language": "c",
+  "section": "c",
+  "module": "Variables and Data Types",
+  "moduleNumber": 3,
+  "lessonNumber": 3,
+  "title": "Variables and Data Types",
+  "difficulty": "beginner",
+  "description": "C's basic types (char, int, float, double, void), signed/unsigned, short/long, and constants.",
+  "objectives": [
+    "Declare variables of C's basic types",
+    "Understand signed vs. unsigned and short/long modifiers",
+    "Declare constants with const and #define"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Basic Types",
+      "body": "C's basic types are char (a single byte, typically an 8-bit character/small integer), int (the default integer type, typically 32-bit on modern systems, though C only guarantees a minimum range, not an exact size), float (32-bit single-precision floating point), double (64-bit double-precision floating point, the default for decimal literals), and void (meaning 'no type' — used for a function returning nothing, or a generic pointer type). Every variable must be declared with an explicit type before use, and C (unlike Python) does not auto-initialize local variables — an uninitialized local variable holds whatever indeterminate bits happened to be in that memory already."
+    },
+    {
+      "type": "text",
+      "heading": "Signed/Unsigned, Short/Long, and Constants",
+      "body": "Integer types can be modified with signed (the default; can represent negative values) or unsigned (only non-negative values, doubling the positive range for the same number of bits by giving up the sign) — unsigned int max_count; is common for values that logically can never be negative, like a count or size. short and long adjust an integer type's size: short int (often 16-bit) and long int / long long int (at least 32-bit and 64-bit respectively) for a smaller or larger range than plain int.\n\nConstants are declared two ways: const int MAX = 100; (a properly typed, compiler-checked constant, enforced at the language level — reassignment is a compile error) or #define MAX 100 (a preprocessor macro — a pure textual substitution performed before compilation even starts, with no type checking at all). Modern C style generally favors const for typed constants, reserving #define for cases that genuinely need textual substitution or conditional compilation."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nconst int MAX_USERS = 100;\n#define VERSION \"1.0\"\n\nint main() {\n    char grade = 'A';\n    int age = 21;\n    unsigned int count = 5;\n    long long bigNumber = 10000000000LL;\n    double price = 19.99;\n\n    printf(\"%c %d %u %lld %.2f %s\\n\", grade, age, count, bigNumber, price, VERSION);\n    return 0;\n}",
+      "explanation": "MAX_USERS is a properly typed, compiler-enforced constant; VERSION is a preprocessor macro, substituted textually before compilation. Each printf format specifier matches its corresponding argument's type."
+    }
+  ],
+  "keyPoints": [
+    "C's basic types: char, int, float, double, void, each with implementation-defined (but minimum-guaranteed) sizes",
+    "unsigned trades the ability to represent negatives for a larger positive range",
+    "short/long adjust an integer type's size relative to plain int",
+    "const declares a typed, compiler-enforced constant; #define performs untyped textual substitution"
+  ],
+  "commonMistakes": [
+    "Reading an uninitialized local variable, getting indeterminate garbage rather than a predictable default",
+    "Assigning a negative value to an unsigned variable, silently wrapping to a very large positive number",
+    "Assuming int is always exactly 32 bits on every platform (C only guarantees a minimum range)"
+  ],
+  "concepts": [
+    "data types",
+    "char",
+    "int",
+    "float",
+    "double",
+    "void",
+    "signed",
+    "unsigned",
+    "const",
+    "#define"
+  ],
+  "previousLesson": "c-program-structure-001",
+  "nextLesson": "c-format-specifiers-and-io-001"
+}

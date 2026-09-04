@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-039",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Functions",
+  "bugType": "mutable-default-argument",
+  "title": "Fix the Shared Default List",
+  "description": "The program should add an item to a fresh shopping list each time the function is called without an explicit list. Fix the bug.",
+  "buggyCode": "def add_item(item, cart=[]):\n    cart.append(item)\n    return cart\n\nprint(add_item(\"apple\"))\nprint(add_item(\"banana\"))",
+  "expectedBehavior": "Each call without an explicit cart should start from an empty list, so the program should print ['apple'] then ['banana'].",
+  "actualProblem": "Default argument values are created once, when the function is defined, and reused across all calls. Since cart=[] is mutable, every call that doesn't pass its own list keeps appending to the very same list, so the second call prints ['apple', 'banana'] instead of a fresh ['banana'].",
+  "correctedCode": "def add_item(item, cart=None):\n    if cart is None:\n        cart = []\n    cart.append(item)\n    return cart\n\nprint(add_item(\"apple\"))\nprint(add_item(\"banana\"))",
+  "expectedOutput": "['apple']\n['banana']",
+  "explanation": "To avoid the shared mutable default trap, use None as the default and create a brand new list inside the function body each time one isn't provided. This guarantees every call starts fresh.",
+  "concepts": [
+    "mutable default arguments",
+    "functions",
+    "common Python pitfall"
+  ]
+}

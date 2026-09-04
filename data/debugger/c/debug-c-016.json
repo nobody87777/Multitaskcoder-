@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-016",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Functions",
+  "bugType": "missing-return",
+  "title": "Fix the Function Missing a Return",
+  "description": "The program should define a function that returns the square of a number.",
+  "buggyCode": "#include <stdio.h>\n\nint square(int n) {\n    int result = n * n;\n}\n\nint main() {\n    printf(\"%d\\n\", square(5));\n    return 0;\n}",
+  "expectedBehavior": "The program should print 25, the square of 5.",
+  "actualProblem": "square() is declared to return an int but never actually executes a return statement. The function's return value is therefore indeterminate (garbage), so square(5) does not reliably produce 25.",
+  "correctedCode": "#include <stdio.h>\n\nint square(int n) {\n    int result = n * n;\n    return result;\n}\n\nint main() {\n    printf(\"%d\\n\", square(5));\n    return 0;\n}",
+  "expectedOutput": "25",
+  "explanation": "A C function declared with a non-void return type must use a return statement to send a value back to its caller. Without one, the value the caller receives is undefined.",
+  "concepts": [
+    "functions",
+    "return statement",
+    "undefined behavior"
+  ]
+}

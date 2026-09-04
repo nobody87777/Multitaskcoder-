@@ -1,0 +1,59 @@
+{
+  "id": "python-oop-002",
+  "language": "python",
+  "section": "python",
+  "module": "Object-Oriented Programming",
+  "moduleNumber": 17,
+  "lessonNumber": 19,
+  "title": "Inheritance, Polymorphism, and Dunder Methods",
+  "difficulty": "intermediate",
+  "description": "Building class hierarchies, method overriding, polymorphism, properties, and Python's special (dunder) methods.",
+  "objectives": [
+    "Use inheritance and super() to build class hierarchies",
+    "Understand method overriding and polymorphism",
+    "Use properties for controlled attribute access",
+    "Implement common dunder methods for operator overloading"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Inheritance and Polymorphism",
+      "body": "class Dog(Animal): makes Dog a subclass of Animal, inheriting its attributes and methods. A subclass can override a method by redefining it with the same name; super().method(...) calls the parent class's version, commonly used inside an overridden __init__ to run the parent's initialization logic before adding the subclass's own. Python also supports multiple inheritance (class C(A, B):) — when the same method name exists in multiple parent classes, Python resolves which one to use via the Method Resolution Order (MRO), a deterministic linearization of the class hierarchy (viewable with ClassName.__mro__).\n\nPolymorphism means code can work with objects of different classes through a shared interface, calling the same method name and getting each object's own behavior — for example, iterating over a list of different Shape subclasses and calling .area() on each, without needing to know which concrete subclass each one is. Abstraction is often expressed with the abc module: an abstract base class can declare @abstractmethod methods that subclasses are required to implement, preventing the abstract class itself from being instantiated."
+    },
+    {
+      "type": "text",
+      "heading": "Properties and Dunder (Magic) Methods",
+      "body": "The @property decorator lets a method be accessed like a plain attribute (obj.value instead of obj.value()), enabling computed attributes or validation logic on read, with an optional matching @value.setter for controlled writes — this gives Python-style 'getters and setters' without needing to expose separate get_x()/set_x() methods everywhere.\n\nDunder ('double underscore') methods let a class customize how its instances behave with built-in syntax and functions. __str__ controls what str(obj) and print(obj) show (a readable, user-facing representation); __repr__ controls the more precise, developer-facing representation shown in a REPL or inside a container. __len__ backs len(obj); __getitem__ and __iter__/__next__ let a custom object support indexing and iteration. Operator overloading is implemented the same way: __add__ defines what + does for your class's instances, __eq__ defines ==, and so on."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return \"...\"\n\nclass Dog(Animal):\n    def speak(self):               # overrides Animal.speak\n        return f\"{self.name} says Woof\"\n\nclass Vector:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __add__(self, other):      # operator overloading for +\n        return Vector(self.x + other.x, self.y + other.y)\n    def __repr__(self):\n        return f\"Vector({self.x}, {self.y})\"\n\nfor a in [Animal(\"Generic\"), Dog(\"Rex\")]:\n    print(a.speak())               # polymorphism: same call, different behavior\nprint(Vector(1, 2) + Vector(3, 4))  # Vector(4, 6)",
+      "explanation": "Calling .speak() on each object in the list demonstrates polymorphism — the same method call dispatches to each class's own implementation. __add__ makes the + operator work naturally between two Vector instances."
+    }
+  ],
+  "keyPoints": [
+    "class Sub(Base): inherits from Base; super() calls the parent's version of an overridden method",
+    "Polymorphism lets different classes respond to the same method call, each in its own way",
+    "@property/@x.setter give controlled, attribute-like access to computed or validated values",
+    "Dunder methods (__str__, __eq__, __add__, __len__, __iter__, ...) let custom classes work with built-in syntax"
+  ],
+  "commonMistakes": [
+    "Overriding __init__ in a subclass without calling super().__init__(), leaving inherited attributes unset",
+    "Defining __eq__ without __hash__ and being surprised the object can no longer be used in a set or as a dict key",
+    "Confusing __str__ (human-readable) with __repr__ (unambiguous/developer-facing)"
+  ],
+  "concepts": [
+    "inheritance",
+    "super()",
+    "polymorphism",
+    "method overriding",
+    "abstraction",
+    "properties",
+    "dunder methods",
+    "operator overloading",
+    "MRO"
+  ],
+  "previousLesson": "python-oop-001",
+  "nextLesson": "python-iterators-and-generators-001"
+}

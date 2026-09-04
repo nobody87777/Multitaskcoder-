@@ -1,0 +1,54 @@
+{
+  "id": "java-advanced-java-001",
+  "language": "java",
+  "section": "java",
+  "module": "Advanced Java",
+  "moduleNumber": 30,
+  "lessonNumber": 31,
+  "title": "Nested, Inner, and Anonymous Classes, and Enums",
+  "difficulty": "advanced",
+  "description": "Static nested classes, inner classes, anonymous classes, and enums as a special, powerful kind of class.",
+  "objectives": [
+    "Distinguish static nested classes from (non-static) inner classes",
+    "Use anonymous classes for one-off implementations",
+    "Use enums, including enums with fields and methods"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Nested, Inner, and Anonymous Classes",
+      "body": "A static nested class is declared inside another class with the static modifier — it behaves like a regular top-level class logically grouped inside its enclosing class's namespace (OuterClass.NestedClass), with no implicit reference to any specific outer instance. A (non-static) inner class is tied to a specific instance of its enclosing class, holding an implicit reference to it, and can access that outer instance's fields directly — created via outerInstance.new InnerClass(). Inner classes are used less often than static nested classes in modern code, typically reserved for cases where the inner class genuinely needs to interact tightly with its specific outer instance.\n\nAn anonymous class is a class declaration and instantiation combined into a single expression, with no name, typically used to provide a one-off implementation of an interface or to extend a class right where it's needed: new Runnable() { public void run() { ... } }. Lambdas have replaced many traditional anonymous-class use cases (for functional interfaces specifically), but anonymous classes remain necessary when implementing an interface/class with more than one method, or when you need actual instance state beyond what a lambda can hold."
+    },
+    {
+      "type": "text",
+      "heading": "Enums",
+      "body": "enum Day { MONDAY, TUESDAY, ... } defines a fixed, type-safe set of named constants — far safer than using plain int constants, since the compiler enforces that only a valid Day value can be used wherever Day is expected. Enums in Java are actually full classes under the hood: they can have fields, constructors, and methods, and even different behavior per constant (via a constant-specific method body). This makes Java enums considerably more powerful than a simple named-integer list, letting you attach data (like a display name or a numeric code) directly to each constant."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class NestedDemo {\n    static class Point {                       // static nested class\n        int x, y;\n        Point(int x, int y) { this.x = x; this.y = y; }\n    }\n\n    enum Level {\n        LOW(1), MEDIUM(5), HIGH(10);            // enum with a field via constructor\n        final int weight;\n        Level(int weight) { this.weight = weight; }\n    }\n\n    public static void main(String[] args) {\n        Point p = new Point(1, 2);\n        System.out.println(p.x + \",\" + p.y);\n\n        Runnable r = new Runnable() {           // anonymous class\n            public void run() { System.out.println(\"Running anonymously\"); }\n        };\n        r.run();\n\n        System.out.println(Level.HIGH.weight);   // 10\n    }\n}",
+      "explanation": "Point is a static nested class, usable without any specific NestedDemo instance. Level demonstrates an enum with an attached field and constructor, giving each constant its own associated weight."
+    }
+  ],
+  "keyPoints": [
+    "A static nested class behaves like a namespaced top-level class; a (non-static) inner class holds an implicit reference to a specific outer instance",
+    "Anonymous classes provide a one-off implementation inline, still needed when a lambda's single-method shape isn't enough",
+    "Java enums are full classes — they can have fields, constructors, and methods, not just named integer constants",
+    "Enums are type-safe: only a valid constant of that enum type can be used where it's expected"
+  ],
+  "commonMistakes": [
+    "Using a non-static inner class when a static nested class (with no need for an outer instance) would suffice",
+    "Reaching for an anonymous class where a lambda would be simpler, for a genuinely single-method functional interface",
+    "Using plain int constants instead of an enum, losing type safety"
+  ],
+  "concepts": [
+    "nested classes",
+    "inner classes",
+    "anonymous classes",
+    "enums",
+    "static nested class"
+  ],
+  "previousLesson": "java-jvm-and-memory-001",
+  "nextLesson": "java-advanced-java-002"
+}

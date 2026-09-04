@@ -1,0 +1,15 @@
+{
+  "id": "java-036",
+  "language": "java",
+  "title": "Insertion Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort an array of numbers in ascending order using insertion sort.",
+  "code": "import java.util.Arrays;\n\npublic class InsertionSort {\n    public static void main(String[] args) {\n        int[] numbers = {12, 11, 13, 5, 6};\n\n        for (int i = 1; i < numbers.length; i++) {\n            int key = numbers[i];\n            int j = i - 1;\n            while (j >= 0 && numbers[j] > key) {\n                numbers[j + 1] = numbers[j];\n                j--;\n            }\n            numbers[j + 1] = key;\n        }\n\n        System.out.println(\"Sorted array: \" + Arrays.toString(numbers));\n    }\n}",
+  "expectedOutput": "Sorted array: [5, 6, 11, 12, 13]",
+  "concepts": [
+    "insertion sort",
+    "while loop",
+    "shifting elements"
+  ]
+}

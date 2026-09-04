@@ -1,0 +1,59 @@
+{
+  "id": "comparison-fundamentals-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Fundamentals",
+  "topic": "Fundamentals",
+  "topicNumber": 1,
+  "lessonNumber": 1,
+  "title": "Fundamentals: Philosophy, Execution Model, and Portability",
+  "difficulty": "beginner",
+  "description": "How Python, Java, and C differ in design philosophy, execution model, and portability.",
+  "objectives": [
+    "Compare the three languages' design goals and typical use cases",
+    "Compare their execution models",
+    "Understand what portability means differently for each"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Python prioritizes developer productivity and readability above raw performance. It's interpreted (via CPython bytecode) rather than compiled to native machine code, which makes it slower for CPU-bound work but extremely fast to write, test, and iterate on. Typical use cases: scripting, data science, web backends, automation, and rapid prototyping."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Java prioritizes portability ('write once, run anywhere') and robustness for large, long-lived applications. It's compiled to platform-independent bytecode, then executed by a JVM that JIT-compiles hot paths to native code at runtime — a middle ground between fully interpreted and fully compiled. Typical use cases: enterprise backends, Android apps, large-scale distributed systems."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C prioritizes direct hardware control and predictable performance, with almost no runtime overhead or built-in safety net. It compiles directly to native machine code for a specific target architecture — no virtual machine, no bytecode. Typical use cases: operating systems, embedded firmware, device drivers, and performance-critical libraries other languages build on top of."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Execution model is the core distinguishing axis: C compiles straight to native code; Java compiles to bytecode run by a JVM; Python is interpreted from source (via an intermediate bytecode, invisibly, in CPython). Portability means different things: C source is portable if you recompile it per platform; Java bytecode itself is portable, running unmodified on any compatible JVM; Python source is portable as long as a compatible interpreter is available. Safety vs. control is the other major axis: C gives you the most control and the least protection (manual memory management, no bounds checking); Java and Python both manage memory automatically and provide much stronger runtime safety, at the cost of some performance and low-level control."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Choosing among them is rarely 'which is objectively best' — it's about matching tradeoffs to the problem: C when you need to work close to the hardware or squeeze out maximum performance; Java when you need portability, strong tooling, and robustness for a large team/codebase; Python when development speed and readability matter more than raw execution speed."
+    }
+  ],
+  "keyPoints": [
+    "C compiles to native code; Java compiles to portable bytecode run by a JVM; Python is interpreted from source",
+    "Portability is achieved differently: recompiling C, running Java bytecode anywhere, or running Python source anywhere a compatible interpreter exists",
+    "C trades safety for control; Java and Python trade some performance/control for memory safety and productivity"
+  ],
+  "concepts": [
+    "language philosophy",
+    "execution model",
+    "compilation",
+    "interpretation",
+    "portability",
+    "use cases"
+  ],
+  "previousLesson": null,
+  "nextLesson": "comparison-syntax-001"
+}

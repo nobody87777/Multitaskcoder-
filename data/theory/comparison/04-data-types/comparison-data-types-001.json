@@ -1,0 +1,61 @@
+{
+  "id": "comparison-data-types-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Data Types",
+  "topic": "Data Types",
+  "topicNumber": 4,
+  "lessonNumber": 4,
+  "title": "Data Types: Numbers, Characters, Strings, Booleans, and Aggregates",
+  "difficulty": "beginner",
+  "description": "How integers, floats, characters, strings, booleans, arrays, objects, and structures compare across the three languages.",
+  "objectives": [
+    "Compare numeric type systems (fixed-size vs. arbitrary precision)",
+    "Compare string and character representation",
+    "Compare boolean and aggregate (array/object/struct) types"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "int has arbitrary precision (no overflow, grows as needed); float is a 64-bit double. bool is a true boolean subtype of int. str is an immutable sequence of Unicode code points, with no separate 'character' type — a single character is just a length-1 string. Aggregates: list (mutable, dynamic array), and full objects via classes."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Integers are fixed-size (byte/short/int/long), with silent wraparound on overflow (no exception). boolean is a true, distinct primitive type. char is a 16-bit Unicode code unit; String is an immutable object (not a primitive). Aggregates: fixed-size arrays, and rich objects via classes with the full Collections Framework on top."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Integers are fixed-size (char/short/int/long), platform- and compiler-dependent in exact size, with signed overflow being undefined behavior (unsigned overflow wraps, defined). There is no built-in boolean type in classic C (int is used, or _Bool/stdbool.h's bool since C99). A string is just a char array ending in '\\0' — there's no distinct string type. Aggregates: fixed-size arrays and structs (struct), with no built-in dynamic collection types at all."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python's int never overflows; Java's and C's fixed-size integers can (Java wraps silently; C's signed overflow is undefined behavior, arguably worse). Only Java has a true, enforced boolean type among the three (C's pre-C99 lack of one, and its weak int-as-boolean convention, is a notable gap). Strings: Python's str and Java's String are genuine, safe, immutable types; C strings are just conventionally-terminated char arrays with no built-in safety."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Porting numeric code from Python to Java or C requires actively considering overflow, something Python code never has to think about. Porting string-processing code to C requires manually managing buffer sizes and null termination, responsibilities neither Python nor Java places on the programmer."
+    }
+  ],
+  "keyPoints": [
+    "Python's int has arbitrary precision; Java's and C's integers are fixed-size and can overflow",
+    "Only Java has a genuinely built-in, enforced boolean type among the three",
+    "C strings are raw char arrays with a null terminator; Python's str and Java's String are safe, dedicated types"
+  ],
+  "concepts": [
+    "integers",
+    "floating point",
+    "characters",
+    "strings",
+    "booleans",
+    "arrays",
+    "structures",
+    "overflow"
+  ],
+  "previousLesson": "comparison-variables-001",
+  "nextLesson": "comparison-type-systems-001"
+}

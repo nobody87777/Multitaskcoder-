@@ -1,0 +1,56 @@
+{
+  "id": "c-advanced-c-001",
+  "language": "c",
+  "section": "c",
+  "module": "Advanced C",
+  "moduleNumber": 27,
+  "lessonNumber": 29,
+  "title": "Advanced C: Qualifiers, Complex Declarations, and Modular Programs",
+  "difficulty": "advanced",
+  "description": "const correctness, volatile, complex declarations, and structuring reusable, modular C programs and libraries.",
+  "objectives": [
+    "Apply const correctness thoroughly, including with pointers",
+    "Understand what volatile signals to the compiler",
+    "Read complex pointer/array declarations",
+    "Structure a modular, multi-file C program"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "const Correctness and volatile",
+      "body": "const marks something as not-to-be-modified through that particular name/reference, and the position of const relative to * matters precisely: const int *p means 'p points to a const int' (the pointed-to value can't be changed through p, but p itself can be reassigned to point elsewhere); int *const p means 'p is a const pointer to a (mutable) int' (p can't be reassigned, but the value it points to can be changed); const int *const p combines both restrictions. Consistently applying const wherever something genuinely shouldn't change (especially in function parameters, like void print(const char *s)) documents intent and lets the compiler catch accidental modifications.\n\nvolatile tells the compiler that a variable's value might change at any time due to something outside the compiler's visibility (hardware, an interrupt handler, another thread in some contexts) — this prevents the compiler from applying certain optimizations that assume a variable's value can't change unexpectedly between reads (like caching it in a register instead of re-reading it from memory each time), which matters for memory-mapped hardware registers and signal handlers in low-level/embedded code."
+    },
+    {
+      "type": "text",
+      "heading": "Complex Declarations and Modular Programs",
+      "body": "C's declaration syntax can become genuinely hard to parse for more complex types: int *arr[10]; is an array of 10 pointers to int (not a pointer to an array of 10 ints — that would be int (*arr)[10];), and int (*fp)(int); is a pointer to a function taking an int (covered in Function Pointers). The general reading strategy ('the right-left rule', or simply building the type up incrementally with typedef for clarity) helps decode these; in genuinely complex cases, typedef-ing an intermediate name is often clearer for both the author and future readers than a single dense declaration.\n\nA modular C program splits functionality across multiple .c/.h file pairs: each module exposes its public interface via a header (declarations only) and keeps implementation details in its .c file, using static at file scope for anything that should remain genuinely private to that module. A reusable library packages this pattern further, distributed as a header plus a compiled (static or dynamic) library file, letting other projects use its functionality without needing its source code at all."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nvoid printMessage(const char *msg) {   // const: this function promises not to modify *msg\n    printf(\"%s\\n\", msg);\n}\n\nint main() {\n    const int MAX = 100;              // a genuinely constant value\n    int *const fixedPtr = NULL;        // pointer itself can't be reassigned (contrived example)\n\n    int arrOfPointers[3];               // NOT the same as a pointer to an array\n    int (*pointerToArray)[3];            // this IS a pointer to an array of 3 ints\n\n    printMessage(\"const correctness demo\");\n    printf(\"%d\\n\", MAX);\n    (void)fixedPtr; (void)arrOfPointers; (void)pointerToArray;   // suppress unused warnings\n    return 0;\n}",
+      "explanation": "printMessage's const char *msg documents that it only reads the string. arrOfPointers and pointerToArray demonstrate the crucial distinction between 'array of pointers' and 'pointer to an array' — very different types with similar-looking declarations."
+    }
+  ],
+  "keyPoints": [
+    "const's position relative to * determines whether the pointer or the pointed-to value is protected",
+    "volatile tells the compiler a value can change outside its control, disabling certain optimizations",
+    "int *arr[N] (array of pointers) and int (*arr)[N] (pointer to an array) are genuinely different types",
+    "Modular C programs expose a public interface via headers, keeping implementation details static/private in .c files"
+  ],
+  "commonMistakes": [
+    "Misreading const int *p vs int *const p, applying the restriction to the wrong part of the declaration",
+    "Confusing 'array of pointers' and 'pointer to an array' declarations, which look superficially similar",
+    "Omitting volatile on a variable genuinely modified outside the compiler's visibility, risking a stale cached value"
+  ],
+  "concepts": [
+    "const correctness",
+    "volatile",
+    "complex declarations",
+    "modular programs",
+    "reusable libraries",
+    "static linkage"
+  ],
+  "previousLesson": "c-compilation-and-linking-001",
+  "nextLesson": "c-best-practices-001"
+}

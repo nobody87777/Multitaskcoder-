@@ -1,0 +1,15 @@
+{
+  "id": "python-019",
+  "language": "python",
+  "title": "Palindrome Number Checker",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Check whether a given number reads the same forwards and backwards.",
+  "code": "num = int(input(\"Enter a number: \"))\noriginal = num\nreversed_num = 0\n\nwhile num > 0:\n    digit = num % 10\n    reversed_num = reversed_num * 10 + digit\n    num //= 10\n\nif original == reversed_num:\n    print(original, \"is a palindrome\")\nelse:\n    print(original, \"is not a palindrome\")",
+  "exampleInput": "1221",
+  "expectedOutput": "Enter a number: 1221 is a palindrome",
+  "concepts": [
+    "while loop",
+    "digit reversal"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "c-program-structure-001",
+  "language": "c",
+  "section": "c",
+  "module": "C Program Structure",
+  "moduleNumber": 2,
+  "lessonNumber": 2,
+  "title": "C Program Structure",
+  "difficulty": "beginner",
+  "description": "The anatomy of a C program: #include, main(), statements, braces, semicolons, comments, and identifiers.",
+  "objectives": [
+    "Understand the required structure of a runnable C program",
+    "Use #include correctly",
+    "Follow C naming and commenting conventions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "#include and main()",
+      "body": "Every C program needs an int main() function — the entry point the operating system's loader calls first when the program runs. #include <header.h> directives (angle brackets for standard library headers, double quotes \"header.h\" for your own project headers) pull in declarations needed for the functions you use — #include <stdio.h> is needed for printf/scanf, for instance. main() conventionally returns an int, by convention 0 for success and a non-zero value to signal an error to the calling shell/process, accessible via the exit code."
+    },
+    {
+      "type": "text",
+      "heading": "Statements, Blocks, Comments, and Identifiers",
+      "body": "Every statement ends with a semicolon. Curly braces {} group statements into a block, defining the body of a function, loop, or conditional (mandatory for a function body; optional, but recommended, for single-statement loop/if bodies). Comments come in two forms: // single-line (from C99 onward) and /* multi-line */ (available since the original C standard). Identifiers (variable, function, type names) follow the same general rule as most C-family languages: letters, digits, and underscores, not starting with a digit, case-sensitive, and not a reserved keyword (int, if, for, return, and about 30 others)."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>   // for printf\n\nint main() {\n    // Print a message\n    printf(\"Program structure demo\\n\");\n    /* This is a\n       multi-line comment */\n    return 0;          // 0 signals success to the operating system\n}",
+      "explanation": "The #include brings in printf's declaration. main() returns 0, the conventional success exit code read by the shell or calling process."
+    }
+  ],
+  "keyPoints": [
+    "int main() is the required entry point of a standard C program",
+    "#include <stdio.h> (angle brackets) for standard headers; #include \"file.h\" (quotes) for your own",
+    "Every statement ends with a semicolon; braces {} delimit blocks",
+    "main() returning 0 conventionally signals success to the operating system"
+  ],
+  "commonMistakes": [
+    "Forgetting to #include a header needed for a function like printf() or malloc()",
+    "Missing a semicolon at the end of a statement",
+    "Confusing angle-bracket includes (<...>) with quoted includes (\"...\") and their different search paths"
+  ],
+  "concepts": [
+    "#include",
+    "main()",
+    "statements",
+    "braces",
+    "semicolons",
+    "comments",
+    "identifiers"
+  ],
+  "previousLesson": "c-introduction-001",
+  "nextLesson": "c-variables-and-data-types-001"
+}

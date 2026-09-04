@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-004",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Input/Output",
+  "question": "Why must you pass &age (the address of age) rather than just age to scanf(\"%d\", ...) when reading an integer?",
+  "options": [
+    "It's just a stylistic convention with no real effect",
+    "scanf() only accepts pointers to strings",
+    "Passing age would cause a compile error",
+    "scanf() needs the memory address of the variable so it can write the input value directly into it"
+  ],
+  "correctAnswer": 3,
+  "explanation": "C passes arguments by value, so scanf() needs a pointer (the variable's address, &age) in order to modify age's actual storage location with the value read from input.",
+  "concepts": [
+    "scanf()",
+    "pointers",
+    "pass by address"
+  ]
+}

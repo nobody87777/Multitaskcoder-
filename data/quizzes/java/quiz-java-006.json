@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-006",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Input/Output",
+  "question": "Which class is commonly used to read user input from the console in Java?",
+  "options": [
+    "System",
+    "Scanner",
+    "Reader",
+    "Console.readLine"
+  ],
+  "correctAnswer": 1,
+  "explanation": "java.util.Scanner wraps an input source (like System.in) and provides convenient methods such as nextInt() and nextLine() to read user input.",
+  "concepts": [
+    "Scanner",
+    "input"
+  ]
+}

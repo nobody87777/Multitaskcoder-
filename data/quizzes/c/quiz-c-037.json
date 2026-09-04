@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-037",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Sorting",
+  "question": "What will this code print?",
+  "code": "int a[3] = {3, 1, 2};\nint temp;\nfor (int i = 0; i < 2; i++) {\n    for (int j = 0; j < 2 - i; j++) {\n        if (a[j] > a[j + 1]) {\n            temp = a[j];\n            a[j] = a[j + 1];\n            a[j + 1] = temp;\n        }\n    }\n}\nprintf(\"%d %d %d\\n\", a[0], a[1], a[2]);",
+  "options": [
+    "3 1 2",
+    "1 3 2",
+    "1 2 3",
+    "2 1 3"
+  ],
+  "correctAnswer": 2,
+  "explanation": "This is a bubble sort: repeated adjacent comparisons and swaps push the largest values to the end each pass, fully sorting the array to 1, 2, 3.",
+  "concepts": [
+    "bubble sort",
+    "sorting"
+  ]
+}

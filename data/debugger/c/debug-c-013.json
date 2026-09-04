@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-013",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Do-While Off-By-One",
+  "description": "The program should print numbers 1 through 3 using a do-while loop.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    do {\n        printf(\"%d\\n\", i);\n        i++;\n    } while (i <= 4);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 1, 2, 3 and then stop.",
+  "actualProblem": "The condition i <= 4 permits one extra iteration, so the loop also prints 4 before stopping — one number more than intended.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    do {\n        printf(\"%d\\n\", i);\n        i++;\n    } while (i <= 3);\n    return 0;\n}",
+  "expectedOutput": "1\n2\n3",
+  "explanation": "A do-while loop checks its condition after every iteration, so the boundary value in the condition must exactly match the last value that should be printed — 3, not 4.",
+  "concepts": [
+    "do-while",
+    "loop condition",
+    "off-by-one error"
+  ]
+}

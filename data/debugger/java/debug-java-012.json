@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-012",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Do-While Off-By-One",
+  "description": "The program should print numbers 1 through 3 using a do-while loop.",
+  "buggyCode": "public class DoWhileCounter {\n    public static void main(String[] args) {\n        int i = 1;\n        do {\n            System.out.println(i);\n            i++;\n        } while (i <= 4);\n    }\n}",
+  "expectedBehavior": "The program should print 1, 2, 3 and then stop.",
+  "actualProblem": "The loop condition i <= 4 allows one extra pass, so the loop also prints 4 before stopping, producing one number more than intended.",
+  "correctedCode": "public class DoWhileCounter {\n    public static void main(String[] args) {\n        int i = 1;\n        do {\n            System.out.println(i);\n            i++;\n        } while (i <= 3);\n    }\n}",
+  "expectedOutput": "1\n2\n3",
+  "explanation": "A do-while loop checks its condition after each iteration, so the boundary value used in the condition must exactly match the last value that should actually be printed — here, 3, not 4.",
+  "concepts": [
+    "do-while",
+    "loop condition",
+    "off-by-one error"
+  ]
+}

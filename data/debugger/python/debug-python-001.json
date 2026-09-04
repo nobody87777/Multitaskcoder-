@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-001",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "bugType": "missing-quote",
+  "title": "Fix the Broken Print Statement",
+  "description": "The program should print a greeting message. Fix the bug.",
+  "buggyCode": "print(\"Hello, World!)",
+  "expectedBehavior": "The program should print Hello, World! to the console.",
+  "actualProblem": "The string literal is missing its closing double quote, which causes a SyntaxError before the program can even run.",
+  "correctedCode": "print(\"Hello, World!\")",
+  "expectedOutput": "Hello, World!",
+  "explanation": "Every string literal in Python must be closed with a matching quote character. Without the closing quote, the parser cannot tell where the string ends and raises a SyntaxError.",
+  "concepts": [
+    "strings",
+    "SyntaxError",
+    "print()"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "java-017",
+  "language": "java",
+  "title": "Prime Number Checker",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Check whether a given number is prime.",
+  "code": "import java.util.Scanner;\n\npublic class PrimeChecker {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int num = scanner.nextInt();\n        boolean isPrime = num > 1;\n\n        for (int i = 2; i <= Math.sqrt(num); i++) {\n            if (num % i == 0) {\n                isPrime = false;\n                break;\n            }\n        }\n\n        if (isPrime) {\n            System.out.println(num + \" is a prime number\");\n        } else {\n            System.out.println(num + \" is not a prime number\");\n        }\n    }\n}",
+  "exampleInput": "29",
+  "expectedOutput": "29 is a prime number",
+  "concepts": [
+    "for loop",
+    "break",
+    "Math.sqrt()"
+  ]
+}

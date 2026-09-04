@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-037",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "constructor-error",
+  "title": "Fix the Mistyped Constructor",
+  "description": "The program should create a Car object with a model attribute set in the constructor. Fix the bug.",
+  "buggyCode": "class Car:\n    def __int__(self, model):\n        self.model = model\n\nc = Car(\"Civic\")\nprint(c.model)",
+  "expectedBehavior": "The program should print 'Civic'.",
+  "actualProblem": "The constructor is named __int__ instead of __init__ (a one-letter typo). Python never recognizes it as the special constructor method, so self.model is never set, and accessing c.model raises an AttributeError.",
+  "correctedCode": "class Car:\n    def __init__(self, model):\n        self.model = model\n\nc = Car(\"Civic\")\nprint(c.model)",
+  "expectedOutput": "Civic",
+  "explanation": "Python calls the exact method named __init__ automatically when an object is created. Because __int__ is a different (unrelated) method name, it's simply never invoked, silently leaving the object's attributes unset.",
+  "concepts": [
+    "constructors",
+    "__init__",
+    "AttributeError"
+  ]
+}

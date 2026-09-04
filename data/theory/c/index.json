@@ -1,0 +1,384 @@
+{
+  "language": "c",
+  "section": "c",
+  "moduleCount": 28,
+  "lessonCount": 30,
+  "modules": [
+    {
+      "moduleNumber": 1,
+      "module": "Introduction to C",
+      "moduleSlug": "01-introduction",
+      "lessons": [
+        {
+          "id": "c-introduction-001",
+          "title": "Introduction to C",
+          "difficulty": "beginner",
+          "file": "01-introduction/c-introduction-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 2,
+      "module": "C Program Structure",
+      "moduleSlug": "02-program-structure",
+      "lessons": [
+        {
+          "id": "c-program-structure-001",
+          "title": "C Program Structure",
+          "difficulty": "beginner",
+          "file": "02-program-structure/c-program-structure-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 3,
+      "module": "Variables and Data Types",
+      "moduleSlug": "03-variables-and-data-types",
+      "lessons": [
+        {
+          "id": "c-variables-and-data-types-001",
+          "title": "Variables and Data Types",
+          "difficulty": "beginner",
+          "file": "03-variables-and-data-types/c-variables-and-data-types-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 4,
+      "module": "Format Specifiers and I/O",
+      "moduleSlug": "04-format-specifiers-and-io",
+      "lessons": [
+        {
+          "id": "c-format-specifiers-and-io-001",
+          "title": "Format Specifiers and I/O",
+          "difficulty": "beginner",
+          "file": "04-format-specifiers-and-io/c-format-specifiers-and-io-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 5,
+      "module": "Operators",
+      "moduleSlug": "05-operators",
+      "lessons": [
+        {
+          "id": "c-operators-001",
+          "title": "Operators",
+          "difficulty": "beginner",
+          "file": "05-operators/c-operators-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 6,
+      "module": "Control Flow",
+      "moduleSlug": "06-control-flow",
+      "lessons": [
+        {
+          "id": "c-control-flow-001",
+          "title": "Control Flow",
+          "difficulty": "beginner",
+          "file": "06-control-flow/c-control-flow-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 7,
+      "module": "Loops",
+      "moduleSlug": "07-loops",
+      "lessons": [
+        {
+          "id": "c-loops-001",
+          "title": "Loops",
+          "difficulty": "beginner",
+          "file": "07-loops/c-loops-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 8,
+      "module": "Functions",
+      "moduleSlug": "08-functions",
+      "lessons": [
+        {
+          "id": "c-functions-001",
+          "title": "Functions",
+          "difficulty": "beginner",
+          "file": "08-functions/c-functions-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 9,
+      "module": "Storage and Scope",
+      "moduleSlug": "09-storage-and-scope",
+      "lessons": [
+        {
+          "id": "c-storage-and-scope-001",
+          "title": "Storage Classes and Scope",
+          "difficulty": "intermediate",
+          "file": "09-storage-and-scope/c-storage-and-scope-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 10,
+      "module": "Arrays",
+      "moduleSlug": "10-arrays",
+      "lessons": [
+        {
+          "id": "c-arrays-001",
+          "title": "Arrays",
+          "difficulty": "beginner",
+          "file": "10-arrays/c-arrays-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 11,
+      "module": "Strings",
+      "moduleSlug": "11-strings",
+      "lessons": [
+        {
+          "id": "c-strings-001",
+          "title": "Strings",
+          "difficulty": "intermediate",
+          "file": "11-strings/c-strings-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 12,
+      "module": "Pointers",
+      "moduleSlug": "12-pointers",
+      "lessons": [
+        {
+          "id": "c-pointers-001",
+          "title": "Pointer Fundamentals",
+          "difficulty": "intermediate",
+          "file": "12-pointers/c-pointers-001.json"
+        },
+        {
+          "id": "c-pointers-002",
+          "title": "Pointer Arithmetic, Pointers with Arrays/Strings/Functions, and Common Mistakes",
+          "difficulty": "intermediate",
+          "file": "12-pointers/c-pointers-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 13,
+      "module": "Arrays and Pointers",
+      "moduleSlug": "13-arrays-and-pointers",
+      "lessons": [
+        {
+          "id": "c-arrays-and-pointers-001",
+          "title": "Arrays and Pointers",
+          "difficulty": "intermediate",
+          "file": "13-arrays-and-pointers/c-arrays-and-pointers-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 14,
+      "module": "Dynamic Memory",
+      "moduleSlug": "14-dynamic-memory",
+      "lessons": [
+        {
+          "id": "c-dynamic-memory-001",
+          "title": "Dynamic Memory",
+          "difficulty": "advanced",
+          "file": "14-dynamic-memory/c-dynamic-memory-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 15,
+      "module": "Structures",
+      "moduleSlug": "15-structures",
+      "lessons": [
+        {
+          "id": "c-structures-001",
+          "title": "Structures",
+          "difficulty": "intermediate",
+          "file": "15-structures/c-structures-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 16,
+      "module": "Unions",
+      "moduleSlug": "16-unions",
+      "lessons": [
+        {
+          "id": "c-unions-001",
+          "title": "Unions",
+          "difficulty": "intermediate",
+          "file": "16-unions/c-unions-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 17,
+      "module": "Enumerations and typedef",
+      "moduleSlug": "17-enumerations-and-typedef",
+      "lessons": [
+        {
+          "id": "c-enumerations-and-typedef-001",
+          "title": "Enumerations and typedef",
+          "difficulty": "intermediate",
+          "file": "17-enumerations-and-typedef/c-enumerations-and-typedef-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 18,
+      "module": "File Handling",
+      "moduleSlug": "18-file-handling",
+      "lessons": [
+        {
+          "id": "c-file-handling-001",
+          "title": "File Handling",
+          "difficulty": "intermediate",
+          "file": "18-file-handling/c-file-handling-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 19,
+      "module": "Preprocessor",
+      "moduleSlug": "19-preprocessor",
+      "lessons": [
+        {
+          "id": "c-preprocessor-001",
+          "title": "The Preprocessor",
+          "difficulty": "intermediate",
+          "file": "19-preprocessor/c-preprocessor-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 20,
+      "module": "Command-Line Arguments",
+      "moduleSlug": "20-command-line-arguments",
+      "lessons": [
+        {
+          "id": "c-command-line-arguments-001",
+          "title": "Command-Line Arguments",
+          "difficulty": "intermediate",
+          "file": "20-command-line-arguments/c-command-line-arguments-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 21,
+      "module": "Function Pointers",
+      "moduleSlug": "21-function-pointers",
+      "lessons": [
+        {
+          "id": "c-function-pointers-001",
+          "title": "Function Pointers",
+          "difficulty": "advanced",
+          "file": "21-function-pointers/c-function-pointers-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 22,
+      "module": "Data Structures in C",
+      "moduleSlug": "22-data-structures-in-c",
+      "lessons": [
+        {
+          "id": "c-data-structures-in-c-001",
+          "title": "Linear Data Structures: Linked Lists, Stacks, and Queues",
+          "difficulty": "advanced",
+          "file": "22-data-structures-in-c/c-data-structures-in-c-001.json"
+        },
+        {
+          "id": "c-data-structures-in-c-002",
+          "title": "Trees and Hash Tables: Concepts",
+          "difficulty": "advanced",
+          "file": "22-data-structures-in-c/c-data-structures-in-c-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 23,
+      "module": "Searching and Sorting",
+      "moduleSlug": "23-searching-and-sorting",
+      "lessons": [
+        {
+          "id": "c-searching-and-sorting-001",
+          "title": "Searching and Sorting",
+          "difficulty": "intermediate",
+          "file": "23-searching-and-sorting/c-searching-and-sorting-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 24,
+      "module": "Bit Manipulation",
+      "moduleSlug": "24-bit-manipulation",
+      "lessons": [
+        {
+          "id": "c-bit-manipulation-001",
+          "title": "Bit Manipulation",
+          "difficulty": "advanced",
+          "file": "24-bit-manipulation/c-bit-manipulation-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 25,
+      "module": "Memory and Undefined Behavior",
+      "moduleSlug": "25-memory-and-undefined-behavior",
+      "lessons": [
+        {
+          "id": "c-memory-and-undefined-behavior-001",
+          "title": "Memory and Undefined Behavior",
+          "difficulty": "advanced",
+          "file": "25-memory-and-undefined-behavior/c-memory-and-undefined-behavior-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 26,
+      "module": "Compilation and Linking",
+      "moduleSlug": "26-compilation-and-linking",
+      "lessons": [
+        {
+          "id": "c-compilation-and-linking-001",
+          "title": "Compilation and Linking",
+          "difficulty": "intermediate",
+          "file": "26-compilation-and-linking/c-compilation-and-linking-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 27,
+      "module": "Advanced C",
+      "moduleSlug": "27-advanced-c",
+      "lessons": [
+        {
+          "id": "c-advanced-c-001",
+          "title": "Advanced C: Qualifiers, Complex Declarations, and Modular Programs",
+          "difficulty": "advanced",
+          "file": "27-advanced-c/c-advanced-c-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 28,
+      "module": "Best Practices",
+      "moduleSlug": "28-best-practices",
+      "lessons": [
+        {
+          "id": "c-best-practices-001",
+          "title": "C Best Practices",
+          "difficulty": "intermediate",
+          "file": "28-best-practices/c-best-practices-001.json"
+        }
+      ]
+    }
+  ]
+}

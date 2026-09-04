@@ -1,0 +1,15 @@
+{
+  "id": "python-034",
+  "language": "python",
+  "title": "Binary Search",
+  "difficulty": "intermediate",
+  "topic": "Searching",
+  "description": "Search for a target value in a sorted list using binary search.",
+  "code": "numbers = [2, 5, 8, 12, 16, 23, 38, 45, 56, 72]\ntarget = 23\nlow, high = 0, len(numbers) - 1\nindex = -1\n\nwhile low <= high:\n    mid = (low + high) // 2\n    if numbers[mid] == target:\n        index = mid\n        break\n    elif numbers[mid] < target:\n        low = mid + 1\n    else:\n        high = mid - 1\n\nif index != -1:\n    print(f\"Found {target} at index {index}\")\nelse:\n    print(f\"{target} not found\")",
+  "expectedOutput": "Found 23 at index 5",
+  "concepts": [
+    "binary search",
+    "divide and conquer",
+    "sorted data"
+  ]
+}

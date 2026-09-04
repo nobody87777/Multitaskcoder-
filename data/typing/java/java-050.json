@@ -1,0 +1,15 @@
+{
+  "id": "java-050",
+  "language": "java",
+  "title": "Simple Banking System",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Build a small banking system with deposit, withdraw, and balance-checking logic.",
+  "code": "public class BankingSystem {\n    static class Account {\n        String owner;\n        double balance;\n\n        Account(String owner, double balance) {\n            this.owner = owner;\n            this.balance = balance;\n        }\n\n        void deposit(double amount) {\n            balance += amount;\n        }\n\n        void withdraw(double amount) {\n            if (amount > balance) {\n                System.out.println(\"Insufficient funds\");\n            } else {\n                balance -= amount;\n            }\n        }\n    }\n\n    public static void main(String[] args) {\n        Account account = new Account(\"Asha\", 100);\n        account.deposit(50);\n        account.withdraw(30);\n        System.out.println(account.owner + \"'s balance: \" + account.balance);\n    }\n}",
+  "expectedOutput": "Asha's balance: 120.0",
+  "concepts": [
+    "classes",
+    "encapsulation",
+    "instance methods"
+  ]
+}

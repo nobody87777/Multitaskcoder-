@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-048",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Concurrency",
+  "bugType": "race-condition",
+  "title": "Fix the Unsynchronized Shared Counter",
+  "description": "The program should have two threads each increment a shared counter 100,000 times, ending at 200,000.",
+  "buggyCode": "public class Counter {\n    static int count = 0;\n\n    public static void main(String[] args) throws InterruptedException {\n        Runnable task = () -> {\n            for (int i = 0; i < 100000; i++) {\n                count++;\n            }\n        };\n        Thread t1 = new Thread(task);\n        Thread t2 = new Thread(task);\n        t1.start();\n        t2.start();\n        t1.join();\n        t2.join();\n        System.out.println(count);\n    }\n}",
+  "expectedBehavior": "After both threads finish, count should reliably equal 200000.",
+  "actualProblem": "count++ is not atomic — it involves a read, an increment, and a write. When two threads perform this on the shared count at nearly the same time without synchronization, some increments can be lost, so the final total is usually less than 200000 and varies between runs.",
+  "correctedCode": "public class Counter {\n    static int count = 0;\n\n    static synchronized void increment() {\n        count++;\n    }\n\n    public static void main(String[] args) throws InterruptedException {\n        Runnable task = () -> {\n            for (int i = 0; i < 100000; i++) {\n                increment();\n            }\n        };\n        Thread t1 = new Thread(task);\n        Thread t2 = new Thread(task);\n        t1.start();\n        t2.start();\n        t1.join();\n        t2.join();\n        System.out.println(count);\n    }\n}",
+  "expectedOutput": "200000",
+  "explanation": "Concurrent, unsynchronized modification of shared mutable state is a race condition — the outcome depends on unpredictable thread timing. Wrapping the increment in a synchronized method ensures only one thread updates count at a time, making the result deterministic.",
+  "concepts": [
+    "threads",
+    "race condition",
+    "synchronized"
+  ]
+}

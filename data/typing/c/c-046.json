@@ -1,0 +1,15 @@
+{
+  "id": "c-046",
+  "language": "c",
+  "title": "File Reading",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Write a line to a file, then read it back using fgets.",
+  "code": "#include <stdio.h>\n\nint main() {\n    FILE *fp = fopen(\"data.txt\", \"w\");\n    fprintf(fp, \"Reading files in C is straightforward\");\n    fclose(fp);\n\n    char buffer[100];\n    fp = fopen(\"data.txt\", \"r\");\n    fgets(buffer, sizeof(buffer), fp);\n    fclose(fp);\n\n    printf(\"Read: %s\\n\", buffer);\n    return 0;\n}",
+  "expectedOutput": "Read: Reading files in C is straightforward",
+  "concepts": [
+    "fgets()",
+    "file reading",
+    "buffers"
+  ]
+}

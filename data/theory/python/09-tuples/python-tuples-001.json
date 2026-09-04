@@ -1,0 +1,55 @@
+{
+  "id": "python-tuples-001",
+  "language": "python",
+  "section": "python",
+  "module": "Tuples",
+  "moduleNumber": 9,
+  "lessonNumber": 10,
+  "title": "Tuples",
+  "difficulty": "beginner",
+  "description": "Python's immutable ordered sequence type, packing/unpacking, and when to prefer a tuple over a list.",
+  "objectives": [
+    "Create and index tuples",
+    "Understand tuple immutability",
+    "Use tuple packing and unpacking",
+    "Know common tuple use cases"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Tuples and Immutability",
+      "body": "A tuple is an ordered, immutable collection, written with parentheses (though the parentheses are often optional): (1, 2, 3), or just 1, 2, 3. Once created, a tuple's contents cannot change — no append, no item assignment. Tuples support indexing and slicing exactly like lists (they're both sequence types), and can be nested (a tuple containing other tuples or lists).\n\nA single-element tuple requires a trailing comma to disambiguate it from a parenthesized expression: (5,) is a tuple, but (5) is just the integer 5 in parentheses. Because tuples are immutable, they are hashable (as long as everything inside them is also hashable) and can be used as dictionary keys or set elements — something a list can never do."
+    },
+    {
+      "type": "text",
+      "heading": "Packing, Unpacking, and Use Cases",
+      "body": "Tuple packing is implicitly bundling multiple values into a tuple: point = 3, 4 creates the tuple (3, 4). Unpacking reverses this: x, y = point assigns 3 to x and 4 to y in one line — this is how Python idiomatically returns and consumes 'multiple return values' from a function (which really just returns a single tuple). Extended unpacking with * captures the remaining items: first, *rest = [1, 2, 3, 4] gives first = 1, rest = [2, 3, 4].\n\nTuples are typically used for fixed-size, heterogeneous records (like a (name, age) pair) where the position of each element has meaning, whereas a list usually represents a variable-length collection of similar items. Tuples also have only two methods, count() and index(), since their content can never change."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "point = (3, 4)\nx, y = point                # unpacking\nprint(x, y)                 # 3 4\n\nfirst, *rest = (1, 2, 3, 4)\nprint(first, rest)          # 1 [2, 3, 4]\n\nlocations = {(0, 0): \"origin\", (1, 1): \"diagonal\"}   # tuples as dict keys\n# point[0] = 9               # TypeError: tuples are immutable",
+      "explanation": "Unpacking is the idiomatic way to split a tuple's fields into named variables. Because tuples are immutable and hashable, they can be dictionary keys, unlike lists."
+    }
+  ],
+  "keyPoints": [
+    "Tuples are ordered and immutable — no append, insert, or item assignment",
+    "A single-element tuple needs a trailing comma: (5,)",
+    "Unpacking (x, y = point) is the idiomatic way to extract tuple fields",
+    "Because they're immutable and hashable, tuples (unlike lists) can be dict keys or set members"
+  ],
+  "commonMistakes": [
+    "Forgetting the trailing comma for a one-element tuple",
+    "Trying to mutate a tuple and being surprised by a TypeError",
+    "Using a list where a tuple would better communicate 'this is a fixed-shape record'"
+  ],
+  "concepts": [
+    "tuples",
+    "immutability",
+    "packing",
+    "unpacking",
+    "hashable"
+  ],
+  "previousLesson": "python-lists-001",
+  "nextLesson": "python-sets-001"
+}

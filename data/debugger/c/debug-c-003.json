@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-003",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "bugType": "wrong-format-specifier",
+  "title": "Fix the Wrong Format Specifier",
+  "description": "The program should print a floating-point price using printf.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    float price = 19.99;\n    printf(\"%d\\n\", price);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 19.99 (approximately, given float precision).",
+  "actualProblem": "%d tells printf to interpret the next argument as an int, but a float was passed. Since float and int are represented completely differently in memory, this produces garbage output (undefined behavior), not the actual price.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    float price = 19.99;\n    printf(\"%.2f\\n\", price);\n    return 0;\n}",
+  "expectedOutput": "19.99",
+  "explanation": "printf() does not know the types of its arguments — it trusts the format string completely. The specifier must match the argument's actual type (%f/%.2f for float/double, %d for int), or the output is meaningless.",
+  "concepts": [
+    "printf()",
+    "format specifiers",
+    "undefined behavior"
+  ]
+}

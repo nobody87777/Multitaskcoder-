@@ -1,0 +1,15 @@
+{
+  "id": "python-037",
+  "language": "python",
+  "title": "Insertion Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort a list of numbers in ascending order using insertion sort.",
+  "code": "numbers = [12, 11, 13, 5, 6]\n\nfor i in range(1, len(numbers)):\n    key = numbers[i]\n    j = i - 1\n    while j >= 0 and numbers[j] > key:\n        numbers[j + 1] = numbers[j]\n        j -= 1\n    numbers[j + 1] = key\n\nprint(\"Sorted list:\", numbers)",
+  "expectedOutput": "Sorted list: [5, 6, 11, 12, 13]",
+  "concepts": [
+    "insertion sort",
+    "while loop",
+    "shifting elements"
+  ]
+}

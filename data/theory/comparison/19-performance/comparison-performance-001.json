@@ -1,0 +1,59 @@
+{
+  "id": "comparison-performance-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Performance",
+  "topic": "Performance",
+  "topicNumber": 19,
+  "lessonNumber": 19,
+  "title": "Performance: Execution Speed, Memory Usage, and Tradeoffs",
+  "difficulty": "advanced",
+  "description": "A tradeoff-focused comparison of execution speed, memory usage, and development speed, avoiding absolute claims.",
+  "objectives": [
+    "Understand the general performance tradeoffs among the three languages",
+    "Avoid oversimplified absolute claims about which is 'fastest'",
+    "Understand where each language's runtime overhead comes from"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Generally the slowest of the three for raw CPU-bound computation, due to interpretation overhead, dynamic typing checks at runtime, and (for CPython) the GIL limiting thread-level parallelism. Its major performance strength is development speed — how quickly a correct, working program can be written, tested, and iterated on — and the ability to call out to fast, compiled libraries (NumPy, for instance) for the performance-critical inner loops of a larger Python program."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Generally faster than Python for CPU-bound work, since the JVM JIT-compiles hot code paths to native machine code at runtime, and static typing avoids much of the dynamic type-checking overhead Python pays. It carries its own overheads: JVM startup time, garbage collection pauses (usually brief and well-tuned in modern collectors, but non-zero), and generally higher baseline memory usage than an equivalent C program (due to object headers and the JVM's own footprint)."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Generally the fastest of the three and the most memory-efficient, since it compiles directly to native code with no interpreter, no JIT warm-up, no garbage collector, and minimal per-object memory overhead (no object headers unless you add them yourself). This comes at the cost of the most manual work: no automatic memory management, no bounds checking, no built-in high-level data structures — every efficiency gain from C's control also demands the programmer wield that control correctly."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "The consistent, defensible ordering for typical CPU-bound workloads is C fastest, Java in the middle, Python slowest — but this should not be read as an absolute, universal rule: a poorly-written C program can be slower than a well-written Java program, and Python calling into optimized C-backed libraries (like NumPy) for the actual heavy computation can be extremely fast in practice for the workloads those libraries target. Development speed tends to run roughly in the opposite order: Python fastest to develop in, then Java, then C — reflecting each language's balance between low-level control and high-level convenience."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Avoid treating 'C is fastest' as a universal truth that settles every language choice — actual performance depends heavily on the specific workload, the quality of the implementation, and (very often) the cost of development time and correctness, not benchmark numbers in isolation."
+    }
+  ],
+  "keyPoints": [
+    "A general (not absolute) ordering for CPU-bound performance: C fastest, Java in the middle, Python generally slowest",
+    "Development speed tends to run in roughly the opposite direction: Python fastest to write, then Java, then C",
+    "Real-world performance depends heavily on implementation quality and workload — 'X is always fastest' claims oversimplify"
+  ],
+  "concepts": [
+    "execution speed",
+    "memory usage",
+    "development speed",
+    "runtime overhead",
+    "JIT compilation",
+    "performance tradeoffs"
+  ],
+  "previousLesson": "comparison-concurrency-001",
+  "nextLesson": "comparison-common-use-cases-001"
+}

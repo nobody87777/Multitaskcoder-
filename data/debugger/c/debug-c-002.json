@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-002",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "bugType": "syntax-error",
+  "title": "Fix the Missing Closing Brace",
+  "description": "The program should print a message and exit normally.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Starting up\\n\");\n    return 0;",
+  "expectedBehavior": "The program should compile and print 'Starting up'.",
+  "actualProblem": "The function body's closing brace } is missing, so the compiler reaches the end of the file still inside an open block and reports a syntax error.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Starting up\\n\");\n    return 0;\n}",
+  "expectedOutput": "Starting up",
+  "explanation": "Every opening brace { must have a matching closing brace }. Leaving one out means the compiler cannot determine where the function (or block) ends.",
+  "concepts": [
+    "syntax",
+    "braces",
+    "compilation"
+  ]
+}

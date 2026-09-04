@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-032",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "What does typedef struct Point { int x; int y; } Point; allow you to do afterward?",
+  "options": [
+    "Create arrays of infinite size",
+    "Declare variables of that struct type simply as Point p; instead of struct Point p;",
+    "Automatically initialize x and y to zero",
+    "Skip writing #include <stdio.h>"
+  ],
+  "correctAnswer": 1,
+  "explanation": "typedef creates an alias for a type; here it lets Point be used directly as a type name, avoiding the need to repeat the struct keyword every time.",
+  "concepts": [
+    "typedef",
+    "structures"
+  ]
+}

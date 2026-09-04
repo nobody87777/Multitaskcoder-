@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-022",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Arrays",
+  "question": "What will this code print?",
+  "code": "int arr[3] = {10, 20, 30};\nprintf(\"%d\\n\", arr[1] + arr[2]);",
+  "options": [
+    "30",
+    "10",
+    "40",
+    "50"
+  ],
+  "correctAnswer": 3,
+  "explanation": "arr[1] is 20 and arr[2] is 30, so arr[1] + arr[2] evaluates to 50.",
+  "concepts": [
+    "arrays",
+    "indexing"
+  ]
+}

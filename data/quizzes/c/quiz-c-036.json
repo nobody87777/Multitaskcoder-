@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-036",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Searching",
+  "question": "What is a key requirement for binary search to work correctly on an array?",
+  "options": [
+    "The array must contain only positive numbers",
+    "The array must already be sorted",
+    "The array must have an even number of elements",
+    "The array must be dynamically allocated"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Binary search repeatedly halves the search range by comparing the middle element, which only produces correct results if the array is already sorted.",
+  "concepts": [
+    "binary search",
+    "searching"
+  ]
+}

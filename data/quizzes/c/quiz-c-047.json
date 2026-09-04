@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-047",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "output",
+  "topic": "Data Structures",
+  "question": "What will this code print?",
+  "code": "#define MAX 3\nint stack[MAX];\nint top = -1;\n\nstack[++top] = 5;\nstack[++top] = 8;\nprintf(\"%d\\n\", stack[top]);",
+  "options": [
+    "5",
+    "8",
+    "-1",
+    "3"
+  ],
+  "correctAnswer": 1,
+  "explanation": "++top pre-increments top before indexing. The first push sets stack[0]=5 (top=0); the second push sets stack[1]=8 (top=1). Printing stack[top] then prints stack[1], which is 8.",
+  "concepts": [
+    "stack",
+    "array-based implementation"
+  ]
+}

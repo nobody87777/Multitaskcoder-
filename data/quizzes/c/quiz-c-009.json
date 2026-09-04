@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-009",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Conditionals",
+  "question": "What will this code print?",
+  "code": "int x = 10;\nif (x > 5)\n    printf(\"Big\\n\");\nelse\n    printf(\"Small\\n\");",
+  "options": [
+    "Big",
+    "Small",
+    "BigSmall",
+    "Nothing prints"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Since x (10) is greater than 5, the if branch's condition is true, so 'Big' is printed and the else branch is skipped.",
+  "concepts": [
+    "if/else",
+    "conditionals"
+  ]
+}

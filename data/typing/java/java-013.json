@@ -1,0 +1,15 @@
+{
+  "id": "java-013",
+  "language": "java",
+  "title": "Multiplication Table",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Print the multiplication table of a given number from 1 to 10.",
+  "code": "import java.util.Scanner;\n\npublic class MultiplicationTable {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int num = scanner.nextInt();\n\n        for (int i = 1; i <= 10; i++) {\n            System.out.println(num + \" x \" + i + \" = \" + (num * i));\n        }\n    }\n}",
+  "exampleInput": "4",
+  "expectedOutput": "4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20\n4 x 6 = 24\n4 x 7 = 28\n4 x 8 = 32\n4 x 9 = 36\n4 x 10 = 40",
+  "concepts": [
+    "for loop",
+    "iteration"
+  ]
+}

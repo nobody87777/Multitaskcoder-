@@ -1,0 +1,61 @@
+{
+  "id": "comparison-file-handling-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "File Handling",
+  "topic": "File Handling",
+  "topicNumber": 14,
+  "lessonNumber": 14,
+  "title": "File Handling: Opening, Reading, Writing, and Resource Management",
+  "difficulty": "intermediate",
+  "description": "How opening, reading, writing, and closing files compares across the three languages, especially resource cleanup.",
+  "objectives": [
+    "Compare file-opening and mode syntax",
+    "Compare reading/writing approaches",
+    "Compare resource-cleanup guarantees"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "open(path, mode) returns a file object; with open(...) as f: guarantees f.close() runs automatically, even on an exception. read()/readline()/readlines() and write()/writelines() cover text and (with a \"b\" mode) binary data. Encoding is explicit and configurable (encoding=\"utf-8\")."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Multiple APIs exist: the older java.io (FileReader/FileWriter, BufferedReader/BufferedWriter) and the more modern java.nio.file (Path, Files, with convenience methods like Files.readString()). try-with-resources guarantees any AutoCloseable resource (including file streams) is closed automatically, mirroring Python's with statement."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "FILE *fp = fopen(path, mode); returns a FILE pointer, or NULL on failure (which must be checked manually — nothing does this automatically). fprintf/fscanf, fgets/fputs, and fread/fwrite handle text and binary I/O. fclose(fp) must be called explicitly by the programmer; there is no with-style or try-with-resources-style automatic cleanup mechanism — forgetting fclose() is a real, easy-to-make mistake with no language-level safety net."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python's with and Java's try-with-resources both guarantee cleanup automatically, even across exceptions; C requires manually calling fclose() on every code path, including every early-return error path, with nothing enforcing this — a forgotten fclose() simply leaks the file handle (and possibly unflushed data) with no warning."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "This resource-cleanup guarantee is a genuinely significant reliability difference: Python and Java code is far less prone to resource leaks from a forgotten cleanup call, especially on exception/error paths, compared to equivalent C code that must get every fclose() right by hand, on every path, every time."
+    }
+  ],
+  "keyPoints": [
+    "Python's with and Java's try-with-resources both guarantee automatic file cleanup, even on exceptions",
+    "C requires manual fopen()/fclose() pairing with no automatic cleanup mechanism at all",
+    "All three provide both text and binary I/O, but only C requires the programmer to check fopen()'s NULL return manually"
+  ],
+  "concepts": [
+    "file handling",
+    "opening files",
+    "reading",
+    "writing",
+    "closing",
+    "resource management",
+    "with statement",
+    "try-with-resources"
+  ],
+  "previousLesson": "comparison-error-handling-001",
+  "nextLesson": "comparison-modules-and-packages-001"
+}

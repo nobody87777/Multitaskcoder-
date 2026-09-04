@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-023",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "Functions",
+  "bugType": "pass-by-value-misunderstanding",
+  "title": "Fix the Method That Can't Modify a Primitive",
+  "description": "The program should double a number using a helper method.",
+  "buggyCode": "public class Doubler {\n    static void doubleValue(int n) {\n        n = n * 2;\n    }\n\n    public static void main(String[] args) {\n        int x = 5;\n        doubleValue(x);\n        System.out.println(x);\n    }\n}",
+  "expectedBehavior": "After calling doubleValue(x), x should be 10.",
+  "actualProblem": "Java passes primitives (like int) by value, so n inside doubleValue is a separate copy of x. Modifying n has no effect on the original x back in main, which still prints 5.",
+  "correctedCode": "public class Doubler {\n    static int doubleValue(int n) {\n        return n * 2;\n    }\n\n    public static void main(String[] args) {\n        int x = 5;\n        x = doubleValue(x);\n        System.out.println(x);\n    }\n}",
+  "expectedOutput": "10",
+  "explanation": "Since primitives can't be modified through a method parameter, the method must return the new value and the caller must assign it back to the variable it wants updated.",
+  "concepts": [
+    "pass by value",
+    "primitive types",
+    "methods"
+  ]
+}

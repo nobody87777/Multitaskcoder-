@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-042",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Memory",
+  "question": "How does calloc() differ from malloc() in terms of the memory it returns?",
+  "options": [
+    "calloc() cannot allocate arrays",
+    "calloc() zero-initializes the allocated memory, while malloc() leaves it uninitialized",
+    "calloc() is only usable for char arrays",
+    "They behave identically in every way"
+  ],
+  "correctAnswer": 1,
+  "explanation": "calloc(count, size) both allocates memory and initializes every byte to zero, whereas malloc(size) allocates memory whose initial contents are indeterminate.",
+  "concepts": [
+    "calloc()",
+    "malloc()",
+    "memory initialization"
+  ]
+}

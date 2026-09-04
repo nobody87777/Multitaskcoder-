@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-008",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Operators",
+  "bugType": "assignment-in-condition",
+  "title": "Fix the Assignment Instead of Comparison",
+  "description": "The program should check whether a number equals 10 and print a message.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int x = 5;\n    if (x = 10) {\n        printf(\"x is ten\\n\");\n    } else {\n        printf(\"x is not ten\\n\");\n    }\n    return 0;\n}",
+  "expectedBehavior": "Since x starts as 5, the program should print 'x is not ten'.",
+  "actualProblem": "if (x = 10) assigns 10 to x instead of comparing. The assignment expression's value (10, which is non-zero/true) makes the if always take the true branch, and as a side effect, x is now permanently changed to 10.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int x = 5;\n    if (x == 10) {\n        printf(\"x is ten\\n\");\n    } else {\n        printf(\"x is not ten\\n\");\n    }\n    return 0;\n}",
+  "expectedOutput": "x is not ten",
+  "explanation": "C allows assignment expressions inside conditions because = returns the assigned value, which silently gets treated as the condition's truth value. This is a classic bug — comparisons must use ==, not =.",
+  "concepts": [
+    "comparison operators",
+    "== vs =",
+    "conditionals"
+  ]
+}

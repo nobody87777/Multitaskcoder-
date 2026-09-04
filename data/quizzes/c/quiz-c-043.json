@@ -1,0 +1,22 @@
+{
+  "id": "quiz-c-043",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "code-analysis",
+  "topic": "Memory",
+  "question": "What is the problem with this code?",
+  "code": "int *p = malloc(sizeof(int));\n*p = 42;\nfree(p);\nprintf(\"%d\\n\", *p);",
+  "options": [
+    "There is no problem; this is correct, safe code",
+    "malloc() was called with the wrong size",
+    "After free(p), p becomes a dangling pointer, and dereferencing it (*p) is undefined behavior",
+    "free() should have been called before assigning *p = 42"
+  ],
+  "correctAnswer": 2,
+  "explanation": "free(p) releases the memory back to the system, but p still holds that now-invalid address — a dangling pointer. Dereferencing it afterward is undefined behavior, even though it may sometimes appear to 'work'.",
+  "concepts": [
+    "dangling pointers",
+    "free()",
+    "undefined behavior"
+  ]
+}

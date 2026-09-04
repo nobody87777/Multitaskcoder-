@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-021",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "bugType": "index-out-of-bounds",
+  "title": "Fix the Undersized Array",
+  "description": "The program should fill an array with the numbers 1 through 5.",
+  "buggyCode": "public class FillArray {\n    public static void main(String[] args) {\n        int[] numbers = new int[4];\n        for (int i = 0; i < 5; i++) {\n            numbers[i] = i + 1;\n        }\n        System.out.println(numbers[4]);\n    }\n}",
+  "expectedBehavior": "The program should store 1 through 5 in the array and print 5.",
+  "actualProblem": "The array is created with only 4 slots (valid indices 0-3), but the loop tries to write 5 values (indices 0-4), so writing numbers[4] throws an ArrayIndexOutOfBoundsException.",
+  "correctedCode": "public class FillArray {\n    public static void main(String[] args) {\n        int[] numbers = new int[5];\n        for (int i = 0; i < 5; i++) {\n            numbers[i] = i + 1;\n        }\n        System.out.println(numbers[4]);\n    }\n}",
+  "expectedOutput": "5",
+  "explanation": "An array's size, set with new int[n], must be large enough to hold every index the code intends to use. Here the array needs 5 slots to hold 5 values, not 4.",
+  "concepts": [
+    "arrays",
+    "array size",
+    "ArrayIndexOutOfBoundsException"
+  ]
+}

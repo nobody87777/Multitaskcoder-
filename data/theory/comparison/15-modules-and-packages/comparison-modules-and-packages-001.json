@@ -1,0 +1,59 @@
+{
+  "id": "comparison-modules-and-packages-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Modules and Packages",
+  "topic": "Modules and Packages",
+  "topicNumber": 15,
+  "lessonNumber": 15,
+  "title": "Modules and Packages: Organizing Code Across Files",
+  "difficulty": "intermediate",
+  "description": "How Python modules/packages, Java packages, and C headers/source files compare for organizing multi-file code.",
+  "objectives": [
+    "Compare Python's module/package system",
+    "Compare Java's package system",
+    "Compare C's header/source file convention"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Any .py file is a module, importable with import module or from module import name. A package is a directory containing an __init__.py. There's no compile-time linking step — imports are resolved at runtime, by searching sys.path. pip and virtual environments manage third-party dependencies."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "A package groups classes under a namespace (package com.example;), with the directory structure required to match the package name. import brings another package's classes into scope. Unlike Python, this is resolved at compile time (and again at class-loading time by the JVM), with the classpath determining where compiled classes/jars are found. Build tools (Maven, Gradle) manage dependencies, roughly analogous to pip."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "There's no module/package concept at the language level at all — organization is achieved purely by convention: a header file (.h) declares a module's public interface (function prototypes, type definitions), and a corresponding source file (.c) provides the implementation. #include textually pastes a header's contents in; the actual cross-file connections are resolved later, at link time, by the linker (not at compile time, and not via any language-level 'import' mechanism). There's no standard package manager built into the language, though various third-party tools (vcpkg, Conan) fill that role."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python's and Java's module/package systems are genuine language features, with defined namespacing, import resolution, and (for Java) compile-time checking; C's equivalent is a convention built on top of the preprocessor (#include) and the separate linking step, with no language-enforced namespacing at all (two unrelated global functions with the same name in different files is a link-time conflict, not something the language itself prevents earlier)."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Large C codebases rely heavily on naming conventions (prefixing function names by module, like mylib_init()) to avoid the naming collisions that Python's and Java's real namespacing prevents automatically."
+    }
+  ],
+  "keyPoints": [
+    "Python's import/package system and Java's package system are genuine, namespaced language features",
+    "C has no module/package concept — headers (.h) plus source files (.c), connected via #include and the linker, is purely a convention",
+    "Only Java performs true compile-time namespace/import checking among the three"
+  ],
+  "concepts": [
+    "modules",
+    "packages",
+    "import",
+    "headers",
+    "linking",
+    "namespacing"
+  ],
+  "previousLesson": "comparison-file-handling-001",
+  "nextLesson": "comparison-generics-001"
+}

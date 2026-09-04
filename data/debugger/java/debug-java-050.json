@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-050",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "JVM",
+  "bugType": "integer-overflow",
+  "title": "Fix the Silent Integer Overflow",
+  "description": "The program should multiply two large numbers and print the exact result.",
+  "buggyCode": "public class Main {\n    public static void main(String[] args) {\n        int a = 100000;\n        int b = 100000;\n        int result = a * b;\n        System.out.println(result);\n    }\n}",
+  "expectedBehavior": "The program should print 10000000000, the true product of 100000 and 100000.",
+  "actualProblem": "int in Java is a 32-bit type with a maximum value of about 2.1 billion. 100000 * 100000 (10 billion) exceeds that range, so the multiplication silently wraps around (overflows) to an incorrect, smaller (often negative) value instead of throwing any error.",
+  "correctedCode": "public class Main {\n    public static void main(String[] args) {\n        long a = 100000;\n        long b = 100000;\n        long result = a * b;\n        System.out.println(result);\n    }\n}",
+  "expectedOutput": "10000000000",
+  "explanation": "Java's int arithmetic does not check for overflow — it wraps around silently. Using long (64-bit) for values that can exceed int's range avoids the overflow and produces the mathematically correct result.",
+  "concepts": [
+    "integer overflow",
+    "long",
+    "primitive type limits"
+  ]
+}

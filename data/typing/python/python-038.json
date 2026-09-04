@@ -1,0 +1,15 @@
+{
+  "id": "python-038",
+  "language": "python",
+  "title": "Recursive Factorial",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "description": "Compute the factorial of a number using recursion.",
+  "code": "def factorial(n):\n    if n == 0 or n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nresult = factorial(6)\nprint(\"Factorial of 6 is\", result)",
+  "expectedOutput": "Factorial of 6 is 720",
+  "concepts": [
+    "recursion",
+    "base case",
+    "functions"
+  ]
+}

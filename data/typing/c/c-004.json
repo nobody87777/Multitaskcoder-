@@ -1,0 +1,14 @@
+{
+  "id": "c-004",
+  "language": "c",
+  "title": "Arithmetic Operators",
+  "difficulty": "beginner",
+  "topic": "Operators",
+  "description": "Demonstrate the basic arithmetic operators on two integers.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int a = 17, b = 5;\n\n    printf(\"Sum: %d\\n\", a + b);\n    printf(\"Difference: %d\\n\", a - b);\n    printf(\"Product: %d\\n\", a * b);\n    printf(\"Quotient: %d\\n\", a / b);\n    printf(\"Remainder: %d\\n\", a % b);\n    return 0;\n}",
+  "expectedOutput": "Sum: 22\nDifference: 12\nProduct: 85\nQuotient: 3\nRemainder: 2",
+  "concepts": [
+    "arithmetic operators",
+    "integer division"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "java-arrays-001",
+  "language": "java",
+  "section": "java",
+  "module": "Arrays",
+  "moduleNumber": 9,
+  "lessonNumber": 9,
+  "title": "Arrays",
+  "difficulty": "beginner",
+  "description": "One- and multi-dimensional arrays, initialization, traversal, copying, and the Arrays utility class.",
+  "objectives": [
+    "Declare, initialize, and traverse one-dimensional arrays",
+    "Work with multidimensional arrays",
+    "Copy, search, and sort arrays using the Arrays utility class",
+    "Recognize common array errors"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "One-Dimensional Arrays",
+      "body": "An array is a fixed-size, indexed collection of elements of the same type, declared as type[] name = new type[size]; (or type[] name = {v1, v2, v3}; for literal initialization). Once created, an array's length is fixed and available via the .length field (not a method — a common point of confusion for those coming from Java's own .length() on String). Valid indices run from 0 to length - 1; accessing an out-of-range index throws ArrayIndexOutOfBoundsException at runtime rather than being caught at compile time.\n\nArrays are objects in Java (even arrays of primitives), so an array variable is a reference — assigning one array variable to another (int[] b = a;) aliases the same array, exactly like Java's other reference types."
+    },
+    {
+      "type": "text",
+      "heading": "Multidimensional Arrays and the Arrays Utility Class",
+      "body": "A multidimensional array, most commonly two-dimensional, is declared as int[][] grid = new int[rows][cols]; — technically, Java implements this as an array of arrays, so rows can even have different lengths (a 'jagged array'). Traversal typically uses nested loops, often enhanced for-each loops for readability: for (int[] row : grid) { for (int value : row) { ... } }.\n\nThe java.util.Arrays utility class provides common operations you'd otherwise write by hand: Arrays.toString(arr) for a readable string representation (printing an array directly shows an unhelpful memory-address-like string, not its contents); Arrays.sort(arr) sorts in place; Arrays.equals(a, b) compares array contents (== only compares references, not contents); Arrays.copyOf(arr, newLength) and Arrays.copyOfRange(arr, from, to) create copies."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.Arrays;\n\npublic class ArraysDemo {\n    public static void main(String[] args) {\n        int[] numbers = {5, 2, 8, 1};\n        Arrays.sort(numbers);\n        System.out.println(Arrays.toString(numbers));   // [1, 2, 5, 8]\n\n        int[][] grid = { {1, 2}, {3, 4} };\n        for (int[] row : grid) {\n            System.out.println(Arrays.toString(row));\n        }\n\n        int[] a = {1, 2, 3};\n        int[] b = {1, 2, 3};\n        System.out.println((a == b) + \" \" + Arrays.equals(a, b));   // false true\n    }\n}",
+      "explanation": "Arrays.toString() is needed to print an array's actual contents (printing the array directly would show its type and hash code, not its values). == compares references (false, different objects), while Arrays.equals() compares contents (true)."
+    }
+  ],
+  "keyPoints": [
+    "Array size is fixed at creation and accessed via .length (a field, not a method)",
+    "An out-of-range index throws ArrayIndexOutOfBoundsException at runtime",
+    "Array variables are references — assignment aliases, it doesn't copy",
+    "Arrays.toString(), Arrays.sort(), Arrays.equals(), and Arrays.copyOf() cover most common needs"
+  ],
+  "commonMistakes": [
+    "Printing an array directly (System.out.println(arr)) instead of Arrays.toString(arr)",
+    "Using == to compare array contents instead of Arrays.equals()",
+    "Off-by-one loop bounds against .length, causing ArrayIndexOutOfBoundsException"
+  ],
+  "concepts": [
+    "arrays",
+    "multidimensional arrays",
+    "ArrayIndexOutOfBoundsException",
+    "Arrays.sort()",
+    "Arrays.toString()",
+    "Arrays.equals()"
+  ],
+  "previousLesson": "java-loops-001",
+  "nextLesson": "java-strings-001"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-013",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "wrong-loop-control-statement",
+  "title": "Fix the Prematurely Stopped Loop",
+  "description": "The program should print every positive number in an array, skipping negatives but continuing through the rest.",
+  "buggyCode": "public class PositivePrinter {\n    public static void main(String[] args) {\n        int[] numbers = {3, -1, 5, -2, 8};\n        for (int n : numbers) {\n            if (n < 0) {\n                break;\n            }\n            System.out.println(n);\n        }\n    }\n}",
+  "expectedBehavior": "The program should print 3, 5, and 8 — skipping negatives but still checking every remaining element.",
+  "actualProblem": "break exits the loop entirely as soon as the first negative number is found, so 5 and 8 are never checked or printed, even though they are positive.",
+  "correctedCode": "public class PositivePrinter {\n    public static void main(String[] args) {\n        int[] numbers = {3, -1, 5, -2, 8};\n        for (int n : numbers) {\n            if (n < 0) {\n                continue;\n            }\n            System.out.println(n);\n        }\n    }\n}",
+  "expectedOutput": "3\n5\n8",
+  "explanation": "break terminates the entire loop, while continue only skips the remaining code for the current element and moves on to the next one. Skipping unwanted values without stopping the whole loop calls for continue.",
+  "concepts": [
+    "break",
+    "continue",
+    "loop control"
+  ]
+}

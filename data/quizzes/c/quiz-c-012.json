@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-012",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "What is required for a while loop in C to eventually terminate?",
+  "options": [
+    "It must contain a printf() statement",
+    "It must use the variable named i",
+    "Nothing — while loops always terminate automatically",
+    "Its condition must eventually become false (typically through a change made inside the loop body)"
+  ],
+  "correctAnswer": 3,
+  "explanation": "A while loop keeps executing as long as its condition is true; something inside the loop body must eventually make that condition false, or it becomes an infinite loop.",
+  "concepts": [
+    "while loop",
+    "loop termination"
+  ]
+}

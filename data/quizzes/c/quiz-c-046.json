@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-046",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "What is the main advantage of a singly linked list over a fixed-size array for storing a growing collection of elements?",
+  "options": [
+    "Linked lists allow O(1) random access by index",
+    "Linked lists can grow dynamically without needing to pre-declare a fixed capacity",
+    "Linked lists use less memory per element than arrays",
+    "Linked lists are always faster to search"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Each node in a linked list is allocated individually and linked via pointers, so the list can grow or shrink at runtime without the fixed-capacity limitation of a plain array.",
+  "concepts": [
+    "linked lists",
+    "dynamic data structures"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-028",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Recursion",
+  "question": "What will this code print?",
+  "code": "def countdown(n):\n    if n == 0:\n        print(\"Liftoff!\")\n    else:\n        print(n)\n        countdown(n - 1)\n\ncountdown(3)",
+  "options": [
+    "3, 2, 1 (no Liftoff message)",
+    "Liftoff! only",
+    "RecursionError: maximum recursion depth exceeded",
+    "3, 2, 1, Liftoff!"
+  ],
+  "correctAnswer": 3,
+  "explanation": "The function prints n then recurses with n-1 until n reaches 0, at which point it prints 'Liftoff!' instead of recursing further — producing 3, 2, 1, Liftoff!.",
+  "concepts": [
+    "recursion",
+    "base case"
+  ]
+}

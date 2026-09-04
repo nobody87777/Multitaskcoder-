@@ -1,0 +1,15 @@
+{
+  "id": "c-048",
+  "language": "c",
+  "title": "Stack Using an Array",
+  "difficulty": "advanced",
+  "topic": "Data Structures",
+  "description": "Implement a fixed-size stack with push and pop operations using an array.",
+  "code": "#include <stdio.h>\n\n#define MAX 5\n\nint stack[MAX];\nint top = -1;\n\nvoid push(int value) {\n    if (top == MAX - 1) {\n        printf(\"Stack overflow\\n\");\n        return;\n    }\n    stack[++top] = value;\n}\n\nint pop() {\n    if (top == -1) {\n        printf(\"Stack underflow\\n\");\n        return -1;\n    }\n    return stack[top--];\n}\n\nint main() {\n    push(10);\n    push(20);\n    push(30);\n\n    printf(\"Popped: %d\\n\", pop());\n    printf(\"Popped: %d\\n\", pop());\n    printf(\"Remaining top: %d\\n\", stack[top]);\n\n    return 0;\n}",
+  "expectedOutput": "Popped: 30\nPopped: 20\nRemaining top: 10",
+  "concepts": [
+    "stack",
+    "LIFO",
+    "global arrays"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "comparison-type-systems-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Type Systems",
+  "topic": "Type Systems",
+  "topicNumber": 5,
+  "lessonNumber": 5,
+  "title": "Type Systems: Static vs. Dynamic Typing, Inference, and Casting",
+  "difficulty": "intermediate",
+  "description": "How compile-time vs. runtime type checking, type inference, and casting differ across the three languages.",
+  "objectives": [
+    "Compare static and dynamic typing",
+    "Compare type inference support",
+    "Compare casting/conversion mechanisms"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Python is dynamically typed: types are checked at runtime, and a variable's type is a property of the value it currently holds, not a fixed declaration. Optional type hints (mypy-checkable) can add static-analysis-time checking, but the language itself never enforces them at runtime. Type conversion is always explicit and functional: int(\"5\"), str(5)."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Java is statically typed: every variable's type is fixed at compile time and checked before the program ever runs, catching a whole class of errors early. var (Java 10+) infers a local variable's type from its initializer, but the type is still fixed at compile time — this is type inference, not dynamic typing. Widening numeric conversions are implicit; narrowing ones require an explicit cast, (int) someDouble."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C is also statically typed, though with weaker enforcement than Java in several ways: implicit conversions between numeric types happen more freely (and can silently lose data), and pointer type mismatches sometimes only produce warnings rather than hard compile errors, depending on the compiler and flags used. Casting uses the (type) expression syntax, same visual form as Java's, but applies to a wider range of situations, including reinterpreting pointer types."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python defers all type checking to runtime; Java and C both check types at compile time, but Java's static typing is considerably stricter and more consistently enforced than C's (Java, for instance, refuses many implicit conversions C allows through with just a warning). Java's var and C's absence of any type-inference keyword (types must always be spelled out explicitly) mark another distinction."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Static typing (Java, C) catches type mismatches before the program ever runs, at the cost of more upfront ceremony; dynamic typing (Python) is faster to write but pushes type-mismatch discovery to runtime (or to an optional, separate static checker like mypy)."
+    }
+  ],
+  "keyPoints": [
+    "Python: dynamic typing, checked at runtime, with optional non-enforced type hints",
+    "Java: strict static typing, checked at compile time, with type inference via var",
+    "C: static typing, checked at compile time, but with looser, more permissive implicit conversions than Java"
+  ],
+  "concepts": [
+    "static typing",
+    "dynamic typing",
+    "type inference",
+    "casting",
+    "type conversion"
+  ],
+  "previousLesson": "comparison-data-types-001",
+  "nextLesson": "comparison-memory-001"
+}

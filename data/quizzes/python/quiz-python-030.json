@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-030",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Functions",
+  "question": "What will this code print?",
+  "code": "nums = [1, 2, 3]\ndoubled = list(map(lambda x: x * 2, nums))\nprint(doubled)",
+  "options": [
+    "[1, 2, 3]",
+    "[2, 4, 6]",
+    "[2, 4, 6, 1, 2, 3]",
+    "TypeError"
+  ],
+  "correctAnswer": 1,
+  "explanation": "map() applies the lambda to every element of nums, doubling each value, and list() collects the results into [2, 4, 6].",
+  "concepts": [
+    "map()",
+    "lambda"
+  ]
+}

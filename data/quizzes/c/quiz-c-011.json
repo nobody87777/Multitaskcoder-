@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-011",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Loops",
+  "question": "What will this code print?",
+  "code": "for (int i = 1; i <= 3; i++) {\n    printf(\"%d \", i);\n}",
+  "options": [
+    "0 1 2 ",
+    "1 2 3 4 ",
+    "1 2 3 ",
+    "Infinite loop"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The loop starts at i=1 and runs while i <= 3, printing 1, 2, and 3 before the condition fails.",
+  "concepts": [
+    "for loop",
+    "loop bounds"
+  ]
+}

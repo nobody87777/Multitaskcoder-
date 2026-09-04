@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-021",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "What is the result of calling numbers.append(4) on numbers = [1, 2, 3]?",
+  "options": [
+    "numbers becomes [1, 2, 3, 4]",
+    "numbers becomes [4, 1, 2, 3]",
+    "A new list [1, 2, 3, 4] is returned, leaving numbers unchanged",
+    "TypeError: list has no method append"
+  ],
+  "correctAnswer": 0,
+  "explanation": "append() mutates the list in place, adding the given value to the end, so numbers becomes [1, 2, 3, 4].",
+  "concepts": [
+    "list methods",
+    "append()"
+  ]
+}

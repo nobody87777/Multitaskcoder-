@@ -1,0 +1,14 @@
+{
+  "id": "java-021",
+  "language": "java",
+  "title": "Array Sum",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Calculate the sum of all elements in an integer array.",
+  "code": "public class ArraySum {\n    public static void main(String[] args) {\n        int[] numbers = {10, 20, 30, 40, 50};\n        int sum = 0;\n\n        for (int n : numbers) {\n            sum += n;\n        }\n\n        System.out.println(\"Sum: \" + sum);\n    }\n}",
+  "expectedOutput": "Sum: 150",
+  "concepts": [
+    "arrays",
+    "enhanced for loop"
+  ]
+}

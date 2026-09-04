@@ -1,0 +1,21 @@
+{
+  "id": "debug-c-004",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "bugType": "missing-address-operator",
+  "title": "Fix the Missing Address-Of Operator",
+  "description": "The program should read an integer from the user and print it.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int age;\n    printf(\"Enter your age: \");\n    scanf(\"%d\", age);\n    printf(\"You are %d years old\\n\", age);\n    return 0;\n}",
+  "expectedBehavior": "The program should read the typed number into age and print it back.",
+  "actualProblem": "scanf needs the memory address of age to store the input into, but age (without &) passes its current (uninitialized) value instead of its address. scanf then tries to write to that garbage 'address', which is undefined behavior and usually crashes.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int age;\n    printf(\"Enter your age: \");\n    scanf(\"%d\", &age);\n    printf(\"You are %d years old\\n\", age);\n    return 0;\n}",
+  "exampleInput": "25",
+  "expectedOutput": "Enter your age: You are 25 years old",
+  "explanation": "scanf() writes its result directly into memory, so it needs a pointer (an address) to know where to write. The & (address-of) operator supplies that address; forgetting it is one of the most common C beginner mistakes.",
+  "concepts": [
+    "scanf()",
+    "pointers",
+    "address-of operator"
+  ]
+}

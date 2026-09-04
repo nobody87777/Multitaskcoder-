@@ -1,0 +1,19 @@
+{
+  "id": "debug-python-014",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Strings",
+  "bugType": "off-by-one-logic",
+  "title": "Fix the First-Three-Letters Slice",
+  "description": "The program should print the first three letters of a word. Fix the bug.",
+  "buggyCode": "word = \"Python\"\nprint(word[0:2])",
+  "expectedBehavior": "The program should print 'Pyt', the first three letters.",
+  "actualProblem": "A slice [0:2] only includes indices 0 and 1, giving just 'Py' — two characters instead of the intended three.",
+  "correctedCode": "word = \"Python\"\nprint(word[0:3])",
+  "expectedOutput": "Pyt",
+  "explanation": "Slicing with [start:stop] includes start but excludes stop. To capture exactly three characters starting at index 0, the slice must end at index 3.",
+  "concepts": [
+    "slicing",
+    "strings"
+  ]
+}

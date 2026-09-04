@@ -1,0 +1,21 @@
+{
+  "id": "debug-python-049",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Data Processing",
+  "bugType": "key-error",
+  "title": "Fix the Inconsistent Record Processor",
+  "description": "The program should print the email of every user record, skipping any record that doesn't have one. Fix the bug.",
+  "buggyCode": "users = [\n    {\"name\": \"Asha\", \"email\": \"asha@example.com\"},\n    {\"name\": \"Ravi\"},\n    {\"name\": \"Meera\", \"email\": \"meera@example.com\"}\n]\n\nfor user in users:\n    print(user[\"email\"])",
+  "expectedBehavior": "The program should print Asha's and Meera's emails, and skip Ravi's record since it has no email field.",
+  "actualProblem": "Ravi's dictionary has no 'email' key at all, so user[\"email\"] raises a KeyError and crashes the loop partway through, instead of gracefully skipping that record.",
+  "correctedCode": "users = [\n    {\"name\": \"Asha\", \"email\": \"asha@example.com\"},\n    {\"name\": \"Ravi\"},\n    {\"name\": \"Meera\", \"email\": \"meera@example.com\"}\n]\n\nfor user in users:\n    email = user.get(\"email\")\n    if email:\n        print(email)",
+  "expectedOutput": "asha@example.com\nmeera@example.com",
+  "explanation": "When processing a batch of dictionaries that may not all share the same keys, use dict.get(key) (which returns None for a missing key instead of raising) rather than square-bracket access, then check the result before using it.",
+  "concepts": [
+    "dictionaries",
+    "KeyError",
+    "dict.get()",
+    "data processing"
+  ]
+}

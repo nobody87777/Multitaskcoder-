@@ -1,0 +1,16 @@
+{
+  "id": "java-016",
+  "language": "java",
+  "title": "Fibonacci Series (Iterative)",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Print the first N terms of the Fibonacci sequence using a loop.",
+  "code": "import java.util.Scanner;\n\npublic class FibonacciSeries {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        int a = 0, b = 1;\n\n        for (int i = 0; i < n; i++) {\n            System.out.print(a + \" \");\n            int next = a + b;\n            a = b;\n            b = next;\n        }\n        System.out.println();\n    }\n}",
+  "exampleInput": "8",
+  "expectedOutput": "0 1 1 2 3 5 8 13 ",
+  "concepts": [
+    "for loop",
+    "sequences",
+    "variable swapping"
+  ]
+}

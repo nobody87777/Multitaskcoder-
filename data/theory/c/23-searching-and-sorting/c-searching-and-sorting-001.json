@@ -1,0 +1,57 @@
+{
+  "id": "c-searching-and-sorting-001",
+  "language": "c",
+  "section": "c",
+  "module": "Searching and Sorting",
+  "moduleNumber": 23,
+  "lessonNumber": 25,
+  "title": "Searching and Sorting",
+  "difficulty": "intermediate",
+  "description": "Linear and binary search, bubble/selection/insertion sort, and a basic look at algorithm complexity.",
+  "objectives": [
+    "Implement linear and binary search",
+    "Implement bubble, selection, and insertion sort",
+    "Understand Big-O complexity at a practical level",
+    "Choose an appropriate algorithm for a given situation"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Searching",
+      "body": "Linear search checks each element in sequence until a match is found (or the end is reached) — works on any array, sorted or not, at O(n) worst-case time. Binary search repeatedly halves the search range by comparing against the middle element, but requires the array to already be sorted; it runs in O(log n) time, dramatically faster than linear search for large arrays, at the cost of needing the data sorted first (itself an O(n log n) operation if it isn't already)."
+    },
+    {
+      "type": "text",
+      "heading": "Sorting and Complexity",
+      "body": "Bubble sort repeatedly steps through the array, swapping adjacent out-of-order pairs, so the largest unsorted element 'bubbles' to its correct position each pass — simple to understand and implement, but O(n²) time, making it impractical for large datasets. Selection sort repeatedly finds the minimum remaining element and swaps it into its correct position — also O(n²), but with fewer swaps than bubble sort. Insertion sort builds up a sorted portion of the array one element at a time, shifting larger elements right to make room — also O(n²) worst case, but efficient in practice on nearly-sorted data, and often used as a component within more sophisticated hybrid sorting algorithms.\n\nAlgorithm complexity (Big-O notation) describes how an algorithm's running time (or memory use) grows as input size grows, ignoring constant factors — O(1) constant, O(log n) logarithmic, O(n) linear, O(n log n) 'linearithmic' (typical of efficient general-purpose sorts like merge sort or quicksort), and O(n²) quadratic. Choosing an algorithm means weighing this asymptotic behavior against the actual expected data size, whether the data is already partially sorted, and implementation simplicity — for small arrays, a simple O(n²) sort can genuinely outperform a more 'efficient' one due to lower constant overhead."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint binarySearch(int arr[], int n, int target) {\n    int low = 0, high = n - 1;\n    while (low <= high) {\n        int mid = (low + high) / 2;\n        if (arr[mid] == target) return mid;\n        else if (arr[mid] < target) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\n\nvoid insertionSort(int arr[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = arr[i], j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nint main() {\n    int arr[] = {5, 2, 8, 1, 9};\n    insertionSort(arr, 5);\n    for (int i = 0; i < 5; i++) printf(\"%d \", arr[i]);   // 1 2 5 8 9\n    printf(\"\\n%d\\n\", binarySearch(arr, 5, 8));            // index 3, now that it's sorted\n    return 0;\n}",
+      "explanation": "insertionSort sorts the array in place. binarySearch is then correctly applicable, since the array is now sorted — binary search's O(log n) guarantee depends entirely on that precondition."
+    }
+  ],
+  "keyPoints": [
+    "Linear search works on any array at O(n); binary search needs a sorted array but runs at O(log n)",
+    "Bubble, selection, and insertion sort are all O(n²) worst-case, but insertion sort is efficient on nearly-sorted data",
+    "Big-O describes how running time/memory scale with input size, ignoring constant factors",
+    "Algorithm choice should weigh asymptotic complexity against actual data size and characteristics"
+  ],
+  "commonMistakes": [
+    "Using binary search on an unsorted array, getting incorrect or inconsistent results",
+    "Assuming an asymptotically 'better' algorithm is always faster in practice, even for small inputs",
+    "Off-by-one errors in the inner loop bounds of a hand-written sort implementation"
+  ],
+  "concepts": [
+    "linear search",
+    "binary search",
+    "bubble sort",
+    "selection sort",
+    "insertion sort",
+    "algorithm complexity",
+    "Big-O"
+  ],
+  "previousLesson": "c-data-structures-in-c-002",
+  "nextLesson": "c-bit-manipulation-001"
+}

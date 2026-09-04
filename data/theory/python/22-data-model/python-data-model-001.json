@@ -1,0 +1,59 @@
+{
+  "id": "python-data-model-001",
+  "language": "python",
+  "section": "python",
+  "module": "Python Data Model",
+  "moduleNumber": 22,
+  "lessonNumber": 24,
+  "title": "The Python Data Model",
+  "difficulty": "advanced",
+  "description": "How objects, references, identity, equality, and special methods form the foundation of Python's object behavior.",
+  "objectives": [
+    "Understand objects, references, identity, and equality precisely",
+    "Understand mutability's role in the data model",
+    "Know the purpose of key dunder methods: __str__, __repr__, __len__, __getitem__, __iter__, __next__"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Objects, References, Identity, and Equality",
+      "body": "Everything in Python is an object — every int, function, class, and module. A variable is a reference (a name bound to an object), not a container holding a value directly. Object identity (checked with is, or compared numerically via id()) means 'are these two names pointing at the literal same object in memory'; equality (checked with ==, backed by a class's __eq__ method) means 'do these objects represent the same value', which is a separate, class-defined question. Two distinct objects can be equal (two separate list objects both containing [1, 2, 3]) without being identical.\n\nMutability determines what 'the same object, changed' looks like: mutating a list changes what every reference to that object sees, whereas 'modifying' an immutable int or str actually creates a brand-new object and rebinds the name to it."
+    },
+    {
+      "type": "text",
+      "heading": "Special (Dunder) Methods That Define Object Behavior",
+      "body": "The data model is largely defined by dunder methods your own classes can implement to plug into Python's built-in syntax and functions. __str__(self) backs str(obj)/print(obj) — a readable, informal representation. __repr__(self) backs repr(obj) and how an object displays inside a list/dict or at the REPL — an unambiguous, ideally-reconstructible representation; if only __repr__ is defined, Python falls back to it for str() too. __len__(self) backs len(obj) and also determines truthiness by default (an object with __len__ returning 0 is falsy). __getitem__(self, key) enables obj[key] indexing/slicing; __iter__/__next__ implement the iterator protocol (covered in the Iterators and Generators lesson). Implementing these consistently is what makes a custom class feel like a natural, 'first-class' Python type rather than a bolted-on object."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "class Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __repr__(self):\n        return f\"Point({self.x}, {self.y})\"\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\np1, p2 = Point(1, 2), Point(1, 2)\nprint(p1 == p2, p1 is p2)   # True False — equal value, different objects\nprint(p1)                    # Point(1, 2) — via __repr__",
+      "explanation": "p1 == p2 uses the custom __eq__ to compare coordinates (True), while p1 is p2 checks object identity, which is False since they're two separately-created Point objects."
+    }
+  ],
+  "keyPoints": [
+    "A variable is a reference to an object, not the object itself",
+    "is checks identity (same object); == checks equality (same value, via __eq__)",
+    "Mutability determines whether 'changing' an object affects every reference to it",
+    "Dunder methods (__str__, __repr__, __len__, __getitem__, __iter__) let custom classes participate in built-in syntax"
+  ],
+  "commonMistakes": [
+    "Using is to compare values, which only reliably matches for identity, not equal-but-distinct objects",
+    "Defining __eq__ without also defining __hash__, making instances unusable in sets/dicts",
+    "Confusing __str__ (informal, for humans) with __repr__ (unambiguous, for developers/debugging)"
+  ],
+  "concepts": [
+    "objects",
+    "references",
+    "identity",
+    "equality",
+    "mutability",
+    "__str__",
+    "__repr__",
+    "__len__",
+    "__getitem__",
+    "dunder methods"
+  ],
+  "previousLesson": "python-context-managers-001",
+  "nextLesson": "python-copying-001"
+}

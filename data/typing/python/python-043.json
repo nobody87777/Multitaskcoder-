@@ -1,0 +1,15 @@
+{
+  "id": "python-043",
+  "language": "python",
+  "title": "JSON Data Processing",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Serialize a Python dictionary to JSON, then parse it back and read a value.",
+  "code": "import json\n\ndata = {\"name\": \"Asha\", \"age\": 21, \"skills\": [\"Python\", \"SQL\"]}\n\njson_text = json.dumps(data)\nprint(\"Serialized:\", json_text)\n\nparsed = json.loads(json_text)\nprint(\"Name:\", parsed[\"name\"])\nprint(\"First skill:\", parsed[\"skills\"][0])",
+  "expectedOutput": "Serialized: {\"name\": \"Asha\", \"age\": 21, \"skills\": [\"Python\", \"SQL\"]}\nName: Asha\nFirst skill: Python",
+  "concepts": [
+    "json module",
+    "serialization",
+    "deserialization"
+  ]
+}

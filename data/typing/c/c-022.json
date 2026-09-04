@@ -1,0 +1,15 @@
+{
+  "id": "c-022",
+  "language": "c",
+  "title": "Array Maximum",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Find the maximum value in an array without using a library function.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {12, 45, 3, 89, 27, 56};\n    int n = sizeof(numbers) / sizeof(numbers[0]);\n    int largest = numbers[0];\n\n    for (int i = 1; i < n; i++) {\n        if (numbers[i] > largest) {\n            largest = numbers[i];\n        }\n    }\n\n    printf(\"Largest number: %d\\n\", largest);\n    return 0;\n}",
+  "expectedOutput": "Largest number: 89",
+  "concepts": [
+    "arrays",
+    "iteration",
+    "comparison"
+  ]
+}

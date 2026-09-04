@@ -1,0 +1,16 @@
+{
+  "id": "java-020",
+  "language": "java",
+  "title": "Count Digits in a Number",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Count how many digits a given integer has.",
+  "code": "import java.util.Scanner;\n\npublic class CountDigits {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int num = scanner.nextInt();\n        int temp = Math.abs(num);\n        int count = 0;\n\n        if (temp == 0) {\n            count = 1;\n        } else {\n            while (temp > 0) {\n                count++;\n                temp /= 10;\n            }\n        }\n\n        System.out.println(num + \" has \" + count + \" digits\");\n    }\n}",
+  "exampleInput": "987654",
+  "expectedOutput": "987654 has 6 digits",
+  "concepts": [
+    "while loop",
+    "Math.abs()",
+    "edge case handling"
+  ]
+}

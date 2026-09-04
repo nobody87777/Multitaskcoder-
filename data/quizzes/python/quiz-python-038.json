@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-038",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Functions",
+  "question": "What does defining a function as `def f(*args):` allow?",
+  "options": [
+    "The function accepts exactly one argument named args",
+    "The function accepts any number of positional arguments, collected into a tuple named args",
+    "The function accepts only keyword arguments",
+    "It is a syntax error"
+  ],
+  "correctAnswer": 1,
+  "explanation": "The * before args collects any number of positional arguments passed to the function into a tuple called args.",
+  "concepts": [
+    "*args",
+    "variadic functions"
+  ]
+}

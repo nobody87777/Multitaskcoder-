@@ -1,0 +1,57 @@
+{
+  "id": "java-type-conversion-and-casting-001",
+  "language": "java",
+  "section": "java",
+  "module": "Type Conversion and Casting",
+  "moduleNumber": 4,
+  "lessonNumber": 4,
+  "title": "Type Conversion and Casting",
+  "difficulty": "beginner",
+  "description": "Widening and narrowing numeric conversions, explicit casting, and reference-type casting.",
+  "objectives": [
+    "Understand widening (implicit) vs. narrowing (explicit) numeric conversion",
+    "Perform explicit casts and understand when data can be lost",
+    "Understand reference casting and ClassCastException"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Widening and Narrowing Numeric Conversion",
+      "body": "Widening conversion moves a value to a type that can represent a strictly larger range (e.g., int to long, or int to double) and happens implicitly/automatically, since no information can be lost. Narrowing conversion moves a value to a type with a smaller range (e.g., double to int, or int to byte) and requires an explicit cast, because it can lose information: double d = 9.75; int i = (int) d; truncates to 9 (not rounds), and casting an int outside a smaller type's range wraps around unpredictably.\n\nMixed-type arithmetic follows widening rules automatically: int / int performs integer division (discarding the remainder), but if either operand is a double, the whole expression is promoted to double before dividing."
+    },
+    {
+      "type": "text",
+      "heading": "Explicit Casting and Reference Casting",
+      "body": "The cast syntax is (targetType) expression: (int) 9.75, (double) someInt. For reference types, casting works differently: it doesn't convert data, it reinterprets a reference as a more specific (or less specific) type in a class hierarchy. Upcasting (treating a subclass reference as its superclass type, e.g., Object o = new Dog()) is always safe and implicit. Downcasting (treating a superclass reference as a more specific subclass, e.g., Dog d = (Dog) o) requires an explicit cast and is only safe if the object's actual runtime type really is that subclass (or a further subclass of it) — otherwise it throws a ClassCastException at runtime. The instanceof operator lets you check an object's actual type before attempting a downcast."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Casting {\n    public static void main(String[] args) {\n        double price = 19.75;\n        int rounded = (int) price;            // narrowing, explicit: truncates to 19\n\n        int a = 10;\n        double b = a;                          // widening, implicit\n\n        Object obj = \"a string\";               // upcasting, implicit\n        if (obj instanceof String) {\n            String s = (String) obj;           // downcasting, explicit and safe here\n            System.out.println(s.length());\n        }\n    }\n}",
+      "explanation": "(int) price truncates rather than rounds. The instanceof check before the downcast avoids a potential ClassCastException if obj had actually held a different type at runtime."
+    }
+  ],
+  "keyPoints": [
+    "Widening (small type -> large type) happens implicitly; narrowing requires an explicit cast",
+    "Casting a double to int truncates the decimal part — it does not round",
+    "Upcasting (subclass reference -> superclass type) is implicit and always safe",
+    "Downcasting requires an explicit cast and can throw ClassCastException if the actual object isn't that subclass"
+  ],
+  "commonMistakes": [
+    "Expecting (int) someDouble to round instead of truncate",
+    "Performing int / int and being surprised by integer division instead of a decimal result",
+    "Downcasting without an instanceof check first, risking a runtime ClassCastException"
+  ],
+  "concepts": [
+    "widening",
+    "narrowing",
+    "explicit casting",
+    "implicit conversion",
+    "upcasting",
+    "downcasting",
+    "ClassCastException",
+    "instanceof"
+  ],
+  "previousLesson": "java-variables-and-data-types-001",
+  "nextLesson": "java-operators-001"
+}

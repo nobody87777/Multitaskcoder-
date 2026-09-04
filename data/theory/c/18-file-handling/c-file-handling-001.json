@@ -1,0 +1,63 @@
+{
+  "id": "c-file-handling-001",
+  "language": "c",
+  "section": "c",
+  "module": "File Handling",
+  "moduleNumber": 18,
+  "lessonNumber": 19,
+  "title": "File Handling",
+  "difficulty": "intermediate",
+  "description": "Working with FILE*: opening, reading, writing, seeking, and proper error handling.",
+  "objectives": [
+    "Open and close files with fopen/fclose",
+    "Read and write text and binary data",
+    "Use fseek/ftell/rewind for random access",
+    "Handle file errors and EOF correctly"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Opening, Reading, and Writing",
+      "body": "FILE *fp = fopen(path, mode); opens a file, returning a pointer to a FILE stream object, or NULL on failure (a missing file in read mode, insufficient permissions, and so on) — that return value must always be checked before use. Common modes: \"r\" (read text), \"w\" (write text, truncating/creating), \"a\" (append text), and their binary counterparts \"rb\"/\"wb\"/\"ab\". fprintf(fp, format, ...) and fscanf(fp, format, ...) are the file-based equivalents of printf/scanf. fgets(buffer, size, fp) reads one line (up to size - 1 characters, always leaving room for a null terminator) into buffer, and returns NULL at end-of-file or on error. fputs(str, fp) writes a string (without adding a newline automatically). fread(buffer, size, count, fp) and fwrite(buffer, size, count, fp) handle raw binary data, reading/writing count elements of size bytes each. Every fopen() must be paired with exactly one fclose(fp) once the file is no longer needed."
+    },
+    {
+      "type": "text",
+      "heading": "Seeking and Error Handling",
+      "body": "fseek(fp, offset, origin) repositions the file position indicator (origin is SEEK_SET for absolute, from the start; SEEK_CUR for relative to the current position; SEEK_END for relative to the end), enabling random (non-sequential) access. ftell(fp) returns the current position as a long. rewind(fp) resets the position back to the beginning, equivalent to fseek(fp, 0, SEEK_SET) (and also clears the stream's error indicator).\n\nEOF is a special value (typically -1) returned by several functions (like getc()) to signal end-of-file, distinguishing it from any valid character value; fgets() instead signals EOF by returning NULL. feof(fp) and ferror(fp) let you distinguish 'ran out of input normally' from 'a genuine read/write error occurred' after a failed read."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    FILE *fp = fopen(\"notes.txt\", \"w\");\n    if (fp == NULL) {\n        printf(\"Could not open file for writing\\n\");\n        return 1;\n    }\n    fprintf(fp, \"Line one\\nLine two\\n\");\n    fclose(fp);\n\n    fp = fopen(\"notes.txt\", \"r\");\n    if (fp == NULL) {\n        printf(\"Could not open file for reading\\n\");\n        return 1;\n    }\n    char buffer[100];\n    while (fgets(buffer, sizeof(buffer), fp) != NULL) {\n        printf(\"%s\", buffer);\n    }\n    fclose(fp);\n    return 0;\n}",
+      "explanation": "Both fopen() calls are checked for NULL before use. fgets() returning NULL is the standard loop-termination signal for reading a file line by line until EOF."
+    }
+  ],
+  "keyPoints": [
+    "fopen() returns NULL on failure — always check before using the FILE* it returns",
+    "fgets() is the standard safe way to read a line, bounded by a buffer size, avoiding overflow",
+    "fseek/ftell/rewind enable random access within a file",
+    "Every successful fopen() needs exactly one matching fclose()"
+  ],
+  "commonMistakes": [
+    "Not checking fopen()'s return value for NULL before using it",
+    "Using gets() (removed from modern C standards) or an unbounded read instead of the bounded fgets()",
+    "Forgetting to fclose() an opened file, risking unflushed writes or an exhausted file-handle limit"
+  ],
+  "concepts": [
+    "FILE",
+    "fopen",
+    "fclose",
+    "fprintf",
+    "fscanf",
+    "fgets",
+    "fputs",
+    "fread",
+    "fwrite",
+    "fseek",
+    "ftell",
+    "rewind",
+    "EOF"
+  ],
+  "previousLesson": "c-enumerations-and-typedef-001",
+  "nextLesson": "c-preprocessor-001"
+}

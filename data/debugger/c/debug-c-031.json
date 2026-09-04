@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-031",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "union-misuse",
+  "title": "Fix the Union Member Misuse",
+  "description": "The program should store an integer in a union and read it back correctly.",
+  "buggyCode": "#include <stdio.h>\n\nunion Value {\n    int asInt;\n    float asFloat;\n};\n\nint main() {\n    union Value v;\n    v.asInt = 100;\n    printf(\"%f\\n\", v.asFloat);\n    return 0;\n}",
+  "expectedBehavior": "The program should print the integer value that was actually stored, 100, using the matching member.",
+  "actualProblem": "All members of a union share the exact same memory. Writing to v.asInt and then reading v.asFloat reinterprets those same raw bytes as a completely different type (float), producing a meaningless, unrelated value instead of 100.",
+  "correctedCode": "#include <stdio.h>\n\nunion Value {\n    int asInt;\n    float asFloat;\n};\n\nint main() {\n    union Value v;\n    v.asInt = 100;\n    printf(\"%d\\n\", v.asInt);\n    return 0;\n}",
+  "expectedOutput": "100",
+  "explanation": "A union stores only one member's value at a time, in memory shared by all its members. The program must read back the value using the same member it was written with, or the raw bytes will be misinterpreted as the wrong type.",
+  "concepts": [
+    "unions",
+    "memory layout",
+    "type reinterpretation"
+  ]
+}

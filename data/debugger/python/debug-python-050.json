@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-050",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Advanced OOP",
+  "bugType": "identity-vs-equality",
+  "title": "Fix the Todo Manager's Broken Lookup",
+  "description": "The program should mark a todo item as complete by matching its task name. Fix the bug.",
+  "buggyCode": "class Todo:\n    def __init__(self, task):\n        self.task = task\n        self.done = False\n\nclass TodoManager:\n    def __init__(self):\n        self.todos = []\n\n    def add(self, task):\n        self.todos.append(Todo(task))\n\n    def complete(self, task_name):\n        for todo in self.todos:\n            if todo.task is task_name:\n                todo.done = True\n\nmanager = TodoManager()\nmanager.add(\"Buy milk\")\nrebuilt_name = \" \".join([\"Buy\", \"milk\"])\nmanager.complete(rebuilt_name)\nprint(manager.todos[0].done)",
+  "expectedBehavior": "The program should print True — the task should be found and marked complete by its text, regardless of how that text string was constructed.",
+  "actualProblem": "todo.task is task_name checks whether the two variables refer to the exact same string object in memory (identity), not whether their text is equal. Rebuilding the text at runtime with \" \".join([...]) creates a brand-new string object with the same characters as \"Buy milk\", but it is not the same object Python stored earlier, so the identity check silently fails.",
+  "correctedCode": "class Todo:\n    def __init__(self, task):\n        self.task = task\n        self.done = False\n\nclass TodoManager:\n    def __init__(self):\n        self.todos = []\n\n    def add(self, task):\n        self.todos.append(Todo(task))\n\n    def complete(self, task_name):\n        for todo in self.todos:\n            if todo.task == task_name:\n                todo.done = True\n\nmanager = TodoManager()\nmanager.add(\"Buy milk\")\nrebuilt_name = \" \".join([\"Buy\", \"milk\"])\nmanager.complete(rebuilt_name)\nprint(manager.todos[0].done)",
+  "expectedOutput": "True",
+  "explanation": "is compares object identity, while == compares value equality. Two strings with identical text are not guaranteed to be the same object in memory, so comparing text with is is unreliable — value comparisons should always use ==.",
+  "concepts": [
+    "is vs ==",
+    "object identity",
+    "string comparison"
+  ]
+}

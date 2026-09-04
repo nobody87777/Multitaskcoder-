@@ -1,0 +1,57 @@
+{
+  "id": "python-strings-002",
+  "language": "python",
+  "section": "python",
+  "module": "Strings",
+  "moduleNumber": 7,
+  "lessonNumber": 8,
+  "title": "String Methods, Formatting, and Encoding",
+  "difficulty": "beginner",
+  "description": "Common string methods for searching, replacing, splitting and joining, plus a first look at Unicode and encoding.",
+  "objectives": [
+    "Use common string methods: search, replace, split, join, case conversion",
+    "Understand basic Unicode and text encoding concepts",
+    "Choose between split()/join() for text processing tasks"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Searching, Replacing, Splitting, and Joining",
+      "body": "Python strings come with a rich set of built-in methods (all of which return new strings, since strings are immutable). For searching: text.find(sub) returns the lowest index of sub, or -1 if absent; text.index(sub) does the same but raises ValueError if not found. For membership without needing a position, use the in operator. text.replace(old, new) returns a copy with every occurrence of old replaced. text.strip() (and lstrip()/rstrip()) remove leading/trailing whitespace (or a specified set of characters).\n\ntext.split(sep) breaks a string into a list of substrings around sep (or any whitespace, if sep is omitted); sep.join(iterable) does the reverse, joining a list of strings into one string using sep as glue — this is the idiomatic and efficient way to build a string from many pieces, in contrast to repeated +=. Case conversion methods include upper(), lower(), title(), and capitalize()."
+    },
+    {
+      "type": "text",
+      "heading": "Unicode and Encoding, Briefly",
+      "body": "Python 3 strings (str) are sequences of Unicode code points — they can represent virtually any character from any writing system, including emoji. When a string needs to be stored in a file or sent over a network, it must be encoded into bytes using a specific encoding, most commonly UTF-8: text.encode(\"utf-8\") produces a bytes object; bytes.decode(\"utf-8\") reverses it back into a str. Mixing up str and bytes (e.g., trying to write a str directly to a file opened in binary mode) is a common source of TypeErrors for beginners working with files or networking."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "text = \"  Hello, World!  \"\nprint(text.strip().lower())        # \"hello, world!\"\n\nwords = \"one,two,,three\".split(\",\")\nprint(words)                        # ['one', 'two', '', 'three']\nprint(\"-\".join([\"a\", \"b\", \"c\"]))    # \"a-b-c\"\n\nencoded = \"café\".encode(\"utf-8\")\nprint(encoded, encoded.decode(\"utf-8\"))",
+      "explanation": "split(\",\") keeps an empty string between two consecutive commas — splitting doesn't collapse empty fields unless you filter them out. encode()/decode() round-trip a str through bytes using UTF-8."
+    }
+  ],
+  "keyPoints": [
+    "String methods always return new strings — they never mutate in place",
+    "split()/join() are the idiomatic way to break apart and reassemble text",
+    "find()/index() locate substrings; replace() substitutes them",
+    "str is Unicode text; bytes is raw binary data — encode()/decode() convert between them"
+  ],
+  "commonMistakes": [
+    "Using index() when find() (or an in check) would avoid an unwanted ValueError",
+    "Building up a large string with += in a loop instead of collecting pieces and using join()",
+    "Confusing str and bytes when doing file or network I/O"
+  ],
+  "concepts": [
+    "string methods",
+    "split()",
+    "join()",
+    "replace()",
+    "find()",
+    "Unicode",
+    "encoding",
+    "UTF-8"
+  ],
+  "previousLesson": "python-strings-001",
+  "nextLesson": "python-lists-001"
+}

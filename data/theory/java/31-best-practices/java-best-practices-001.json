@@ -1,0 +1,57 @@
+{
+  "id": "java-best-practices-001",
+  "language": "java",
+  "section": "java",
+  "module": "Best Practices",
+  "moduleNumber": 31,
+  "lessonNumber": 33,
+  "title": "Java Best Practices",
+  "difficulty": "intermediate",
+  "description": "Naming, encapsulation, immutability, exception handling, resource management, and composition vs. inheritance.",
+  "objectives": [
+    "Apply Java naming and organization conventions consistently",
+    "Favor immutability and encapsulation where practical",
+    "Apply sound resource-management and exception-handling habits",
+    "Understand the 'favor composition over inheritance' principle"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Naming, Encapsulation, and Immutability",
+      "body": "Consistent naming (PascalCase classes, camelCase methods/variables, UPPER_SNAKE_CASE constants) and one top-level public class per file (matching the filename) keep a codebase navigable. Favor encapsulation by default: keep fields private, expose behavior through well-named public methods, and only add getters/setters that are actually needed, rather than mechanically generating them for every field.\n\nImmutability — designing classes whose objects can't change state after construction (like String, or a well-designed record) — eliminates entire categories of bugs around shared mutable state, especially in concurrent code, since an immutable object can be freely shared between threads with no synchronization needed at all. Where full immutability isn't practical, minimizing mutable state and keeping it well-encapsulated is still valuable."
+    },
+    {
+      "type": "text",
+      "heading": "Resource Management, Composition vs. Inheritance, and Package Organization",
+      "body": "Always use try-with-resources for anything implementing AutoCloseable, rather than manual close() calls that are easy to skip on an exception path. Catch specific exceptions, not a broad Exception, and never silently swallow one with an empty catch block.\n\n'Favor composition over inheritance' is a foundational OOP design principle: rather than building deep, rigid inheritance hierarchies (which tightly couple subclasses to their parent's implementation details and can break unexpectedly when the parent changes), prefer giving a class a reference to another object that provides the needed behavior (composition) and delegating to it. Inheritance is still the right tool when a genuine 'is-a' relationship holds and polymorphism is actually needed; composition is generally preferred for reusing behavior alone, without that 'is-a' relationship. Sensible package organization (grouping by feature or layer, keeping internal-only classes package-private) rounds out a maintainable Java codebase."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "// Composition example: Car HAS-A Engine, rather than being forced into an inheritance hierarchy\nclass Engine {\n    void start() { System.out.println(\"Engine starting\"); }\n}\n\nclass Car {\n    private final Engine engine;    // composition: delegate to another object\n\n    Car(Engine engine) {\n        this.engine = engine;\n    }\n\n    void start() {\n        engine.start();             // delegates behavior instead of inheriting it\n        System.out.println(\"Car ready to drive\");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        new Car(new Engine()).start();\n    }\n}",
+      "explanation": "Car doesn't extend Engine (which wouldn't make sense — a Car isn't a kind of Engine); it holds one and delegates to it. This composition-based design is more flexible than forcing an inheritance relationship that doesn't genuinely model 'is-a'."
+    }
+  ],
+  "keyPoints": [
+    "Consistent naming, private fields with purposeful public methods, and immutability where practical improve maintainability",
+    "Always use try-with-resources for AutoCloseable resources; catch specific exceptions, never silently swallow them",
+    "Favor composition over inheritance unless a genuine 'is-a' relationship and polymorphism are actually needed",
+    "Organize packages by feature/layer, keeping internal implementation details package-private"
+  ],
+  "commonMistakes": [
+    "Building deep inheritance hierarchies for code reuse alone, without a genuine 'is-a' relationship",
+    "Catching Exception broadly (or worse, swallowing it silently) instead of handling specific, expected failure cases",
+    "Exposing every field with a mechanically-generated getter/setter regardless of whether external mutation actually makes sense"
+  ],
+  "concepts": [
+    "naming conventions",
+    "encapsulation",
+    "immutability",
+    "resource management",
+    "composition over inheritance",
+    "package organization",
+    "best practices"
+  ],
+  "previousLesson": "java-advanced-java-002",
+  "nextLesson": null
+}

@@ -1,0 +1,57 @@
+{
+  "id": "java-operators-001",
+  "language": "java",
+  "section": "java",
+  "module": "Operators",
+  "moduleNumber": 5,
+  "lessonNumber": 5,
+  "title": "Operators",
+  "difficulty": "beginner",
+  "description": "Java's arithmetic, relational, logical, assignment, unary, ternary, bitwise, and shift operators, and precedence.",
+  "objectives": [
+    "Use arithmetic, relational, and logical operators",
+    "Use the ternary conditional operator",
+    "Understand unary, bitwise, and shift operators",
+    "Understand operator precedence"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Arithmetic, Relational, and Logical Operators",
+      "body": "Arithmetic operators are + - * / % (modulus), behaving like C's: integer / integer performs integer division. Relational operators (==, !=, <, >, <=, >=) return boolean and, importantly, == on reference types compares object identity, not content — comparing two Strings' actual text requires .equals(), a very common Java gotcha covered in the Strings lesson. Logical operators are && (AND), || (OR), and ! (NOT), and are short-circuiting — the right-hand side of && or || is only evaluated if necessary, which is commonly relied on to guard against a NullPointerException (if (obj != null && obj.isValid()))."
+    },
+    {
+      "type": "text",
+      "heading": "Unary, Ternary, Bitwise, and Precedence",
+      "body": "Unary operators include ++ / -- (increment/decrement, either prefix ++x or postfix x++, which differ in whether the incremented value is used before or after the expression evaluates) and unary - / + for sign. The ternary conditional operator, condition ? valueIfTrue : valueIfFalse, is Java's compact if/else expression, usable inline. Bitwise operators (&, |, ^, ~) and shift operators (<<, >>, >>>) operate on the binary representation of integer types — >>> is Java's unsigned right shift, filling with zeros regardless of sign, unlike >> which sign-extends.\n\nOperator precedence in Java broadly follows the same order as most C-family languages: unary operators bind tightest, then multiplicative, additive, shift, relational, equality, bitwise AND/XOR/OR, logical AND, logical OR, ternary, then assignment (lowest). Parentheses always override precedence and are recommended whenever the order isn't immediately obvious."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Operators {\n    public static void main(String[] args) {\n        int a = 7, b = 2;\n        System.out.println(a / b + \" \" + a % b);   // 3 1\n\n        int x = 5;\n        String result = (x > 0) ? \"positive\" : \"non-positive\";\n        System.out.println(result);                 // positive\n\n        String s1 = \"cat\", s2 = new String(\"cat\");\n        System.out.println(s1 == s2);                // false — reference comparison\n        System.out.println(s1.equals(s2));           // true — content comparison\n    }\n}",
+      "explanation": "The ternary operator gives a compact inline if/else. s1 == s2 compares references (different objects here), while .equals() correctly compares the actual text content."
+    }
+  ],
+  "keyPoints": [
+    "% is the remainder/modulus operator; / on two ints performs integer division",
+    "== compares reference identity for objects (including String) — use .equals() for content equality",
+    "&& and || short-circuit, only evaluating the right side when needed",
+    "condition ? a : b is Java's ternary (inline conditional) expression"
+  ],
+  "commonMistakes": [
+    "Using == to compare String content instead of .equals()",
+    "Confusing prefix ++x and postfix x++ semantics in a larger expression",
+    "Forgetting integer division truncates when dividing two ints"
+  ],
+  "concepts": [
+    "arithmetic operators",
+    "relational operators",
+    "logical operators",
+    "ternary operator",
+    "bitwise operators",
+    "shift operators",
+    "precedence"
+  ],
+  "previousLesson": "java-type-conversion-and-casting-001",
+  "nextLesson": "java-input-output-001"
+}

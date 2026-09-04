@@ -1,0 +1,14 @@
+{
+  "id": "c-028",
+  "language": "c",
+  "title": "Character Frequency Counter",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Count how many times each character appears in a string using an array as a frequency table.",
+  "code": "#include <stdio.h>\n\nint main() {\n    char text[] = \"banana\";\n    int frequency[26] = {0};\n\n    for (int i = 0; text[i] != '\\0'; i++) {\n        frequency[text[i] - 'a']++;\n    }\n\n    for (int i = 0; i < 26; i++) {\n        if (frequency[i] > 0) {\n            printf(\"'%c': %d\\n\", 'a' + i, frequency[i]);\n        }\n    }\n\n    return 0;\n}",
+  "expectedOutput": "'a': 3\n'b': 1\n'n': 2",
+  "concepts": [
+    "arrays as frequency tables",
+    "character arithmetic"
+  ]
+}

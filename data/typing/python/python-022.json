@@ -1,0 +1,15 @@
+{
+  "id": "python-022",
+  "language": "python",
+  "title": "Find Maximum in a List",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Find the maximum value in a list without using the built-in max() function.",
+  "code": "numbers = [12, 45, 3, 89, 27, 56]\nlargest = numbers[0]\n\nfor n in numbers:\n    if n > largest:\n        largest = n\n\nprint(\"Largest number:\", largest)",
+  "expectedOutput": "Largest number: 89",
+  "concepts": [
+    "lists",
+    "iteration",
+    "comparison"
+  ]
+}

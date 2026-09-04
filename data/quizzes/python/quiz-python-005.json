@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-005",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Data Types",
+  "question": "What will this code print?",
+  "code": "x = 5\ny = 2.0\nprint(type(x + y))",
+  "options": [
+    "<class 'float'>",
+    "<class 'int'>",
+    "<class 'complex'>",
+    "<class 'str'>"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Mixing an int and a float in an arithmetic operation promotes the result to float, so x + y is a float.",
+  "concepts": [
+    "type()",
+    "numeric promotion"
+  ]
+}

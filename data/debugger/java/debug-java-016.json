@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-016",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Strings",
+  "bugType": "string-equality-bug",
+  "title": "Fix the String Comparison",
+  "description": "The program should check whether a user's input matches the word 'yes'.",
+  "buggyCode": "public class YesChecker {\n    public static void main(String[] args) {\n        String input = new String(\"yes\");\n        if (input == \"yes\") {\n            System.out.println(\"Confirmed\");\n        } else {\n            System.out.println(\"Not confirmed\");\n        }\n    }\n}",
+  "expectedBehavior": "The program should print 'Confirmed' since input's text is 'yes'.",
+  "actualProblem": "== compares object references, not string content. Since input was built with new String(\"yes\"), it is a distinct object from the literal \"yes\", so input == \"yes\" is false even though their text is identical, printing 'Not confirmed'.",
+  "correctedCode": "public class YesChecker {\n    public static void main(String[] args) {\n        String input = new String(\"yes\");\n        if (input.equals(\"yes\")) {\n            System.out.println(\"Confirmed\");\n        } else {\n            System.out.println(\"Not confirmed\");\n        }\n    }\n}",
+  "expectedOutput": "Confirmed",
+  "explanation": "To compare the actual text content of two String objects in Java, use .equals(), not ==. == only tells you whether both references point to the exact same object in memory, which is unreliable for strings created separately.",
+  "concepts": [
+    "String comparison",
+    "== vs .equals()",
+    "object identity"
+  ]
+}

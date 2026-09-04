@@ -1,0 +1,66 @@
+{
+  "id": "comparison-control-flow-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Control Flow",
+  "topic": "Control Flow",
+  "topicNumber": 7,
+  "lessonNumber": 7,
+  "title": "Control Flow: if, switch, and Loops",
+  "difficulty": "beginner",
+  "description": "How conditionals, switch statements, and loops compare in syntax and behavior across the three languages.",
+  "objectives": [
+    "Compare if/else syntax and truthiness rules",
+    "Compare switch statement behavior, especially fall-through",
+    "Compare loop constructs and break/continue"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "if/elif/else uses indentation, no parentheses required around conditions. Any object has an implicit truthiness (0, None, and empty collections are falsy). Python has no traditional switch statement (a structural match statement, added in 3.10, serves a related but more general pattern-matching purpose). for iterates directly over any iterable; while loops exist; both support an unusual loop-else clause."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "if/else requires parentheses around a genuinely boolean condition (no implicit int-to-boolean conversion). switch supports the classic colon-and-break form (falls through without break) and, since Java 14, a modern arrow form that doesn't fall through and can be an expression. for, enhanced for, while, and do-while are all supported, plus labeled break/continue for nested loops."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "if/else requires parentheses; any non-zero value is truthy (there's no strict boolean requirement pre-C99, and even with stdbool.h, ints are still freely usable as conditions). switch works like Java's classic form (falls through without break) but only supports int-family expressions — no strings, unlike Java. for, while, and do-while are supported; there's no enhanced for-loop and no labeled break/continue."
+    },
+    {
+      "type": "code",
+      "language": "comparison",
+      "code": "# Python truthiness\nif []:            # falsy — skipped\n    print(\"never\")\n\n// Java requires a real boolean\nif (list.isEmpty()) { }   // no implicit truthiness on non-boolean types\n\n/* C: any non-zero is truthy */\nif (count) { }             // implicit int-to-boolean",
+      "explanation": "Python and C both allow a non-boolean value directly in a condition (via truthiness), while Java strictly requires an actual boolean expression."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Only Java enforces that conditions be a genuine boolean type; Python and C both allow value-based truthiness (though via different mechanisms — Python's rich object truthiness vs. C's simple non-zero rule). switch exists in both Java and C with the same fall-through-without-break behavior, but Java's switch also supports String/enum values and has gained a modern, non-fall-through arrow form; Python has neither a classic switch nor Java's newer form (favoring if/elif chains or the newer, more general match statement)."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Forgetting break in a Java or C switch is a shared, classic bug between those two languages. Relying on truthiness (Python, C) versus requiring an explicit boolean expression (Java) is a real design-philosophy difference worth being deliberate about when porting conditional logic between them."
+    }
+  ],
+  "keyPoints": [
+    "Java strictly requires boolean conditions; Python and C both support truthiness-based conditions",
+    "Java's and C's classic switch both fall through without break; Java also has a modern, non-fall-through arrow form",
+    "Python has no traditional switch statement; C has no enhanced for-loop or labeled break/continue"
+  ],
+  "concepts": [
+    "if",
+    "switch",
+    "fall-through",
+    "loops",
+    "break",
+    "continue",
+    "truthiness"
+  ],
+  "previousLesson": "comparison-memory-001",
+  "nextLesson": "comparison-functions-and-methods-001"
+}

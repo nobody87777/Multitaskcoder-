@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-003",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Input/Output",
+  "question": "What format specifier is used to print an integer with printf() in C?",
+  "options": [
+    "%s",
+    "%f",
+    "%d",
+    "%c"
+  ],
+  "correctAnswer": 2,
+  "explanation": "%d is the format specifier for a signed decimal integer; %s is for strings, %f for floats/doubles, and %c for a single character.",
+  "concepts": [
+    "printf()",
+    "format specifiers"
+  ]
+}

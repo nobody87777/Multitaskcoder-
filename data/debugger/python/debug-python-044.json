@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-044",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Context Managers",
+  "bugType": "context-manager-bug",
+  "title": "Fix the Incomplete Context Manager",
+  "description": "The program should define a custom context manager usable in a with statement. Fix the bug.",
+  "buggyCode": "class Timer:\n    def __enter__(self):\n        print(\"Starting\")\n        return self\n\nwith Timer() as t:\n    print(\"Working...\")",
+  "expectedBehavior": "The program should print 'Starting', then 'Working...', then 'Finished' as the with block exits.",
+  "actualProblem": "The class only defines __enter__ but not __exit__. The context manager protocol requires both methods, so Python raises an AttributeError when the with block tries to exit and looks for __exit__.",
+  "correctedCode": "class Timer:\n    def __enter__(self):\n        print(\"Starting\")\n        return self\n\n    def __exit__(self, exc_type, exc_value, traceback):\n        print(\"Finished\")\n\nwith Timer() as t:\n    print(\"Working...\")",
+  "expectedOutput": "Starting\nWorking...\nFinished",
+  "explanation": "A class used with the with statement must implement both __enter__ (run when entering the block) and __exit__ (run when leaving it, even if an exception occurs). Missing __exit__ breaks the protocol.",
+  "concepts": [
+    "context managers",
+    "with statement",
+    "__enter__ and __exit__"
+  ]
+}

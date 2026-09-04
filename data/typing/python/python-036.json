@@ -1,0 +1,15 @@
+{
+  "id": "python-036",
+  "language": "python",
+  "title": "Selection Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort a list of numbers in ascending order using selection sort.",
+  "code": "numbers = [29, 10, 14, 37, 14]\nn = len(numbers)\n\nfor i in range(n - 1):\n    min_index = i\n    for j in range(i + 1, n):\n        if numbers[j] < numbers[min_index]:\n            min_index = j\n    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]\n\nprint(\"Sorted list:\", numbers)",
+  "expectedOutput": "Sorted list: [10, 14, 14, 29, 37]",
+  "concepts": [
+    "selection sort",
+    "nested loops",
+    "swapping"
+  ]
+}

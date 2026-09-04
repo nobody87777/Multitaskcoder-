@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-008",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Conditionals",
+  "question": "In a Java switch statement, what happens if a break is omitted at the end of a matching case?",
+  "options": [
+    "The switch exits immediately with no output",
+    "A compile-time error occurs",
+    "The default case runs instead",
+    "Execution falls through into the next case's code"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Without a break, Java's switch statement 'falls through' and continues executing the statements in the next case, regardless of whether its label matches.",
+  "concepts": [
+    "switch",
+    "fall-through"
+  ]
+}

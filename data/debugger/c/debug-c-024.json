@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-024",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Functions",
+  "bugType": "pass-by-value-misunderstanding",
+  "title": "Fix the Function That Can't Modify the Caller's Variable",
+  "description": "The program should double a variable's value using a helper function.",
+  "buggyCode": "#include <stdio.h>\n\nvoid doubleValue(int n) {\n    n = n * 2;\n}\n\nint main() {\n    int x = 5;\n    doubleValue(x);\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+  "expectedBehavior": "After calling doubleValue(x), x should be 10.",
+  "actualProblem": "C passes arguments by value by default, so n inside doubleValue is a separate copy of x. Modifying n has no effect on the original x in main, which still prints 5.",
+  "correctedCode": "#include <stdio.h>\n\nvoid doubleValue(int *n) {\n    *n = *n * 2;\n}\n\nint main() {\n    int x = 5;\n    doubleValue(&x);\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+  "expectedOutput": "10",
+  "explanation": "To let a function modify a caller's variable, the function must receive a pointer to it (its address) and dereference that pointer to read or write the original value, rather than receiving a copy.",
+  "concepts": [
+    "pass by value",
+    "pointers",
+    "functions"
+  ]
+}

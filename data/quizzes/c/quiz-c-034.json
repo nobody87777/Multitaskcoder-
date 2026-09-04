@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-034",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "In int main(int argc, char *argv[]), what does argc represent?",
+  "options": [
+    "The name of the program",
+    "The maximum number of arguments allowed",
+    "An array of argument strings",
+    "The count of command-line arguments passed to the program, including the program name itself"
+  ],
+  "correctAnswer": 3,
+  "explanation": "argc holds the total number of command-line arguments (argument count), and argv is the array of those argument strings, with argv[0] typically being the program's own name.",
+  "concepts": [
+    "command-line arguments",
+    "main()"
+  ]
+}

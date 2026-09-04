@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-021",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What is the relationship between a class and an object in Java?",
+  "options": [
+    "An object is a static version of a class",
+    "A class can only ever create one object",
+    "A class is a blueprint, and an object is a specific instance created from that blueprint",
+    "An object defines the methods a class can use"
+  ],
+  "correctAnswer": 2,
+  "explanation": "A class defines the structure and behavior (fields and methods), while an object is a concrete instance built from that class using new.",
+  "concepts": [
+    "classes",
+    "objects"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-043",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Iterators",
+  "bugType": "missing-stopiteration",
+  "title": "Fix the Iterator That Never Stops",
+  "description": "The program should define a custom iterator that yields numbers 1 through 3 and then stops. Fix the bug.",
+  "buggyCode": "class CountUpTo:\n    def __init__(self, limit):\n        self.limit = limit\n        self.current = 1\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        value = self.current\n        self.current += 1\n        return value\n\nfor n in CountUpTo(3):\n    print(n)",
+  "expectedBehavior": "The program should print 1, 2, 3 and then stop.",
+  "actualProblem": "__next__ never checks self.current against self.limit and never raises StopIteration, so the for loop has no signal to stop and keeps calling __next__ forever, producing an infinite loop.",
+  "correctedCode": "class CountUpTo:\n    def __init__(self, limit):\n        self.limit = limit\n        self.current = 1\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.current > self.limit:\n            raise StopIteration\n        value = self.current\n        self.current += 1\n        return value\n\nfor n in CountUpTo(3):\n    print(n)",
+  "expectedOutput": "1\n2\n3",
+  "explanation": "The iterator protocol requires __next__ to raise StopIteration once there are no more values to produce. Without that signal, any for loop (or other iteration) consuming the iterator will call __next__ indefinitely.",
+  "concepts": [
+    "iterators",
+    "StopIteration",
+    "iterator protocol"
+  ]
+}

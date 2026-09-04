@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-044",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Memory",
+  "bugType": "double-free",
+  "title": "Fix the Double Free",
+  "description": "The program should allocate, use, and properly free a block of memory exactly once.",
+  "buggyCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *ptr = malloc(sizeof(int));\n    *ptr = 5;\n    printf(\"%d\\n\", *ptr);\n    free(ptr);\n    free(ptr);\n    return 0;\n}",
+  "expectedBehavior": "The program should allocate, use, and free the memory exactly once, printing 5 without crashing.",
+  "actualProblem": "free(ptr) is called twice on the same pointer. Freeing already-freed memory is undefined behavior — it can corrupt the heap's internal bookkeeping and crash the program, often unpredictably (sometimes not until much later).",
+  "correctedCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *ptr = malloc(sizeof(int));\n    *ptr = 5;\n    printf(\"%d\\n\", *ptr);\n    free(ptr);\n    ptr = NULL;\n    return 0;\n}",
+  "expectedOutput": "5",
+  "explanation": "Each block obtained from malloc()/calloc() should be freed exactly once. Setting the pointer to NULL immediately after freeing it is a common defensive habit, since freeing (or dereferencing) a NULL pointer is safe/detectable, unlike a dangling one.",
+  "concepts": [
+    "free()",
+    "double free",
+    "undefined behavior"
+  ]
+}

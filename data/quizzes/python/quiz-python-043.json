@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-043",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "output",
+  "topic": "Decorators",
+  "question": "What will this code print?",
+  "code": "def shout(func):\n    def wrapper():\n        return func().upper()\n    return wrapper\n\n@shout\ndef greet():\n    return \"hello\"\n\nprint(greet())",
+  "options": [
+    "hello",
+    "HELLO HELLO",
+    "HELLO",
+    "AttributeError"
+  ],
+  "correctAnswer": 2,
+  "explanation": "@shout replaces greet with wrapper, which calls the original greet() to get 'hello' and then applies .upper(), producing 'HELLO'.",
+  "concepts": [
+    "decorators",
+    "closures"
+  ]
+}

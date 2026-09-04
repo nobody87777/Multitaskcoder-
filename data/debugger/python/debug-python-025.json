@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-025",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "type-error",
+  "title": "Fix the Tuple Mutation",
+  "description": "The program should update a coordinate pair to move it one step right. Fix the bug.",
+  "buggyCode": "point = (3, 4)\npoint[0] = point[0] + 1\nprint(point)",
+  "expectedBehavior": "The program should print (4, 4), the point moved one step on the x-axis.",
+  "actualProblem": "Tuples are immutable in Python, so assigning to point[0] raises a TypeError: 'tuple' object does not support item assignment.",
+  "correctedCode": "point = (3, 4)\npoint = (point[0] + 1, point[1])\nprint(point)",
+  "expectedOutput": "(4, 4)",
+  "explanation": "Since tuple elements can't be reassigned in place, updating a 'coordinate' means creating a brand-new tuple with the desired values rather than mutating the existing one.",
+  "concepts": [
+    "tuples",
+    "immutability",
+    "TypeError"
+  ]
+}

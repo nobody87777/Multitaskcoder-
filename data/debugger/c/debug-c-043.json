@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-043",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Memory",
+  "bugType": "realloc-pointer-overwrite",
+  "title": "Fix the Unsafe Realloc Pattern",
+  "description": "The program should grow a dynamically allocated array using realloc.",
+  "buggyCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *arr = malloc(5 * sizeof(int));\n    arr = realloc(arr, 10 * sizeof(int));\n    if (arr == NULL) {\n        printf(\"Reallocation failed\\n\");\n        return 1;\n    }\n    arr[9] = 42;\n    printf(\"%d\\n\", arr[9]);\n    free(arr);\n    return 0;\n}",
+  "expectedBehavior": "The array should be safely resized to hold 10 ints, and the program should print 42.",
+  "actualProblem": "Assigning realloc's result directly back into arr means that if realloc happens to fail and returns NULL, the only pointer to the original 5-int block is immediately overwritten and lost — a memory leak — before the NULL check even runs.",
+  "correctedCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *arr = malloc(5 * sizeof(int));\n    int *temp = realloc(arr, 10 * sizeof(int));\n    if (temp == NULL) {\n        printf(\"Reallocation failed\\n\");\n        free(arr);\n        return 1;\n    }\n    arr = temp;\n    arr[9] = 42;\n    printf(\"%d\\n\", arr[9]);\n    free(arr);\n    return 0;\n}",
+  "expectedOutput": "42",
+  "explanation": "realloc() should be assigned to a separate temporary pointer first. If it returns NULL, the original block is still valid (and can be freed); only once success is confirmed should the original pointer variable be updated to the new block.",
+  "concepts": [
+    "realloc()",
+    "memory leaks",
+    "error handling"
+  ]
+}

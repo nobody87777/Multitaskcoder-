@@ -1,0 +1,60 @@
+{
+  "id": "comparison-concurrency-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Concurrency",
+  "topic": "Concurrency",
+  "topicNumber": 18,
+  "lessonNumber": 18,
+  "title": "Concurrency: Threads, the GIL, and Manual Synchronization",
+  "difficulty": "advanced",
+  "description": "How Python's GIL-constrained threading/multiprocessing/asyncio, Java's threading model, and C's low-level threading compare.",
+  "objectives": [
+    "Understand Python's GIL and its effect on threading",
+    "Compare Java's threading and synchronization model",
+    "Understand C's lower-level threading concepts"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "CPython's Global Interpreter Lock (GIL) allows only one thread to execute Python bytecode at a time, so threading (the threading module) doesn't achieve true parallel speedup for CPU-bound work, though it's genuinely useful for I/O-bound work (waiting releases the GIL). multiprocessing sidesteps the GIL entirely via separate OS processes, achieving true parallelism for CPU-bound work at higher memory/communication cost. asyncio offers single-threaded, cooperative concurrency for many simultaneous I/O-bound tasks."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Java threads (Thread, Runnable) map to genuine OS-level threads with no GIL-equivalent restriction — multiple Java threads CAN execute Java bytecode truly in parallel on a multi-core machine. The synchronized keyword provides built-in mutual exclusion; java.util.concurrent adds higher-level tools (locks, thread pools via ExecutorService, concurrent collections) beyond the raw Thread/synchronized primitives."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C provides threading via platform-specific APIs (POSIX pthreads on Unix-like systems, or the Windows threading API) or, since C11, an optional standard threads.h. Synchronization primitives (mutexes, condition variables) are available but, true to C's philosophy, are low-level and entirely the programmer's responsibility to use correctly — there's no language-level equivalent to Java's synchronized keyword automatically scoping a lock to a block; you must explicitly lock and unlock a mutex, and forgetting to unlock it (especially on an error/exception-like path) causes a deadlock with no help from the compiler."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Java threads achieve genuine parallelism for CPU-bound work directly; Python's threads don't (due to the GIL) — Python needs multiprocessing for that instead. C's threading offers the most raw control (and the most manual responsibility) of the three, with synchronization primitives that must be managed entirely by hand, unlike Java's more structured, language-integrated synchronized keyword."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "For CPU-bound parallel work, Java threads or Python's multiprocessing (not Python's threading) are the appropriate choices; C offers the most control over exactly how threading/synchronization is implemented, at the cost of the most manual bookkeeping and the highest risk of subtle concurrency bugs if that bookkeeping is done incorrectly."
+    }
+  ],
+  "keyPoints": [
+    "Python's GIL prevents true parallel execution of Python bytecode across threads; multiprocessing (not threading) achieves real CPU parallelism",
+    "Java threads achieve genuine OS-level parallelism, with synchronized providing structured, language-integrated mutual exclusion",
+    "C threading (pthreads or C11 threads.h) offers the most control and the most manual synchronization responsibility, with no automatic locking scope"
+  ],
+  "concepts": [
+    "threading",
+    "GIL",
+    "multiprocessing",
+    "asyncio",
+    "synchronized",
+    "mutexes",
+    "concurrency"
+  ],
+  "previousLesson": "comparison-functional-features-001",
+  "nextLesson": "comparison-performance-001"
+}

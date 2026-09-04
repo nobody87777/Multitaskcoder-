@@ -1,0 +1,14 @@
+{
+  "id": "python-046",
+  "language": "python",
+  "title": "Exception Handling: Safe Division",
+  "difficulty": "advanced",
+  "topic": "Exceptions",
+  "description": "Perform division safely, handling both zero-division and invalid-input errors.",
+  "code": "def safe_divide(a, b):\n    try:\n        result = a / b\n    except ZeroDivisionError:\n        return \"Error: Cannot divide by zero\"\n    except TypeError:\n        return \"Error: Invalid input types\"\n    else:\n        return result\n    finally:\n        print(\"Division attempt complete\")\n\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))",
+  "expectedOutput": "Division attempt complete\n5.0\nDivision attempt complete\nError: Cannot divide by zero",
+  "concepts": [
+    "try/except/else/finally",
+    "exception handling"
+  ]
+}

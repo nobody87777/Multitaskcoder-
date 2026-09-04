@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-036",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Incomplete Bubble Sort",
+  "description": "The program should fully sort an array of numbers in ascending order.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int numbers[5] = {5, 2, 8, 1, 9};\n    int n = 5;\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - 2; j++) {\n            if (numbers[j] > numbers[j + 1]) {\n                int temp = numbers[j];\n                numbers[j] = numbers[j + 1];\n                numbers[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", numbers[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+  "expectedBehavior": "The program should print '1 2 5 8 9 ', fully sorted.",
+  "actualProblem": "The inner loop's bound j < n - 2 stops one comparison too early, so the last pair of elements is never compared or swapped in the first pass, leaving the array not fully sorted.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int numbers[5] = {5, 2, 8, 1, 9};\n    int n = 5;\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (numbers[j] > numbers[j + 1]) {\n                int temp = numbers[j];\n                numbers[j] = numbers[j + 1];\n                numbers[j + 1] = temp;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", numbers[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+  "expectedOutput": "1 2 5 8 9 ",
+  "explanation": "Bubble sort's inner loop must compare every adjacent pair not yet guaranteed to be in place — bounding it at n - 1 - i (shrinking as more elements settle) ensures the very last pair is always checked in the first pass.",
+  "concepts": [
+    "bubble sort",
+    "off-by-one error",
+    "nested loops"
+  ]
+}

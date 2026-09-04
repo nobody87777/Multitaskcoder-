@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-009",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Operators",
+  "question": "Which operator checks whether two values are equal in Python?",
+  "options": [
+    "==",
+    "=",
+    "eq",
+    "==="
+  ],
+  "correctAnswer": 0,
+  "explanation": "A single = is assignment; == is the comparison operator that tests equality of values.",
+  "concepts": [
+    "comparison operators",
+    "== vs ="
+  ]
+}

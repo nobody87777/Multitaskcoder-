@@ -1,0 +1,15 @@
+{
+  "id": "java-028",
+  "language": "java",
+  "title": "Character Frequency Counter",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Count how many times each character appears in a string using a HashMap.",
+  "code": "import java.util.HashMap;\nimport java.util.TreeMap;\n\npublic class CharFrequency {\n    public static void main(String[] args) {\n        String text = \"banana\";\n        HashMap<Character, Integer> frequency = new HashMap<>();\n\n        for (char ch : text.toCharArray()) {\n            frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);\n        }\n\n        TreeMap<Character, Integer> sorted = new TreeMap<>(frequency);\n        for (var entry : sorted.entrySet()) {\n            System.out.println(\"'\" + entry.getKey() + \"': \" + entry.getValue());\n        }\n    }\n}",
+  "expectedOutput": "'a': 3\n'b': 1\n'n': 2",
+  "concepts": [
+    "HashMap",
+    "TreeMap",
+    "getOrDefault()"
+  ]
+}

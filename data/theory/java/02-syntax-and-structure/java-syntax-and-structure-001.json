@@ -1,0 +1,55 @@
+{
+  "id": "java-syntax-and-structure-001",
+  "language": "java",
+  "section": "java",
+  "module": "Java Syntax and Program Structure",
+  "moduleNumber": 2,
+  "lessonNumber": 2,
+  "title": "Java Syntax and Program Structure",
+  "difficulty": "beginner",
+  "description": "The anatomy of a Java program: classes, the main method, statements, blocks, comments, and naming conventions.",
+  "objectives": [
+    "Understand the required structure of a runnable Java program",
+    "Understand the main() method's exact signature",
+    "Use comments and follow Java naming conventions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Classes and the main Method",
+      "body": "Every piece of Java code lives inside a class (there is no code at the top level of a file, unlike Python or C's global scope). A runnable Java application needs exactly one method with the signature public static void main(String[] args) — this is the entry point the JVM looks for. public means it's callable from outside the class; static means it belongs to the class itself, not to any particular instance (so the JVM can call it without first creating an object); void means it returns nothing; String[] args holds any command-line arguments passed to the program.\n\nStatements in Java each end with a semicolon; related statements are grouped into blocks delimited by curly braces {}, which define the body of a class, method, loop, or conditional — this is a key structural difference from Python, which uses indentation instead."
+    },
+    {
+      "type": "text",
+      "heading": "Comments and Naming Conventions",
+      "body": "Java supports single-line comments (// comment), multi-line comments (/* comment */), and documentation comments (/** ... */, used by the Javadoc tool to auto-generate API documentation from specially-formatted tags like @param and @return).\n\nJava naming conventions: classes use PascalCase (BankAccount), methods and variables use camelCase (calculateTotal, accountBalance), and constants use UPPER_SNAKE_CASE (MAX_SIZE). Identifiers must start with a letter, $, or _, followed by letters, digits, $, or _, and cannot be one of Java's reserved keywords (class, public, static, void, if, for, and so on)."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "/**\n * A minimal Java program demonstrating structure.\n */\npublic class Greeter {\n    public static void main(String[] args) {\n        // A single-line comment\n        String message = \"Hello, Java\";\n        System.out.println(message);\n    }\n}",
+      "explanation": "Everything is nested inside the Greeter class; main() is the entry point the JVM calls first. The Javadoc comment above the class demonstrates documentation-style commenting."
+    }
+  ],
+  "keyPoints": [
+    "All Java code lives inside a class — there's no true top-level/global code",
+    "public static void main(String[] args) is the required, exact entry-point signature",
+    "Braces {} delimit blocks; semicolons ; terminate statements",
+    "PascalCase for classes, camelCase for methods/variables, UPPER_SNAKE_CASE for constants"
+  ],
+  "commonMistakes": [
+    "Misspelling or mistyping the main method signature so the JVM can't find an entry point",
+    "Forgetting a semicolon at the end of a statement",
+    "Naming a class file differently from its public class name (Java requires them to match)"
+  ],
+  "concepts": [
+    "class structure",
+    "main method",
+    "statements",
+    "blocks",
+    "comments",
+    "naming conventions"
+  ],
+  "previousLesson": "java-introduction-001",
+  "nextLesson": "java-variables-and-data-types-001"
+}

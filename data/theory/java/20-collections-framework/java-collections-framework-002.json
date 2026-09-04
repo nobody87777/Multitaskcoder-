@@ -1,0 +1,57 @@
+{
+  "id": "java-collections-framework-002",
+  "language": "java",
+  "section": "java",
+  "module": "Collections Framework",
+  "moduleNumber": 20,
+  "lessonNumber": 21,
+  "title": "Collections: Map and Queue",
+  "difficulty": "intermediate",
+  "description": "The Map hierarchy (HashMap, LinkedHashMap, TreeMap) and Queue/Deque, plus guidance on choosing a collection.",
+  "objectives": [
+    "Use HashMap, LinkedHashMap, and TreeMap appropriately",
+    "Understand Queue and Deque",
+    "Apply general guidelines for choosing the right collection"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Map Implementations",
+      "body": "Map<K, V> (notably not a subtype of Collection, since it models key-value pairs rather than a simple group of elements) associates unique keys with values. HashMap offers average O(1) get/put, backed by a hash table, with no guaranteed iteration order. LinkedHashMap preserves insertion order (or, configurable, access order — useful for building an LRU cache) while keeping HashMap's performance characteristics. TreeMap keeps entries sorted by key, at O(log n) per operation, useful whenever you need to iterate keys in order or quickly find the nearest key to a target.\n\nCommon Map methods: get(key) (returns null if absent), getOrDefault(key, default), put(key, value) (inserts or overwrites), containsKey(key), keySet()/values()/entrySet() for iteration (entrySet() is the idiomatic way to iterate both keys and values together via a for-each loop)."
+    },
+    {
+      "type": "text",
+      "heading": "Queue, Deque, and Choosing a Collection",
+      "body": "Queue models FIFO (first-in-first-out) access: offer(x) adds, poll() removes and returns the head (or null if empty), peek() looks at the head without removing it. Deque (double-ended queue) supports adding/removing from both ends (addFirst/addLast, removeFirst/removeLast) and can serve as either a queue or a stack (pushing/popping from one end) — ArrayDeque is the typical, efficient implementation, generally preferred over the older, synchronized Stack class for stack-like use.\n\nA rough decision guide: need indexed access and duplicates? List (usually ArrayList). Need uniqueness with no order requirement? HashSet. Need uniqueness with sorted order? TreeSet. Need key-value lookup? Map (usually HashMap, or TreeMap for sorted keys). Need FIFO/LIFO processing? Queue/Deque (usually ArrayDeque)."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.*;\n\npublic class Collections2 {\n    public static void main(String[] args) {\n        Map<String, Integer> scores = new HashMap<>();\n        scores.put(\"Asha\", 92);\n        System.out.println(scores.getOrDefault(\"Ravi\", 0));   // 0 — key absent, safe default\n\n        for (Map.Entry<String, Integer> entry : scores.entrySet()) {\n            System.out.println(entry.getKey() + \": \" + entry.getValue());\n        }\n\n        Deque<Integer> stack = new ArrayDeque<>();\n        stack.push(1);\n        stack.push(2);\n        System.out.println(stack.pop());   // 2 — LIFO, via Deque used as a stack\n    }\n}",
+      "explanation": "getOrDefault avoids a null result for a missing key. entrySet() is the idiomatic way to iterate a map's key/value pairs together. ArrayDeque used with push()/pop() behaves as a stack."
+    }
+  ],
+  "keyPoints": [
+    "Map is a separate hierarchy from Collection, associating unique keys with values",
+    "HashMap is fastest but unordered; LinkedHashMap preserves order; TreeMap keeps keys sorted",
+    "Queue models FIFO; Deque supports both ends and can act as a stack or queue",
+    "ArrayDeque is generally preferred over the legacy Stack class for stack-like usage"
+  ],
+  "commonMistakes": [
+    "Using map.get(key) directly and getting a NullPointerException from unboxing a null Integer, instead of using getOrDefault()",
+    "Expecting HashMap iteration order to match insertion order",
+    "Using the legacy, synchronized Stack class instead of the more modern, efficient ArrayDeque"
+  ],
+  "concepts": [
+    "Map",
+    "HashMap",
+    "LinkedHashMap",
+    "TreeMap",
+    "Queue",
+    "Deque",
+    "ArrayDeque",
+    "choosing a collection"
+  ],
+  "previousLesson": "java-collections-framework-001",
+  "nextLesson": "java-generics-001"
+}

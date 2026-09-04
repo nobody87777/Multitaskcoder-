@@ -1,0 +1,59 @@
+{
+  "id": "comparison-common-use-cases-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Common Use Cases",
+  "topic": "Common Use Cases",
+  "topicNumber": 20,
+  "lessonNumber": 20,
+  "title": "Common Use Cases Across Domains",
+  "difficulty": "beginner",
+  "description": "Where Python, Java, and C are each typically the strongest fit, across web, mobile, systems, data science, and more.",
+  "objectives": [
+    "Identify typical strong-fit domains for each language",
+    "Understand why each language suits its typical domains"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Data science and machine learning (NumPy, pandas, PyTorch, scikit-learn — a dominant ecosystem in this space), scripting and automation (quick, readable one-off or recurring tasks), web backends (Django, Flask, FastAPI), and education (its readability makes it a common first teaching language). Less common for mobile apps, low-level embedded work, or situations demanding the absolute lowest possible latency/overhead."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Enterprise backend systems (a long-standing, deeply established ecosystem — Spring and similar frameworks), Android app development (Java, alongside Kotlin, is a primary Android language), and large-scale distributed systems where portability, tooling maturity, and long-term maintainability across large teams matter greatly. Less common for systems/embedded programming or data science's numerical-computing core (though it has a presence in big-data tooling like Hadoop/Spark's JVM-based ecosystem)."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Operating system kernels and low-level systems programming (Linux, Windows, and most other major OS kernels are written substantially in C), embedded systems and firmware (where resource constraints and hardware-level control are paramount), device drivers, and performance-critical libraries that other, higher-level languages (including Python's own CPython interpreter, and many of Python's fast numerical libraries) are themselves implemented in or interface with. Less common for typical web/enterprise application development, where its lack of built-in safety and higher development cost outweigh its performance benefits for most such applications."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "The three languages occupy largely complementary, only lightly-overlapping niches rather than being direct competitors for most projects: C for systems/embedded/performance-critical foundations, Java for large-scale portable enterprise/Android applications, Python for data science, scripting, and rapid application development. It's also common (and often ideal) for a single system to combine them — a Python data pipeline calling into C-backed numerical libraries, for instance."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Choosing a language for a new project should weigh the target domain's typical needs (raw performance vs. developer productivity vs. portability vs. ecosystem maturity for that specific kind of work) rather than a generic 'which language is best' framing."
+    }
+  ],
+  "keyPoints": [
+    "Python dominates data science/ML, scripting, and is common for web backends and education",
+    "Java dominates enterprise backends and Android development, and large, portable, long-lived systems",
+    "C dominates operating systems, embedded/firmware, device drivers, and performance-critical foundational libraries"
+  ],
+  "concepts": [
+    "web development",
+    "mobile development",
+    "systems programming",
+    "embedded systems",
+    "data science",
+    "enterprise software",
+    "education"
+  ],
+  "previousLesson": "comparison-performance-001",
+  "nextLesson": "comparison-learning-difficulty-001"
+}

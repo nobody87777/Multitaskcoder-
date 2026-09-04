@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-018",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Arrays",
+  "bugType": "index-out-of-bounds",
+  "title": "Fix the Array Write Past the End",
+  "description": "The program should store 5 values in an array sized for exactly 5 elements.",
+  "buggyCode": "#include <stdio.h>\n\n#define SIZE 5\n\nint main() {\n    int values[SIZE];\n    for (int i = 0; i <= SIZE; i++) {\n        values[i] = i * 10;\n    }\n    printf(\"%d\\n\", values[4]);\n    return 0;\n}",
+  "expectedBehavior": "The program should fill indices 0 through 4 and print 40.",
+  "actualProblem": "The loop condition i <= SIZE lets i reach 5, and values[5] is one element past the end of a 5-element array — writing there corrupts adjacent memory (undefined behavior), even though values[4] itself might still print correctly by chance.",
+  "correctedCode": "#include <stdio.h>\n\n#define SIZE 5\n\nint main() {\n    int values[SIZE];\n    for (int i = 0; i < SIZE; i++) {\n        values[i] = i * 10;\n    }\n    printf(\"%d\\n\", values[4]);\n    return 0;\n}",
+  "expectedOutput": "40",
+  "explanation": "An array of SIZE elements has valid indices 0 through SIZE - 1. Using < SIZE instead of <= SIZE ensures the loop never writes past the last valid element.",
+  "concepts": [
+    "arrays",
+    "off-by-one error",
+    "buffer overflow"
+  ]
+}

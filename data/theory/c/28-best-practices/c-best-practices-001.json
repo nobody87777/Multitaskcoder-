@@ -1,0 +1,57 @@
+{
+  "id": "c-best-practices-001",
+  "language": "c",
+  "section": "c",
+  "module": "Best Practices",
+  "moduleNumber": 28,
+  "lessonNumber": 30,
+  "title": "C Best Practices",
+  "difficulty": "intermediate",
+  "description": "Readable code, memory safety, return-value checking, initialization, defensive programming, and resource cleanup.",
+  "objectives": [
+    "Write readable, well-organized C code",
+    "Apply memory-safety and defensive-programming habits consistently",
+    "Always check return values that can signal failure",
+    "Organize headers and clean up resources reliably"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Readability, Memory Safety, and Initialization",
+      "body": "Meaningful naming, consistent formatting, and small, single-purpose functions matter as much in C as in any language — arguably more, since C offers no language-level safety net to catch mistakes that sloppy code makes more likely. Given C's complete lack of automatic bounds checking or memory management, memory safety must be actively, consciously maintained: always know the size of every buffer you're writing into, always pair every malloc() with exactly one free(), and never assume a pointer is valid without either having just verified it or having full control over its lifetime.\n\nInitialize every variable at the point of declaration whenever practical, rather than leaving it to be set 'later' — this eliminates an entire category of bugs stemming from reading indeterminate values on a code path that unexpectedly skips the intended initialization."
+    },
+    {
+      "type": "text",
+      "heading": "Checking Return Values, Defensive Programming, and Cleanup",
+      "body": "Many standard library functions signal failure through their return value: malloc() (NULL on failure), fopen() (NULL on failure), scanf() (fewer than expected items successfully read). Ignoring these return values means a failure gets discovered later, indirectly, often as a confusing crash far from its actual root cause, rather than being caught and handled right where it happened. Defensive programming means validating assumptions explicitly — checking function arguments, checking array bounds before indexing, checking pointers for NULL before dereferencing — rather than assuming the caller (or the input data) will always behave correctly.\n\nHeader organization (include guards, clear separation between a module's public interface and private implementation) and reliable resource cleanup (every malloc has a matching free; every fopen has a matching fclose; cleanup happens on every code path, including early-return error paths) round out professional C practice. Tools like Valgrind (for detecting memory leaks and invalid memory access) and compiler warnings (enabled with flags like -Wall -Wextra) are essential aids for catching the mistakes C's own language rules won't catch for you."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint *loadValues(const char *path, int *outCount) {\n    FILE *fp = fopen(path, \"r\");\n    if (fp == NULL) {                  // check return value\n        *outCount = 0;\n        return NULL;\n    }\n\n    int count = 0;\n    if (fscanf(fp, \"%d\", &count) != 1 || count <= 0) {   // validate input\n        fclose(fp);\n        *outCount = 0;\n        return NULL;\n    }\n\n    int *values = malloc(count * sizeof(int));\n    if (values == NULL) {              // check allocation\n        fclose(fp);\n        *outCount = 0;\n        return NULL;\n    }\n\n    for (int i = 0; i < count; i++) {\n        if (fscanf(fp, \"%d\", &values[i]) != 1) {\n            free(values);               // clean up on the error path too\n            fclose(fp);\n            *outCount = 0;\n            return NULL;\n        }\n    }\n\n    fclose(fp);\n    *outCount = count;\n    return values;\n}",
+      "explanation": "Every function that can fail (fopen, fscanf, malloc) has its return value checked, and every error path still frees any resources already acquired before returning — no leaks or unclosed files, even when things go wrong partway through."
+    }
+  ],
+  "keyPoints": [
+    "Meaningful names, small functions, and consistent formatting matter as much in C as any language",
+    "Always check the return values of functions that can fail: malloc, fopen, scanf, and similar",
+    "Initialize variables at declaration and validate inputs/pointers defensively before use",
+    "Every acquired resource (malloc'd memory, an opened file) must be released on every code path, including error paths"
+  ],
+  "commonMistakes": [
+    "Ignoring a failure-signaling return value (NULL from malloc/fopen, a short count from scanf) and proceeding anyway",
+    "Cleaning up resources on the 'happy path' but forgetting to on an early-return error path",
+    "Skipping compiler warnings (-Wall -Wextra) or memory-checking tools that would have caught a real bug"
+  ],
+  "concepts": [
+    "readable code",
+    "memory safety",
+    "checking return values",
+    "defensive programming",
+    "initialization",
+    "resource cleanup",
+    "header organization"
+  ],
+  "previousLesson": "c-advanced-c-001",
+  "nextLesson": null
+}

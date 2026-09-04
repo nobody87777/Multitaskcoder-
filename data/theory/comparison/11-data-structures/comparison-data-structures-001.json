@@ -1,0 +1,61 @@
+{
+  "id": "comparison-data-structures-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Data Structures",
+  "topic": "Data Structures",
+  "topicNumber": 11,
+  "lessonNumber": 11,
+  "title": "Data Structures: Lists, Sets, Maps, Linked Lists, Stacks, and Queues",
+  "difficulty": "intermediate",
+  "description": "Comparing built-in vs. manually-implemented data structures across the three languages.",
+  "objectives": [
+    "Compare list/array-based structures",
+    "Compare set and map/dictionary support",
+    "Compare linked list, stack, and queue support"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "list (dynamic array), set (hash-based uniqueness), and dict (hash-based key-value mapping, insertion-ordered since 3.7) are all built directly into the language's core syntax and standard library, requiring no extra setup. collections.deque provides an efficient double-ended queue, usable as a stack or queue. There is no built-in linked list type — one would be implemented manually if genuinely needed, though it's rarely necessary given list's efficiency for most use cases."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "The Collections Framework provides List (ArrayList, LinkedList), Set (HashSet, LinkedHashSet, TreeSet), Map (HashMap, LinkedHashMap, TreeMap), and Queue/Deque (ArrayDeque) — all generic, all part of the standard library, with LinkedList specifically providing a genuine built-in doubly-linked list implementation, unlike Python's standard library."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "The standard library provides none of these as ready-made structures — no built-in dynamic array, set, map, or linked list. Every one of them (linked lists, stacks, queues, hash tables, trees) must be implemented manually from structs and pointers, as covered in the Data Structures in C module — a significant amount of the extra work C requires compared to Python or Java for the same functionality."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python and Java both ship rich, ready-to-use, generic (Java) or dynamically-typed (Python) data structure libraries; C ships essentially none, requiring hand-rolled implementations for anything beyond a plain fixed-size array or a manually-managed struct. This is a major factor in C's higher development time for typical application-level logic, offset by its lower runtime overhead and full control over memory layout."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Building the same feature (say, a word-frequency counter) is a few lines with Python's dict or Java's HashMap, versus needing a full custom hash table implementation (or a chosen third-party C library) from scratch in C."
+    }
+  ],
+  "keyPoints": [
+    "Python's list/set/dict and Java's Collections Framework provide rich, ready-made data structures built into the language/standard library",
+    "C provides none of these built in — linked lists, stacks, queues, and hash tables must be hand-implemented with structs and pointers",
+    "Java uniquely has a genuine built-in linked list (LinkedList); Python's standard library has no equivalent"
+  ],
+  "concepts": [
+    "lists",
+    "sets",
+    "maps",
+    "dictionaries",
+    "linked lists",
+    "stacks",
+    "queues",
+    "Collections Framework"
+  ],
+  "previousLesson": "comparison-arrays-001",
+  "nextLesson": "comparison-oop-001"
+}

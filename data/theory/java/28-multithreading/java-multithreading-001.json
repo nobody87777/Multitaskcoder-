@@ -1,0 +1,58 @@
+{
+  "id": "java-multithreading-001",
+  "language": "java",
+  "section": "java",
+  "module": "Multithreading",
+  "moduleNumber": 28,
+  "lessonNumber": 29,
+  "title": "Multithreading",
+  "difficulty": "advanced",
+  "description": "Threads, the thread lifecycle, synchronization, race conditions, and a conceptual look at deadlocks.",
+  "objectives": [
+    "Create threads via Thread and Runnable",
+    "Understand the thread lifecycle",
+    "Understand race conditions and how synchronized addresses them",
+    "Understand deadlocks conceptually"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Creating and Running Threads",
+      "body": "A thread is an independent path of execution within a program. The two standard ways to create one: extend Thread and override run(), or (generally preferred, since Java only supports single class inheritance) implement Runnable and pass it to new Thread(runnable). Calling start() actually launches the thread to run concurrently, invoking run() on a new OS-level thread; calling run() directly just executes it synchronously on the current thread, like a normal method call — a common beginner mistake.\n\nA thread moves through states over its lifecycle: New (created, not yet started), Runnable (eligible to run, may be waiting for CPU time), Blocked/Waiting (paused, waiting for a lock or a signal), and Terminated (finished). join() lets one thread wait for another to finish before continuing; sleep(ms) pauses the current thread for at least the given duration."
+    },
+    {
+      "type": "text",
+      "heading": "Race Conditions, synchronized, and Deadlocks",
+      "body": "A race condition occurs when multiple threads access and modify shared mutable state without coordination, and the final outcome depends unpredictably on the exact timing of their execution — the classic example is two threads both doing count++ on a shared variable, where the increment isn't atomic (it's really read, add one, write back), so increments can be lost. The synchronized keyword, applied to a method or a block, ensures only one thread at a time can execute that code while holding a given lock (by default, the object itself, or a specified lock object) — this is Java's built-in mechanism for mutual exclusion.\n\nA deadlock happens when two or more threads each hold a lock the other needs, and each is waiting for the other to release its lock first — neither can ever proceed. A common cause is threads acquiring multiple locks in inconsistent order; a common mitigation is always acquiring locks in the same, fixed order everywhere in the codebase."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Threads {\n    static int count = 0;\n\n    static synchronized void increment() {   // synchronized: only one thread at a time\n        count++;\n    }\n\n    public static void main(String[] args) throws InterruptedException {\n        Runnable task = () -> {\n            for (int i = 0; i < 100000; i++) increment();\n        };\n        Thread t1 = new Thread(task);\n        Thread t2 = new Thread(task);\n        t1.start();\n        t2.start();\n        t1.join();     // wait for t1 to finish\n        t2.join();     // wait for t2 to finish\n        System.out.println(count);   // reliably 200000, thanks to synchronized\n    }\n}",
+      "explanation": "synchronized on increment() ensures count++ (read-modify-write) completes atomically with respect to other threads, preventing lost updates. join() ensures main() waits for both threads to finish before printing the final count."
+    }
+  ],
+  "keyPoints": [
+    "Prefer implementing Runnable over extending Thread (Java only allows single class inheritance)",
+    "Calling start() runs concurrently; calling run() directly just executes synchronously, like a normal call",
+    "A race condition arises from unsynchronized concurrent access to shared mutable state",
+    "synchronized enforces mutual exclusion; deadlock arises from circular waiting on multiple locks"
+  ],
+  "commonMistakes": [
+    "Calling run() instead of start(), accidentally executing 'concurrent' code synchronously",
+    "Modifying shared state from multiple threads without any synchronization",
+    "Acquiring multiple locks in inconsistent order across different code paths, risking deadlock"
+  ],
+  "concepts": [
+    "threads",
+    "Thread",
+    "Runnable",
+    "thread lifecycle",
+    "synchronized",
+    "race conditions",
+    "deadlocks",
+    "join()"
+  ],
+  "previousLesson": "java-date-and-time-001",
+  "nextLesson": "java-jvm-and-memory-001"
+}

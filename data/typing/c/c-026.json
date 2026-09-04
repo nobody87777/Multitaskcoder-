@@ -1,0 +1,15 @@
+{
+  "id": "c-026",
+  "language": "c",
+  "title": "String Reversal",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Reverse a string using the standard library's strlen() function.",
+  "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char text[] = \"Hello\";\n    int length = strlen(text);\n\n    for (int i = length - 1; i >= 0; i--) {\n        printf(\"%c\", text[i]);\n    }\n    printf(\"\\n\");\n\n    return 0;\n}",
+  "expectedOutput": "olleH",
+  "concepts": [
+    "string.h",
+    "strlen()",
+    "reverse iteration"
+  ]
+}

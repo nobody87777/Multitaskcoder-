@@ -1,0 +1,16 @@
+{
+  "id": "java-048",
+  "language": "java",
+  "title": "Stream API Example",
+  "difficulty": "advanced",
+  "topic": "Functional",
+  "description": "Use the Stream API to filter and transform a list of numbers.",
+  "code": "import java.util.List;\nimport java.util.stream.Collectors;\n\npublic class StreamExample {\n    public static void main(String[] args) {\n        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\n\n        List<Integer> result = numbers.stream()\n                .filter(n -> n % 2 == 0)\n                .map(n -> n * n)\n                .collect(Collectors.toList());\n\n        System.out.println(result);\n    }\n}",
+  "expectedOutput": "[4, 16, 36, 64, 100]",
+  "concepts": [
+    "Stream API",
+    "filter()",
+    "map()",
+    "collect()"
+  ]
+}

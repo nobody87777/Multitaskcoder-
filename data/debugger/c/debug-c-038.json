@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-038",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "struct-pointer-access-error",
+  "title": "Fix the Struct Pointer Member Access",
+  "description": "The program should access a struct member through a pointer to that struct.",
+  "buggyCode": "#include <stdio.h>\n\nstruct Point {\n    int x, y;\n};\n\nint main() {\n    struct Point p = {3, 4};\n    struct Point *ptr = &p;\n    printf(\"%d\\n\", ptr.x);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 3, the x member of the struct.",
+  "actualProblem": "ptr is a pointer to a struct Point, not a struct Point itself, so the dot operator (.) doesn't apply to it — this is a compile error ('request for member x in something not a structure or union').",
+  "correctedCode": "#include <stdio.h>\n\nstruct Point {\n    int x, y;\n};\n\nint main() {\n    struct Point p = {3, 4};\n    struct Point *ptr = &p;\n    printf(\"%d\\n\", ptr->x);\n    return 0;\n}",
+  "expectedOutput": "3",
+  "explanation": "When accessing a struct's member through a pointer to that struct, C requires the arrow operator (->), which combines dereferencing the pointer and accessing the member in one step. The dot operator (.) is only valid on the struct value itself.",
+  "concepts": [
+    "structures",
+    "pointers",
+    "-> operator"
+  ]
+}

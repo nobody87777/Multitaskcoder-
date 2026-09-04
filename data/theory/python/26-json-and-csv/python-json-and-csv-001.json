@@ -1,0 +1,58 @@
+{
+  "id": "python-json-and-csv-001",
+  "language": "python",
+  "section": "python",
+  "module": "JSON and CSV",
+  "moduleNumber": 26,
+  "lessonNumber": 28,
+  "title": "JSON and CSV",
+  "difficulty": "intermediate",
+  "description": "Serializing and deserializing JSON data, and reading/writing CSV files, using the standard library.",
+  "objectives": [
+    "Understand JSON structure and how it maps to Python types",
+    "Use json.dumps()/loads() and json.dump()/load()",
+    "Read and write CSV files with the csv module"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "JSON: Serialization and Deserialization",
+      "body": "JSON (JavaScript Object Notation) is a text-based data format built from objects ({...}, like a Python dict), arrays ([...], like a Python list), strings, numbers, booleans (true/false), and null — it maps very naturally onto Python's own built-in types. Serialization is converting a Python object into JSON text; deserialization is the reverse. json.dumps(obj) returns a JSON-formatted string from a Python object (dict/list/str/int/float/bool/None); json.loads(text) parses a JSON string back into the corresponding Python object. The file-oriented equivalents, json.dump(obj, file) and json.load(file), write to and read directly from an already-open file object, saving you the intermediate string step.\n\nNot every Python object is JSON-serializable by default — only the types listed above and combinations of them; custom class instances need a conversion step (a default= function, or converting to a dict first) before they can be serialized."
+    },
+    {
+      "type": "text",
+      "heading": "CSV: Reading and Writing",
+      "body": "CSV (Comma-Separated Values) is a simple tabular text format, one row per line, fields separated by commas (or another delimiter). Hand-splitting lines on commas breaks down as soon as a field itself contains a comma or a quoted newline, so the csv module is the correct tool: csv.reader(file) iterates over a file yielding each row as a list of strings; csv.writer(file).writerow(row) (or writerows(rows) for many at once) writes a list of values as a properly comma-separated, quoted-when-necessary line. csv.DictReader and csv.DictWriter work the same way but read/write each row as a dict, using the first row as field names — often more convenient than tracking column positions by index."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import json, csv\n\ndata = {\"name\": \"Asha\", \"skills\": [\"Python\", \"SQL\"]}\ntext = json.dumps(data)\nprint(text)                         # {\"name\": \"Asha\", \"skills\": [\"Python\", \"SQL\"]}\nprint(json.loads(text)[\"name\"])     # Asha\n\nwith open(\"scores.csv\", \"w\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerow([\"name\", \"score\"])\n    writer.writerow([\"Asha\", 88])\n\nwith open(\"scores.csv\", newline=\"\") as f:\n    for row in csv.reader(f):\n        print(row)",
+      "explanation": "json.dumps/loads round-trip a dict through JSON text. The csv writer/reader correctly handle the comma-separated format, including the header row, without manual string splitting."
+    }
+  ],
+  "keyPoints": [
+    "JSON objects/arrays map to Python dicts/lists; only JSON-compatible types serialize directly",
+    "json.dumps()/loads() work with strings; json.dump()/load() work directly with file objects",
+    "Always use the csv module rather than hand-splitting on commas — it handles quoting correctly",
+    "csv.DictReader/DictWriter work with rows as dicts, keyed by the header row"
+  ],
+  "commonMistakes": [
+    "Hand-splitting CSV lines on \",\" and breaking on fields that contain commas or quotes",
+    "Trying to json.dumps() a custom object directly without first converting it to a dict",
+    "Forgetting newline=\"\" when opening a CSV file for writing on some platforms, causing extra blank lines"
+  ],
+  "concepts": [
+    "JSON",
+    "serialization",
+    "deserialization",
+    "json.dumps()",
+    "json.loads()",
+    "CSV",
+    "csv.reader",
+    "csv.writer",
+    "DictReader"
+  ],
+  "previousLesson": "python-standard-library-001",
+  "nextLesson": "python-type-hints-001"
+}

@@ -1,0 +1,65 @@
+{
+  "id": "comparison-syntax-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Syntax",
+  "topic": "Syntax",
+  "topicNumber": 2,
+  "lessonNumber": 2,
+  "title": "Syntax: Program Structure, Blocks, and Comments",
+  "difficulty": "beginner",
+  "description": "How each language structures a program, delimits blocks, and handles comments and naming.",
+  "objectives": [
+    "Compare program structure across the three languages",
+    "Compare block delimiters (indentation vs. braces)",
+    "Compare comment syntax and naming conventions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "A Python file has no required top-level structure — statements at module level just run in order. Blocks are defined by indentation (no braces), and a colon introduces a new indented block (after if, for, def, class, etc.). Comments use #. Naming convention: snake_case for variables/functions, PascalCase for classes."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Every piece of Java code must live inside a class; a runnable program needs a public static void main(String[] args) method as its entry point. Blocks are delimited by curly braces {}, and every statement ends with a semicolon. Comments use //, /* */, and /** */ (Javadoc). Naming convention: camelCase for methods/variables, PascalCase for classes, UPPER_SNAKE_CASE for constants."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "A C program needs an int main() function as its entry point, but code can exist at file scope outside any function (global variables, other function definitions) — there's no requirement everything live inside a class. Blocks use curly braces {}, statements end with semicolons, and #include/#define preprocessor directives (starting with #) are processed before real compilation. Comments use // (C99+) and /* */. Naming convention is less strictly enforced by tooling than Java's, but snake_case is common."
+    },
+    {
+      "type": "code",
+      "language": "comparison",
+      "code": "# Python\nif x > 0:\n    print(\"positive\")\n\n// Java\nif (x > 0) {\n    System.out.println(\"positive\");\n}\n\n/* C */\nif (x > 0) {\n    printf(\"positive\\n\");\n}",
+      "explanation": "The same conditional in each language: Python relies purely on indentation and a colon; Java and C both require parentheses around the condition and braces around the block."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "The most visible structural difference is block delimitation: Python uses indentation as syntax (inconsistent indentation is a real error), while Java and C use braces (indentation is just a readability convention, not enforced by the compiler). Java requires all code inside a class; C and Python both allow top-level functions/statements outside any class-like construct."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Coming from Java or C to Python, forgetting that indentation is meaningful (not cosmetic) is the most common early stumbling block. Coming from Python to Java or C, forgetting closing braces or semicolons is the mirror-image mistake."
+    }
+  ],
+  "keyPoints": [
+    "Python uses indentation to define blocks; Java and C use braces",
+    "Java requires all code inside a class; Python and C allow top-level code/functions",
+    "Comment styles and naming conventions differ, but // and /* */ are shared by Java and C"
+  ],
+  "concepts": [
+    "program structure",
+    "blocks",
+    "indentation",
+    "braces",
+    "comments",
+    "naming conventions"
+  ],
+  "previousLesson": "comparison-fundamentals-001",
+  "nextLesson": "comparison-variables-001"
+}

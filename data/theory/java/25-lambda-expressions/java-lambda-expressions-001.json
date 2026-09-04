@@ -1,0 +1,57 @@
+{
+  "id": "java-lambda-expressions-001",
+  "language": "java",
+  "section": "java",
+  "module": "Lambda Expressions",
+  "moduleNumber": 25,
+  "lessonNumber": 26,
+  "title": "Lambda Expressions",
+  "difficulty": "advanced",
+  "description": "Lambda syntax, functional interfaces from java.util.function, and how lambdas capture variables.",
+  "objectives": [
+    "Write lambda expressions with various parameter/body forms",
+    "Use the core java.util.function interfaces: Predicate, Consumer, Function, Supplier",
+    "Understand effectively-final variable capture in lambdas"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Lambda Syntax",
+      "body": "A lambda expression is a concise, inline implementation of a functional interface's single abstract method: (parameters) -> expression, or (parameters) -> { statements; return value; } for a multi-statement body. Parameter types are usually inferred from context and can be omitted: (a, b) -> a + b. A single parameter's parentheses are optional: x -> x * x. Lambdas replace much of the verbosity of anonymous inner classes for simple, single-method implementations, while compiling down to a similar underlying mechanism."
+    },
+    {
+      "type": "text",
+      "heading": "java.util.function and Variable Capture",
+      "body": "java.util.function provides a standard set of general-purpose functional interfaces so you rarely need to declare your own: Predicate<T> (a boolean-returning test: T -> boolean), Function<T, R> (a transformation: T -> R), Consumer<T> (an action with no return value: T -> void), and Supplier<T> (a value producer taking no arguments: () -> T). These are the building blocks behind much of the Stream API's fluent, functional-style method chaining.\n\nA lambda can reference local variables from its enclosing scope, but only if they are effectively final — assigned once and never reassigned afterward (even without the explicit final keyword). This mirrors Python's closure-capture behavior conceptually, but Java enforces the effectively-final rule at compile time rather than allowing (and sometimes surprising you with) mutation of a captured variable."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.function.*;\nimport java.util.List;\n\npublic class Lambdas {\n    public static void main(String[] args) {\n        Predicate<Integer> isEven = n -> n % 2 == 0;\n        Function<Integer, Integer> square = n -> n * n;\n        Consumer<String> print = s -> System.out.println(\"Got: \" + s);\n        Supplier<String> greeting = () -> \"Hello!\";\n\n        System.out.println(isEven.test(4) + \" \" + square.apply(5));\n        print.accept(greeting.get());\n\n        int factor = 10;                       // effectively final\n        Function<Integer, Integer> scale = n -> n * factor;\n        System.out.println(scale.apply(3));    // 30\n    }\n}",
+      "explanation": "Each java.util.function interface models a distinct shape: a test (Predicate), a transformation (Function), an action (Consumer), and a producer (Supplier). factor is captured by the scale lambda because it's effectively final — never reassigned."
+    }
+  ],
+  "keyPoints": [
+    "(params) -> expression is the core lambda syntax, implementing a functional interface's single method",
+    "Predicate<T>, Function<T,R>, Consumer<T>, Supplier<T> are the standard general-purpose functional interfaces",
+    "Lambdas can only capture effectively-final local variables from their enclosing scope",
+    "Lambdas underpin much of the Stream API's method-chaining style"
+  ],
+  "commonMistakes": [
+    "Trying to reassign a local variable that a lambda has captured, causing a compile error",
+    "Reaching for a custom functional interface when a standard one (Predicate, Function, etc.) already fits",
+    "Writing an overly long, multi-statement lambda body where a named method reference or regular method would be clearer"
+  ],
+  "concepts": [
+    "lambda expressions",
+    "functional interfaces",
+    "Predicate",
+    "Function",
+    "Consumer",
+    "Supplier",
+    "effectively final",
+    "variable capture"
+  ],
+  "previousLesson": "java-packages-and-java-apis-001",
+  "nextLesson": "java-stream-api-001"
+}

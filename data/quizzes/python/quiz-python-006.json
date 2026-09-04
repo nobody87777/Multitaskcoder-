@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-006",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Type Conversion",
+  "question": "What is the result of int('5') + 1?",
+  "options": [
+    "'51'",
+    "6",
+    "TypeError",
+    "5.1"
+  ],
+  "correctAnswer": 1,
+  "explanation": "int('5') converts the string '5' to the integer 5, so 5 + 1 evaluates to 6.",
+  "concepts": [
+    "int()",
+    "type conversion"
+  ]
+}

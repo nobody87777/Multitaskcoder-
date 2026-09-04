@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-004",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "bugType": "incompatible-types",
+  "title": "Fix the Lossy Assignment",
+  "description": "The program should store a precise measurement value.",
+  "buggyCode": "public class Measurement {\n    public static void main(String[] args) {\n        int length = 9.75;\n        System.out.println(length);\n    }\n}",
+  "expectedBehavior": "The program should store and print the measurement 9.75.",
+  "actualProblem": "9.75 is a double literal, and assigning it directly to an int variable is a compile error (incompatible types: possible lossy conversion from double to int) because it would silently drop the fractional part.",
+  "correctedCode": "public class Measurement {\n    public static void main(String[] args) {\n        double length = 9.75;\n        System.out.println(length);\n    }\n}",
+  "expectedOutput": "9.75",
+  "explanation": "Java's compiler blocks assignments that could silently lose precision, such as putting a double value into an int variable. The fix is to use a variable type, like double, that can actually hold the value.",
+  "concepts": [
+    "primitive types",
+    "type compatibility",
+    "compile error"
+  ]
+}

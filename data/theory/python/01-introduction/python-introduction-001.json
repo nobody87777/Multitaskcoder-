@@ -1,0 +1,60 @@
+{
+  "id": "python-introduction-001",
+  "language": "python",
+  "section": "python",
+  "module": "Introduction to Python",
+  "moduleNumber": 1,
+  "lessonNumber": 1,
+  "title": "What Is Python?",
+  "difficulty": "beginner",
+  "description": "An introduction to Python: what it is, how it runs, and where it's used.",
+  "objectives": [
+    "Understand what Python is and what kind of language it is",
+    "Understand the difference between interpreted and compiled execution",
+    "Understand basic program structure: comments, indentation, identifiers, and keywords",
+    "Know how to run a Python program"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "What Python Is",
+      "body": "Python is a high-level, general-purpose programming language created by Guido van Rossum and first released in 1991. It emphasizes readability — Python code is designed to look close to plain English, using indentation instead of braces to mark blocks of code. Python is dynamically typed (variable types are checked at runtime, not declared up front) and is most commonly run through CPython, its standard implementation, which compiles source code to an intermediate bytecode and then interprets that bytecode. This is why Python is usually described as 'interpreted': you don't produce a standalone native executable the way you do with C, but there is still a compilation step happening internally, just hidden from you.\n\nPython has gone through major version changes over its history; the most important one for any learner to know about is the transition from Python 2 to Python 3, which introduced several backward-incompatible changes (such as print becoming a function). All modern Python development targets Python 3.\n\nPython is used across an unusually broad range of domains: web development (Django, Flask), data science and machine learning (NumPy, pandas, PyTorch), automation and scripting, scientific computing, and general application development. Its main advantages are readability, a huge standard library ('batteries included'), and an enormous ecosystem of third-party packages. Its main limitations are runtime speed (compared to compiled languages like C) and the Global Interpreter Lock, which restricts true parallel execution of Python bytecode across threads in CPython (covered later, in Advanced Python)."
+    },
+    {
+      "type": "text",
+      "heading": "Program Structure and Syntax Basics",
+      "body": "A Python program is just a sequence of statements executed from top to bottom. Python has two common ways to run code: the interactive interpreter (a REPL — Read-Eval-Print Loop — where you type one statement at a time and see results immediately) and scripts (a .py file run all at once with `python filename.py`).\n\nComments start with # and run to the end of the line; there is no dedicated multi-line comment syntax, though a triple-quoted string not assigned to anything is often used for that purpose.\n\nUnlike C or Java, Python uses indentation (not braces) to define blocks of code — the body of an if statement, loop, or function must be indented consistently, and mixing tabs and spaces inconsistently is an error. Identifiers (names for variables, functions, classes) must start with a letter or underscore, followed by letters, digits, or underscores, and are case-sensitive. Python reserves a set of keywords (like if, for, def, class, import, True, False, None) that cannot be used as identifiers."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# A minimal Python script\nprint(\"Hello, World!\")\n\n# Indentation defines this block\nif True:\n    print(\"This line is inside the if block\")\nprint(\"This line is not\")",
+      "explanation": "print(\"Hello, World!\") is a complete, runnable statement. The two print() calls inside and outside the if block show how indentation — not braces — determines what belongs to the block."
+    }
+  ],
+  "keyPoints": [
+    "Python is a high-level, dynamically typed, interpreted language (via CPython bytecode)",
+    "Indentation defines code blocks in Python — there are no braces",
+    "Comments start with #",
+    "Identifiers are case-sensitive and cannot be Python keywords",
+    "All modern code should target Python 3, not the discontinued Python 2"
+  ],
+  "commonMistakes": [
+    "Mixing tabs and spaces for indentation, causing an IndentationError or TabError",
+    "Forgetting that print is a function in Python 3 (print(\"x\"), not print \"x\")",
+    "Assuming Python code runs exactly as fast as compiled languages like C"
+  ],
+  "concepts": [
+    "Python",
+    "interpreted language",
+    "CPython",
+    "bytecode",
+    "indentation",
+    "comments",
+    "identifiers",
+    "keywords",
+    "REPL"
+  ],
+  "previousLesson": null,
+  "nextLesson": "python-variables-and-data-types-001"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-007",
+  "language": "python",
+  "title": "Even or Odd Checker",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Check whether a given number is even or odd.",
+  "code": "num = int(input(\"Enter a number: \"))\n\nif num % 2 == 0:\n    print(num, \"is Even\")\nelse:\n    print(num, \"is Odd\")",
+  "exampleInput": "13",
+  "expectedOutput": "Enter a number: 13 is Odd",
+  "concepts": [
+    "modulus operator",
+    "if/else"
+  ]
+}

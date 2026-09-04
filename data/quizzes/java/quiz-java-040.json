@@ -1,0 +1,19 @@
+{
+  "id": "quiz-java-040",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "true-false",
+  "topic": "Collections",
+  "question": "True or False: In Java, an ArrayList can only store primitive types like int and double directly.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Java generics work only with reference types, so an ArrayList<int> is illegal; primitives must be autoboxed into wrapper classes like Integer or Double to be stored.",
+  "concepts": [
+    "ArrayList",
+    "autoboxing",
+    "wrapper classes"
+  ]
+}

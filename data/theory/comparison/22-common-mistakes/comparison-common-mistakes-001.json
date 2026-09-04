@@ -1,0 +1,57 @@
+{
+  "id": "comparison-common-mistakes-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Common Mistakes",
+  "topic": "Common Mistakes",
+  "topicNumber": 22,
+  "lessonNumber": 22,
+  "title": "Common Beginner Mistakes, Compared",
+  "difficulty": "intermediate",
+  "description": "The characteristic beginner mistakes in each language, and how their consequences differ in severity.",
+  "objectives": [
+    "Recognize characteristic beginner mistakes in each language",
+    "Understand how mistake consequences differ in severity across the three languages"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Forgetting to convert input() results before doing arithmetic (a caught TypeError); assuming b = a copies a mutable list instead of aliasing it (a silent logic bug, not a crash); mutable default arguments (def f(items=[]):, a classic, silent, hard-to-diagnose sharing bug); mixing tabs and spaces (a caught, immediate error). Most Python mistakes either fail loudly and immediately (a raised exception) or produce a silent logic bug that requires understanding aliasing/mutability to spot — rarely do they corrupt memory or crash unpredictably."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Using == instead of .equals() to compare String content (a silent logic bug — no crash, no exception, just a wrong boolean result); forgetting break in a switch, causing fall-through (also silent — just runs more code than intended); off-by-one array access (a caught ArrayIndexOutOfBoundsException); NullPointerException from an uninitialized/absent object reference (caught, with a clear stack trace). Java mistakes are a mix: some are caught loudly at runtime (bounds/null errors), some are silent logic bugs (== vs .equals(), switch fall-through) that produce a wrong result without any error at all."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Forgetting & in a scanf() call (typically an immediate crash, though technically undefined behavior — could also silently corrupt memory instead); off-by-one array access (silent memory corruption or an unpredictable crash, NOT a caught exception); forgetting to free() allocated memory (a silent, gradual memory leak); using a pointer after free() (a dangling pointer / use-after-free, undefined behavior that may 'seem to work' for a while before failing unpredictably); mismatched printf/scanf format specifiers (undefined behavior, often garbage output). Nearly all characteristic C mistakes fall into the 'undefined behavior' category, meaning there's no guaranteed, consistent symptom at all — the same bug might crash immediately on one run, corrupt unrelated data silently on another, and appear to work fine on a third."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "The most important cross-language distinction isn't which language's beginners make more mistakes, but how loudly and reliably each language's mistakes reveal themselves: Python's and Java's mistakes are overwhelmingly either caught immediately (a clear exception) or a well-understood, bounded category of silent logic bug (aliasing, ==, fall-through); C's characteristic mistakes are predominantly undefined behavior, with no guaranteed symptom at all, making them both harder to detect and harder to reliably reproduce and fix."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "This is precisely why disciplined habits (checking return values, validating pointers, careful buffer sizing) matter so much more in C specifically — the language provides essentially no safety net to catch what Python's exceptions or Java's compiler/runtime checks would catch automatically."
+    }
+  ],
+  "keyPoints": [
+    "Python mistakes are typically caught loudly (exceptions) or are well-understood silent logic bugs (aliasing, mutable defaults)",
+    "Java mistakes mix caught runtime errors (bounds, null) with a smaller set of silent logic bugs (== vs equals, fall-through)",
+    "C mistakes are predominantly undefined behavior with no guaranteed symptom — the same bug can crash, corrupt data, or 'work' unpredictably across runs"
+  ],
+  "concepts": [
+    "common mistakes",
+    "undefined behavior",
+    "silent bugs",
+    "caught exceptions",
+    "debugging difficulty"
+  ],
+  "previousLesson": "comparison-learning-difficulty-001",
+  "nextLesson": null
+}

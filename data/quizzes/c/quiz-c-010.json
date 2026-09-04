@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-010",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Conditionals",
+  "question": "What does the default case in a C switch statement do?",
+  "options": [
+    "It always runs first, before any other case",
+    "It runs when none of the other case labels match the switch expression",
+    "It is required for the switch to compile",
+    "It terminates the program"
+  ],
+  "correctAnswer": 1,
+  "explanation": "default acts as a fallback branch, executing when the switch expression doesn't match any of the explicit case labels.",
+  "concepts": [
+    "switch",
+    "default case"
+  ]
+}

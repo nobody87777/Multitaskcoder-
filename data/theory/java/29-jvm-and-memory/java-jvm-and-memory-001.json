@@ -1,0 +1,58 @@
+{
+  "id": "java-jvm-and-memory-001",
+  "language": "java",
+  "section": "java",
+  "module": "JVM and Memory",
+  "moduleNumber": 29,
+  "lessonNumber": 30,
+  "title": "JVM Architecture and Memory",
+  "difficulty": "advanced",
+  "description": "The JVM's stack and heap, object references, garbage collection, and a conceptual look at class loading.",
+  "objectives": [
+    "Understand the stack/heap split and what lives where",
+    "Understand how garbage collection reclaims memory",
+    "Understand memory leaks conceptually, even with garbage collection",
+    "Understand class loading at a conceptual level"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Stack, Heap, and References",
+      "body": "Each thread has its own call stack, holding a stack frame per active method call — local variables (including primitives, stored directly) and the reference values pointing to objects, plus bookkeeping about where to resume execution once the call returns. Frames are pushed on call and popped on return, giving stack memory very fast, predictable allocation/deallocation.\n\nThe heap is a single, shared memory region (across all threads) where every object (everything created with new) actually lives — its fields, whatever their types. A reference variable, whether it's a local variable on the stack or a field inside another object on the heap, just holds the address of an object on the heap; multiple references can point to the same heap object, exactly as covered in earlier OOP lessons."
+    },
+    {
+      "type": "text",
+      "heading": "Garbage Collection and Class Loading",
+      "body": "Java's garbage collector automatically reclaims heap memory occupied by objects that are no longer reachable from any live reference (traced from a set of 'roots': local variables on active stacks, static fields, etc.) — the programmer never explicitly frees memory, unlike C. This eliminates whole categories of bugs (double free, use-after-free) but doesn't eliminate memory problems entirely: a 'memory leak' in Java means objects that are technically still reachable (e.g., through a growing static collection that's never cleared) but functionally unused, so the garbage collector correctly leaves them alone, and memory usage grows unboundedly anyway.\n\nClass loading is the process by which the JVM finds a compiled .class file's bytecode, verifies it, and prepares it for execution the first time that class is actually needed at runtime (not necessarily when the program starts) — the class loader subsystem, along with the method area/metaspace (where class-level data like static fields and method bytecode itself is stored, distinct from both the stack and the per-object heap), rounds out the JVM's core memory architecture."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class MemoryDemo {\n    static java.util.List<Object> cache = new java.util.ArrayList<>();   // static: lives for the program's life\n\n    static void leak() {\n        cache.add(new Object());   // reachable via 'cache' forever — never eligible for GC\n    }\n\n    public static void main(String[] args) {\n        for (int i = 0; i < 3; i++) {\n            leak();\n        }\n        System.out.println(cache.size());   // 3 — every added object is still reachable\n    }\n}",
+      "explanation": "Every Object added to the static cache list remains reachable (via cache) for as long as the program runs, so the garbage collector can never reclaim it — a textbook example of a Java memory leak despite automatic garbage collection."
+    }
+  ],
+  "keyPoints": [
+    "Each thread has its own stack (frames, locals, references); the heap holds all objects, shared across threads",
+    "Garbage collection reclaims heap memory for objects no longer reachable from any live reference",
+    "A Java 'memory leak' means objects stay reachable (e.g., via a growing static collection) but are functionally unused",
+    "Class loading happens on first use, not necessarily at program startup, and loads bytecode from .class files"
+  ],
+  "commonMistakes": [
+    "Assuming garbage collection makes memory leaks impossible in Java",
+    "Accumulating objects in a long-lived static collection (like a cache) without ever removing entries",
+    "Confusing stack memory (fast, per-thread, per-call) with heap memory (shared, holds all objects)"
+  ],
+  "concepts": [
+    "JVM architecture",
+    "stack",
+    "heap",
+    "references",
+    "garbage collection",
+    "memory leaks",
+    "class loading",
+    "bytecode"
+  ],
+  "previousLesson": "java-multithreading-001",
+  "nextLesson": "java-advanced-java-001"
+}

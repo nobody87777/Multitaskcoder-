@@ -1,0 +1,53 @@
+{
+  "id": "c-unions-001",
+  "language": "c",
+  "section": "c",
+  "module": "Unions",
+  "moduleNumber": 16,
+  "lessonNumber": 17,
+  "title": "Unions",
+  "difficulty": "intermediate",
+  "description": "How unions share memory between members, how they differ from structures, and typical use cases.",
+  "objectives": [
+    "Understand how a union's members share the same memory",
+    "Contrast unions with structures",
+    "Recognize appropriate use cases for unions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Memory Sharing in Unions",
+      "body": "A union is declared syntactically like a struct, union Value { int asInt; float asFloat; char asBytes[4]; };, but behaves completely differently in memory: every member of a union occupies the exact same block of memory, overlapping each other, rather than each having its own separate space. The union's total size is the size of its largest member (plus any padding), not the sum of all members' sizes, the way a struct's size roughly is. Writing to one member and then reading a different member reinterprets the same underlying bytes as that different type — the value you get back is essentially whatever bit pattern the previous write left behind, viewed through a different type's lens, not a meaningfully converted value."
+    },
+    {
+      "type": "text",
+      "heading": "Unions vs. Structures, and Use Cases",
+      "body": "The core distinction: a struct's members each have independent storage (setting one doesn't affect the others), while a union's members share storage (setting one effectively invalidates treating the memory as any other member, unless you specifically intend the reinterpretation). Because of this, the programmer is responsible for tracking which member was most recently written — the union type itself provides no built-in way to know.\n\nCommon legitimate use cases: memory-constrained embedded systems representing one of several possible interpretations of the same bytes; implementing a 'tagged union' (a union paired with a separate enum/int field tracking which member is currently valid — this pattern, sometimes called a variant or discriminated union, is how many other languages implement their own algebraic/sum types); and low-level type-punning for things like network protocol parsing, though this specific use has subtleties around C's 'strict aliasing' rules (covered in the Memory and Undefined Behavior lesson)."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nunion Value {\n    int asInt;\n    float asFloat;\n};\n\nstruct TaggedValue {          // a 'tagged union' pattern: union + explicit type tag\n    enum { IS_INT, IS_FLOAT } type;\n    union Value value;\n};\n\nint main() {\n    union Value v;\n    v.asInt = 65;\n    printf(\"%d\\n\", v.asInt);          // 65 — read back correctly, matching how it was written\n\n    struct TaggedValue tv = { IS_INT, {.asInt = 42} };\n    if (tv.type == IS_INT) {\n        printf(\"%d\\n\", tv.value.asInt);   // safe: we know which member is valid\n    }\n    return 0;\n}",
+      "explanation": "v.asInt is written and read back consistently as the same member, giving a meaningful result. TaggedValue pairs the union with an explicit type tag, so the program always knows which member is currently valid to read."
+    }
+  ],
+  "keyPoints": [
+    "A union's members all share the exact same block of memory — its size is that of its largest member",
+    "Writing one member and reading a different one reinterprets the same raw bytes, not a converted value",
+    "Unlike a struct, a union provides no built-in way to know which member was most recently written",
+    "The 'tagged union' pattern (union + a separate type tag) tracks which member is currently valid to read"
+  ],
+  "commonMistakes": [
+    "Writing one union member and reading a different one, expecting a meaningful value conversion rather than raw byte reinterpretation",
+    "Assuming a union's size is the sum of its members' sizes, like a struct's roughly is",
+    "Not tracking which member was last written, leading to reading stale/incorrect data through the wrong member"
+  ],
+  "concepts": [
+    "unions",
+    "memory sharing",
+    "tagged union",
+    "type punning"
+  ],
+  "previousLesson": "c-structures-001",
+  "nextLesson": "c-enumerations-and-typedef-001"
+}

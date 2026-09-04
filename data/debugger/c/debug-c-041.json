@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-041",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Memory",
+  "bugType": "incorrect-malloc-size",
+  "title": "Fix the Undersized Malloc Allocation",
+  "description": "The program should allocate an array of 5 integers on the heap and fill it.",
+  "buggyCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 5;\n    int *arr = malloc(sizeof(int));\n    for (int i = 0; i < n; i++) {\n        arr[i] = i * 10;\n    }\n    printf(\"%d\\n\", arr[4]);\n    free(arr);\n    return 0;\n}",
+  "expectedBehavior": "The program should safely allocate space for 5 ints and print 40, the last value stored.",
+  "actualProblem": "malloc(sizeof(int)) only allocates enough memory for a single int, not an array of 5. Writing to arr[1] through arr[4] goes past the allocated block, corrupting unrelated heap memory (undefined behavior).",
+  "correctedCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 5;\n    int *arr = malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        arr[i] = i * 10;\n    }\n    printf(\"%d\\n\", arr[4]);\n    free(arr);\n    return 0;\n}",
+  "expectedOutput": "40",
+  "explanation": "When allocating an array on the heap, the requested size must account for every element: n * sizeof(elementType), not just the size of one element.",
+  "concepts": [
+    "malloc()",
+    "dynamic memory allocation",
+    "buffer overflow"
+  ]
+}

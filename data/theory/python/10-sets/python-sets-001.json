@@ -1,0 +1,57 @@
+{
+  "id": "python-sets-001",
+  "language": "python",
+  "section": "python",
+  "module": "Sets",
+  "moduleNumber": 10,
+  "lessonNumber": 11,
+  "title": "Sets",
+  "difficulty": "intermediate",
+  "description": "Python's unordered collection of unique elements, and its mathematical set operations.",
+  "objectives": [
+    "Create sets and understand their uniqueness guarantee",
+    "Add and remove elements",
+    "Use union, intersection, difference, and symmetric difference",
+    "Understand subset/superset checks and frozenset"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Sets and Membership",
+      "body": "A set is an unordered collection of unique, hashable elements, written with curly braces: {1, 2, 3} (an empty {} creates a dict, not a set — use set() for an empty set). Adding a duplicate value has no effect; sets automatically discard duplicates. add(x) inserts a single element; update(iterable) inserts every element from another iterable; remove(x) deletes an element (raising KeyError if it's absent); discard(x) does the same but silently does nothing if absent. Because sets are unordered and implemented with a hash table internally, membership testing (x in my_set) is on average much faster (O(1)) than for a list (O(n))."
+    },
+    {
+      "type": "text",
+      "heading": "Set Algebra",
+      "body": "Sets directly support the classic mathematical set operations: union (a | b or a.union(b)) — all elements in either set; intersection (a & b or a.intersection(b)) — elements in both; difference (a - b or a.difference(b)) — elements in a but not b; symmetric difference (a ^ b) — elements in exactly one of the two sets. issubset() and issuperset() (or <=/>=) test containment relationships between sets.\n\nBecause a plain set is mutable, it cannot itself be an element of another set or a dictionary key (it isn't hashable). For that case, Python provides frozenset, an immutable variant of set that supports all the same read-only operations but no add/remove."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a | b)          # {1, 2, 3, 4} union\nprint(a & b)          # {2, 3} intersection\nprint(a - b)          # {1} difference\nprint(a ^ b)          # {1, 4} symmetric difference\n\ntags = set([\"python\", \"python\", \"java\"])\nprint(tags)           # {'python', 'java'} — duplicate discarded",
+      "explanation": "The set constructed from a list with a duplicate 'python' entry automatically deduplicates. Set algebra operators mirror the mathematical operations directly."
+    }
+  ],
+  "keyPoints": [
+    "Sets store unique, hashable elements with no guaranteed order",
+    "Membership testing in a set is typically much faster than in a list",
+    "|, &, -, ^ (or their named method equivalents) implement union/intersection/difference/symmetric-difference",
+    "frozenset is an immutable, hashable set usable as a dict key or set element"
+  ],
+  "commonMistakes": [
+    "Writing {} expecting an empty set (it creates an empty dict instead)",
+    "Assuming sets preserve insertion order (they don't — dicts do, since Python 3.7, but sets don't guarantee it)",
+    "Trying to put a plain (mutable) set inside another set or use it as a dict key"
+  ],
+  "concepts": [
+    "sets",
+    "uniqueness",
+    "union",
+    "intersection",
+    "difference",
+    "frozenset",
+    "hashable"
+  ],
+  "previousLesson": "python-tuples-001",
+  "nextLesson": "python-dictionaries-001"
+}

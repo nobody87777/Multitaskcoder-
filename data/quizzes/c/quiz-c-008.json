@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-008",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Operators",
+  "question": "What is the result of 7 / 2 in C when both operands are of type int?",
+  "options": [
+    "3.5",
+    "4",
+    "3.0",
+    "3"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Integer division in C truncates toward zero, discarding the remainder, so 7 / 2 with two ints evaluates to 3.",
+  "concepts": [
+    "integer division",
+    "operators"
+  ]
+}

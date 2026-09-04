@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-022",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Lists",
+  "bugType": "wrong-condition",
+  "title": "Fix the Even Number Filter",
+  "description": "The program should collect only the even numbers from a list. Fix the bug.",
+  "buggyCode": "numbers = [1, 2, 3, 4, 5, 6]\nevens = [n for n in numbers if n % 2 == 1]\nprint(evens)",
+  "expectedBehavior": "The program should print [2, 4, 6], the even numbers.",
+  "actualProblem": "n % 2 == 1 is true for odd numbers, not even ones, so the comprehension collects the wrong half of the list.",
+  "correctedCode": "numbers = [1, 2, 3, 4, 5, 6]\nevens = [n for n in numbers if n % 2 == 0]\nprint(evens)",
+  "expectedOutput": "[2, 4, 6]",
+  "explanation": "A number is even when dividing it by 2 leaves no remainder, i.e. n % 2 == 0. The condition in the original code checks for the opposite case (remainder of 1), which selects odd numbers instead.",
+  "concepts": [
+    "list comprehensions",
+    "modulus operator",
+    "filtering"
+  ]
+}

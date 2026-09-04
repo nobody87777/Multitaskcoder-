@@ -1,0 +1,52 @@
+{
+  "id": "c-function-pointers-001",
+  "language": "c",
+  "section": "c",
+  "module": "Function Pointers",
+  "moduleNumber": 21,
+  "lessonNumber": 22,
+  "title": "Function Pointers",
+  "difficulty": "advanced",
+  "description": "Declaring and using pointers to functions, and their classic use case: callbacks.",
+  "objectives": [
+    "Declare a function pointer with a matching signature",
+    "Call a function indirectly through a function pointer",
+    "Use function pointers to implement callbacks"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Declaring and Using Function Pointers",
+      "body": "A function pointer holds the address of a function, letting a function itself be passed around, stored in a variable, or chosen dynamically at runtime, much like data. Its declaration must match the target function's exact signature: int (*fp)(int, int); declares fp as a pointer to a function taking two ints and returning an int (the parentheses around *fp are essential — without them, int *fp(int, int); would instead declare a function returning int *, a completely different meaning). Assigning a function to a matching pointer, fp = add; (the function name decays to its address, similar to how an array name decays to a pointer, & is optional here), and calling through it, fp(2, 3); (or, equivalently, (*fp)(2, 3);), invokes the pointed-to function."
+    },
+    {
+      "type": "text",
+      "heading": "Callbacks",
+      "body": "The classic use case for function pointers is a callback: passing a function as an argument to another function, which then calls it back at an appropriate point — this is how the standard library's qsort() lets you supply a custom comparison function for sorting arbitrary data, and it's a general pattern for making a function's behavior configurable by the caller without needing to know in advance every possible variant of that behavior. Function pointers are also the mechanism behind implementing simple 'virtual functions'/polymorphism-like behavior manually in C, since the language has no built-in OOP inheritance/dispatch mechanism (a technique used, for instance, in the Linux kernel's driver interfaces)."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint add(int a, int b) { return a + b; }\nint multiply(int a, int b) { return a * b; }\n\nint compute(int a, int b, int (*operation)(int, int)) {   // callback parameter\n    return operation(a, b);\n}\n\nint main() {\n    int (*fp)(int, int) = add;\n    printf(\"%d\\n\", fp(2, 3));             // 5, called through the pointer\n\n    printf(\"%d\\n\", compute(4, 5, add));       // 9\n    printf(\"%d\\n\", compute(4, 5, multiply));  // 20 — same compute(), different behavior\n    return 0;\n}",
+      "explanation": "compute() takes a function pointer as a parameter, letting the caller decide at each call site which operation actually runs — the essence of a callback."
+    }
+  ],
+  "keyPoints": [
+    "A function pointer's declared type must match the target function's exact signature",
+    "int (*fp)(int, int); declares a function pointer — the parentheses around *fp are required",
+    "A function's name decays to its address; calling through a matching pointer invokes it",
+    "Callbacks (passing a function pointer as an argument) let a function's behavior be configured by its caller"
+  ],
+  "commonMistakes": [
+    "Omitting the parentheses around *fp in a function pointer declaration, accidentally declaring something else entirely",
+    "Assigning a function whose signature doesn't exactly match the pointer's declared type",
+    "Forgetting that calling a function through a mismatched-signature pointer is undefined behavior, even if it happens to compile with only a warning"
+  ],
+  "concepts": [
+    "function pointers",
+    "callbacks",
+    "function pointer syntax"
+  ],
+  "previousLesson": "c-command-line-arguments-001",
+  "nextLesson": "c-data-structures-in-c-001"
+}

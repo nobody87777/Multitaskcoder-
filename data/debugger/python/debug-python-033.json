@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-033",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Exceptions",
+  "bugType": "wrong-exception-type",
+  "title": "Fix the Wrong Exception Catch",
+  "description": "The program should catch division-by-zero errors and print a friendly message. Fix the bug.",
+  "buggyCode": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ValueError:\n        return \"Cannot divide by zero\"\n\nprint(safe_divide(10, 0))",
+  "expectedBehavior": "The program should print 'Cannot divide by zero' instead of crashing when dividing by zero.",
+  "actualProblem": "Dividing by zero raises a ZeroDivisionError, not a ValueError, so the except clause doesn't match and the exception propagates uncaught, crashing the program.",
+  "correctedCode": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Cannot divide by zero\"\n\nprint(safe_divide(10, 0))",
+  "expectedOutput": "Cannot divide by zero",
+  "explanation": "An except clause only catches the specific exception type (or its parent types) that it names. Catching ValueError does nothing to intercept a ZeroDivisionError, since they are unrelated exception classes.",
+  "concepts": [
+    "exceptions",
+    "ZeroDivisionError",
+    "except clause"
+  ]
+}

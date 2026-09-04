@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-003",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Variables",
+  "question": "Which of these is a primitive data type in Java?",
+  "options": [
+    "String",
+    "ArrayList",
+    "int",
+    "Object"
+  ],
+  "correctAnswer": 2,
+  "explanation": "int is one of Java's eight built-in primitive types; String and ArrayList are reference (object) types.",
+  "concepts": [
+    "primitive types",
+    "variables"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-016",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Functions",
+  "question": "What must a C function's declaration specify before its name?",
+  "options": [
+    "Its variable names",
+    "The name of the file it's defined in",
+    "Its return type (e.g. int, void, float)",
+    "The number of times it will be called"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Every C function declaration begins with a return type indicating what kind of value (or void, meaning none) the function produces.",
+  "concepts": [
+    "functions",
+    "return type"
+  ]
+}

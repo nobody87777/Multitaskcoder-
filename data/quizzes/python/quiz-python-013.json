@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-013",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Loops",
+  "question": "What will this code print?",
+  "code": "count = 0\nwhile count < 3:\n    print(count)\n    count += 1",
+  "options": [
+    "Infinite loop",
+    "0 1 2 3",
+    "0 1 2",
+    "1 2 3"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The loop starts at 0 and runs while count is less than 3, printing 0, 1, and 2 before the condition becomes false.",
+  "concepts": [
+    "while loop",
+    "loop condition"
+  ]
+}

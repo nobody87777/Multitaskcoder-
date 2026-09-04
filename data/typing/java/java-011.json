@@ -1,0 +1,16 @@
+{
+  "id": "java-011",
+  "language": "java",
+  "title": "Leap Year Checker",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Determine whether a given year is a leap year.",
+  "code": "import java.util.Scanner;\n\npublic class LeapYearChecker {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int year = scanner.nextInt();\n\n        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {\n            System.out.println(year + \" is a leap year\");\n        } else {\n            System.out.println(year + \" is not a leap year\");\n        }\n    }\n}",
+  "exampleInput": "2024",
+  "expectedOutput": "2024 is a leap year",
+  "concepts": [
+    "modulus",
+    "logical operators",
+    "leap year rule"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-026",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What distinguishes method overloading from method overriding in Java?",
+  "options": [
+    "They are the same concept with different names",
+    "Overloading only works with static methods",
+    "Overriding happens within a single class, while overloading requires inheritance",
+    "Overloading defines multiple methods with the same name but different parameter lists in the same class, while overriding redefines an inherited method in a subclass"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Overloading is having multiple methods with the same name but different parameters within one class; overriding is a subclass providing a new implementation for an inherited method with the same signature.",
+  "concepts": [
+    "method overloading",
+    "method overriding"
+  ]
+}

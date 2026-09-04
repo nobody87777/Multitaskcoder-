@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-030",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "struct-comparison-error",
+  "title": "Fix the Direct Struct Comparison",
+  "description": "The program should compare two Point structures for equality.",
+  "buggyCode": "#include <stdio.h>\n\nstruct Point {\n    int x, y;\n};\n\nint main() {\n    struct Point a = {1, 2};\n    struct Point b = {1, 2};\n    if (a == b) {\n        printf(\"Equal\\n\");\n    } else {\n        printf(\"Not equal\\n\");\n    }\n    return 0;\n}",
+  "expectedBehavior": "Since a and b have the same x and y values, the program should print 'Equal'.",
+  "actualProblem": "C does not support comparing structs directly with ==; this is a compile error ('invalid operands to binary =='). Structs must be compared member by member.",
+  "correctedCode": "#include <stdio.h>\n\nstruct Point {\n    int x, y;\n};\n\nint main() {\n    struct Point a = {1, 2};\n    struct Point b = {1, 2};\n    if (a.x == b.x && a.y == b.y) {\n        printf(\"Equal\\n\");\n    } else {\n        printf(\"Not equal\\n\");\n    }\n    return 0;\n}",
+  "expectedOutput": "Equal",
+  "explanation": "Unlike primitive types, C structs have no built-in == comparison — the compiler doesn't know which fields should count toward 'equality'. Each relevant member must be compared explicitly, usually combined with &&.",
+  "concepts": [
+    "structures",
+    "comparison operators",
+    "compile error"
+  ]
+}

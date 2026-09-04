@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-025",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What is required for a subclass method to correctly override a superclass method?",
+  "options": [
+    "A different method name",
+    "A different return type entirely",
+    "The same method signature (name and parameter types) as the superclass method",
+    "The @Override annotation is mandatory for the code to compile"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Overriding requires the subclass method to have the same name and parameter types as the superclass method it replaces; @Override is recommended but not strictly required by the compiler.",
+  "concepts": [
+    "method overriding",
+    "polymorphism"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "c-044",
+  "language": "c",
+  "title": "Structure With Functions",
+  "difficulty": "advanced",
+  "topic": "Data Structures",
+  "description": "Pass a structure to a function to calculate a rectangle's area.",
+  "code": "#include <stdio.h>\n\nstruct Rectangle {\n    float width;\n    float height;\n};\n\nfloat area(struct Rectangle r) {\n    return r.width * r.height;\n}\n\nint main() {\n    struct Rectangle rect = {5.0, 3.0};\n    printf(\"Area: %.2f\\n\", area(rect));\n    return 0;\n}",
+  "expectedOutput": "Area: 15.00",
+  "concepts": [
+    "struct",
+    "passing struct to function"
+  ]
+}

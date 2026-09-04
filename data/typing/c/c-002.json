@@ -1,0 +1,16 @@
+{
+  "id": "c-002",
+  "language": "c",
+  "title": "Reading User Input",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "description": "Read the user's name using scanf and greet them.",
+  "code": "#include <stdio.h>\n\nint main() {\n    char name[50];\n    printf(\"Enter your name: \");\n    scanf(\"%49s\", name);\n    printf(\"Hello, %s!\\n\", name);\n    return 0;\n}",
+  "exampleInput": "Alex",
+  "expectedOutput": "Enter your name: Hello, Alex!",
+  "concepts": [
+    "scanf",
+    "char arrays",
+    "printf"
+  ]
+}

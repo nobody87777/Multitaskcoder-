@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-028",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "missing-this-keyword",
+  "title": "Fix the Constructor That Doesn't Set Its Field",
+  "description": "The program should set an object's name field from the constructor parameter.",
+  "buggyCode": "public class Pet {\n    String name;\n\n    Pet(String name) {\n        name = name;\n    }\n\n    public static void main(String[] args) {\n        Pet p = new Pet(\"Rex\");\n        System.out.println(p.name);\n    }\n}",
+  "expectedBehavior": "The program should print 'Rex'.",
+  "actualProblem": "Inside the constructor, name = name; assigns the parameter to itself — it never touches the instance field, because the parameter name shadows the field of the same name. The field p.name is left at its default value, null.",
+  "correctedCode": "public class Pet {\n    String name;\n\n    Pet(String name) {\n        this.name = name;\n    }\n\n    public static void main(String[] args) {\n        Pet p = new Pet(\"Rex\");\n        System.out.println(p.name);\n    }\n}",
+  "expectedOutput": "Rex",
+  "explanation": "When a constructor parameter has the same name as an instance field, the parameter name alone always refers to the parameter. Writing this.name explicitly targets the object's field, disambiguating it from the parameter.",
+  "concepts": [
+    "this keyword",
+    "constructors",
+    "variable shadowing"
+  ]
+}

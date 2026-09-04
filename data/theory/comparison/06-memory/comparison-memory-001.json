@@ -1,0 +1,60 @@
+{
+  "id": "comparison-memory-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Memory",
+  "topic": "Memory",
+  "topicNumber": 6,
+  "lessonNumber": 6,
+  "title": "Memory: Stack, Heap, References, Pointers, and Garbage Collection",
+  "difficulty": "advanced",
+  "description": "How memory is managed across the three languages: automatic vs. manual, and references vs. pointers.",
+  "objectives": [
+    "Compare memory management models",
+    "Compare references (Python/Java) with pointers (C)",
+    "Understand the tradeoffs of manual vs. automatic memory management"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Memory is fully automatic: CPython primarily uses reference counting (an object is freed the instant its reference count hits zero), backed by a cyclic garbage collector for reference cycles that counting alone can't resolve. The programmer never explicitly allocates or frees memory. Variables are references to objects on the heap; there is no distinct 'stack-allocated value' concept for user-defined objects the way C has."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Memory is also fully automatic, via the JVM's garbage collector, which reclaims heap objects no longer reachable from any live reference — no manual free() ever. Java does distinguish stack and heap explicitly: primitives and references live on the per-thread call stack; every object (everything made with new) lives on the shared heap. Object references behave much like Python's references (multiple names can point at the same object), but Java's primitives are non-reference, stack-resident values, a distinction Python doesn't have at the language level."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Memory management is entirely manual. Local variables live on the stack, automatically allocated/freed with function calls. Heap memory must be explicitly requested (malloc/calloc/realloc) and explicitly released (free()) — there is no garbage collector. Pointers hold raw memory addresses directly and support arithmetic; a 'reference' in the Python/Java sense doesn't exist as a separate concept — pointers are the only mechanism for indirection."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python and Java both automate memory reclamation entirely; C requires the programmer to track and explicitly release every heap allocation, opening the door to leaks, dangling pointers, use-after-free, and double-free bugs that simply cannot occur in Python or Java. C pointers additionally support arithmetic (p + 1 moves to the next element) and can be freely reinterpreted between types; Python/Java references support neither of those."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Manual memory management (C) gives precise, predictable control over when memory is allocated/freed — valuable in memory-constrained or real-time systems — at the direct cost of an entire class of bugs automatic memory management (Python, Java) eliminates by construction."
+    }
+  ],
+  "keyPoints": [
+    "Python and Java both fully automate memory reclamation via garbage collection (Python also uses reference counting)",
+    "C requires manual malloc()/free() with no garbage collector — leaks, dangling pointers, and double-frees are real risks",
+    "C pointers support arithmetic and type reinterpretation; Python/Java references support neither"
+  ],
+  "concepts": [
+    "stack",
+    "heap",
+    "references",
+    "pointers",
+    "garbage collection",
+    "manual memory management",
+    "reference counting"
+  ],
+  "previousLesson": "comparison-type-systems-001",
+  "nextLesson": "comparison-control-flow-001"
+}

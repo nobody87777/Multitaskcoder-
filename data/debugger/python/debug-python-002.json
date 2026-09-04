@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-002",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "bugType": "uninitialized-variable",
+  "title": "Fix the Undefined Counter",
+  "description": "The program should start a counter at 0 and increase it by 1. Fix the bug.",
+  "buggyCode": "count = count + 1\nprint(count)",
+  "expectedBehavior": "The program should print 1 after incrementing a counter that starts at 0.",
+  "actualProblem": "count is used on the right-hand side of the assignment before it has ever been given a value, so Python raises a NameError.",
+  "correctedCode": "count = 0\ncount = count + 1\nprint(count)",
+  "expectedOutput": "1",
+  "explanation": "A variable must be assigned a value before it can be read. The fix initializes count to 0 first, so the increment on the next line has something to work with.",
+  "concepts": [
+    "variables",
+    "NameError",
+    "initialization"
+  ]
+}

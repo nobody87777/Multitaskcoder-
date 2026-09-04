@@ -1,0 +1,15 @@
+{
+  "id": "python-047",
+  "language": "python",
+  "title": "Generator: Even Number Generator",
+  "difficulty": "advanced",
+  "topic": "Functions",
+  "description": "Write a generator function that yields even numbers up to a limit.",
+  "code": "def even_numbers(limit):\n    n = 0\n    while n <= limit:\n        yield n\n        n += 2\n\n\nfor num in even_numbers(10):\n    print(num, end=\" \")\nprint()",
+  "expectedOutput": "0 2 4 6 8 10 ",
+  "concepts": [
+    "generators",
+    "yield",
+    "lazy evaluation"
+  ]
+}

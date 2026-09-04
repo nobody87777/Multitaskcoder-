@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-039",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Files",
+  "question": "What checked exception must be handled or declared when using Java's FileReader to open a file?",
+  "options": [
+    "IOException (or a subclass such as FileNotFoundException)",
+    "NullPointerException",
+    "ArithmeticException",
+    "ClassNotFoundException"
+  ],
+  "correctAnswer": 0,
+  "explanation": "File I/O in Java can fail (e.g. the file doesn't exist), so classes like FileReader declare checked exceptions such as FileNotFoundException, a subclass of IOException, that callers must handle or propagate.",
+  "concepts": [
+    "file handling",
+    "checked exceptions"
+  ]
+}

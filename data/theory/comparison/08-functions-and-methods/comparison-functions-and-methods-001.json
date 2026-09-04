@@ -1,0 +1,60 @@
+{
+  "id": "comparison-functions-and-methods-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Functions and Methods",
+  "topic": "Functions and Methods",
+  "topicNumber": 8,
+  "lessonNumber": 8,
+  "title": "Functions and Methods: Parameters, Overloading, and Recursion",
+  "difficulty": "intermediate",
+  "description": "How function/method definitions, parameter passing, overloading, and recursion compare across the three languages.",
+  "objectives": [
+    "Compare parameter-passing semantics",
+    "Compare support for function/method overloading",
+    "Compare recursion support and limitations"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Functions are defined with def, support default parameter values, keyword arguments, and variable-length arguments (*args, **kwargs). Python has no true function overloading — defining a second function with the same name simply replaces the first; default arguments and *args/**kwargs cover most of the same use cases instead. Recursion works but has no guaranteed tail-call optimization, and a configurable recursion depth limit (RecursionError beyond it)."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Methods require explicit return types and parameter types; Java is strictly pass-by-value, even for object references (the reference itself is copied, though it still points at the same object). Method overloading is fully supported and resolved at compile time based on argument types (never by return type alone). Recursion works, with no tail-call optimization, risking StackOverflowError for very deep recursion."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Functions require explicit return and parameter types; C is also strictly pass-by-value — modifying a caller's variable requires explicitly passing a pointer to it. C has no function overloading at all — every function name must be unique in its scope. Recursion works, with no tail-call optimization guaranteed by the standard, risking a stack overflow for deep recursion, same caveat as Java and Python."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Only Java supports true function overloading (same name, different parameter lists, resolved at compile time); Python and C both require unique function names, though Python's default arguments and *args/**kwargs achieve some of the same flexibility overloading provides in Java. All three are pass-by-value at the language level, but 'modifying the caller's data' looks different in each: Python/Java can mutate a passed mutable object's state through the shared reference; C requires an explicit pointer parameter to achieve the same effect."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Porting an overloaded Java API to Python or C requires redesigning it — typically via default/optional parameters (Python) or distinctly-named functions (C), since neither supports true overloading."
+    }
+  ],
+  "keyPoints": [
+    "All three languages are pass-by-value; mutating a caller's data requires a shared mutable reference (Python/Java) or an explicit pointer (C)",
+    "Only Java supports true method overloading, resolved by parameter types at compile time",
+    "None of the three guarantees tail-call optimization — deep recursion risks a stack-related error in all three"
+  ],
+  "concepts": [
+    "functions",
+    "methods",
+    "parameters",
+    "return values",
+    "pass by value",
+    "method overloading",
+    "recursion"
+  ],
+  "previousLesson": "comparison-control-flow-001",
+  "nextLesson": "comparison-strings-001"
+}

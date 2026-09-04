@@ -1,0 +1,55 @@
+{
+  "id": "c-arrays-and-pointers-001",
+  "language": "c",
+  "section": "c",
+  "module": "Arrays and Pointers",
+  "moduleNumber": 13,
+  "lessonNumber": 14,
+  "title": "Arrays and Pointers",
+  "difficulty": "intermediate",
+  "description": "Array decay, pointer indexing/traversal, multidimensional arrays as pointers, and passing arrays to functions.",
+  "objectives": [
+    "Understand array decay precisely",
+    "Traverse an array using pointer arithmetic instead of indexing",
+    "Understand how multidimensional arrays relate to pointers",
+    "Pass arrays (including multidimensional ones) to functions correctly"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Array Decay and Pointer Traversal",
+      "body": "'Array decay' refers to the rule that, in most expressions (though notably not sizeof(arr) or &arr), an array name is automatically converted to a pointer to its first element. This means int arr[5] and int *p = arr; behave almost identically for indexing purposes, but they are not the same type: sizeof(arr) gives the whole array's size in bytes, while sizeof(p) gives just a pointer's size, regardless of how many elements p happens to point at — this distinction is exactly what causes the classic 'wrong array size inside a function' bug, since a function parameter declared as int arr[] is actually treated as int *arr, having already lost the original size information.\n\nTraversing an array via pointer arithmetic (for (int *p = arr; p < arr + n; p++) { use *p; }) is equivalent to index-based traversal (for (int i = 0; i < n; i++) { use arr[i]; }) and was historically sometimes preferred for performance on older compilers, though modern compilers generally optimize both forms identically."
+    },
+    {
+      "type": "text",
+      "heading": "Multidimensional Arrays and Passing to Functions",
+      "body": "A 2D array int grid[3][4] decays (when passed to a function) into a pointer to an array of 4 ints (int (*)[4]), not a plain int**, an important and frequently confusing distinction — the function parameter must specify at least the inner dimension size, void process(int grid[][4], int rows), so the compiler knows how far apart each row is in memory.\n\nWhen passing any array to a function, always pass its length (or, for 2D arrays, both dimensions) as a separate parameter, since the array parameter itself carries no size information after decaying to a pointer."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nvoid sumRow(int arr[], int n) {         // 'int arr[]' here really means 'int *arr'\n    int total = 0;\n    for (int *p = arr; p < arr + n; p++) {   // pointer-based traversal\n        total += *p;\n    }\n    printf(\"%d\\n\", total);\n}\n\nvoid printGrid(int grid[][3], int rows) {  // inner dimension (3) is required\n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < 3; j++) {\n            printf(\"%d \", grid[i][j]);\n        }\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    int nums[] = {1, 2, 3, 4};\n    sumRow(nums, 4);\n\n    int grid[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    printGrid(grid, 2);\n    return 0;\n}",
+      "explanation": "sumRow demonstrates pointer-arithmetic-based traversal as an alternative to arr[i]. printGrid's parameter must specify the inner dimension (3) so the compiler can correctly compute each row's memory offset."
+    }
+  ],
+  "keyPoints": [
+    "An array name decays to a pointer to its first element in most expressions, but not in sizeof(arr) or &arr",
+    "arr[i] indexing and pointer-arithmetic traversal (*(p+i)) are equivalent",
+    "A 2D array parameter must specify its inner dimension so the compiler knows the row stride",
+    "Always pass array length(s) as separate parameters — the decayed pointer carries no size information"
+  ],
+  "commonMistakes": [
+    "Using sizeof(arr) inside a function that received arr as a parameter, expecting the original array's full size",
+    "Omitting the inner dimension when declaring a 2D array function parameter",
+    "Confusing a decayed 2D array pointer (int (*)[N]) with a plain int**, which is a genuinely different type"
+  ],
+  "concepts": [
+    "array decay",
+    "pointer indexing",
+    "pointer traversal",
+    "multidimensional arrays",
+    "passing arrays to functions"
+  ],
+  "previousLesson": "c-pointers-002",
+  "nextLesson": "c-dynamic-memory-001"
+}

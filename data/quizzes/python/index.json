@@ -1,0 +1,356 @@
+{
+  "language": "python",
+  "count": 50,
+  "questions": [
+    {
+      "id": "quiz-python-001",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-python-001.json"
+    },
+    {
+      "id": "quiz-python-002",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Input/Output",
+      "file": "quiz-python-002.json"
+    },
+    {
+      "id": "quiz-python-003",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Variables",
+      "file": "quiz-python-003.json"
+    },
+    {
+      "id": "quiz-python-004",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Input/Output",
+      "file": "quiz-python-004.json"
+    },
+    {
+      "id": "quiz-python-005",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Data Types",
+      "file": "quiz-python-005.json"
+    },
+    {
+      "id": "quiz-python-006",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Type Conversion",
+      "file": "quiz-python-006.json"
+    },
+    {
+      "id": "quiz-python-007",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-python-007.json"
+    },
+    {
+      "id": "quiz-python-008",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-python-008.json"
+    },
+    {
+      "id": "quiz-python-009",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-python-009.json"
+    },
+    {
+      "id": "quiz-python-010",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-python-010.json"
+    },
+    {
+      "id": "quiz-python-011",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Conditionals",
+      "file": "quiz-python-011.json"
+    },
+    {
+      "id": "quiz-python-012",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-python-012.json"
+    },
+    {
+      "id": "quiz-python-013",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Loops",
+      "file": "quiz-python-013.json"
+    },
+    {
+      "id": "quiz-python-014",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-python-014.json"
+    },
+    {
+      "id": "quiz-python-015",
+      "difficulty": "beginner",
+      "type": "true-false",
+      "topic": "Loops",
+      "file": "quiz-python-015.json"
+    },
+    {
+      "id": "quiz-python-016",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-python-016.json"
+    },
+    {
+      "id": "quiz-python-017",
+      "difficulty": "beginner",
+      "type": "code-analysis",
+      "topic": "Strings",
+      "file": "quiz-python-017.json"
+    },
+    {
+      "id": "quiz-python-018",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Strings",
+      "file": "quiz-python-018.json"
+    },
+    {
+      "id": "quiz-python-019",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Strings",
+      "file": "quiz-python-019.json"
+    },
+    {
+      "id": "quiz-python-020",
+      "difficulty": "beginner",
+      "type": "true-false",
+      "topic": "Data Structures",
+      "file": "quiz-python-020.json"
+    },
+    {
+      "id": "quiz-python-021",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-python-021.json"
+    },
+    {
+      "id": "quiz-python-022",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-python-022.json"
+    },
+    {
+      "id": "quiz-python-023",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-python-023.json"
+    },
+    {
+      "id": "quiz-python-024",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Comprehensions",
+      "file": "quiz-python-024.json"
+    },
+    {
+      "id": "quiz-python-025",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Functions",
+      "file": "quiz-python-025.json"
+    },
+    {
+      "id": "quiz-python-026",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Functions",
+      "file": "quiz-python-026.json"
+    },
+    {
+      "id": "quiz-python-027",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Functions",
+      "file": "quiz-python-027.json"
+    },
+    {
+      "id": "quiz-python-028",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Recursion",
+      "file": "quiz-python-028.json"
+    },
+    {
+      "id": "quiz-python-029",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Functions",
+      "file": "quiz-python-029.json"
+    },
+    {
+      "id": "quiz-python-030",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Functions",
+      "file": "quiz-python-030.json"
+    },
+    {
+      "id": "quiz-python-031",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Exceptions",
+      "file": "quiz-python-031.json"
+    },
+    {
+      "id": "quiz-python-032",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Exceptions",
+      "file": "quiz-python-032.json"
+    },
+    {
+      "id": "quiz-python-033",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Files",
+      "file": "quiz-python-033.json"
+    },
+    {
+      "id": "quiz-python-034",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Modules",
+      "file": "quiz-python-034.json"
+    },
+    {
+      "id": "quiz-python-035",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-python-035.json"
+    },
+    {
+      "id": "quiz-python-036",
+      "difficulty": "intermediate",
+      "type": "code-analysis",
+      "topic": "OOP",
+      "file": "quiz-python-036.json"
+    },
+    {
+      "id": "quiz-python-037",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-python-037.json"
+    },
+    {
+      "id": "quiz-python-038",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Functions",
+      "file": "quiz-python-038.json"
+    },
+    {
+      "id": "quiz-python-039",
+      "difficulty": "intermediate",
+      "type": "code-analysis",
+      "topic": "Data Structures",
+      "file": "quiz-python-039.json"
+    },
+    {
+      "id": "quiz-python-040",
+      "difficulty": "intermediate",
+      "type": "true-false",
+      "topic": "Functions",
+      "file": "quiz-python-040.json"
+    },
+    {
+      "id": "quiz-python-041",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Iterators & Generators",
+      "file": "quiz-python-041.json"
+    },
+    {
+      "id": "quiz-python-042",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Iterators & Generators",
+      "file": "quiz-python-042.json"
+    },
+    {
+      "id": "quiz-python-043",
+      "difficulty": "advanced",
+      "type": "output",
+      "topic": "Decorators",
+      "file": "quiz-python-043.json"
+    },
+    {
+      "id": "quiz-python-044",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Context Managers",
+      "file": "quiz-python-044.json"
+    },
+    {
+      "id": "quiz-python-045",
+      "difficulty": "advanced",
+      "type": "code-analysis",
+      "topic": "Advanced OOP",
+      "file": "quiz-python-045.json"
+    },
+    {
+      "id": "quiz-python-046",
+      "difficulty": "advanced",
+      "type": "output",
+      "topic": "Advanced OOP",
+      "file": "quiz-python-046.json"
+    },
+    {
+      "id": "quiz-python-047",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Advanced OOP",
+      "file": "quiz-python-047.json"
+    },
+    {
+      "id": "quiz-python-048",
+      "difficulty": "advanced",
+      "type": "code-analysis",
+      "topic": "Exceptions",
+      "file": "quiz-python-048.json"
+    },
+    {
+      "id": "quiz-python-049",
+      "difficulty": "advanced",
+      "type": "true-false",
+      "topic": "Performance",
+      "file": "quiz-python-049.json"
+    },
+    {
+      "id": "quiz-python-050",
+      "difficulty": "advanced",
+      "type": "true-false",
+      "topic": "Advanced OOP",
+      "file": "quiz-python-050.json"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "python-oop-001",
+  "language": "python",
+  "section": "python",
+  "module": "Object-Oriented Programming",
+  "moduleNumber": 17,
+  "lessonNumber": 18,
+  "title": "OOP Fundamentals: Classes, Objects, and Attributes",
+  "difficulty": "intermediate",
+  "description": "Defining classes, creating objects, constructors, and the distinction between instance and class members.",
+  "objectives": [
+    "Define a class with a constructor and instance methods",
+    "Understand self and how instance attributes work",
+    "Distinguish instance variables, class variables, instance methods, class methods, and static methods",
+    "Apply basic encapsulation with naming conventions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Classes, Objects, and __init__",
+      "body": "A class is a blueprint for creating objects; class ClassName: introduces one. __init__(self, ...), the constructor, runs automatically when you create a new object with ClassName(...), and is where you typically set up instance attributes — data that belongs to that specific object. self is the first parameter of every instance method and refers to the particular object the method was called on; Python passes it automatically (obj.method(x) is really ClassName.method(obj, x) under the hood). Attributes are accessed and set with dot notation: obj.attribute.\n\nEncapsulation in Python is convention-based rather than enforced by the language: a single leading underscore (_name) signals 'internal use, please don't touch from outside', and a double leading underscore (__name) triggers name mangling (renamed internally to _ClassName__name), making accidental external access harder but not impossible. There is no true private keyword like Java's private."
+    },
+    {
+      "type": "text",
+      "heading": "Instance vs. Class Members",
+      "body": "Instance variables (set via self.x = ...) belong to one specific object; each object has its own independent copy. Class variables (defined directly in the class body, outside any method) are shared by every instance of the class — useful for constants or counters that should be common to all instances, but a frequent source of bugs if a mutable class variable is accidentally shared when independent instance-level data was intended.\n\nInstance methods (def method(self):) operate on a specific object and can read/modify its attributes. Class methods (@classmethod, taking cls instead of self) operate on the class itself, often used as alternative constructors. Static methods (@staticmethod, taking neither self nor cls) are just regular functions logically grouped inside the class namespace, with no access to instance or class state."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "class BankAccount:\n    bank_name = \"MultitaskBank\"       # class variable, shared by all instances\n\n    def __init__(self, owner, balance=0):\n        self.owner = owner            # instance variable\n        self.balance = balance\n\n    def deposit(self, amount):        # instance method\n        self.balance += amount\n\n    @classmethod\n    def zero_balance(cls, owner):     # alternative constructor\n        return cls(owner, 0)\n\naccount = BankAccount(\"Asha\", 100)\naccount.deposit(50)\nprint(account.balance, account.bank_name)   # 150 MultitaskBank",
+      "explanation": "self.balance is unique per account object, while bank_name is shared class-wide. zero_balance() is a classmethod used as an alternative way to construct a BankAccount."
+    }
+  ],
+  "keyPoints": [
+    "__init__ is the constructor; self refers to the specific instance a method was called on",
+    "Instance variables belong to one object; class variables are shared across all instances",
+    "@classmethod methods receive the class (cls); @staticmethod methods receive neither self nor cls",
+    "Python encapsulation is convention-based (_name, __name) rather than enforced by a private keyword"
+  ],
+  "commonMistakes": [
+    "Forgetting the self parameter in an instance method definition",
+    "Using a mutable class variable (like a list) when each instance actually needed its own independent copy",
+    "Confusing @classmethod and @staticmethod decorators"
+  ],
+  "concepts": [
+    "classes",
+    "objects",
+    "__init__",
+    "self",
+    "instance variables",
+    "class variables",
+    "classmethod",
+    "staticmethod",
+    "encapsulation"
+  ],
+  "previousLesson": "python-files-001",
+  "nextLesson": "python-oop-002"
+}

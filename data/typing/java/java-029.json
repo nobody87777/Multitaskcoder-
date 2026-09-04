@@ -1,0 +1,15 @@
+{
+  "id": "java-029",
+  "language": "java",
+  "title": "Anagram Checker",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Check whether two strings are anagrams of each other by sorting their characters.",
+  "code": "import java.util.Arrays;\n\npublic class AnagramChecker {\n    public static void main(String[] args) {\n        String s1 = \"listen\";\n        String s2 = \"silent\";\n\n        char[] c1 = s1.toCharArray();\n        char[] c2 = s2.toCharArray();\n        Arrays.sort(c1);\n        Arrays.sort(c2);\n\n        if (Arrays.equals(c1, c2)) {\n            System.out.println(\"They are anagrams\");\n        } else {\n            System.out.println(\"They are not anagrams\");\n        }\n    }\n}",
+  "expectedOutput": "They are anagrams",
+  "concepts": [
+    "Arrays.sort()",
+    "Arrays.equals()",
+    "char arrays"
+  ]
+}

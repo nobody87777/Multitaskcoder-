@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-005",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Variables",
+  "question": "What will this code print?",
+  "code": "int a = 5;\nconst int b = 10;\nprintf(\"%d\\n\", a + b);",
+  "options": [
+    "15",
+    "510",
+    "Compilation error",
+    "5"
+  ],
+  "correctAnswer": 0,
+  "explanation": "const just marks b as unmodifiable after initialization; it is still a normal integer value 10, so a + b evaluates to 15.",
+  "concepts": [
+    "const",
+    "constants"
+  ]
+}

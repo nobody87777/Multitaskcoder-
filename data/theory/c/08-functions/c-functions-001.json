@@ -1,0 +1,57 @@
+{
+  "id": "c-functions-001",
+  "language": "c",
+  "section": "c",
+  "module": "Functions",
+  "moduleNumber": 8,
+  "lessonNumber": 8,
+  "title": "Functions",
+  "difficulty": "beginner",
+  "description": "Function declaration, definition, prototypes, parameters, return values, call-by-value, recursion, and scope.",
+  "objectives": [
+    "Declare and define functions, and understand prototypes",
+    "Understand call-by-value semantics",
+    "Write a recursive function",
+    "Understand parameter/local variable scope"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Declaration, Definition, and Prototypes",
+      "body": "A function definition provides both its signature and its body: int add(int a, int b) { return a + b; }. A function prototype (or declaration) provides just the signature, ending in a semicolon with no body: int add(int a, int b); — placed before main() (or in a header file), it tells the compiler about a function's existence and signature before its full definition appears later in the file (or in a separate file entirely), letting the compiler type-check calls to it that appear earlier. Without a prototype, calling a function before its definition appears in the same file is a compile error in modern C (older, pre-C99 compilers were more lenient here, implicitly assuming an int-returning function — a legacy behavior modern code should never rely on)."
+    },
+    {
+      "type": "text",
+      "heading": "Call by Value, Recursion, and Scope",
+      "body": "C is strictly call-by-value: every argument is copied into the function's parameter. This means a function cannot directly modify a caller's variable through a plain parameter — to achieve that, the caller must pass a pointer (the variable's address), and the function dereferences it to read/write the original (covered fully in the Pointers lesson).\n\nRecursion works the same as in any language: a base case to stop, and a recursive case that progresses toward it; C has no tail-call optimization guaranteed by the standard, so deep recursion risks a stack overflow. Local variables declared inside a function (or a block within it) have block scope — they exist only within that block and are destroyed when it exits; a variable declared in an outer block is visible in nested inner blocks unless shadowed by a same-named inner declaration."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint add(int a, int b);            // prototype\n\nint factorial(int n) {            // recursion\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    printf(\"%d %d\\n\", add(2, 3), factorial(5));   // 5 120\n    return 0;\n}\n\nint add(int a, int b) {           // definition, matching the prototype above\n    return a + b;\n}",
+      "explanation": "The prototype for add() lets main() call it before its full definition appears further down the file. factorial demonstrates a base case (n <= 1) and a recursive case that shrinks n toward it."
+    }
+  ],
+  "keyPoints": [
+    "A prototype (signature + semicolon) lets a function be called before its full definition appears",
+    "C is strictly call-by-value — a plain parameter cannot modify the caller's original variable",
+    "Every recursive function needs a base case; C has no guaranteed tail-call optimization",
+    "Local variables have block scope, existing only within the block that declares them"
+  ],
+  "commonMistakes": [
+    "Calling a function before its prototype or definition is visible, causing a compile error",
+    "Expecting a function to modify a caller's variable through a plain (non-pointer) parameter",
+    "Omitting a recursive function's base case, causing unbounded recursion and a stack overflow"
+  ],
+  "concepts": [
+    "functions",
+    "prototypes",
+    "parameters",
+    "return values",
+    "call by value",
+    "recursion",
+    "scope"
+  ],
+  "previousLesson": "c-loops-001",
+  "nextLesson": "c-storage-and-scope-001"
+}

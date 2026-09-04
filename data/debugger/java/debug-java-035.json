@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-035",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "Exceptions",
+  "bugType": "overly-broad-catch",
+  "title": "Fix the Exception That Hides the Real Bug",
+  "description": "The program should parse a list of number strings and clearly report any that fail to parse.",
+  "buggyCode": "public class Parser {\n    public static void main(String[] args) {\n        String[] values = {\"10\", \"20\", \"abc\"};\n        int total = 0;\n        for (String v : values) {\n            try {\n                total += Integer.parseInt(v);\n            } catch (Exception e) {\n                total += 0;\n            }\n        }\n        System.out.println(total);\n    }\n}",
+  "expectedBehavior": "The program should report which value failed to parse, rather than silently ignoring it.",
+  "actualProblem": "Catching the broad Exception type and doing nothing but adding 0 silently swallows the NumberFormatException from parsing 'abc', giving no indication that any input was invalid — the bug in the data goes completely unnoticed.",
+  "correctedCode": "public class Parser {\n    public static void main(String[] args) {\n        String[] values = {\"10\", \"20\", \"abc\"};\n        int total = 0;\n        for (String v : values) {\n            try {\n                total += Integer.parseInt(v);\n            } catch (NumberFormatException e) {\n                System.out.println(\"Skipping invalid value: \" + v);\n            }\n        }\n        System.out.println(total);\n    }\n}",
+  "expectedOutput": "Skipping invalid value: abc\n30",
+  "explanation": "Catching the specific exception you expect (NumberFormatException here) and logging or reporting it keeps failures visible, instead of catching the overly broad Exception and silently discarding the information about what went wrong.",
+  "concepts": [
+    "exceptions",
+    "NumberFormatException",
+    "overly broad catch"
+  ]
+}

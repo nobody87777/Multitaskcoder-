@@ -1,0 +1,56 @@
+{
+  "id": "python-dictionaries-001",
+  "language": "python",
+  "section": "python",
+  "module": "Dictionaries",
+  "moduleNumber": 11,
+  "lessonNumber": 12,
+  "title": "Dictionaries",
+  "difficulty": "intermediate",
+  "description": "Python's key-value mapping type: access patterns, safe lookups, comprehensions, and nesting.",
+  "objectives": [
+    "Create, access, update, and delete dictionary entries",
+    "Use keys(), values(), items() for iteration",
+    "Use get() and setdefault() for safe access",
+    "Write dictionary comprehensions and understand key requirements"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "The Key-Value Model",
+      "body": "A dictionary (dict) maps unique keys to values, written {key: value, ...}. Since Python 3.7, dictionaries preserve insertion order as a language guarantee. Access an existing key with square brackets, d[\"name\"]; this raises KeyError if the key doesn't exist. Insert or update an entry the same way: d[\"name\"] = \"Asha\" either adds a new key or overwrites an existing one. Delete an entry with del d[\"name\"] or d.pop(\"name\") (which also returns the removed value).\n\nKeys must be hashable (and therefore, in practice, usually immutable — strings, numbers, and tuples of hashable items are common key types; lists and other dicts cannot be keys). Values can be any type at all, including other dicts (nested dictionaries), which is how JSON-like structured data is represented in Python."
+    },
+    {
+      "type": "text",
+      "heading": "Iteration and Safe Access",
+      "body": "d.keys(), d.values(), and d.items() return view objects over the dictionary's keys, values, and (key, value) pairs respectively — iterating over items() with for key, value in d.items(): is the idiomatic way to process both at once. Iterating over the dict directly (for key in d:) iterates its keys.\n\nTo avoid a KeyError when a key might not exist, use d.get(key, default) — it returns default (or None if omitted) instead of raising. setdefault(key, default) is similar but also inserts default into the dict if the key was missing, returning either the existing or newly-inserted value. update(other_dict) merges another dictionary's entries in, overwriting on key collisions. Dictionary comprehensions mirror list comprehensions: {k: v for k, v in pairs}."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "student = {\"name\": \"Asha\", \"marks\": 88}\nprint(student.get(\"grade\", \"N/A\"))     # \"N/A\" — key absent, no KeyError\n\nfor key, value in student.items():\n    print(key, \"->\", value)\n\ncounts = {}\nfor word in [\"cat\", \"dog\", \"cat\"]:\n    counts[word] = counts.get(word, 0) + 1\nprint(counts)                            # {'cat': 2, 'dog': 1}",
+      "explanation": "counts.get(word, 0) safely returns 0 for a word seen for the first time, avoiding a KeyError that plain counts[word] += 1 would raise on that first occurrence."
+    }
+  ],
+  "keyPoints": [
+    "Dictionaries preserve insertion order (guaranteed since Python 3.7)",
+    "d[key] raises KeyError for a missing key; d.get(key, default) does not",
+    "items() gives (key, value) pairs, ideal for `for k, v in d.items():`",
+    "Keys must be hashable (immutable-ish); values can be any type, including nested dicts"
+  ],
+  "commonMistakes": [
+    "Using d[key] and letting a missing key crash the program instead of using get()",
+    "Trying to use a list (unhashable) as a dictionary key",
+    "Incrementing a counter dict entry without a default, causing a KeyError on first use"
+  ],
+  "concepts": [
+    "dictionaries",
+    "key-value pairs",
+    "get()",
+    "setdefault()",
+    "items()",
+    "dictionary comprehensions"
+  ],
+  "previousLesson": "python-sets-001",
+  "nextLesson": "python-functions-001"
+}

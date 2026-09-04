@@ -1,0 +1,19 @@
+{
+  "id": "debug-python-006",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "bugType": "wrong-condition-order",
+  "title": "Fix the Grade Calculator",
+  "description": "The program should assign letter grades: 90+ is A, 80+ is B, 70+ is C, otherwise F. Fix the bug.",
+  "buggyCode": "score = 95\nif score >= 70:\n    grade = \"C\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 90:\n    grade = \"A\"\nelse:\n    grade = \"F\"\nprint(grade)",
+  "expectedBehavior": "A score of 95 should be graded 'A'.",
+  "actualProblem": "The conditions are checked from lowest to highest threshold, so a score of 95 satisfies score >= 70 first and is incorrectly graded 'C' — the later, more specific branches never get a chance to run.",
+  "correctedCode": "score = 95\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\nprint(grade)",
+  "expectedOutput": "A",
+  "explanation": "An if/elif chain stops at the first condition that is true. Range checks like this must be ordered from most restrictive (highest threshold) to least restrictive so a high score doesn't get caught by an earlier, looser condition.",
+  "concepts": [
+    "if/elif/else",
+    "conditional order"
+  ]
+}

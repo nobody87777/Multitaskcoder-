@@ -1,0 +1,15 @@
+{
+  "id": "java-010",
+  "language": "java",
+  "title": "Largest of Three Numbers",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Find and print the largest of three numbers using nested conditionals.",
+  "code": "import java.util.Scanner;\n\npublic class LargestOfThree {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int a = scanner.nextInt();\n        int b = scanner.nextInt();\n        int c = scanner.nextInt();\n        int largest;\n\n        if (a >= b && a >= c) {\n            largest = a;\n        } else if (b >= a && b >= c) {\n            largest = b;\n        } else {\n            largest = c;\n        }\n\n        System.out.println(\"Largest number is: \" + largest);\n    }\n}",
+  "exampleInput": "4\n9\n7",
+  "expectedOutput": "Largest number is: 9",
+  "concepts": [
+    "logical operators",
+    "nested conditionals"
+  ]
+}

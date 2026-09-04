@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-046",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "JVM",
+  "question": "What is the main role of the JVM's garbage collector?",
+  "options": [
+    "Compiling Java source code to bytecode",
+    "Automatically reclaiming memory used by objects that are no longer reachable",
+    "Managing thread synchronization",
+    "Optimizing network I/O"
+  ],
+  "correctAnswer": 1,
+  "explanation": "The garbage collector periodically scans the heap for objects with no remaining reachable references and frees their memory automatically.",
+  "concepts": [
+    "garbage collection",
+    "memory management"
+  ]
+}

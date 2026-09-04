@@ -1,0 +1,14 @@
+{
+  "id": "c-039",
+  "language": "c",
+  "title": "Structure for Student",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "description": "Define a Student structure and print a record from it.",
+  "code": "#include <stdio.h>\n\nstruct Student {\n    char name[30];\n    int marks;\n};\n\nint main() {\n    struct Student s1 = {\"Asha\", 88};\n    printf(\"%s scored %d marks\\n\", s1.name, s1.marks);\n    return 0;\n}",
+  "expectedOutput": "Asha scored 88 marks",
+  "concepts": [
+    "struct",
+    "dot operator"
+  ]
+}

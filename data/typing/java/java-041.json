@@ -1,0 +1,15 @@
+{
+  "id": "java-041",
+  "language": "java",
+  "title": "Inheritance: Shapes Example",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Use inheritance and method overriding to compute areas of different shapes.",
+  "code": "public class ShapesExample {\n    static abstract class Shape {\n        abstract double area();\n    }\n\n    static class Circle extends Shape {\n        double radius;\n        Circle(double radius) { this.radius = radius; }\n        double area() { return Math.round(3.14159 * radius * radius * 100.0) / 100.0; }\n    }\n\n    static class Rectangle extends Shape {\n        double width, height;\n        Rectangle(double width, double height) { this.width = width; this.height = height; }\n        double area() { return width * height; }\n    }\n\n    public static void main(String[] args) {\n        Shape[] shapes = { new Circle(4), new Rectangle(3, 5) };\n        for (Shape s : shapes) {\n            System.out.println(s.getClass().getSimpleName() + \" area: \" + s.area());\n        }\n    }\n}",
+  "expectedOutput": "Circle area: 50.27\nRectangle area: 15.0",
+  "concepts": [
+    "abstract classes",
+    "inheritance",
+    "polymorphism"
+  ]
+}

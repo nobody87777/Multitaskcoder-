@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-008",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Sum of Numbers",
+  "description": "The program should calculate the sum of numbers from 1 to 5 (inclusive). Fix the bug.",
+  "buggyCode": "total = 0\nfor i in range(1, 5):\n    total += i\nprint(total)",
+  "expectedBehavior": "The program should print 15, the sum of 1+2+3+4+5.",
+  "actualProblem": "range(1, 5) stops before 5, producing only 1, 2, 3, 4, so the loop never adds 5 and the total is 10 instead of 15.",
+  "correctedCode": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)",
+  "expectedOutput": "15",
+  "explanation": "range(start, stop) never includes stop itself. To include 5 in the loop, the stop argument must be one greater than the last desired value, i.e. range(1, 6).",
+  "concepts": [
+    "range()",
+    "for loop",
+    "off-by-one error"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-040",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "list-mutation-during-iteration",
+  "title": "Fix the List Modification While Looping",
+  "description": "The program should remove all negative numbers from a list. Fix the bug.",
+  "buggyCode": "numbers = [-1, -2, 3, 5]\nfor n in numbers:\n    if n < 0:\n        numbers.remove(n)\nprint(numbers)",
+  "expectedBehavior": "The program should print [3, 5], with every negative number removed.",
+  "actualProblem": "Removing an item from a list while iterating over it with a for loop shifts the remaining elements left, and the loop's internal position advances past whatever slides into the vacated spot. Here, removing -1 shifts -2 into index 0, but the loop moves on to index 1 next, so -2 is skipped and survives in the final list — [-2, 3, 5] instead of [3, 5].",
+  "correctedCode": "numbers = [-1, -2, 3, 5]\nnumbers = [n for n in numbers if n >= 0]\nprint(numbers)",
+  "expectedOutput": "[3, 5]",
+  "explanation": "Mutating a list (adding or removing elements) while iterating over it directly leads to skipped or repeated elements, because the loop's internal index doesn't account for the shift. Building a new filtered list (e.g. with a list comprehension) avoids the problem entirely.",
+  "concepts": [
+    "lists",
+    "iteration",
+    "mutation during iteration"
+  ]
+}

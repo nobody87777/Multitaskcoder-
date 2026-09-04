@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-017",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Functions",
+  "bugType": "wrong-return-value",
+  "title": "Fix the Function Returning the Wrong Variable",
+  "description": "The program should return the larger of two numbers from a function.",
+  "buggyCode": "#include <stdio.h>\n\nint maximum(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n    return a;\n}\n\nint main() {\n    printf(\"%d\\n\", maximum(3, 9));\n    return 0;\n}",
+  "expectedBehavior": "maximum(3, 9) should return 9, the larger of the two numbers.",
+  "actualProblem": "The fallback return statement always returns a regardless of which value was actually larger, so maximum(3, 9) incorrectly returns 3 instead of 9.",
+  "correctedCode": "#include <stdio.h>\n\nint maximum(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n    return b;\n}\n\nint main() {\n    printf(\"%d\\n\", maximum(3, 9));\n    return 0;\n}",
+  "expectedOutput": "9",
+  "explanation": "The fallback path (when a is not greater than b) needs to return b, the other candidate value. Returning the wrong variable silently produces incorrect results with no compiler warning.",
+  "concepts": [
+    "functions",
+    "return values",
+    "logic errors"
+  ]
+}

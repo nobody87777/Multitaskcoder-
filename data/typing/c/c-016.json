@@ -1,0 +1,16 @@
+{
+  "id": "c-016",
+  "language": "c",
+  "title": "Fibonacci Series (Iterative)",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Print the first N terms of the Fibonacci sequence using a loop.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int n, a = 0, b = 1;\n    scanf(\"%d\", &n);\n\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", a);\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n    printf(\"\\n\");\n\n    return 0;\n}",
+  "exampleInput": "8",
+  "expectedOutput": "0 1 1 2 3 5 8 13 ",
+  "concepts": [
+    "for loop",
+    "sequences",
+    "variable swapping"
+  ]
+}

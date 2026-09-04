@@ -1,0 +1,14 @@
+{
+  "id": "python-004",
+  "language": "python",
+  "title": "Arithmetic Operators",
+  "difficulty": "beginner",
+  "topic": "Operators",
+  "description": "Demonstrate the basic arithmetic operators on two numbers.",
+  "code": "a = 17\nb = 5\n\nprint(\"Sum:\", a + b)\nprint(\"Difference:\", a - b)\nprint(\"Product:\", a * b)\nprint(\"Division:\", a / b)\nprint(\"Floor Division:\", a // b)\nprint(\"Modulus:\", a % b)\nprint(\"Power:\", a ** b)",
+  "expectedOutput": "Sum: 22\nDifference: 12\nProduct: 85\nDivision: 3.4\nFloor Division: 3\nModulus: 2\nPower: 1419857",
+  "concepts": [
+    "arithmetic operators",
+    "operator precedence"
+  ]
+}

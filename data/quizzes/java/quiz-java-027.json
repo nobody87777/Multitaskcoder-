@@ -1,0 +1,19 @@
+{
+  "id": "quiz-java-027",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What is true about an abstract class in Java?",
+  "options": [
+    "It cannot be instantiated directly and may contain abstract (unimplemented) methods",
+    "It must contain zero methods",
+    "It can never have constructors",
+    "It behaves exactly like an interface with no differences"
+  ],
+  "correctAnswer": 0,
+  "explanation": "An abstract class can declare abstract methods that subclasses must implement, and cannot itself be instantiated with new.",
+  "concepts": [
+    "abstract classes"
+  ]
+}

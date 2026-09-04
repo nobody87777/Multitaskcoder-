@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-010",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Multiplication Table",
+  "description": "The program should print the multiplication table of 3, from 3x1 to 3x10. Fix the bug.",
+  "buggyCode": "for i in range(1, 10):\n    print(f\"3 x {i} = {3 * i}\")",
+  "expectedBehavior": "The program should print ten lines, ending with '3 x 10 = 30'.",
+  "actualProblem": "range(1, 10) only produces values 1 through 9, so the table is missing the final '3 x 10 = 30' line.",
+  "correctedCode": "for i in range(1, 11):\n    print(f\"3 x {i} = {3 * i}\")",
+  "expectedOutput": "3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n3 x 10 = 30",
+  "explanation": "To loop through 1 to 10 inclusive, the stop argument of range() must be 11, since range() always excludes its stop value.",
+  "concepts": [
+    "range()",
+    "for loop",
+    "off-by-one error"
+  ]
+}

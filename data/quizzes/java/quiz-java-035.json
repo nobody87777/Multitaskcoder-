@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-035",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Collections",
+  "question": "In a Java HashMap<String, Integer>, what does calling map.put(\"x\", 1) followed by map.put(\"x\", 2) result in?",
+  "options": [
+    "The value for key \"x\" becomes 2, overwriting the previous value",
+    "The map now has two separate entries for \"x\"",
+    "A runtime exception is thrown for duplicate keys",
+    "The value for key \"x\" becomes 3 (1 + 2)"
+  ],
+  "correctAnswer": 0,
+  "explanation": "put() with an existing key replaces the previously stored value for that key rather than creating a duplicate entry, so the final value is 2.",
+  "concepts": [
+    "HashMap",
+    "put()"
+  ]
+}

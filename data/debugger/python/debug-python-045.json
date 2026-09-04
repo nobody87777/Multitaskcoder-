@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-045",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Advanced OOP",
+  "bugType": "shallow-copy-bug",
+  "title": "Fix the Shallow Copy Side Effect",
+  "description": "The program should duplicate a list of lists so that modifying the copy never affects the original. Fix the bug.",
+  "buggyCode": "import copy\n\noriginal = [[1, 2], [3, 4]]\nduplicate = copy.copy(original)\nduplicate[0][0] = 99\nprint(original[0][0])",
+  "expectedBehavior": "The program should print 1 — modifying the duplicate should never affect the original.",
+  "actualProblem": "copy.copy() performs a shallow copy: it copies the outer list, but the inner lists are still shared references between original and duplicate. Mutating duplicate[0][0] therefore also changes original[0][0].",
+  "correctedCode": "import copy\n\noriginal = [[1, 2], [3, 4]]\nduplicate = copy.deepcopy(original)\nduplicate[0][0] = 99\nprint(original[0][0])",
+  "expectedOutput": "1",
+  "explanation": "To fully separate nested (mutable) structures so changes to one don't affect the other, use copy.deepcopy(), which recursively copies every nested object instead of just the outermost container.",
+  "concepts": [
+    "shallow copy",
+    "deep copy",
+    "copy module"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-039",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "buffer-overflow",
+  "title": "Fix the Struct Field Buffer Overflow",
+  "description": "The program should store a student's name in a struct with a fixed-size name field.",
+  "buggyCode": "#include <stdio.h>\n#include <string.h>\n\nstruct Student {\n    char name[10];\n    int age;\n};\n\nint main() {\n    struct Student s;\n    strcpy(s.name, \"Alexandria Smith\");\n    s.age = 20;\n    printf(\"%s is %d\\n\", s.name, s.age);\n    return 0;\n}",
+  "expectedBehavior": "The program should safely store and print the student's name and age without corrupting memory.",
+  "actualProblem": "s.name only has room for 10 bytes, but \"Alexandria Smith\" plus its null terminator needs 18. strcpy writes far past the end of the name field, overflowing into (and corrupting) the adjacent age field and beyond.",
+  "correctedCode": "#include <stdio.h>\n#include <string.h>\n\nstruct Student {\n    char name[32];\n    int age;\n};\n\nint main() {\n    struct Student s;\n    strncpy(s.name, \"Alexandria Smith\", sizeof(s.name) - 1);\n    s.name[sizeof(s.name) - 1] = '\\0';\n    s.age = 20;\n    printf(\"%s is %d\\n\", s.name, s.age);\n    return 0;\n}",
+  "expectedOutput": "Alexandria Smith is 20",
+  "explanation": "A fixed-size char array field inside a struct must be large enough for the longest string it will actually hold, including the null terminator. Using strncpy with an explicit size limit (and manually terminating) avoids overflowing into neighboring struct fields.",
+  "concepts": [
+    "structures",
+    "buffer overflow",
+    "strncpy()"
+  ]
+}

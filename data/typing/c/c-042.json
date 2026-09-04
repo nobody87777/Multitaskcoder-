@@ -1,0 +1,15 @@
+{
+  "id": "c-042",
+  "language": "c",
+  "title": "Swap Using Pointers",
+  "difficulty": "advanced",
+  "topic": "Pointers",
+  "description": "Swap the values of two variables using pointers and a helper function.",
+  "code": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint main() {\n    int x = 5, y = 10;\n    printf(\"Before swap: x=%d, y=%d\\n\", x, y);\n    swap(&x, &y);\n    printf(\"After swap: x=%d, y=%d\\n\", x, y);\n\n    return 0;\n}",
+  "expectedOutput": "Before swap: x=5, y=10\nAfter swap: x=10, y=5",
+  "concepts": [
+    "pointers",
+    "pass by reference",
+    "functions"
+  ]
+}

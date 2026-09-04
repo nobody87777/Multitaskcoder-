@@ -1,0 +1,19 @@
+{
+  "id": "debug-python-004",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Operators",
+  "bugType": "operator-precedence",
+  "title": "Fix the Average Calculator",
+  "description": "The program should calculate the average of two numbers. Fix the bug.",
+  "buggyCode": "a = 10\nb = 20\naverage = a + b / 2\nprint(average)",
+  "expectedBehavior": "The program should print the average of a and b, which is 15.0.",
+  "actualProblem": "Because / has higher precedence than +, the code computes a + (b / 2) instead of (a + b) / 2, giving the wrong result.",
+  "correctedCode": "a = 10\nb = 20\naverage = (a + b) / 2\nprint(average)",
+  "expectedOutput": "15.0",
+  "explanation": "Python evaluates operators according to standard precedence rules, so division happens before addition unless parentheses force a different order. Wrapping (a + b) in parentheses ensures the sum is computed first.",
+  "concepts": [
+    "operator precedence",
+    "arithmetic operators"
+  ]
+}

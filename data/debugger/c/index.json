@@ -1,0 +1,356 @@
+{
+  "language": "c",
+  "count": 50,
+  "challenges": [
+    {
+      "id": "debug-c-001",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "bugType": "missing-include",
+      "file": "debug-c-001.json"
+    },
+    {
+      "id": "debug-c-002",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "bugType": "syntax-error",
+      "file": "debug-c-002.json"
+    },
+    {
+      "id": "debug-c-003",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "bugType": "wrong-format-specifier",
+      "file": "debug-c-003.json"
+    },
+    {
+      "id": "debug-c-004",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "bugType": "missing-address-operator",
+      "file": "debug-c-004.json"
+    },
+    {
+      "id": "debug-c-005",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "bugType": "wrong-format-specifier",
+      "file": "debug-c-005.json"
+    },
+    {
+      "id": "debug-c-006",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "bugType": "uninitialized-variable",
+      "file": "debug-c-006.json"
+    },
+    {
+      "id": "debug-c-007",
+      "difficulty": "beginner",
+      "topic": "Constants",
+      "bugType": "const-violation",
+      "file": "debug-c-007.json"
+    },
+    {
+      "id": "debug-c-008",
+      "difficulty": "beginner",
+      "topic": "Operators",
+      "bugType": "assignment-in-condition",
+      "file": "debug-c-008.json"
+    },
+    {
+      "id": "debug-c-009",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "bugType": "wrong-condition-order",
+      "file": "debug-c-009.json"
+    },
+    {
+      "id": "debug-c-010",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "bugType": "missing-break-fallthrough",
+      "file": "debug-c-010.json"
+    },
+    {
+      "id": "debug-c-011",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-c-011.json"
+    },
+    {
+      "id": "debug-c-012",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "infinite-loop",
+      "file": "debug-c-012.json"
+    },
+    {
+      "id": "debug-c-013",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "off-by-one-loop",
+      "file": "debug-c-013.json"
+    },
+    {
+      "id": "debug-c-014",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "break-scope-misunderstanding",
+      "file": "debug-c-014.json"
+    },
+    {
+      "id": "debug-c-015",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "bugType": "infinite-loop",
+      "file": "debug-c-015.json"
+    },
+    {
+      "id": "debug-c-016",
+      "difficulty": "beginner",
+      "topic": "Functions",
+      "bugType": "missing-return",
+      "file": "debug-c-016.json"
+    },
+    {
+      "id": "debug-c-017",
+      "difficulty": "beginner",
+      "topic": "Functions",
+      "bugType": "wrong-return-value",
+      "file": "debug-c-017.json"
+    },
+    {
+      "id": "debug-c-018",
+      "difficulty": "beginner",
+      "topic": "Arrays",
+      "bugType": "index-out-of-bounds",
+      "file": "debug-c-018.json"
+    },
+    {
+      "id": "debug-c-019",
+      "difficulty": "beginner",
+      "topic": "Strings",
+      "bugType": "buffer-overflow",
+      "file": "debug-c-019.json"
+    },
+    {
+      "id": "debug-c-020",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "bugType": "unchecked-scanf-return",
+      "file": "debug-c-020.json"
+    },
+    {
+      "id": "debug-c-021",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "bugType": "sizeof-pointer-confusion",
+      "file": "debug-c-021.json"
+    },
+    {
+      "id": "debug-c-022",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "bugType": "buffer-overflow",
+      "file": "debug-c-022.json"
+    },
+    {
+      "id": "debug-c-023",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "bugType": "strcmp-logic-error",
+      "file": "debug-c-023.json"
+    },
+    {
+      "id": "debug-c-024",
+      "difficulty": "intermediate",
+      "topic": "Functions",
+      "bugType": "pass-by-value-misunderstanding",
+      "file": "debug-c-024.json"
+    },
+    {
+      "id": "debug-c-025",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "bugType": "missing-base-case",
+      "file": "debug-c-025.json"
+    },
+    {
+      "id": "debug-c-026",
+      "difficulty": "intermediate",
+      "topic": "Pointers",
+      "bugType": "null-pointer",
+      "file": "debug-c-026.json"
+    },
+    {
+      "id": "debug-c-027",
+      "difficulty": "intermediate",
+      "topic": "Pointers",
+      "bugType": "wild-pointer",
+      "file": "debug-c-027.json"
+    },
+    {
+      "id": "debug-c-028",
+      "difficulty": "intermediate",
+      "topic": "Pointers",
+      "bugType": "pointer-arithmetic-error",
+      "file": "debug-c-028.json"
+    },
+    {
+      "id": "debug-c-029",
+      "difficulty": "intermediate",
+      "topic": "Pointers",
+      "bugType": "array-pointer-confusion",
+      "file": "debug-c-029.json"
+    },
+    {
+      "id": "debug-c-030",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "struct-comparison-error",
+      "file": "debug-c-030.json"
+    },
+    {
+      "id": "debug-c-031",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "union-misuse",
+      "file": "debug-c-031.json"
+    },
+    {
+      "id": "debug-c-032",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "invalid-enum-comparison",
+      "file": "debug-c-032.json"
+    },
+    {
+      "id": "debug-c-033",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "typedef-error",
+      "file": "debug-c-033.json"
+    },
+    {
+      "id": "debug-c-034",
+      "difficulty": "intermediate",
+      "topic": "Files",
+      "bugType": "unchecked-fopen-return",
+      "file": "debug-c-034.json"
+    },
+    {
+      "id": "debug-c-035",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "bugType": "infinite-loop",
+      "file": "debug-c-035.json"
+    },
+    {
+      "id": "debug-c-036",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "bugType": "off-by-one-loop",
+      "file": "debug-c-036.json"
+    },
+    {
+      "id": "debug-c-037",
+      "difficulty": "intermediate",
+      "topic": "Basics",
+      "bugType": "missing-argc-check",
+      "file": "debug-c-037.json"
+    },
+    {
+      "id": "debug-c-038",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "struct-pointer-access-error",
+      "file": "debug-c-038.json"
+    },
+    {
+      "id": "debug-c-039",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "bugType": "buffer-overflow",
+      "file": "debug-c-039.json"
+    },
+    {
+      "id": "debug-c-040",
+      "difficulty": "intermediate",
+      "topic": "Files",
+      "bugType": "incorrect-file-mode",
+      "file": "debug-c-040.json"
+    },
+    {
+      "id": "debug-c-041",
+      "difficulty": "advanced",
+      "topic": "Memory",
+      "bugType": "incorrect-malloc-size",
+      "file": "debug-c-041.json"
+    },
+    {
+      "id": "debug-c-042",
+      "difficulty": "advanced",
+      "topic": "Memory",
+      "bugType": "null-pointer",
+      "file": "debug-c-042.json"
+    },
+    {
+      "id": "debug-c-043",
+      "difficulty": "advanced",
+      "topic": "Memory",
+      "bugType": "realloc-pointer-overwrite",
+      "file": "debug-c-043.json"
+    },
+    {
+      "id": "debug-c-044",
+      "difficulty": "advanced",
+      "topic": "Memory",
+      "bugType": "double-free",
+      "file": "debug-c-044.json"
+    },
+    {
+      "id": "debug-c-045",
+      "difficulty": "advanced",
+      "topic": "Memory",
+      "bugType": "memory-leak",
+      "file": "debug-c-045.json"
+    },
+    {
+      "id": "debug-c-046",
+      "difficulty": "advanced",
+      "topic": "Pointers",
+      "bugType": "use-after-free",
+      "file": "debug-c-046.json"
+    },
+    {
+      "id": "debug-c-047",
+      "difficulty": "advanced",
+      "topic": "Pointers",
+      "bugType": "dangling-pointer",
+      "file": "debug-c-047.json"
+    },
+    {
+      "id": "debug-c-048",
+      "difficulty": "advanced",
+      "topic": "Pointers",
+      "bugType": "function-pointer-mismatch",
+      "file": "debug-c-048.json"
+    },
+    {
+      "id": "debug-c-049",
+      "difficulty": "advanced",
+      "topic": "Data Structures",
+      "bugType": "linked-list-head-not-updated",
+      "file": "debug-c-049.json"
+    },
+    {
+      "id": "debug-c-050",
+      "difficulty": "advanced",
+      "topic": "Data Structures",
+      "bugType": "unchecked-stack-overflow",
+      "file": "debug-c-050.json"
+    }
+  ]
+}

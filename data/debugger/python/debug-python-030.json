@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-030",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "bugType": "wrong-comparison-operator",
+  "title": "Fix the Reversed Bubble Sort",
+  "description": "The program should sort a list of numbers in ascending order using bubble sort. Fix the bug.",
+  "buggyCode": "numbers = [5, 2, 8, 1, 9]\nn = len(numbers)\nfor i in range(n - 1):\n    for j in range(n - 1 - i):\n        if numbers[j] < numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+  "expectedBehavior": "The program should print [1, 2, 5, 8, 9], sorted from smallest to largest.",
+  "actualProblem": "The swap condition numbers[j] < numbers[j + 1] pushes larger values toward the front instead of the back, which sorts the list into descending order instead of ascending.",
+  "correctedCode": "numbers = [5, 2, 8, 1, 9]\nn = len(numbers)\nfor i in range(n - 1):\n    for j in range(n - 1 - i):\n        if numbers[j] > numbers[j + 1]:\n            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]\nprint(numbers)",
+  "expectedOutput": "[1, 2, 5, 8, 9]",
+  "explanation": "Bubble sort swaps adjacent out-of-order elements. To sort ascending, a swap should happen when the left element is greater than the right one (numbers[j] > numbers[j+1]) — the original code's < flips that logic.",
+  "concepts": [
+    "bubble sort",
+    "comparison operators",
+    "sorting"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "python-003",
+  "language": "python",
+  "title": "Variables and Data Types",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "description": "Declare variables of different data types and print their values and types.",
+  "code": "age = 21\nheight = 5.9\nname = \"Sam\"\nis_student = True\n\nprint(name, age, height, is_student)\nprint(type(name), type(age), type(height), type(is_student))",
+  "expectedOutput": "Sam 21 5.9 True\n<class 'str'> <class 'int'> <class 'float'> <class 'bool'>",
+  "concepts": [
+    "variables",
+    "type()",
+    "int",
+    "float",
+    "str",
+    "bool"
+  ]
+}

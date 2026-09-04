@@ -1,0 +1,14 @@
+{
+  "id": "c-036",
+  "language": "c",
+  "title": "Function-Based Calculator",
+  "difficulty": "intermediate",
+  "topic": "Functions",
+  "description": "Build a calculator where each operation is implemented as its own function.",
+  "code": "#include <stdio.h>\n\ndouble add(double a, double b) { return a + b; }\ndouble subtract(double a, double b) { return a - b; }\ndouble multiply(double a, double b) { return a * b; }\ndouble divide(double a, double b) { return a / b; }\n\nint main() {\n    double a = 10, b = 4;\n\n    printf(\"Add: %.2f\\n\", add(a, b));\n    printf(\"Subtract: %.2f\\n\", subtract(a, b));\n    printf(\"Multiply: %.2f\\n\", multiply(a, b));\n    printf(\"Divide: %.2f\\n\", divide(a, b));\n\n    return 0;\n}",
+  "expectedOutput": "Add: 14.00\nSubtract: 6.00\nMultiply: 40.00\nDivide: 2.50",
+  "concepts": [
+    "functions",
+    "function decomposition"
+  ]
+}

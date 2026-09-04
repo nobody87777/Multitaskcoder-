@@ -1,0 +1,18 @@
+{
+  "id": "quiz-java-050",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "true-false",
+  "topic": "OOP",
+  "question": "True or False: In Java, an interface can provide a default implementation for a method using the default keyword.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Since Java 8, interfaces can declare default methods with a concrete body, which implementing classes inherit automatically unless they choose to override it.",
+  "concepts": [
+    "interfaces",
+    "default methods"
+  ]
+}

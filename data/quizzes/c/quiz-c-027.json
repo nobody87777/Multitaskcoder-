@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-027",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Pointers",
+  "question": "If int *p points to the first element of an int array, what does p + 1 refer to?",
+  "options": [
+    "The address of the next int in the array (p's address plus sizeof(int) bytes)",
+    "The address of p plus exactly 1 byte",
+    "The same address as p",
+    "A compile-time error, since pointers cannot be added to"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Pointer arithmetic is scaled by the pointed-to type's size, so p + 1 advances by sizeof(int) bytes, pointing to the next int element in the array.",
+  "concepts": [
+    "pointer arithmetic",
+    "pointers"
+  ]
+}

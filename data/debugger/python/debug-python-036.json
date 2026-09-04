@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-036",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "missing-eq-method",
+  "title": "Fix the Object Equality Check",
+  "description": "The program should treat two Point objects with the same coordinates as equal. Fix the bug.",
+  "buggyCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\np1 = Point(1, 2)\np2 = Point(1, 2)\nprint(p1 == p2)",
+  "expectedBehavior": "The program should print True, since both points represent the same coordinates.",
+  "actualProblem": "Without a custom __eq__ method, == falls back to comparing object identity (are they literally the same object in memory), and p1 and p2 are two separate objects, so it prints False even though their data matches.",
+  "correctedCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\np1 = Point(1, 2)\np2 = Point(1, 2)\nprint(p1 == p2)",
+  "expectedOutput": "True",
+  "explanation": "By default, Python objects compare equal only if they are the same object in memory. Defining __eq__ lets a class specify what 'equal' means in terms of its own data, here comparing x and y.",
+  "concepts": [
+    "OOP",
+    "__eq__",
+    "object identity vs equality"
+  ]
+}

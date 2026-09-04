@@ -1,0 +1,15 @@
+{
+  "id": "python-039",
+  "language": "python",
+  "title": "Recursive Fibonacci",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "description": "Generate the first N Fibonacci numbers using a recursive function.",
+  "code": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n\nfor i in range(10):\n    print(fibonacci(i), end=\" \")\nprint()",
+  "expectedOutput": "0 1 1 2 3 5 8 13 21 34 ",
+  "concepts": [
+    "recursion",
+    "functions",
+    "sequences"
+  ]
+}

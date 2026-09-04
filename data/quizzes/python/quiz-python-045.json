@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-045",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "code-analysis",
+  "topic": "Advanced OOP",
+  "question": "Why does modifying the list inside modify() also change the original list passed in, while reassigning an int argument would not affect the caller's variable?",
+  "code": "def modify(lst):\n    lst.append(4)\n\nnumbers = [1, 2, 3]\nmodify(numbers)\nprint(numbers)",
+  "options": [
+    "Lists are mutable, so lst and numbers reference the same object in memory; append() mutates that shared object",
+    "Python always passes arguments by value, copying the entire list",
+    "append() creates a brand-new list object each time it is called",
+    "The function accidentally declares numbers as global"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Python passes object references; since lists are mutable, lst inside the function refers to the very same list object as numbers, so in-place changes like append() are visible outside the function.",
+  "concepts": [
+    "mutability",
+    "pass by object reference"
+  ]
+}

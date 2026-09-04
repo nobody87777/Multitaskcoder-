@@ -1,0 +1,67 @@
+{
+  "id": "comparison-oop-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "OOP",
+  "topic": "OOP",
+  "topicNumber": 12,
+  "lessonNumber": 12,
+  "title": "OOP: Classes, Inheritance, Polymorphism, and C's Manual Approach",
+  "difficulty": "intermediate",
+  "description": "How classes, inheritance, polymorphism, encapsulation, abstraction, and interfaces compare, including C's lack of built-in OOP.",
+  "objectives": [
+    "Compare class/object support between Python and Java",
+    "Compare inheritance and polymorphism mechanisms",
+    "Understand how C can approximate OOP patterns manually"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Classes are defined with class, using __init__ as the constructor and self as the explicit first parameter of every instance method. Encapsulation is convention-based (_name, __name) rather than enforced. Inheritance (including multiple inheritance, resolved via a well-defined MRO) and polymorphism (duck typing — any object with the right method 'just works', regardless of its actual inheritance) are both fully supported, dynamically."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Classes are defined with class, with a constructor sharing the class name and this as the implicit current-object reference. Encapsulation is language-enforced via private/protected/public access modifiers. Inheritance is single (one parent class), with multiple interface implementation as the mechanism for multiple 'is-capable-of' relationships. Polymorphism is achieved through inheritance/interfaces plus dynamic method dispatch, resolved at runtime based on an object's actual type."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C has no built-in class-based OOP whatsoever — no classes, no inheritance, no built-in polymorphism, no access modifiers in the OOP sense. Object-oriented patterns can still be approximated manually: a struct groups data (like a class's fields); functions taking that struct as their first parameter simulate methods; 'inheritance' can be approximated by embedding a base struct as the first field of a derived struct; and 'polymorphism' can be approximated using function pointers inside the struct (an informal, hand-built virtual-method-table pattern) — this is genuinely how some C codebases (including parts of the Linux kernel) implement OOP-like designs, but entirely by convention and manual discipline, with none of it enforced or checked by the language itself."
+    },
+    {
+      "type": "code",
+      "language": "comparison",
+      "code": "// C approximating a 'method' and simple 'inheritance'\nstruct Animal { char *name; void (*speak)(struct Animal *); };\nvoid dogSpeak(struct Animal *self) { printf(\"%s says Woof\\n\", self->name); }\n// self->speak = dogSpeak; approximates assigning a 'virtual method'",
+      "explanation": "A function pointer stored inside the struct lets different 'kinds' of Animal have different speak() behavior — a manual, unenforced approximation of polymorphism."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python and Java both have full, language-level, enforced OOP support (classes, inheritance, polymorphism, encapsulation); C has none of it built in and requires deliberately hand-rolling any OOP-like pattern using structs and function pointers, with the compiler providing no help enforcing the intended design."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Choosing C for a project that heavily relies on OOP design patterns means accepting significant extra manual discipline (and losing compiler-enforced correctness for those patterns) that Python or Java would provide for free at the language level."
+    }
+  ],
+  "keyPoints": [
+    "Python and Java both have full, built-in, language-enforced OOP: classes, inheritance, polymorphism, encapsulation",
+    "C has NO built-in class-based OOP — everything must be approximated manually with structs and function pointers",
+    "Python's OOP is dynamic (duck typing, multiple inheritance via MRO); Java's is static and stricter (single inheritance, interfaces, access modifiers)"
+  ],
+  "concepts": [
+    "classes",
+    "objects",
+    "inheritance",
+    "polymorphism",
+    "encapsulation",
+    "abstraction",
+    "interfaces",
+    "manual OOP patterns"
+  ],
+  "previousLesson": "comparison-data-structures-001",
+  "nextLesson": "comparison-error-handling-001"
+}

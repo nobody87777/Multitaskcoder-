@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-005",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Operators",
+  "question": "What will this code print?",
+  "code": "int a = 7;\nint b = 2;\nSystem.out.println(a / b);",
+  "options": [
+    "3",
+    "3.5",
+    "3.0",
+    "1"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Since both operands are int, / performs integer division and truncates the result, so 7 / 2 evaluates to 3.",
+  "concepts": [
+    "integer division",
+    "operators"
+  ]
+}

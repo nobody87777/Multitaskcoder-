@@ -1,0 +1,15 @@
+{
+  "id": "python-045",
+  "language": "python",
+  "title": "Inheritance: Shapes Example",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Use inheritance to create Circle and Rectangle classes from a base Shape class.",
+  "code": "class Shape:\n    def area(self):\n        return 0\n\n\nclass Circle(Shape):\n    def __init__(self, radius):\n        self.radius = radius\n\n    def area(self):\n        return round(3.14159 * self.radius ** 2, 2)\n\n\nclass Rectangle(Shape):\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\n\nshapes = [Circle(4), Rectangle(3, 5)]\nfor shape in shapes:\n    print(f\"{type(shape).__name__} area: {shape.area()}\")",
+  "expectedOutput": "Circle area: 50.27\nRectangle area: 15",
+  "concepts": [
+    "inheritance",
+    "method overriding",
+    "polymorphism"
+  ]
+}

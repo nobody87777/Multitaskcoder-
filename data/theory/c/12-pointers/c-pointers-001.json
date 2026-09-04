@@ -1,0 +1,55 @@
+{
+  "id": "c-pointers-001",
+  "language": "c",
+  "section": "c",
+  "module": "Pointers",
+  "moduleNumber": 12,
+  "lessonNumber": 12,
+  "title": "Pointer Fundamentals",
+  "difficulty": "intermediate",
+  "description": "What a pointer is, the address-of and dereference operators, declaration, initialization, and NULL.",
+  "objectives": [
+    "Understand what a pointer represents and why it matters in C",
+    "Use the address-of (&) and dereference (*) operators correctly",
+    "Declare and initialize pointers safely",
+    "Understand NULL and why checking for it matters"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "What a Pointer Is",
+      "body": "A pointer is a variable that holds a memory address — the location of another value, rather than the value itself. Pointers are central to C precisely because the language has so few built-in abstractions: passing data efficiently to functions, building dynamic (resizable) data structures, and managing memory allocated at runtime all fundamentally rely on pointers. Every pointer has a type describing what kind of value lives at the address it holds (int *p means 'p points to an int'), which the compiler uses to determine how many bytes to read/write through it and how pointer arithmetic on it should be scaled."
+    },
+    {
+      "type": "text",
+      "heading": "&, *, Declaration, Initialization, and NULL",
+      "body": "The address-of operator, &variable, yields the memory address where variable is stored. The dereference operator, *pointer, accesses (reads or writes) the value at the address a pointer holds. int *p; declares p as a pointer to int (uninitialized — holding a garbage address until assigned); int *p = &x; declares and immediately initializes p to point at x's address. Dereferencing an uninitialized ('wild') pointer, or one explicitly set to an invalid address, is undefined behavior and a very common crash source.\n\nNULL is a special pointer value guaranteed not to point at any valid object — used to indicate 'this pointer intentionally points at nothing' (e.g., malloc() returns NULL on allocation failure, covered later). Dereferencing a NULL pointer is also undefined behavior (typically a crash, a segmentation fault, on most modern systems) — but checking if (ptr != NULL) before dereferencing a pointer that might be NULL is a standard, essential defensive habit in C code."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    int num = 42;\n    int *ptr = &num;         // ptr holds num's address\n\n    printf(\"Value of num: %d\\n\", num);\n    printf(\"Address of num: %p\\n\", (void *)&num);\n    printf(\"Value via ptr: %d\\n\", *ptr);   // dereference: read the value at that address\n\n    *ptr = 100;                // write through the pointer\n    printf(\"num is now: %d\\n\", num);        // 100 — changed via ptr\n\n    int *maybeNull = NULL;\n    if (maybeNull != NULL) {\n        printf(\"%d\\n\", *maybeNull);\n    } else {\n        printf(\"maybeNull is NULL, not dereferencing it\\n\");\n    }\n    return 0;\n}",
+      "explanation": "*ptr = 100; writes through the pointer directly into num's memory, changing num itself. The NULL check before the second dereference avoids undefined behavior."
+    }
+  ],
+  "keyPoints": [
+    "A pointer holds a memory address, not a value directly; & gets an address, * dereferences one",
+    "A pointer's declared type determines how many bytes are read/written through it",
+    "An uninitialized ('wild') pointer holds a garbage address — dereferencing it is undefined behavior",
+    "NULL represents 'points at nothing'; always check for it before dereferencing a pointer that might be NULL"
+  ],
+  "commonMistakes": [
+    "Dereferencing a pointer before it's been assigned a valid address",
+    "Forgetting to check a pointer for NULL before dereferencing it, when NULL is a real possibility",
+    "Confusing & (address-of, applied to a variable) with * (dereference, applied to a pointer)"
+  ],
+  "concepts": [
+    "pointers",
+    "address-of operator",
+    "dereference operator",
+    "pointer declaration",
+    "NULL"
+  ],
+  "previousLesson": "c-strings-001",
+  "nextLesson": "c-pointers-002"
+}

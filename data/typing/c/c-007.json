@@ -1,0 +1,15 @@
+{
+  "id": "c-007",
+  "language": "c",
+  "title": "Even or Odd Checker",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Check whether a given number is even or odd.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int num;\n    scanf(\"%d\", &num);\n\n    if (num % 2 == 0)\n        printf(\"%d is Even\\n\", num);\n    else\n        printf(\"%d is Odd\\n\", num);\n\n    return 0;\n}",
+  "exampleInput": "13",
+  "expectedOutput": "13 is Odd",
+  "concepts": [
+    "modulus operator",
+    "if/else"
+  ]
+}

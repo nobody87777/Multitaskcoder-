@@ -1,0 +1,18 @@
+{
+  "id": "quiz-java-019",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "true-false",
+  "topic": "Variables",
+  "question": "True or False: In Java, the int type can store larger values than the long type.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "long is a 64-bit type and can store a much larger range of values than the 32-bit int type — the statement has it backwards.",
+  "concepts": [
+    "primitive types",
+    "int vs long"
+  ]
+}

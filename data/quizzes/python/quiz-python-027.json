@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-027",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Functions",
+  "question": "What happens when a function assigns to a variable that has the same name as a global variable, without declaring it global?",
+  "options": [
+    "The global variable is modified directly",
+    "Python raises a NameError",
+    "A new local variable is created that shadows the global one inside the function",
+    "The program fails to compile"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Assigning to a name inside a function makes it local by default; this creates a new local variable that shadows the global one, leaving the global unchanged.",
+  "concepts": [
+    "scope",
+    "local vs global"
+  ]
+}

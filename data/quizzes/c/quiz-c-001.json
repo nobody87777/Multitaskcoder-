@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-001",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "What is the required entry point function for a standard C program?",
+  "options": [
+    "main()",
+    "start()",
+    "init()",
+    "run()"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Execution of a C program begins in the main() function, which the operating system's loader looks for and calls first.",
+  "concepts": [
+    "main()",
+    "program structure"
+  ]
+}

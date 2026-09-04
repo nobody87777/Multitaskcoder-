@@ -1,0 +1,21 @@
+{
+  "id": "debug-java-031",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "overriding-mistake",
+  "title": "Fix the Method That Overloads Instead of Overrides",
+  "description": "The program should have Dog override Animal's makeSound() method.",
+  "buggyCode": "class Animal {\n    String makeSound() {\n        return \"...\";\n    }\n}\n\nclass Dog extends Animal {\n    String makeSound(String extra) {\n        return \"Woof \" + extra;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Animal a = new Dog();\n        System.out.println(a.makeSound());\n    }\n}",
+  "expectedBehavior": "Calling makeSound() on a Dog (even through an Animal reference) should print 'Woof'.",
+  "actualProblem": "Dog's makeSound(String extra) has a different parameter list than Animal's makeSound(), so it's an overload (a separate, new method), not an override. Calling a.makeSound() with no arguments still resolves to Animal's original version, printing '...' instead of anything dog-specific.",
+  "correctedCode": "class Animal {\n    String makeSound() {\n        return \"...\";\n    }\n}\n\nclass Dog extends Animal {\n    @Override\n    String makeSound() {\n        return \"Woof\";\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Animal a = new Dog();\n        System.out.println(a.makeSound());\n    }\n}",
+  "expectedOutput": "Woof",
+  "explanation": "Overriding requires matching the parent method's name and parameter list exactly. A method with the same name but a different signature is a separate overload, not a replacement — adding @Override helps the compiler catch this mistake immediately.",
+  "concepts": [
+    "method overriding",
+    "method overloading",
+    "polymorphism",
+    "@Override"
+  ]
+}

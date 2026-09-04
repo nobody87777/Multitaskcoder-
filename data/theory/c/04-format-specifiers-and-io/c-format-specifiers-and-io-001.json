@@ -1,0 +1,56 @@
+{
+  "id": "c-format-specifiers-and-io-001",
+  "language": "c",
+  "section": "c",
+  "module": "Format Specifiers and I/O",
+  "moduleNumber": 4,
+  "lessonNumber": 4,
+  "title": "Format Specifiers and I/O",
+  "difficulty": "beginner",
+  "description": "printf(), scanf(), getchar()/putchar(), format specifiers, and common scanf mistakes.",
+  "objectives": [
+    "Use printf() with the correct format specifiers for each type",
+    "Use scanf() correctly, including the address-of operator",
+    "Use getchar()/putchar() for single-character I/O",
+    "Recognize common scanf mistakes"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "printf() and Format Specifiers",
+      "body": "printf(format, args...) writes formatted output. Common format specifiers: %d (int), %u (unsigned int), %f (float/double, defaulting to 6 decimal places — %.2f for two), %c (a single char), %s (a null-terminated string, char*), %ld/%lld (long/long long), %x (hexadecimal), and %p (a pointer address). Getting a specifier wrong for the argument's actual type is undefined behavior — printf trusts the format string completely and has no way to verify the argument's real type at runtime, so a mismatch typically produces garbage output rather than an error."
+    },
+    {
+      "type": "text",
+      "heading": "scanf(), getchar(), and putchar()",
+      "body": "scanf(format, ...) reads formatted input, and crucially requires the address of each variable to write into, via the & operator: scanf(\"%d\", &age); — forgetting & is one of the most common C mistakes, since scanf then receives whatever garbage value age currently holds interpreted as an address, and attempts to write through it (usually crashing). scanf() returns the number of items successfully read/assigned, which should be checked before trusting the resulting values — unchecked, malformed input silently leaves variables at whatever value (often uninitialized garbage) they had before the call.\n\ngetchar() reads a single character from standard input (returning it as an int, so EOF, a value outside the normal char range, can be represented); putchar(c) writes a single character to standard output — useful for simple, character-by-character processing without the overhead of scanf/printf's format parsing."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    int age;\n    printf(\"Enter your age: \");\n    if (scanf(\"%d\", &age) != 1) {          // & required; check the return value\n        printf(\"Invalid input\\n\");\n        return 1;\n    }\n    printf(\"You are %d years old\\n\", age);\n\n    int c;\n    while ((c = getchar()) != '\\n' && c != EOF) {\n        putchar(c);                          // echo each character\n    }\n    return 0;\n}",
+      "explanation": "&age gives scanf the address it needs to write into. Checking scanf's return value against 1 (the expected number of successfully-read items) catches invalid input before age is used."
+    }
+  ],
+  "keyPoints": [
+    "printf/scanf format specifiers must exactly match the argument's actual type",
+    "scanf() requires the address of each destination variable, via &",
+    "scanf()'s return value (items successfully read) should be checked, not assumed",
+    "getchar()/putchar() handle single-character I/O without format-string parsing overhead"
+  ],
+  "commonMistakes": [
+    "Forgetting & before a variable in a scanf() format argument",
+    "Using the wrong format specifier for a variable's actual type",
+    "Not checking scanf()'s return value and using a variable that was never actually assigned by malformed input"
+  ],
+  "concepts": [
+    "printf()",
+    "scanf()",
+    "format specifiers",
+    "getchar()",
+    "putchar()",
+    "address-of operator"
+  ],
+  "previousLesson": "c-variables-and-data-types-001",
+  "nextLesson": "c-operators-001"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "java-039",
+  "language": "java",
+  "title": "Student Class",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "description": "Create a Student class with fields and a method that prints a formatted summary.",
+  "code": "public class StudentClass {\n    static class Student {\n        String name;\n        int marks;\n\n        Student(String name, int marks) {\n            this.name = name;\n            this.marks = marks;\n        }\n\n        void printSummary() {\n            System.out.println(name + \" scored \" + marks + \" marks\");\n        }\n    }\n\n    public static void main(String[] args) {\n        Student s1 = new Student(\"Asha\", 88);\n        Student s2 = new Student(\"Ravi\", 74);\n        s1.printSummary();\n        s2.printSummary();\n    }\n}",
+  "expectedOutput": "Asha scored 88 marks\nRavi scored 74 marks",
+  "concepts": [
+    "classes",
+    "constructors",
+    "instance methods"
+  ]
+}

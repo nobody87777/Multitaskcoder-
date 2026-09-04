@@ -1,0 +1,57 @@
+{
+  "id": "c-structures-001",
+  "language": "c",
+  "section": "c",
+  "module": "Structures",
+  "moduleNumber": 15,
+  "lessonNumber": 16,
+  "title": "Structures",
+  "difficulty": "intermediate",
+  "description": "Defining structs, initializing them, arrays and nesting of structures, and pointers to structures.",
+  "objectives": [
+    "Define and initialize a struct",
+    "Use arrays of structures and nested structures",
+    "Access struct members through a pointer with the arrow operator",
+    "Pass structures to functions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Defining and Initializing Structures",
+      "body": "A struct groups related, possibly differently-typed fields (members) together under one name: struct Point { int x; int y; };. A variable is declared as struct Point p; (the struct keyword is required in plain C, unlike C++, unless a typedef is used — see the Enums and typedef lesson) and initialized either with a brace list, struct Point p = {3, 4};, or field-by-field, p.x = 3; p.y = 4;. Members are accessed with the dot operator: p.x. Structures make it possible to bundle logically-related data into one unit and pass it around as a single value, instead of tracking many loose, related variables individually."
+    },
+    {
+      "type": "text",
+      "heading": "Arrays of Structures, Nesting, and Pointers to Structures",
+      "body": "struct Point points[3]; declares an array of 3 Point structures, each accessed and initialized like any array element: points[0].x = 1;. Structures can nest: struct Line { struct Point start; struct Point end; }; — accessing a nested field chains the dot operator, line.start.x.\n\nWhen working with a pointer to a struct (struct Point *p = &point;), accessing a member requires either explicit dereferencing plus dot, (*p).x, or — far more commonly — the arrow operator, p->x, which combines dereferencing and member access in one step and is considered idiomatic C. Passing a large struct to a function by value copies the entire struct (potentially expensive for large structs); passing a pointer to it avoids that copy and, if desired, lets the function modify the caller's original struct directly."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nstruct Point {\n    int x, y;\n};\n\nvoid printPoint(const struct Point *p) {   // pointer avoids copying; const signals read-only\n    printf(\"(%d, %d)\\n\", p->x, p->y);        // arrow operator through the pointer\n}\n\nint main() {\n    struct Point p1 = {3, 4};\n    printPoint(&p1);\n\n    struct Point points[2] = { {0, 0}, {1, 1} };\n    printPoint(&points[1]);\n    return 0;\n}",
+      "explanation": "printPoint takes a pointer (avoiding a struct copy) and uses -> to access members through it. const struct Point * documents that the function only reads the struct, never modifies it."
+    }
+  ],
+  "keyPoints": [
+    "struct groups related fields under one name, accessed with the dot operator",
+    "An array of structures and nested structures both use ordinary array/dot-operator syntax, chained as needed",
+    "Access members through a struct pointer with -> (equivalent to, but cleaner than, (*p).member)",
+    "Passing a pointer to a struct avoids copying it and can allow in-place modification"
+  ],
+  "commonMistakes": [
+    "Using . instead of -> when accessing a member through a struct pointer (a compile error)",
+    "Passing a large struct by value where a pointer would avoid an unnecessary, potentially expensive copy",
+    "Forgetting the struct keyword when declaring a variable, without a typedef alias in place"
+  ],
+  "concepts": [
+    "structures",
+    "struct",
+    "members",
+    "arrays of structures",
+    "nested structures",
+    "arrow operator",
+    "structures in functions"
+  ],
+  "previousLesson": "c-dynamic-memory-001",
+  "nextLesson": "c-unions-001"
+}

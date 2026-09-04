@@ -1,0 +1,15 @@
+{
+  "id": "java-035",
+  "language": "java",
+  "title": "Selection Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort an array of numbers in ascending order using selection sort.",
+  "code": "import java.util.Arrays;\n\npublic class SelectionSort {\n    public static void main(String[] args) {\n        int[] numbers = {29, 10, 14, 37, 14};\n        int n = numbers.length;\n\n        for (int i = 0; i < n - 1; i++) {\n            int minIndex = i;\n            for (int j = i + 1; j < n; j++) {\n                if (numbers[j] < numbers[minIndex]) {\n                    minIndex = j;\n                }\n            }\n            int temp = numbers[i];\n            numbers[i] = numbers[minIndex];\n            numbers[minIndex] = temp;\n        }\n\n        System.out.println(\"Sorted array: \" + Arrays.toString(numbers));\n    }\n}",
+  "expectedOutput": "Sorted array: [10, 14, 14, 29, 37]",
+  "concepts": [
+    "selection sort",
+    "nested loops",
+    "swapping"
+  ]
+}

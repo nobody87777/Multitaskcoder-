@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-028",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Functions",
+  "bugType": "scope-error",
+  "title": "Fix the Global Counter Update",
+  "description": "The program should increment a global counter each time a function is called. Fix the bug.",
+  "buggyCode": "counter = 0\n\ndef increment():\n    counter = counter + 1\n\nincrement()\nprint(counter)",
+  "expectedBehavior": "The program should print 1 after calling increment() once.",
+  "actualProblem": "Assigning to counter inside the function makes Python treat it as a new local variable for the whole function body, so reading counter on the right-hand side before it's locally assigned raises an UnboundLocalError.",
+  "correctedCode": "counter = 0\n\ndef increment():\n    global counter\n    counter = counter + 1\n\nincrement()\nprint(counter)",
+  "expectedOutput": "1",
+  "explanation": "To modify a module-level variable from inside a function, the function must declare it with the global keyword. Without it, any assignment to that name creates a separate local variable instead.",
+  "concepts": [
+    "scope",
+    "global keyword",
+    "UnboundLocalError"
+  ]
+}

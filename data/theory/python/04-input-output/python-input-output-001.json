@@ -1,0 +1,58 @@
+{
+  "id": "python-input-output-001",
+  "language": "python",
+  "section": "python",
+  "module": "Input and Output",
+  "moduleNumber": 4,
+  "lessonNumber": 4,
+  "title": "Input and Output",
+  "difficulty": "beginner",
+  "description": "Reading user input and formatting output using print(), f-strings, and format().",
+  "objectives": [
+    "Read user input with input()",
+    "Format output using f-strings and str.format()",
+    "Control print() behavior with sep and end",
+    "Understand escape sequences and the concepts of stdout/stderr"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "print() and input()",
+      "body": "print() writes its arguments to standard output (stdout), separated by a space by default and ending with a newline. Both behaviors are configurable: print(a, b, sep=\", \", end=\"!\\n\") changes the separator and the ending. Errors and diagnostic messages conventionally go to standard error (stderr) instead of stdout, via sys.stderr.write(...) or print(..., file=sys.stderr) — this lets a program's real output be separated from its error/log messages when piped or redirected.\n\ninput(prompt) displays the optional prompt string, waits for the user to type a line and press Enter, and always returns that line as a str — with no automatic type conversion. Converting to int(), float(), etc. is the caller's responsibility."
+    },
+    {
+      "type": "text",
+      "heading": "String Formatting",
+      "body": "Modern Python code almost always uses f-strings (formatted string literals, introduced in Python 3.6): f\"Name: {name}, Age: {age}\" evaluates the expressions inside {} and inserts their string representation directly. f-strings also support format specifiers, like f\"{price:.2f}\" for two decimal places. The older str.format() method achieves the same thing with \"{} {}\".format(a, b), and the oldest %-style formatting (\"%d\" % 5) still appears in legacy code. Common escape sequences inside string literals include \\n (newline), \\t (tab), \\\\ (a literal backslash), and \\\" (a literal quote inside a double-quoted string)."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "name = \"Asha\"\nscore = 92.456\nprint(f\"{name} scored {score:.1f}%\")   # Asha scored 92.5%\nprint(\"a\", \"b\", \"c\", sep=\"-\", end=\"!\\n\")  # a-b-c!\n\n# input() always returns a string:\n# age = int(input(\"Age: \"))",
+      "explanation": "The :.1f format specifier rounds score to one decimal place when inserted into the f-string. sep and end change print()'s default single-space separator and trailing newline."
+    }
+  ],
+  "keyPoints": [
+    "print() writes to stdout by default; sep and end are configurable",
+    "input() always returns a str — convert it explicitly if you need a number",
+    "f-strings (f\"...{expr}...\") are the preferred modern formatting style",
+    "Format specifiers like :.2f control numeric display inside f-strings",
+    "stderr is conventionally used for errors/diagnostics, separate from normal output"
+  ],
+  "commonMistakes": [
+    "Forgetting to convert input() results before doing arithmetic on them",
+    "Mixing up f-string syntax f\"{x}\" with plain string \"{x}\" (missing the f prefix)",
+    "Assuming print() flushes output immediately in every environment (it usually does for a terminal, but buffering can differ when piped)"
+  ],
+  "concepts": [
+    "print()",
+    "input()",
+    "f-strings",
+    "format()",
+    "escape sequences",
+    "stdout",
+    "stderr"
+  ],
+  "previousLesson": "python-operators-001",
+  "nextLesson": "python-conditionals-001"
+}

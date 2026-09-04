@@ -1,0 +1,18 @@
+{
+  "id": "quiz-c-048",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "true-false",
+  "topic": "Data Structures",
+  "question": "True or False: A queue data structure follows FIFO ordering, meaning the first element added is the first one removed.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "FIFO (First In, First Out) means elements are removed from a queue in the same order they were added — like a line of people waiting.",
+  "concepts": [
+    "queue",
+    "FIFO"
+  ]
+}

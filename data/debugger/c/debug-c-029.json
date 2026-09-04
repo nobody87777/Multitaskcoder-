@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-029",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Pointers",
+  "bugType": "array-pointer-confusion",
+  "title": "Fix the Array-vs-Pointer Type Mismatch",
+  "description": "The program should point at the first element of an array and iterate through it.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int arr[3] = {1, 2, 3};\n    int *p = &arr;\n    for (int i = 0; i < 3; i++) {\n        printf(\"%d \", *(p + i));\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+  "expectedBehavior": "The program should print '1 2 3 '.",
+  "actualProblem": "&arr is the address of the whole array (type int(*)[3]), not the address of its first int element (type int*). Assigning it to int *p is a type mismatch that most compilers flag as a warning, and though it may happen to run on some setups, it relies on incompatible pointer types rather than correct, portable code.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int arr[3] = {1, 2, 3};\n    int *p = arr;\n    for (int i = 0; i < 3; i++) {\n        printf(\"%d \", *(p + i));\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+  "expectedOutput": "1 2 3 ",
+  "explanation": "An array name used by itself (like arr, without &) already decays into a pointer to its first element, with the correct type (int* here). Taking &arr instead produces a pointer to the entire array, a different and incompatible type.",
+  "concepts": [
+    "arrays and pointers",
+    "pointer types",
+    "array decay"
+  ]
+}

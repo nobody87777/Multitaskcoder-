@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-019",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Operators",
+  "question": "What does the logical AND operator && return when both operands are non-zero (true)?",
+  "options": [
+    "A non-zero value representing true (typically 1)",
+    "Always exactly 0",
+    "A compile-time error",
+    "The sum of the two operands"
+  ],
+  "correctAnswer": 0,
+  "explanation": "&& evaluates to a non-zero (true) result only if both operands are non-zero (true); C represents true results as the integer 1.",
+  "concepts": [
+    "logical operators",
+    "&&"
+  ]
+}

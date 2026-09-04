@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-047",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Advanced OOP",
+  "bugType": "overriding-mistake",
+  "title": "Fix the Method That Doesn't Actually Override",
+  "description": "The program should have a Cat subclass override Animal's speak() method with its own sound. Fix the bug.",
+  "buggyCode": "class Animal:\n    def speak(self):\n        return \"...\"\n\nclass Cat(Animal):\n    def Speak(self):\n        return \"Meow\"\n\nc = Cat()\nprint(c.speak())",
+  "expectedBehavior": "The program should print 'Meow', using Cat's overridden behavior.",
+  "actualProblem": "Cat defines Speak (capital S) instead of speak (lowercase), so it's actually a brand-new method, not an override. Calling c.speak() still resolves to Animal's original method, printing '...' instead of 'Meow'.",
+  "correctedCode": "class Animal:\n    def speak(self):\n        return \"...\"\n\nclass Cat(Animal):\n    def speak(self):\n        return \"Meow\"\n\nc = Cat()\nprint(c.speak())",
+  "expectedOutput": "Meow",
+  "explanation": "Python method names are case-sensitive, and overriding requires matching the parent method's exact name. A subclass method with a differently-cased (or otherwise different) name simply adds a new method rather than replacing the inherited one.",
+  "concepts": [
+    "inheritance",
+    "method overriding",
+    "polymorphism"
+  ]
+}

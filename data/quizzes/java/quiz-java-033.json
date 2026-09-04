@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-033",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Collections",
+  "question": "What is a key advantage of an ArrayList over a plain array in Java?",
+  "options": [
+    "ArrayLists can store primitive int values directly",
+    "ArrayLists are always faster for every operation",
+    "ArrayLists can grow or shrink dynamically at runtime",
+    "Arrays cannot store objects"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Unlike a fixed-size array, an ArrayList automatically resizes itself as elements are added or removed.",
+  "concepts": [
+    "ArrayList",
+    "collections"
+  ]
+}

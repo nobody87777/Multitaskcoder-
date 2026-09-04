@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-042",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Decorators",
+  "bugType": "decorator-bug",
+  "title": "Fix the Decorator That Loses the Return Value",
+  "description": "The program should use a logging decorator that still returns the wrapped function's result. Fix the bug.",
+  "buggyCode": "def log_call(func):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__}\")\n        func(*args, **kwargs)\n    return wrapper\n\n@log_call\ndef add(a, b):\n    return a + b\n\nresult = add(2, 3)\nprint(result)",
+  "expectedBehavior": "The program should print 'Calling add' followed by 5, the actual sum.",
+  "actualProblem": "wrapper() calls func(*args, **kwargs) but never returns its result, so wrapper always implicitly returns None — the caller's result variable ends up None instead of the real sum.",
+  "correctedCode": "def log_call(func):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__}\")\n        return func(*args, **kwargs)\n    return wrapper\n\n@log_call\ndef add(a, b):\n    return a + b\n\nresult = add(2, 3)\nprint(result)",
+  "expectedOutput": "Calling add\n5",
+  "explanation": "A decorator's wrapper function must return whatever the original function returns, or that return value is silently lost. Adding return before func(*args, **kwargs) passes the real result back to the caller.",
+  "concepts": [
+    "decorators",
+    "closures",
+    "return values"
+  ]
+}

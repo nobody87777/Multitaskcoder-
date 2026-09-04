@@ -1,0 +1,16 @@
+{
+  "id": "python-020",
+  "language": "python",
+  "title": "Count Digits in a Number",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Count how many digits a given integer has.",
+  "code": "num = int(input(\"Enter a number: \"))\ncount = 0\ntemp = abs(num)\n\nif temp == 0:\n    count = 1\nelse:\n    while temp > 0:\n        count += 1\n        temp //= 10\n\nprint(f\"{num} has {count} digits\")",
+  "exampleInput": "987654",
+  "expectedOutput": "Enter a number: 987654 has 6 digits",
+  "concepts": [
+    "while loop",
+    "abs()",
+    "edge case handling"
+  ]
+}

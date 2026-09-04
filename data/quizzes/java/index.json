@@ -1,0 +1,356 @@
+{
+  "language": "java",
+  "count": 50,
+  "questions": [
+    {
+      "id": "quiz-java-001",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-java-001.json"
+    },
+    {
+      "id": "quiz-java-002",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-java-002.json"
+    },
+    {
+      "id": "quiz-java-003",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Variables",
+      "file": "quiz-java-003.json"
+    },
+    {
+      "id": "quiz-java-004",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Variables",
+      "file": "quiz-java-004.json"
+    },
+    {
+      "id": "quiz-java-005",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Operators",
+      "file": "quiz-java-005.json"
+    },
+    {
+      "id": "quiz-java-006",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Input/Output",
+      "file": "quiz-java-006.json"
+    },
+    {
+      "id": "quiz-java-007",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Conditionals",
+      "file": "quiz-java-007.json"
+    },
+    {
+      "id": "quiz-java-008",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Conditionals",
+      "file": "quiz-java-008.json"
+    },
+    {
+      "id": "quiz-java-009",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-java-009.json"
+    },
+    {
+      "id": "quiz-java-010",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Loops",
+      "file": "quiz-java-010.json"
+    },
+    {
+      "id": "quiz-java-011",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-java-011.json"
+    },
+    {
+      "id": "quiz-java-012",
+      "difficulty": "beginner",
+      "type": "true-false",
+      "topic": "Loops",
+      "file": "quiz-java-012.json"
+    },
+    {
+      "id": "quiz-java-013",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Arrays",
+      "file": "quiz-java-013.json"
+    },
+    {
+      "id": "quiz-java-014",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Arrays",
+      "file": "quiz-java-014.json"
+    },
+    {
+      "id": "quiz-java-015",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Strings",
+      "file": "quiz-java-015.json"
+    },
+    {
+      "id": "quiz-java-016",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Strings",
+      "file": "quiz-java-016.json"
+    },
+    {
+      "id": "quiz-java-017",
+      "difficulty": "beginner",
+      "type": "code-analysis",
+      "topic": "Strings",
+      "file": "quiz-java-017.json"
+    },
+    {
+      "id": "quiz-java-018",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-java-018.json"
+    },
+    {
+      "id": "quiz-java-019",
+      "difficulty": "beginner",
+      "type": "true-false",
+      "topic": "Variables",
+      "file": "quiz-java-019.json"
+    },
+    {
+      "id": "quiz-java-020",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-java-020.json"
+    },
+    {
+      "id": "quiz-java-021",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-021.json"
+    },
+    {
+      "id": "quiz-java-022",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-022.json"
+    },
+    {
+      "id": "quiz-java-023",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-023.json"
+    },
+    {
+      "id": "quiz-java-024",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "OOP",
+      "file": "quiz-java-024.json"
+    },
+    {
+      "id": "quiz-java-025",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-025.json"
+    },
+    {
+      "id": "quiz-java-026",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-026.json"
+    },
+    {
+      "id": "quiz-java-027",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-027.json"
+    },
+    {
+      "id": "quiz-java-028",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-028.json"
+    },
+    {
+      "id": "quiz-java-029",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-java-029.json"
+    },
+    {
+      "id": "quiz-java-030",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "OOP",
+      "file": "quiz-java-030.json"
+    },
+    {
+      "id": "quiz-java-031",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Exceptions",
+      "file": "quiz-java-031.json"
+    },
+    {
+      "id": "quiz-java-032",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Exceptions",
+      "file": "quiz-java-032.json"
+    },
+    {
+      "id": "quiz-java-033",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Collections",
+      "file": "quiz-java-033.json"
+    },
+    {
+      "id": "quiz-java-034",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Collections",
+      "file": "quiz-java-034.json"
+    },
+    {
+      "id": "quiz-java-035",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Collections",
+      "file": "quiz-java-035.json"
+    },
+    {
+      "id": "quiz-java-036",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Collections",
+      "file": "quiz-java-036.json"
+    },
+    {
+      "id": "quiz-java-037",
+      "difficulty": "intermediate",
+      "type": "code-analysis",
+      "topic": "Recursion",
+      "file": "quiz-java-037.json"
+    },
+    {
+      "id": "quiz-java-038",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Recursion",
+      "file": "quiz-java-038.json"
+    },
+    {
+      "id": "quiz-java-039",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Files",
+      "file": "quiz-java-039.json"
+    },
+    {
+      "id": "quiz-java-040",
+      "difficulty": "intermediate",
+      "type": "true-false",
+      "topic": "Collections",
+      "file": "quiz-java-040.json"
+    },
+    {
+      "id": "quiz-java-041",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Functional",
+      "file": "quiz-java-041.json"
+    },
+    {
+      "id": "quiz-java-042",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Functional",
+      "file": "quiz-java-042.json"
+    },
+    {
+      "id": "quiz-java-043",
+      "difficulty": "advanced",
+      "type": "output",
+      "topic": "Functional",
+      "file": "quiz-java-043.json"
+    },
+    {
+      "id": "quiz-java-044",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "JVM",
+      "file": "quiz-java-044.json"
+    },
+    {
+      "id": "quiz-java-045",
+      "difficulty": "advanced",
+      "type": "code-analysis",
+      "topic": "JVM",
+      "file": "quiz-java-045.json"
+    },
+    {
+      "id": "quiz-java-046",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "JVM",
+      "file": "quiz-java-046.json"
+    },
+    {
+      "id": "quiz-java-047",
+      "difficulty": "advanced",
+      "type": "true-false",
+      "topic": "Concurrency",
+      "file": "quiz-java-047.json"
+    },
+    {
+      "id": "quiz-java-048",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Concurrency",
+      "file": "quiz-java-048.json"
+    },
+    {
+      "id": "quiz-java-049",
+      "difficulty": "advanced",
+      "type": "code-analysis",
+      "topic": "OOP",
+      "file": "quiz-java-049.json"
+    },
+    {
+      "id": "quiz-java-050",
+      "difficulty": "advanced",
+      "type": "true-false",
+      "topic": "OOP",
+      "file": "quiz-java-050.json"
+    }
+  ]
+}

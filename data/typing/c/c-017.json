@@ -1,0 +1,16 @@
+{
+  "id": "c-017",
+  "language": "c",
+  "title": "Prime Number Checker",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Check whether a given number is prime.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int num, isPrime = 1;\n    scanf(\"%d\", &num);\n\n    if (num <= 1) isPrime = 0;\n    for (int i = 2; i * i <= num; i++) {\n        if (num % i == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n\n    if (isPrime)\n        printf(\"%d is a prime number\\n\", num);\n    else\n        printf(\"%d is not a prime number\\n\", num);\n\n    return 0;\n}",
+  "exampleInput": "29",
+  "expectedOutput": "29 is a prime number",
+  "concepts": [
+    "for loop",
+    "break",
+    "prime testing"
+  ]
+}

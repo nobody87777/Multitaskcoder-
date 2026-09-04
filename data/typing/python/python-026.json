@@ -1,0 +1,15 @@
+{
+  "id": "python-026",
+  "language": "python",
+  "title": "String Reversal",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "description": "Reverse a string using slicing.",
+  "code": "text = \"MultitaskCoder\"\nreversed_text = text[::-1]\n\nprint(\"Original:\", text)\nprint(\"Reversed:\", reversed_text)",
+  "expectedOutput": "Original: MultitaskCoder\nReversed: redoCksatitluM",
+  "concepts": [
+    "strings",
+    "slicing",
+    "step -1"
+  ]
+}

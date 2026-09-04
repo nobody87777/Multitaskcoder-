@@ -1,0 +1,57 @@
+{
+  "id": "c-operators-001",
+  "language": "c",
+  "section": "c",
+  "module": "Operators",
+  "moduleNumber": 5,
+  "lessonNumber": 5,
+  "title": "Operators",
+  "difficulty": "beginner",
+  "description": "Arithmetic, relational, logical, assignment, increment/decrement, bitwise, shift, sizeof, and precedence.",
+  "objectives": [
+    "Use arithmetic, relational, and logical operators",
+    "Use increment/decrement and the conditional operator",
+    "Use bitwise, shift, and sizeof operators",
+    "Understand operator precedence and associativity"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Arithmetic, Relational, Logical, and Assignment",
+      "body": "Arithmetic operators (+ - * / %) work as expected, with integer / integer truncating toward zero (7 / 2 is 3, and -7 / 2 is -3 in C99 and later, truncation toward zero rather than toward negative infinity). Relational operators (==, !=, <, >, <=, >=) and logical operators (&&, ||, !) produce an int result: 1 for true, 0 for false (C has no true boolean type before C99's _Bool / stdbool.h's bool). && and || short-circuit, just as in most C-family languages. Augmented assignment operators (+=, -=, *=, /=, %=, and bitwise equivalents) combine an operation with assignment."
+    },
+    {
+      "type": "text",
+      "heading": "Increment/Decrement, Ternary, Bitwise, Shift, and sizeof",
+      "body": "++x/--x (prefix) apply the change before the expression's value is used; x++/x-- (postfix) apply it after — mixing these into a larger expression that also reads/writes the same variable elsewhere (e.g. x = x++ + ++x;) triggers undefined behavior, so such expressions should be avoided entirely. The conditional (ternary) operator, condition ? a : b, is C's compact if/else expression. Bitwise operators (& | ^ ~ << >>) manipulate individual bits; << shifts left (multiplying by powers of two), >> shifts right (behavior for negative signed values is implementation-defined — arithmetic vs. logical shift). sizeof(type or expression) returns the size in bytes of a type or variable at compile time — essential for correctly sizing memory allocations, covered in the Dynamic Memory lesson."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    int a = 7, b = 2;\n    printf(\"%d %d\\n\", a / b, a % b);        // 3 1\n\n    int x = 5;\n    printf(\"%s\\n\", (x > 0) ? \"positive\" : \"non-positive\");\n\n    printf(\"%d\\n\", sizeof(int));             // typically 4\n    printf(\"%d\\n\", 5 << 2);                   // 20 (5 * 2^2)\n    return 0;\n}",
+      "explanation": "sizeof(int) reports the compile-time size of the int type in bytes on the current platform. 5 << 2 shifts 5's bits left by 2 positions, equivalent to multiplying by 4."
+    }
+  ],
+  "keyPoints": [
+    "Integer division truncates toward zero; % gives the remainder",
+    "C has no true boolean type in C89 — relational/logical expressions produce int (0 or 1)",
+    "Mixing multiple ++/-- of the same variable within one expression is undefined behavior",
+    "sizeof(type) gives a type's size in bytes at compile time, essential for correct memory allocation"
+  ],
+  "commonMistakes": [
+    "Writing an expression that both reads and modifies the same variable via ++/-- multiple times, invoking undefined behavior",
+    "Assuming C has a real boolean type without including stdbool.h (C99+)",
+    "Confusing bitwise & / | with logical && / ||"
+  ],
+  "concepts": [
+    "arithmetic operators",
+    "relational operators",
+    "logical operators",
+    "increment/decrement",
+    "ternary operator",
+    "bitwise operators",
+    "sizeof"
+  ],
+  "previousLesson": "c-format-specifiers-and-io-001",
+  "nextLesson": "c-control-flow-001"
+}

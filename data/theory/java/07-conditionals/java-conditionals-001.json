@@ -1,0 +1,54 @@
+{
+  "id": "java-conditionals-001",
+  "language": "java",
+  "section": "java",
+  "module": "Conditional Statements",
+  "moduleNumber": 7,
+  "lessonNumber": 7,
+  "title": "Conditional Statements",
+  "difficulty": "beginner",
+  "description": "if/else chains, nested conditionals, and both traditional and modern switch statements.",
+  "objectives": [
+    "Write if/else if/else chains and nested conditionals",
+    "Write and correctly terminate switch statements",
+    "Understand modern switch expressions at a conceptual level"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "if / else if / else",
+      "body": "Java's conditional structure mirrors C's: if (condition) { ... } else if (condition) { ... } else { ... }, where condition must be a boolean expression (unlike C, Java does not accept an int as a condition). Only the first matching branch runs. Braces are technically optional for single-statement bodies, but omitting them is a common source of subtle bugs when code is later modified without adding braces back — most style guides recommend always using them."
+    },
+    {
+      "type": "text",
+      "heading": "switch Statements",
+      "body": "A traditional switch (expression) { case value1: ...; break; case value2: ...; break; default: ...; } compares expression against each case label. Crucially, without a break statement at the end of each case's code, execution falls through into the next case regardless of its label — a frequent source of bugs for those coming from languages without this behavior. default handles any value not matched by an explicit case. switch works with byte/short/char/int (and their wrapper types), String (since Java 7), and enum types.\n\nSince Java 14, a modern switch expression form is available: switch (x) { case 1 -> doA(); case 2 -> doB(); default -> doC(); }, using -> instead of : and break, which does not fall through by default and can also be used as an expression that produces a value directly. Both forms coexist in modern Java; the classic colon-and-break form remains extremely common in existing code."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Conditionals {\n    public static void main(String[] args) {\n        int day = 3;\n        switch (day) {\n            case 1:\n                System.out.println(\"Monday\");\n                break;\n            case 2:\n                System.out.println(\"Tuesday\");\n                break;\n            default:\n                System.out.println(\"Another day\");\n        }\n\n        // Modern switch expression (Java 14+)\n        String dayName = switch (day) {\n            case 1 -> \"Monday\";\n            case 2 -> \"Tuesday\";\n            default -> \"Another day\";\n        };\n        System.out.println(dayName);\n    }\n}",
+      "explanation": "The classic switch requires break to avoid falling through into the next case. The modern switch expression form assigns dayName directly and needs no break, since -> cases don't fall through."
+    }
+  ],
+  "keyPoints": [
+    "Java conditions must be boolean expressions — no implicit int-to-boolean conversion",
+    "Classic switch falls through to the next case without an explicit break",
+    "switch works with primitives (excluding long/float/double/boolean), String, and enums",
+    "Modern switch expressions (Java 14+, using ->) don't fall through and can produce a value directly"
+  ],
+  "commonMistakes": [
+    "Forgetting break in a classic switch, causing unintended fall-through",
+    "Omitting braces on a single-statement if body and later adding a second statement, unintentionally excluding it from the condition",
+    "Trying to switch on a long, float, double, or boolean, none of which switch supports"
+  ],
+  "concepts": [
+    "if/else",
+    "switch",
+    "fall-through",
+    "break",
+    "switch expressions"
+  ],
+  "previousLesson": "java-input-output-001",
+  "nextLesson": "java-loops-001"
+}

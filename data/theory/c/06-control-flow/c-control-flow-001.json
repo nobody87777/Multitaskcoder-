@@ -1,0 +1,54 @@
+{
+  "id": "c-control-flow-001",
+  "language": "c",
+  "section": "c",
+  "module": "Control Flow",
+  "moduleNumber": 6,
+  "lessonNumber": 6,
+  "title": "Control Flow",
+  "difficulty": "beginner",
+  "description": "if/else, nested conditionals, and switch/case/default/break.",
+  "objectives": [
+    "Write if/else and nested conditionals",
+    "Write switch statements with correct break usage"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "if / else",
+      "body": "C's if (condition) { ... } else if (condition) { ... } else { ... } treats any non-zero value as true and zero as false for condition — this is why if (someInt) is common idiomatic C for 'if someInt is non-zero', and why C historically had no distinct boolean type. Nested if statements work exactly as expected, though deeply nested conditionals are, as in any language, often a sign the logic could be restructured for clarity."
+    },
+    {
+      "type": "text",
+      "heading": "switch, case, default, and break",
+      "body": "switch (expression) { case value1: ...; break; case value2: ...; break; default: ...; } compares expression (which must be an integer type — int, char, or an enum, never a float or string) against each case label. Without an explicit break, execution falls through into the following case's code regardless of its label — a deliberate C language feature (occasionally useful for intentionally grouping multiple case labels with shared behavior) but a very common source of bugs when a break is simply forgotten. default handles any value matching no explicit case, and can appear anywhere in the switch (though conventionally placed last)."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    int day = 3;\n    switch (day) {\n        case 1:\n        case 7:                        // intentional fall-through: both weekend days\n            printf(\"Weekend\\n\");\n            break;\n        default:\n            printf(\"Weekday\\n\");\n            break;\n    }\n    return 0;\n}",
+      "explanation": "case 1: falling through into case 7: (with no break between them) intentionally treats both labels the same way — a legitimate, deliberate use of fall-through, distinct from accidentally forgetting a break."
+    }
+  ],
+  "keyPoints": [
+    "Any non-zero value is treated as true in a C condition; zero is false",
+    "switch only accepts integer-family expressions (int, char, enum) — not float or string",
+    "Without break, execution falls through to the next case's code",
+    "default handles values matched by no explicit case"
+  ],
+  "commonMistakes": [
+    "Forgetting break in a switch case, causing unintended fall-through",
+    "Using = instead of == inside an if condition, silently assigning instead of comparing",
+    "Trying to switch on a float or a string, neither of which switch supports"
+  ],
+  "concepts": [
+    "if/else",
+    "switch",
+    "case",
+    "default",
+    "break",
+    "fall-through"
+  ],
+  "previousLesson": "c-operators-001",
+  "nextLesson": "c-loops-001"
+}

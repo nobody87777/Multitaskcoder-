@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-002",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "What keyword is used to define a new class in Java?",
+  "options": [
+    "struct",
+    "class",
+    "object",
+    "define"
+  ],
+  "correctAnswer": 1,
+  "explanation": "The `class` keyword introduces a new class definition in Java.",
+  "concepts": [
+    "class",
+    "syntax"
+  ]
+}

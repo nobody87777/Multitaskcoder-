@@ -1,0 +1,57 @@
+{
+  "id": "java-strings-001",
+  "language": "java",
+  "section": "java",
+  "module": "Strings",
+  "moduleNumber": 10,
+  "lessonNumber": 10,
+  "title": "Strings",
+  "difficulty": "beginner",
+  "description": "String immutability, comparison, common methods, and the StringBuilder/StringBuffer alternative for building text.",
+  "objectives": [
+    "Understand String immutability",
+    "Compare strings correctly with equals() vs ==",
+    "Use common String methods",
+    "Know when to use StringBuilder instead of String concatenation"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Immutability and Comparison",
+      "body": "A Java String is immutable — once created, its contents never change; every 'modifying' method (like replace() or toUpperCase()) returns a brand-new String rather than altering the original. String literals are interned (pooled): two literal Strings with the same text, like \"cat\" and \"cat\", typically refer to the exact same object in the string pool, which is why == can appear to 'work' for literals — but this is an unreliable implementation detail, not a guarantee, especially once Strings are built at runtime (via concatenation, new String(...), or user input). The correct, reliable way to compare String content is always .equals() (or .equalsIgnoreCase() for case-insensitive comparison)."
+    },
+    {
+      "type": "text",
+      "heading": "Common Methods and StringBuilder",
+      "body": "Useful String methods: length() (a method here, unlike array's .length field), charAt(i) (the character at index i), substring(begin, end) (characters from begin up to, excluding, end), indexOf(sub) (position of the first occurrence, or -1), split(regex) (breaks the string into an array around a pattern), and replace(old, new).\n\nBecause String is immutable, repeatedly concatenating in a loop with + creates a new String object every single time, which is inefficient for many concatenations. StringBuilder (or the older, thread-safe StringBuffer) provides a mutable sequence of characters: sb.append(x) modifies the same underlying buffer in place, and sb.toString() converts to a final String only once, at the end — the standard, efficient pattern for building up a string piece by piece."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class StringsDemo {\n    public static void main(String[] args) {\n        String a = \"cat\";\n        String b = new String(\"cat\");\n        System.out.println(a == b);         // false — different objects\n        System.out.println(a.equals(b));    // true — same content\n\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < 5; i++) {\n            sb.append(i).append(\",\");\n        }\n        System.out.println(sb.toString());   // 0,1,2,3,4,\n    }\n}",
+      "explanation": "new String(\"cat\") deliberately creates a distinct object from the literal, demonstrating why == is unreliable for String comparison. StringBuilder builds the result in one mutable buffer instead of creating five separate intermediate String objects."
+    }
+  ],
+  "keyPoints": [
+    "String is immutable — every transformation returns a new String",
+    "Always use .equals() (not ==) to compare String content",
+    "length() is a method on String, unlike the .length field on arrays",
+    "Use StringBuilder for repeated concatenation instead of + in a loop"
+  ],
+  "commonMistakes": [
+    "Using == to compare String content",
+    "Confusing String's .length() method with an array's .length field",
+    "Concatenating strings with + inside a large loop instead of using StringBuilder"
+  ],
+  "concepts": [
+    "String",
+    "immutability",
+    "equals()",
+    "==",
+    "StringBuilder",
+    "StringBuffer",
+    "string pool"
+  ],
+  "previousLesson": "java-arrays-001",
+  "nextLesson": "java-methods-001"
+}

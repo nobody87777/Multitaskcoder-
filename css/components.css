@@ -1,0 +1,89 @@
+/* MultitaskCoder - Reusable Component Styles */
+
+/* Glass Card */
+body.dark .glass-card {
+  background: rgba(18, 20, 34, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+body:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Sub Card */
+body.dark .sub-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+body:not(.dark) .sub-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+/* Code Box */
+body.dark .code-box {
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+}
+body:not(.dark) .code-box {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+}
+
+/* Glow Effects */
+.glow-purple {
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+}
+.glow-btn {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.55);
+}
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.45);
+}
+
+/* Typing Drill Styles */
+.typing-char {
+  position: relative;
+  transition: color 0.1s ease;
+}
+.typing-char.correct {
+  color: #10b981; /* emerald */
+}
+.typing-char.incorrect {
+  color: #f43f5e; /* rose */
+  background-color: rgba(244, 63, 94, 0.25);
+  border-radius: 2px;
+}
+.typing-char.current {
+  text-decoration: underline;
+  text-decoration-color: #8b5cf6;
+  text-decoration-thickness: 3px;
+  background-color: rgba(139, 92, 246, 0.3);
+  border-radius: 2px;
+  animation: cursorPulse 1s infinite;
+}
+
+/* Tab Views */
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+  animation: fadeInScale 0.3s ease forwards;
+}
+
+/* Badges Gallery */
+.badge-item {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.badge-item:hover {
+  transform: translateY(-2px);
+}

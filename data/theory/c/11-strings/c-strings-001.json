@@ -1,0 +1,58 @@
+{
+  "id": "c-strings-001",
+  "language": "c",
+  "section": "c",
+  "module": "Strings",
+  "moduleNumber": 11,
+  "lessonNumber": 11,
+  "title": "Strings",
+  "difficulty": "intermediate",
+  "description": "Character arrays, the null terminator, string literals, and the core string.h functions.",
+  "objectives": [
+    "Understand that C strings are just char arrays ending in a null terminator",
+    "Use strlen, strcpy, strncpy, strcat, strcmp, strchr, and strstr",
+    "Recognize common string-handling errors"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Character Arrays and the Null Terminator",
+      "body": "C has no dedicated string type — a 'string' is just a char array whose logical end is marked by a null byte, '\\0' (value 0), rather than being tracked by a separate length field. A string literal like \"Hello\" is automatically stored with a trailing '\\0', so char greeting[] = \"Hello\"; actually allocates 6 bytes (5 characters plus the terminator), not 5. Every function that operates on 'strings' (printf's %s, strlen, strcpy, and so on) works by scanning forward from a starting address until it finds that '\\0' byte — if a char array is missing its terminator (or it was overwritten), these functions will keep reading past the intended end of the buffer, into whatever memory follows, which is undefined behavior."
+    },
+    {
+      "type": "text",
+      "heading": "Core string.h Functions",
+      "body": "strlen(s) returns the number of characters before the null terminator (not counting the terminator itself). strcpy(dest, src) copies src into dest, including its terminator — dest must already have enough allocated space, since strcpy performs no bounds checking, one of C's most common sources of buffer overflows; strncpy(dest, src, n) copies at most n characters, safer but with its own subtlety (it does not guarantee dest is null-terminated if src is n characters or longer, so callers often must terminate it manually). strcat(dest, src) appends src onto the end of dest (again, no bounds checking — dest must have room). strcmp(s1, s2) returns 0 if the strings are equal in content, and a positive or negative value reflecting their lexicographic ordering otherwise — never a simple boolean. strchr(s, c) finds the first occurrence of character c; strstr(haystack, needle) finds the first occurrence of substring needle."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char greeting[20] = \"Hello\";\n    strcat(greeting, \", World!\");\n    printf(\"%s (length %zu)\\n\", greeting, strlen(greeting));\n\n    char a[] = \"cat\", b[] = \"cat\";\n    if (strcmp(a, b) == 0) {         // 0 means equal — NOT a boolean 'true'\n        printf(\"Equal\\n\");\n    }\n\n    char *pos = strstr(greeting, \"World\");\n    printf(\"%s\\n\", pos);              // \"World!\" — from the match onward\n    return 0;\n}",
+      "explanation": "greeting[20] leaves enough room for strcat's appended text plus the terminator. strcmp returning 0 (not a truthy 1) for equal strings is a very common point of confusion coming from other languages."
+    }
+  ],
+  "keyPoints": [
+    "A C string is a char array ending in a '\\0' byte, not a distinct type with its own length",
+    "strcpy()/strcat() perform no bounds checking — the destination buffer must already be large enough",
+    "strcmp() returns 0 for equal strings, not a truthy value — always compare its result to 0 explicitly",
+    "Every string buffer must have room for its content plus one extra byte for the terminator"
+  ],
+  "commonMistakes": [
+    "Sizing a char array for exactly the visible characters, forgetting the extra byte for the null terminator",
+    "Using strcpy/strcat on a buffer too small for the result, causing a buffer overflow",
+    "Treating strcmp()'s return value as a boolean instead of comparing it to 0"
+  ],
+  "concepts": [
+    "strings",
+    "character arrays",
+    "null terminator",
+    "strlen",
+    "strcpy",
+    "strcat",
+    "strcmp",
+    "strchr",
+    "strstr"
+  ],
+  "previousLesson": "c-arrays-001",
+  "nextLesson": "c-pointers-001"
+}

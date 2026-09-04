@@ -1,0 +1,15 @@
+{
+  "id": "java-038",
+  "language": "java",
+  "title": "Recursive Fibonacci",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "description": "Generate the first N Fibonacci numbers using a recursive method.",
+  "code": "public class RecursiveFibonacci {\n    static int fibonacci(int n) {\n        if (n <= 1) {\n            return n;\n        }\n        return fibonacci(n - 1) + fibonacci(n - 2);\n    }\n\n    public static void main(String[] args) {\n        for (int i = 0; i < 10; i++) {\n            System.out.print(fibonacci(i) + \" \");\n        }\n        System.out.println();\n    }\n}",
+  "expectedOutput": "0 1 1 2 3 5 8 13 21 34 ",
+  "concepts": [
+    "recursion",
+    "static methods",
+    "sequences"
+  ]
+}

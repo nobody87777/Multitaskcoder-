@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-046",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "output",
+  "topic": "Advanced OOP",
+  "question": "What will this code print?",
+  "code": "import copy\noriginal = [[1, 2], [3, 4]]\nshallow = copy.copy(original)\nshallow[0][0] = 99\nprint(original[0][0])",
+  "options": [
+    "1",
+    "99",
+    "[1, 2]",
+    "TypeError"
+  ],
+  "correctAnswer": 1,
+  "explanation": "copy.copy() performs a shallow copy — it copies the outer list but the inner lists are still shared references, so mutating shallow[0][0] also changes original[0][0].",
+  "concepts": [
+    "shallow copy",
+    "deep copy"
+  ]
+}

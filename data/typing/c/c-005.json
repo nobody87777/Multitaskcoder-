@@ -1,0 +1,16 @@
+{
+  "id": "c-005",
+  "language": "c",
+  "title": "Celsius to Fahrenheit Converter",
+  "difficulty": "beginner",
+  "topic": "Conversion",
+  "description": "Convert a temperature from Celsius to Fahrenheit using the standard formula.",
+  "code": "#include <stdio.h>\n\nint main() {\n    float celsius, fahrenheit;\n    printf(\"Enter temperature in Celsius: \");\n    scanf(\"%f\", &celsius);\n    fahrenheit = (celsius * 9 / 5) + 32;\n    printf(\"%.1fC is equal to %.1fF\\n\", celsius, fahrenheit);\n    return 0;\n}",
+  "exampleInput": "100",
+  "expectedOutput": "Enter temperature in Celsius: 100.0C is equal to 212.0F",
+  "concepts": [
+    "scanf",
+    "float",
+    "formulas"
+  ]
+}

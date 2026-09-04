@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-019",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Functions",
+  "bugType": "wrong-return-value",
+  "title": "Fix the Method Returning the Wrong Variable",
+  "description": "The program should return the larger of two numbers from a method.",
+  "buggyCode": "public class MaxFinder {\n    static int max(int a, int b) {\n        if (a > b) {\n            return a;\n        }\n        return a;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(max(3, 9));\n    }\n}",
+  "expectedBehavior": "max(3, 9) should return 9, the larger of the two numbers.",
+  "actualProblem": "The fallback return statement always returns a, regardless of which value was actually larger, so max(3, 9) incorrectly returns 3 instead of 9.",
+  "correctedCode": "public class MaxFinder {\n    static int max(int a, int b) {\n        if (a > b) {\n            return a;\n        }\n        return b;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(max(3, 9));\n    }\n}",
+  "expectedOutput": "9",
+  "explanation": "The fallback path (when a is not greater than b) needs to return b, the other candidate value, not repeat a. Returning the wrong variable silently produces incorrect results without any error being thrown.",
+  "concepts": [
+    "methods",
+    "return values",
+    "logic errors"
+  ]
+}

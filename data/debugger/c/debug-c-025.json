@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-025",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "bugType": "missing-base-case",
+  "title": "Fix the Recursion Without a Base Case",
+  "description": "The program should compute the factorial of a number using recursion.",
+  "buggyCode": "#include <stdio.h>\n\nlong factorial(int n) {\n    return n * factorial(n - 1);\n}\n\nint main() {\n    printf(\"%ld\\n\", factorial(5));\n    return 0;\n}",
+  "expectedBehavior": "The program should print 120, the factorial of 5.",
+  "actualProblem": "There is no base case to stop the recursion, so factorial keeps calling itself with smaller values of n indefinitely, eventually exhausting the call stack and crashing with a stack overflow.",
+  "correctedCode": "#include <stdio.h>\n\nlong factorial(int n) {\n    if (n == 0 || n == 1) {\n        return 1;\n    }\n    return n * factorial(n - 1);\n}\n\nint main() {\n    printf(\"%ld\\n\", factorial(5));\n    return 0;\n}",
+  "expectedOutput": "120",
+  "explanation": "Every recursive function needs a base case that stops the recursion once the simplest input is reached. Without one, the function calls itself forever and overflows the call stack.",
+  "concepts": [
+    "recursion",
+    "base case",
+    "stack overflow"
+  ]
+}

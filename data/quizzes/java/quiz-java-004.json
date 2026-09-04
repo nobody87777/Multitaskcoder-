@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-004",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Variables",
+  "question": "What is the result of (int) 9.7 in Java?",
+  "options": [
+    "10",
+    "9.7",
+    "10.0",
+    "9"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Casting a double to int truncates the decimal part rather than rounding, so 9.7 becomes 9.",
+  "concepts": [
+    "type casting",
+    "truncation"
+  ]
+}

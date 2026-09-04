@@ -1,0 +1,58 @@
+{
+  "id": "python-loops-001",
+  "language": "python",
+  "section": "python",
+  "module": "Loops",
+  "moduleNumber": 6,
+  "lessonNumber": 6,
+  "title": "Loops",
+  "difficulty": "beginner",
+  "description": "for and while loops, range(), break/continue/pass, and the less common loop-else clause.",
+  "objectives": [
+    "Write for loops over sequences and using range()",
+    "Write while loops and understand when to prefer each loop type",
+    "Use break, continue, and pass correctly",
+    "Understand the loop else clause"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "for and while",
+      "body": "Python's for loop iterates directly over the elements of any iterable (a string, list, tuple, dict, range, file, etc.) — there is no traditional C-style for (init; condition; increment) form. To loop a fixed number of times, range(start, stop, step) generates a sequence of integers from start up to (but excluding) stop, stepping by step (default 1); range(5) is 0,1,2,3,4. while loops run as long as a condition stays true and are the right tool when the number of iterations isn't known in advance (e.g., reading input until the user types 'quit').\n\nNested loops (a loop inside another loop's body) are common for grid-like or combinatorial problems, such as printing a multiplication table."
+    },
+    {
+      "type": "text",
+      "heading": "break, continue, pass, and loop else",
+      "body": "break immediately exits the nearest enclosing loop. continue skips the rest of the current iteration and moves to the next one. pass is a no-op statement used as a placeholder where syntax requires a statement but you have nothing to do yet (an empty function body, for instance). A lesser-known feature: both for and while loops can have an else clause, which runs only if the loop completed normally — i.e., was never stopped by a break. This is useful for search patterns: 'loop through candidates; if none matched (no break happened), do X.'\n\nA common beginner mistake is writing a while loop whose condition never becomes false because the loop forgets to update the variable being tested — producing an infinite loop."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "for i in range(5):\n    if i == 3:\n        break\n    print(i)          # 0 1 2\n\nfor n in [2, 3, 5, 7]:\n    if n % 2 == 0:\n        continue\n    print(n, \"is odd\")   # 3, 5, 7\nelse:\n    print(\"Finished without break\")   # runs, since no break occurred",
+      "explanation": "The first loop stops early via break, so the else on it (if it had one) would not run. The second loop never breaks, so its else clause executes after the loop finishes normally."
+    }
+  ],
+  "keyPoints": [
+    "for iterates directly over elements — range() generates integer sequences for counted loops",
+    "while is best when the number of iterations isn't known ahead of time",
+    "break exits the loop; continue skips to the next iteration; pass is a no-op placeholder",
+    "A loop's else clause runs only if the loop was never interrupted by break"
+  ],
+  "commonMistakes": [
+    "Forgetting to update the loop variable in a while loop, causing an infinite loop",
+    "Off-by-one errors with range()'s exclusive stop value",
+    "Assuming continue restarts the whole loop instead of just skipping to the next iteration"
+  ],
+  "concepts": [
+    "for loop",
+    "while loop",
+    "range()",
+    "break",
+    "continue",
+    "pass",
+    "loop else",
+    "nested loops"
+  ],
+  "previousLesson": "python-conditionals-001",
+  "nextLesson": "python-strings-001"
+}

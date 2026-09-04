@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-034",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Modules",
+  "question": "What does `from math import sqrt` allow you to do?",
+  "options": [
+    "Call sqrt() using math.sqrt() only",
+    "Call sqrt() directly by name, without the math. prefix",
+    "Import every function from the math module except sqrt",
+    "Rename the math module to sqrt"
+  ],
+  "correctAnswer": 1,
+  "explanation": "`from module import name` imports that specific name directly into the current namespace, so it can be called without the module prefix.",
+  "concepts": [
+    "modules",
+    "import statement"
+  ]
+}

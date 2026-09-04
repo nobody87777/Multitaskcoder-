@@ -1,0 +1,19 @@
+{
+  "id": "quiz-c-014",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "true-false",
+  "topic": "Loops",
+  "question": "True or False: In C, break inside a switch statement and break inside a loop serve the exact same conceptual purpose — exiting the enclosing construct early.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "In both contexts, break immediately exits the nearest enclosing switch or loop, transferring control to the statement right after it.",
+  "concepts": [
+    "break",
+    "switch",
+    "loops"
+  ]
+}

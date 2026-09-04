@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-020",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Syntax",
+  "bugType": "missing-semicolon",
+  "title": "Fix the Missing Semicolon",
+  "description": "The program should declare a variable and print it.",
+  "buggyCode": "public class SemicolonFix {\n    public static void main(String[] args) {\n        int total = 10 + 5\n        System.out.println(total);\n    }\n}",
+  "expectedBehavior": "The program should print 15.",
+  "actualProblem": "The statement int total = 10 + 5 is missing its terminating semicolon, so the compiler reports a syntax error ';' expected.",
+  "correctedCode": "public class SemicolonFix {\n    public static void main(String[] args) {\n        int total = 10 + 5;\n        System.out.println(total);\n    }\n}",
+  "expectedOutput": "15",
+  "explanation": "Java requires every statement to end with a semicolon. Without it, the compiler cannot tell where one statement ends and the next begins, and reports a parse error.",
+  "concepts": [
+    "syntax",
+    "semicolons",
+    "compile error"
+  ]
+}

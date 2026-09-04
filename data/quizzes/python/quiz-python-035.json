@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-035",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "In a Python instance method definition like `def greet(self):`, what does the self parameter refer to?",
+  "options": [
+    "The class itself",
+    "The parent class",
+    "The specific instance the method is called on",
+    "A reserved keyword with no real value"
+  ],
+  "correctAnswer": 2,
+  "explanation": "self is a reference to the particular object the method was called on, letting the method access that instance's attributes.",
+  "concepts": [
+    "classes",
+    "self",
+    "instance methods"
+  ]
+}

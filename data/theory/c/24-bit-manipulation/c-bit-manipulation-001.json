@@ -1,0 +1,56 @@
+{
+  "id": "c-bit-manipulation-001",
+  "language": "c",
+  "section": "c",
+  "module": "Bit Manipulation",
+  "moduleNumber": 24,
+  "lessonNumber": 26,
+  "title": "Bit Manipulation",
+  "difficulty": "advanced",
+  "description": "Using bitwise operators to set, clear, toggle, and check individual bits, and the role of bit masks.",
+  "objectives": [
+    "Use bitwise operators to manipulate individual bits",
+    "Construct and apply bit masks",
+    "Set, clear, toggle, and check specific bits"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Bitwise Operators and Masks",
+      "body": "The bitwise operators — & (AND), | (OR), ^ (XOR), ~ (NOT), << (left shift), >> (right shift) — operate on the individual binary bits of an integer's representation, independent of its value's usual arithmetic meaning. A bit mask is simply an integer value chosen specifically so that its bit pattern, combined with a target value via a bitwise operator, isolates, sets, or clears specific bit positions — e.g., 1 << 3 produces the mask 00001000 (binary), representing 'bit position 3'.\n\nBit manipulation is used for tightly packing multiple boolean flags into a single integer (common in embedded/systems programming where memory is constrained, or for representing hardware register flags), and for certain performance-sensitive algorithms where operating directly on bits avoids more expensive arithmetic or branching."
+    },
+    {
+      "type": "text",
+      "heading": "Setting, Clearing, Toggling, and Checking Bits",
+      "body": "Setting bit n (making it 1, regardless of its current value): value |= (1 << n) — OR-ing with a mask that has only that bit set forces it on, leaving other bits unchanged (since OR-ing anything with 0 leaves it unchanged). Clearing bit n (making it 0): value &= ~(1 << n) — AND-ing with the complement of the mask (all bits 1 except position n) forces that one bit off while leaving the rest unchanged (since AND-ing anything with 1 leaves it unchanged). Toggling bit n (flipping it): value ^= (1 << n) — XOR-ing with the mask flips exactly that bit (since XOR-ing with 0 leaves a bit unchanged, and XOR-ing with 1 flips it). Checking whether bit n is set: (value & (1 << n)) != 0 — AND-ing with the mask isolates that bit, leaving it as the only possibly-nonzero bit in the result."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    unsigned int flags = 0;          // 00000000\n\n    flags |= (1 << 2);                // set bit 2  -> 00000100\n    flags |= (1 << 4);                // set bit 4  -> 00010100\n    printf(\"%u\\n\", flags);             // 20\n\n    flags &= ~(1 << 2);                // clear bit 2 -> 00010000\n    printf(\"%u\\n\", flags);             // 16\n\n    printf(\"%d\\n\", (flags & (1 << 4)) != 0);   // 1 — bit 4 is still set\n\n    flags ^= (1 << 4);                 // toggle bit 4 -> 00000000\n    printf(\"%u\\n\", flags);             // 0\n    return 0;\n}",
+      "explanation": "Each operation demonstrates the standard idiom for its purpose: |= to set, &= ~ to clear, & to check, ^= to toggle — all built from the fundamental bitwise operators and a shifted mask."
+    }
+  ],
+  "keyPoints": [
+    "Bitwise operators (&, |, ^, ~, <<, >>) manipulate an integer's individual binary bits directly",
+    "A bit mask, typically built with 1 << n, isolates a specific bit position for these operations",
+    "|= sets a bit, &= ~mask clears it, ^= toggles it, and & (!= 0) checks it",
+    "Bit manipulation is commonly used to pack multiple boolean flags compactly into one integer"
+  ],
+  "commonMistakes": [
+    "Confusing bitwise & / | with logical && / || (they behave very differently, especially on non-0/1 values)",
+    "Forgetting the ~ when clearing a bit, accidentally setting everything except the target bit instead",
+    "Off-by-one errors in the bit position used in a mask (1 << n for bit n, not 1 << (n-1) or similar)"
+  ],
+  "concepts": [
+    "bitwise operators",
+    "bit masks",
+    "setting bits",
+    "clearing bits",
+    "toggling bits",
+    "checking bits",
+    "shifts"
+  ],
+  "previousLesson": "c-searching-and-sorting-001",
+  "nextLesson": "c-memory-and-undefined-behavior-001"
+}

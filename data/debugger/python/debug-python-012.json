@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-012",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Strings",
+  "bugType": "index-out-of-bounds",
+  "title": "Fix the Last Character Printer",
+  "description": "The program should print the last character of a string. Fix the bug.",
+  "buggyCode": "text = \"Python\"\nprint(text[len(text)])",
+  "expectedBehavior": "The program should print 'n', the last character of 'Python'.",
+  "actualProblem": "Valid indices for a string of length 6 run from 0 to 5; len(text) is 6, which is one past the last valid index, so this raises an IndexError.",
+  "correctedCode": "text = \"Python\"\nprint(text[len(text) - 1])",
+  "expectedOutput": "n",
+  "explanation": "String indexing is zero-based, so the last character sits at index len(text) - 1, not len(text). Alternatively, text[-1] accesses the last character directly.",
+  "concepts": [
+    "strings",
+    "indexing",
+    "IndexError"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "c-047",
+  "language": "c",
+  "title": "Singly Linked List",
+  "difficulty": "advanced",
+  "topic": "Data Structures",
+  "description": "Build a simple singly linked list by allocating nodes and linking them manually.",
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nvoid printList(struct Node *head) {\n    struct Node *current = head;\n    while (current != NULL) {\n        printf(\"%d -> \", current->data);\n        current = current->next;\n    }\n    printf(\"NULL\\n\");\n}\n\nint main() {\n    struct Node *head = (struct Node *)malloc(sizeof(struct Node));\n    struct Node *second = (struct Node *)malloc(sizeof(struct Node));\n    struct Node *third = (struct Node *)malloc(sizeof(struct Node));\n\n    head->data = 10;\n    head->next = second;\n    second->data = 20;\n    second->next = third;\n    third->data = 30;\n    third->next = NULL;\n\n    printList(head);\n\n    free(head);\n    free(second);\n    free(third);\n    return 0;\n}",
+  "expectedOutput": "10 -> 20 -> 30 -> NULL",
+  "concepts": [
+    "linked list",
+    "struct pointers",
+    "malloc()"
+  ]
+}

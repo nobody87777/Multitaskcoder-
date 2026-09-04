@@ -1,0 +1,18 @@
+{
+  "id": "quiz-python-040",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "true-false",
+  "topic": "Functions",
+  "question": "True or False: Using the `global` keyword inside a function allows that function to modify a variable defined outside of it, at module level.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "The global keyword tells Python that assignments to that name inside the function should modify the module-level variable instead of creating a new local one.",
+  "concepts": [
+    "global keyword",
+    "scope"
+  ]
+}

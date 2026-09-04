@@ -1,0 +1,57 @@
+{
+  "id": "python-best-practices-001",
+  "language": "python",
+  "section": "python",
+  "module": "Best Practices",
+  "moduleNumber": 29,
+  "lessonNumber": 32,
+  "title": "Python Best Practices",
+  "difficulty": "intermediate",
+  "description": "PEP 8 style conventions, code organization, error handling, documentation, and habits that keep Python code maintainable.",
+  "objectives": [
+    "Follow PEP 8 naming and style conventions",
+    "Organize code into reusable, well-scoped functions and modules",
+    "Apply sound error-handling and documentation habits",
+    "Recognize common beginner anti-patterns"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Style, Naming, and Organization",
+      "body": "PEP 8 is Python's official style guide; following it (or an automated formatter that enforces it, like black) keeps code consistent and easier for others to read. Its core conventions: snake_case for variables and functions, PascalCase for classes, UPPER_SNAKE_CASE for constants, 4 spaces per indentation level (never tabs), and a soft line-length limit (traditionally 79 characters, though many teams now use 88-100). Meaningful names matter more than brevity — a variable named remaining_attempts is far clearer than n or x2.\n\nCode organization means breaking a program into small, focused functions that each do one clear thing (making them easier to test and reuse), grouping related functions/classes into modules, and avoiding one giant script with everything at module/global scope."
+    },
+    {
+      "type": "text",
+      "heading": "Error Handling, Documentation, and Avoiding Common Mistakes",
+      "body": "Prefer specific exception handling over bare except:, and validate inputs early with clear error messages rather than letting a cryptic exception surface deep inside unrelated code. Write docstrings for public functions, classes, and modules explaining what they do, their parameters, and their return value — this both documents the code and integrates with tools like help(). Avoid global mutable state where possible; passing data explicitly through function parameters and return values makes code easier to reason about and test than functions that silently read/modify shared globals.\n\nTesting concepts matter even for small projects: writing simple test functions (with the standard library's unittest, or the popular third-party pytest) that check a function's behavior against known inputs/outputs catches regressions early and documents intended behavior. Common beginner mistakes worth actively avoiding: mutable default arguments (def f(items=[]):, which is shared across calls — use None and create the list inside the function instead), shadowing built-in names (list = [1,2,3] hides the built-in list type), and comparing to None with == instead of the idiomatic is None."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# PEP 8 style\nMAX_RETRIES = 3\n\ndef fetch_user(user_id):\n    \"\"\"Return the user's name for the given id, or None if not found.\"\"\"\n    users = {1: \"Asha\"}\n    return users.get(user_id)\n\n# Common mistake avoided: mutable default argument\ndef add_item(item, cart=None):\n    if cart is None:\n        cart = []\n    cart.append(item)\n    return cart",
+      "explanation": "MAX_RETRIES follows the UPPER_SNAKE_CASE constant convention. fetch_user has a docstring explaining its contract. add_item avoids the classic mutable-default-argument pitfall by defaulting to None and creating a fresh list inside the function."
+    }
+  ],
+  "keyPoints": [
+    "PEP 8 governs naming (snake_case/PascalCase/UPPER_SNAKE_CASE) and formatting conventions",
+    "Small, focused functions and well-organized modules are easier to test, reuse, and reason about",
+    "Prefer specific exception handling and clear docstrings over bare excepts and undocumented functions",
+    "Avoid mutable default arguments, shadowing built-in names, and unnecessary global mutable state"
+  ],
+  "commonMistakes": [
+    "Using a mutable object (list, dict) as a default argument value",
+    "Comparing to None with == instead of the idiomatic is None",
+    "Writing large, unfocused functions that do many unrelated things, making testing and reuse difficult"
+  ],
+  "concepts": [
+    "PEP 8",
+    "naming conventions",
+    "code organization",
+    "docstrings",
+    "testing",
+    "mutable default arguments",
+    "best practices"
+  ],
+  "previousLesson": "python-advanced-python-002",
+  "nextLesson": null
+}

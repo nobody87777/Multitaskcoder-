@@ -1,0 +1,57 @@
+{
+  "id": "java-collections-framework-001",
+  "language": "java",
+  "section": "java",
+  "module": "Collections Framework",
+  "moduleNumber": 20,
+  "lessonNumber": 20,
+  "title": "Collections: List and Set",
+  "difficulty": "intermediate",
+  "description": "The Collection hierarchy, and the List and Set implementations: ArrayList, LinkedList, HashSet, LinkedHashSet, TreeSet.",
+  "objectives": [
+    "Understand the Collection interface hierarchy",
+    "Choose between ArrayList and LinkedList",
+    "Choose between HashSet, LinkedHashSet, and TreeSet"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "The Collection Hierarchy",
+      "body": "java.util.Collection is the root interface for group-of-objects types (excluding Map, which is a separate hierarchy since it models key-value pairs rather than a simple group). List, Set, and Queue are its main sub-interfaces. A List is an ordered collection that allows duplicates and supports indexed access (like an array, but resizable). A Set is a collection with no duplicates, modeling mathematical set semantics. Both are generic: List<String> can only hold Strings, with the compiler enforcing this at compile time."
+    },
+    {
+      "type": "text",
+      "heading": "List and Set Implementations",
+      "body": "ArrayList is backed by a resizable array — fast (O(1) amortized) for indexed access and adding at the end, but O(n) for inserting/removing from the middle or beginning, since subsequent elements must shift. LinkedList is backed by a doubly-linked list — O(1) for adding/removing at either end (making it usable as a Deque too), but O(n) for indexed access, since it must traverse from an end. For most everyday use, ArrayList is the default choice; LinkedList is chosen specifically when frequent insertion/removal at the ends (not the middle by index) dominates.\n\nHashSet offers average O(1) add/remove/contains, backed by a hash table, with no guaranteed iteration order. LinkedHashSet adds a linked structure on top, preserving insertion order during iteration at a small extra memory cost. TreeSet keeps its elements sorted (via their natural ordering, or a supplied Comparator), at O(log n) for add/remove/contains — the right choice when you need the elements in sorted order."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.*;\n\npublic class Collections1 {\n    public static void main(String[] args) {\n        List<String> names = new ArrayList<>();\n        names.add(\"Asha\");\n        names.add(\"Ravi\");\n        System.out.println(names.get(0));       // Asha — indexed access\n\n        Set<Integer> unique = new HashSet<>(List.of(3, 1, 3, 2));\n        System.out.println(unique.size());        // 3 — duplicate discarded\n\n        Set<Integer> sorted = new TreeSet<>(List.of(3, 1, 2));\n        System.out.println(sorted);                // [1, 2, 3] — always sorted\n    }\n}",
+      "explanation": "ArrayList supports get(index) directly. HashSet automatically discards the duplicate 3. TreeSet keeps its contents sorted regardless of insertion order."
+    }
+  ],
+  "keyPoints": [
+    "List is ordered and allows duplicates; Set has no duplicates",
+    "ArrayList favors fast indexed access; LinkedList favors fast insertion/removal at the ends",
+    "HashSet is fastest but unordered; LinkedHashSet preserves insertion order; TreeSet keeps elements sorted",
+    "All are generic — List<String> is type-checked at compile time"
+  ],
+  "commonMistakes": [
+    "Defaulting to LinkedList without actually needing frequent end-insertion/removal, losing ArrayList's faster indexed access for no benefit",
+    "Expecting HashSet to preserve insertion order (it doesn't — use LinkedHashSet for that)",
+    "Adding a mutable object to a HashSet/TreeSet and then mutating it in a way that changes its hash code or ordering"
+  ],
+  "concepts": [
+    "Collection",
+    "List",
+    "Set",
+    "ArrayList",
+    "LinkedList",
+    "HashSet",
+    "LinkedHashSet",
+    "TreeSet"
+  ],
+  "previousLesson": "java-exception-handling-001",
+  "nextLesson": "java-collections-framework-002"
+}

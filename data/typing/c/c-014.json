@@ -1,0 +1,15 @@
+{
+  "id": "c-014",
+  "language": "c",
+  "title": "Sum of First N Natural Numbers",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Calculate the sum of the first N natural numbers using a loop.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int n, total = 0;\n    scanf(\"%d\", &n);\n\n    for (int i = 1; i <= n; i++) {\n        total += i;\n    }\n\n    printf(\"Sum: %d\\n\", total);\n    return 0;\n}",
+  "exampleInput": "10",
+  "expectedOutput": "Sum: 55",
+  "concepts": [
+    "for loop",
+    "accumulator pattern"
+  ]
+}

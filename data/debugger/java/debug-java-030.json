@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-030",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "inheritance-error",
+  "title": "Fix the Missing Super Constructor Call",
+  "description": "The program should create an Employee that requires a Person's name to be provided.",
+  "buggyCode": "class Person {\n    String name;\n\n    Person(String name) {\n        this.name = name;\n    }\n}\n\nclass Employee extends Person {\n    double salary;\n\n    Employee(double salary) {\n        this.salary = salary;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Employee e = new Employee(50000);\n        System.out.println(e.name);\n    }\n}",
+  "expectedBehavior": "The program should compile, and e.name should reflect the name passed up to Person's constructor.",
+  "actualProblem": "Person has no no-argument constructor, only one requiring a String. Since Employee's constructor doesn't explicitly call super(...), Java tries to insert an implicit no-arg super() call, which doesn't exist — this is a compile error: 'constructor Person in class Person cannot be applied to given types'.",
+  "correctedCode": "class Person {\n    String name;\n\n    Person(String name) {\n        this.name = name;\n    }\n}\n\nclass Employee extends Person {\n    double salary;\n\n    Employee(String name, double salary) {\n        super(name);\n        this.salary = salary;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Employee e = new Employee(\"Asha\", 50000);\n        System.out.println(e.name);\n    }\n}",
+  "expectedOutput": "Asha",
+  "explanation": "If a parent class has no no-argument constructor, every subclass constructor must explicitly call super(...) with matching arguments as its very first statement, so the parent's fields are properly initialized.",
+  "concepts": [
+    "inheritance",
+    "super()",
+    "constructors"
+  ]
+}

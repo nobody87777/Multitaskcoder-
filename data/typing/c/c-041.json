@@ -1,0 +1,15 @@
+{
+  "id": "c-041",
+  "language": "c",
+  "title": "Pointer Basics",
+  "difficulty": "advanced",
+  "topic": "Pointers",
+  "description": "Declare a pointer, store an address in it, and dereference it.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int num = 42;\n    int *ptr = &num;\n\n    printf(\"Value: %d\\n\", *ptr);\n    printf(\"Address stored in ptr matches &num: %s\\n\", (ptr == &num) ? \"yes\" : \"no\");\n\n    return 0;\n}",
+  "expectedOutput": "Value: 42\nAddress stored in ptr matches &num: yes",
+  "concepts": [
+    "pointers",
+    "address-of operator",
+    "dereferencing"
+  ]
+}

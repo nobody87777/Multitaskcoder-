@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-014",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Arrays",
+  "question": "What will this code print?",
+  "code": "int[] nums = {10, 20, 30};\nSystem.out.println(nums.length);",
+  "options": [
+    "3",
+    "2",
+    "30",
+    "Error: length is not a valid field"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Java arrays expose their size via the length field (not a method), so nums.length returns 3.",
+  "concepts": [
+    "arrays",
+    "length field"
+  ]
+}

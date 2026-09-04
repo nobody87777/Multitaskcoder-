@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-023",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "In a constructor like public Person(String name) { this.name = name; }, what does this.name refer to?",
+  "options": [
+    "The instance field name, distinguishing it from the parameter name",
+    "A static variable",
+    "The constructor's return value",
+    "An error, since this cannot be used in constructors"
+  ],
+  "correctAnswer": 0,
+  "explanation": "this refers to the current object; this.name accesses the instance field, disambiguating it from the constructor parameter that has the same name.",
+  "concepts": [
+    "this keyword",
+    "constructors"
+  ]
+}

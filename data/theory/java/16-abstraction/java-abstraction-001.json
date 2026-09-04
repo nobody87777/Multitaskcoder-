@@ -1,0 +1,55 @@
+{
+  "id": "java-abstraction-001",
+  "language": "java",
+  "section": "java",
+  "module": "Abstraction",
+  "moduleNumber": 16,
+  "lessonNumber": 16,
+  "title": "Abstraction",
+  "difficulty": "intermediate",
+  "description": "Abstract classes, abstract methods, and the basics of interfaces, including default and static interface methods.",
+  "objectives": [
+    "Define and use abstract classes and abstract methods",
+    "Understand why an abstract class cannot be instantiated",
+    "Define and implement a basic interface",
+    "Understand default and static interface methods"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Abstract Classes and Methods",
+      "body": "abstract class Shape { abstract double area(); } declares a class that cannot be instantiated directly (new Shape() is a compile error) — it exists purely to be extended. An abstract method has no body; it's a contract that every concrete (non-abstract) subclass must implement, or the subclass itself must also be declared abstract. An abstract class can still have regular, fully-implemented methods and fields alongside its abstract ones, and can have constructors (called via super() from a subclass, even though the abstract class itself is never directly instantiated) — this is the key difference from an interface, which historically could hold no state at all."
+    },
+    {
+      "type": "text",
+      "heading": "Interfaces, Default, and Static Methods",
+      "body": "An interface declares a contract of method signatures that implementing classes must fulfill: interface Payable { double calculatePay(); }; class Employee implements Payable { public double calculatePay() { ... } }. Traditionally, interface methods were implicitly public abstract with no body at all, but since Java 8, interfaces can also include default methods (a method with a concrete body that implementing classes inherit automatically unless they choose to override it) and static methods (utility methods called on the interface itself, like Payable.someHelper()). This narrowed the practical difference between interfaces and abstract classes, though a class can implement multiple interfaces (achieving a form of multiple inheritance of behavior) while it can only extend one class."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "abstract class Shape {\n    abstract double area();\n    void describe() {                      // regular, concrete method\n        System.out.println(\"Area: \" + area());\n    }\n}\nclass Circle extends Shape {\n    double radius;\n    Circle(double r) { radius = r; }\n    double area() { return Math.PI * radius * radius; }\n}\n\ninterface Payable {\n    double calculatePay();\n    default void printPay() {              // default method with a body\n        System.out.println(\"Pay: \" + calculatePay());\n    }\n}\nclass Freelancer implements Payable {\n    public double calculatePay() { return 500; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        new Circle(2).describe();\n        new Freelancer().printPay();       // inherited default method, no override needed\n    }\n}",
+      "explanation": "Shape mixes an abstract method (area()) with a concrete method (describe()). Freelancer only implements calculatePay() but gets printPay() for free from the interface's default method."
+    }
+  ],
+  "keyPoints": [
+    "An abstract class can't be instantiated directly and may mix abstract and concrete members",
+    "A class implementing an interface must implement every abstract method, or itself be abstract",
+    "Default methods (Java 8+) give an interface method a concrete, inheritable body",
+    "A class extends one class but can implement multiple interfaces"
+  ],
+  "commonMistakes": [
+    "Trying to instantiate an abstract class directly with new",
+    "Forgetting to implement one of an interface's abstract methods in a concrete class",
+    "Assuming interfaces still can't have any method bodies at all (true only before Java 8's default/static methods)"
+  ],
+  "concepts": [
+    "abstract classes",
+    "abstract methods",
+    "interfaces",
+    "default methods",
+    "static interface methods"
+  ],
+  "previousLesson": "java-polymorphism-001",
+  "nextLesson": "java-packages-and-access-modifiers-001"
+}

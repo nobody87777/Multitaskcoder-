@@ -1,0 +1,55 @@
+{
+  "id": "java-polymorphism-001",
+  "language": "java",
+  "section": "java",
+  "module": "Polymorphism",
+  "moduleNumber": 15,
+  "lessonNumber": 15,
+  "title": "Polymorphism",
+  "difficulty": "intermediate",
+  "description": "Compile-time vs. runtime polymorphism, dynamic method dispatch, and upcasting/downcasting.",
+  "objectives": [
+    "Distinguish compile-time polymorphism (overloading) from runtime polymorphism (overriding)",
+    "Understand dynamic method dispatch",
+    "Use upcasting and downcasting correctly"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Compile-Time vs. Runtime Polymorphism",
+      "body": "Java has two forms of polymorphism ('many forms'). Compile-time polymorphism (also called static binding) is method overloading: the compiler decides, at compile time, which overload to call based purely on the declared types of the arguments at the call site. Runtime polymorphism (dynamic binding) is method overriding: which overridden method actually runs is decided at runtime, based on the object's actual, real type — not the type of the reference variable pointing to it."
+    },
+    {
+      "type": "text",
+      "heading": "Dynamic Method Dispatch and Casting",
+      "body": "This is best seen through a superclass reference holding a subclass object: Animal a = new Dog(); a.speak();. Even though a is declared as type Animal, calling a.speak() runs Dog's overridden speak() — the JVM looks at the object's actual runtime type to decide which version to invoke, called dynamic method dispatch. This is what makes polymorphism useful in practice: code written against a common supertype (Shape, Animal, Payable) automatically works correctly with any subclass, without needing to know which specific subclass it's dealing with.\n\nUpcasting (Animal a = new Dog();) is implicit and safe, since a Dog genuinely is an Animal. Downcasting (Dog d = (Dog) a;) is required to access members that exist only on the subclass, and is only safe if a's actual runtime object really is a Dog (or a further subclass) — check with instanceof first to avoid a ClassCastException."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "class Shape {\n    double area() { return 0; }\n}\nclass Circle extends Shape {\n    double radius;\n    Circle(double r) { radius = r; }\n    @Override double area() { return Math.PI * radius * radius; }\n}\nclass Square extends Shape {\n    double side;\n    Square(double s) { side = s; }\n    @Override double area() { return side * side; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape[] shapes = { new Circle(2), new Square(3) };\n        for (Shape s : shapes) {\n            System.out.println(s.area());   // each calls its OWN overridden area(), via dynamic dispatch\n        }\n    }\n}",
+      "explanation": "Even though the array's declared element type is Shape, each s.area() call dispatches to that specific object's own overridden implementation — Circle's or Square's — determined at runtime by the object's real type."
+    }
+  ],
+  "keyPoints": [
+    "Overloading is resolved at compile time (based on argument types); overriding is resolved at runtime (based on the object's actual type)",
+    "A superclass reference can hold a subclass object; calling an overridden method dispatches to the subclass's version",
+    "Upcasting is implicit and always safe; downcasting requires an explicit cast and can fail at runtime",
+    "instanceof lets you safely check an object's actual type before downcasting"
+  ],
+  "commonMistakes": [
+    "Assuming a superclass-typed reference calling a method runs the superclass's version (it runs the actual object's overridden version)",
+    "Downcasting without checking instanceof first, risking a ClassCastException",
+    "Confusing overloading (compile-time, based on declared argument types) with overriding (runtime, based on actual object type)"
+  ],
+  "concepts": [
+    "polymorphism",
+    "compile-time polymorphism",
+    "runtime polymorphism",
+    "dynamic method dispatch",
+    "upcasting",
+    "downcasting"
+  ],
+  "previousLesson": "java-inheritance-001",
+  "nextLesson": "java-abstraction-001"
+}

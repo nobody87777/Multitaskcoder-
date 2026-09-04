@@ -1,0 +1,60 @@
+{
+  "id": "python-standard-library-001",
+  "language": "python",
+  "section": "python",
+  "module": "Standard Library Tour",
+  "moduleNumber": 25,
+  "lessonNumber": 27,
+  "title": "Standard Library Tour",
+  "difficulty": "intermediate",
+  "description": "An overview of frequently used standard library modules and what each one is for.",
+  "objectives": [
+    "Know the purpose of the most commonly used standard library modules",
+    "Recognize when to reach for the standard library instead of writing something from scratch"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Core Utility Modules",
+      "body": "math provides mathematical functions and constants beyond the built-in operators: sqrt(), floor(), ceil(), pi, and more. random generates pseudo-random numbers and makes random choices/shuffles — random.randint(a, b), random.choice(seq), random.shuffle(list). datetime represents dates, times, and durations, and supports formatting/parsing between text and datetime objects. os provides operating-system interaction: environment variables, process info, and (older-style) path manipulation, while pathlib offers a more modern, object-oriented way to work with filesystem paths (Path(\"data\") / \"file.txt\" instead of manual string joining). sys exposes interpreter-level state and controls: command-line arguments (sys.argv), the module search path (sys.path), and standard streams."
+    },
+    {
+      "type": "text",
+      "heading": "Data-Handling Modules",
+      "body": "json serializes Python objects to/from the JSON text format — dumps()/loads() for strings, dump()/load() for files (covered in depth in the JSON and CSV lesson). csv reads and writes comma-separated value files without you needing to hand-roll splitting/quoting logic. collections extends the built-in container types with specialized variants: Counter (counting hashable items), defaultdict (a dict with automatic default values for missing keys), namedtuple (lightweight, immutable records with named fields), and deque (a double-ended queue with fast appends/pops on either end). itertools provides efficient, composable building blocks for iteration: chain(), product(), combinations(), permutations(), and more, all working lazily. functools offers tools for working with functions themselves, including reduce() (seen earlier) and lru_cache (automatic memoization)."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from collections import Counter, defaultdict\nimport itertools\n\nprint(Counter(\"mississippi\"))          # Counter({'i': 4, 's': 4, 'p': 2, 'm': 1})\n\ngroups = defaultdict(list)\ngroups[\"fruit\"].append(\"apple\")         # no KeyError — defaultdict creates [] automatically\nprint(dict(groups))\n\nprint(list(itertools.product([0, 1], repeat=2)))   # [(0,0),(0,1),(1,0),(1,1)]",
+      "explanation": "Counter tallies character frequencies in one call. defaultdict(list) avoids needing to check 'does this key exist yet' before appending. itertools.product generates the Cartesian product lazily."
+    }
+  ],
+  "keyPoints": [
+    "math/random cover numeric and randomness needs; datetime handles dates/times",
+    "pathlib is the modern, object-oriented way to work with filesystem paths",
+    "collections adds Counter, defaultdict, namedtuple, and deque beyond the built-in containers",
+    "itertools and functools provide efficient, composable, lazy tools for iteration and function manipulation"
+  ],
+  "commonMistakes": [
+    "Hand-rolling functionality (like CSV parsing or counting) that the standard library already provides robustly",
+    "Reaching for os.path string joining instead of the more readable, cross-platform pathlib",
+    "Not knowing collections.Counter/defaultdict exist and writing more verbose manual equivalents"
+  ],
+  "concepts": [
+    "standard library",
+    "math",
+    "random",
+    "datetime",
+    "os",
+    "pathlib",
+    "sys",
+    "json",
+    "csv",
+    "collections",
+    "itertools",
+    "functools"
+  ],
+  "previousLesson": "python-regular-expressions-001",
+  "nextLesson": "python-json-and-csv-001"
+}

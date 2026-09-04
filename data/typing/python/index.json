@@ -1,0 +1,356 @@
+{
+  "language": "python",
+  "count": 50,
+  "programs": [
+    {
+      "id": "python-001",
+      "title": "Hello World",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "file": "python-001.json"
+    },
+    {
+      "id": "python-002",
+      "title": "Reading User Input",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "file": "python-002.json"
+    },
+    {
+      "id": "python-003",
+      "title": "Variables and Data Types",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "file": "python-003.json"
+    },
+    {
+      "id": "python-004",
+      "title": "Arithmetic Operators",
+      "difficulty": "beginner",
+      "topic": "Operators",
+      "file": "python-004.json"
+    },
+    {
+      "id": "python-005",
+      "title": "Celsius to Fahrenheit Converter",
+      "difficulty": "beginner",
+      "topic": "Conversion",
+      "file": "python-005.json"
+    },
+    {
+      "id": "python-006",
+      "title": "Simple Calculator",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-006.json"
+    },
+    {
+      "id": "python-007",
+      "title": "Even or Odd Checker",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-007.json"
+    },
+    {
+      "id": "python-008",
+      "title": "Positive, Negative or Zero",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-008.json"
+    },
+    {
+      "id": "python-009",
+      "title": "Largest of Two Numbers",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-009.json"
+    },
+    {
+      "id": "python-010",
+      "title": "Largest of Three Numbers",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-010.json"
+    },
+    {
+      "id": "python-011",
+      "title": "Leap Year Checker",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-011.json"
+    },
+    {
+      "id": "python-012",
+      "title": "Grade Calculator",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "python-012.json"
+    },
+    {
+      "id": "python-013",
+      "title": "Multiplication Table",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-013.json"
+    },
+    {
+      "id": "python-014",
+      "title": "Sum of First N Natural Numbers",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-014.json"
+    },
+    {
+      "id": "python-015",
+      "title": "Factorial Using a Loop",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-015.json"
+    },
+    {
+      "id": "python-016",
+      "title": "Fibonacci Series (Iterative)",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-016.json"
+    },
+    {
+      "id": "python-017",
+      "title": "Prime Number Checker",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-017.json"
+    },
+    {
+      "id": "python-018",
+      "title": "Reverse a Number",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-018.json"
+    },
+    {
+      "id": "python-019",
+      "title": "Palindrome Number Checker",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-019.json"
+    },
+    {
+      "id": "python-020",
+      "title": "Count Digits in a Number",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "python-020.json"
+    },
+    {
+      "id": "python-021",
+      "title": "List Basics and Slicing",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "python-021.json"
+    },
+    {
+      "id": "python-022",
+      "title": "Find Maximum in a List",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "python-022.json"
+    },
+    {
+      "id": "python-023",
+      "title": "Find Minimum in a List",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "python-023.json"
+    },
+    {
+      "id": "python-024",
+      "title": "Remove Duplicates from a List",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "python-024.json"
+    },
+    {
+      "id": "python-025",
+      "title": "Count Frequency of List Elements",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "file": "python-025.json"
+    },
+    {
+      "id": "python-026",
+      "title": "String Reversal",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "python-026.json"
+    },
+    {
+      "id": "python-027",
+      "title": "Count Vowels in a String",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "python-027.json"
+    },
+    {
+      "id": "python-028",
+      "title": "Word Counter",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "python-028.json"
+    },
+    {
+      "id": "python-029",
+      "title": "Anagram Checker",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "python-029.json"
+    },
+    {
+      "id": "python-030",
+      "title": "Character Frequency Counter",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "python-030.json"
+    },
+    {
+      "id": "python-031",
+      "title": "Matrix Addition",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "python-031.json"
+    },
+    {
+      "id": "python-032",
+      "title": "Matrix Transpose",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "python-032.json"
+    },
+    {
+      "id": "python-033",
+      "title": "Linear Search",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "file": "python-033.json"
+    },
+    {
+      "id": "python-034",
+      "title": "Binary Search",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "file": "python-034.json"
+    },
+    {
+      "id": "python-035",
+      "title": "Bubble Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "python-035.json"
+    },
+    {
+      "id": "python-036",
+      "title": "Selection Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "python-036.json"
+    },
+    {
+      "id": "python-037",
+      "title": "Insertion Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "python-037.json"
+    },
+    {
+      "id": "python-038",
+      "title": "Recursive Factorial",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "file": "python-038.json"
+    },
+    {
+      "id": "python-039",
+      "title": "Recursive Fibonacci",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "file": "python-039.json"
+    },
+    {
+      "id": "python-040",
+      "title": "Student Records Using Dictionaries",
+      "difficulty": "intermediate",
+      "topic": "Data Structures",
+      "file": "python-040.json"
+    },
+    {
+      "id": "python-041",
+      "title": "Word Count From a Text File",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "python-041.json"
+    },
+    {
+      "id": "python-042",
+      "title": "CSV Data Processing",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "python-042.json"
+    },
+    {
+      "id": "python-043",
+      "title": "JSON Data Processing",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "python-043.json"
+    },
+    {
+      "id": "python-044",
+      "title": "Custom Class: BankAccount",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "python-044.json"
+    },
+    {
+      "id": "python-045",
+      "title": "Inheritance: Shapes Example",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "python-045.json"
+    },
+    {
+      "id": "python-046",
+      "title": "Exception Handling: Safe Division",
+      "difficulty": "advanced",
+      "topic": "Exceptions",
+      "file": "python-046.json"
+    },
+    {
+      "id": "python-047",
+      "title": "Generator: Even Number Generator",
+      "difficulty": "advanced",
+      "topic": "Functions",
+      "file": "python-047.json"
+    },
+    {
+      "id": "python-048",
+      "title": "Decorator: Execution Timer",
+      "difficulty": "advanced",
+      "topic": "Functions",
+      "file": "python-048.json"
+    },
+    {
+      "id": "python-049",
+      "title": "Mini Contact Manager",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "python-049.json"
+    },
+    {
+      "id": "python-050",
+      "title": "Mini Expense Tracker",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "python-050.json"
+    }
+  ]
+}

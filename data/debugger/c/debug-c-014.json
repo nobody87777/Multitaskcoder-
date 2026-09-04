@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-014",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "break-scope-misunderstanding",
+  "title": "Fix the Break That Doesn't Stop the Outer Loop",
+  "description": "The program should stop searching a 2D grid entirely once a target value is found.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int grid[2][2] = {{1, 2}, {3, 4}};\n    int target = 3;\n    int found = 0;\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (grid[i][j] == target) {\n                found = 1;\n                break;\n            }\n        }\n        printf(\"Checked row %d\\n\", i);\n    }\n    return 0;\n}",
+  "expectedBehavior": "Once the target is found (at row 1), the program should stop checking further rows entirely.",
+  "actualProblem": "break only exits the innermost loop (the column loop). The outer row loop keeps running and still checks (and prints) the remaining rows, even after the target has already been found.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int grid[2][2] = {{1, 2}, {3, 4}};\n    int target = 3;\n    int found = 0;\n    for (int i = 0; i < 2 && !found; i++) {\n        for (int j = 0; j < 2; j++) {\n            if (grid[i][j] == target) {\n                found = 1;\n                break;\n            }\n        }\n        printf(\"Checked row %d\\n\", i);\n    }\n    return 0;\n}",
+  "expectedOutput": "Checked row 0\nChecked row 1",
+  "explanation": "break in C only terminates the loop it is directly written inside — it has no effect on any enclosing (outer) loop. Stopping both loops requires either a shared flag checked in the outer loop's condition, or a different control-flow technique like goto.",
+  "concepts": [
+    "break",
+    "nested loops",
+    "loop scope"
+  ]
+}

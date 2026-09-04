@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-011",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "off-by-one-loop",
+  "title": "Fix the Array Write Overflow",
+  "description": "The program should fill a 5-element array with squares of 1 through 5.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int squares[5];\n    for (int i = 1; i <= 5; i++) {\n        squares[i] = i * i;\n    }\n    printf(\"%d\\n\", squares[1]);\n    return 0;\n}",
+  "expectedBehavior": "The program should fill all 5 valid slots and print 1 (the square of 1, stored at index 0's neighbor logic aside — see corrected version for the intended indexing).",
+  "actualProblem": "Valid indices for a 5-element array are 0 through 4, but the loop runs i from 1 to 5 inclusive, writing to squares[5] on the last iteration — one element past the end of the array, corrupting nearby memory (undefined behavior).",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int squares[5];\n    for (int i = 0; i < 5; i++) {\n        squares[i] = (i + 1) * (i + 1);\n    }\n    printf(\"%d\\n\", squares[0]);\n    return 0;\n}",
+  "expectedOutput": "1",
+  "explanation": "A C array declared as int squares[5] only has valid indices 0 through 4. Writing to squares[5] is out of bounds and, unlike some languages, C performs no bounds checking — it silently corrupts whatever memory happens to follow the array.",
+  "concepts": [
+    "arrays",
+    "off-by-one error",
+    "undefined behavior"
+  ]
+}

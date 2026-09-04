@@ -1,0 +1,19 @@
+{
+  "id": "debug-c-009",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "bugType": "wrong-condition-order",
+  "title": "Fix the Grade Boundaries",
+  "description": "The program should assign letter grades: 90+ is A, 80+ is B, otherwise C.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int score = 95;\n    char grade;\n    if (score >= 80) {\n        grade = 'B';\n    } else if (score >= 90) {\n        grade = 'A';\n    } else {\n        grade = 'C';\n    }\n    printf(\"%c\\n\", grade);\n    return 0;\n}",
+  "expectedBehavior": "A score of 95 should be graded 'A'.",
+  "actualProblem": "Because the looser condition score >= 80 is checked first, a 95 satisfies it immediately and is graded 'B' — the score >= 90 branch is never reached for any score of 90 or above.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int score = 95;\n    char grade;\n    if (score >= 90) {\n        grade = 'A';\n    } else if (score >= 80) {\n        grade = 'B';\n    } else {\n        grade = 'C';\n    }\n    printf(\"%c\\n\", grade);\n    return 0;\n}",
+  "expectedOutput": "A",
+  "explanation": "An if/else if chain stops at the first true condition, evaluated top to bottom. Range checks must be ordered from most restrictive (highest threshold) to least restrictive.",
+  "concepts": [
+    "if/else if",
+    "conditional order"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-026",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Functions",
+  "question": "What will this code print?",
+  "code": "def add(a, b):\n    result = a + b\n\nprint(add(2, 3))",
+  "options": [
+    "5",
+    "None",
+    "0",
+    "TypeError"
+  ],
+  "correctAnswer": 1,
+  "explanation": "The function computes result but never returns it; a function without an explicit return statement returns None by default.",
+  "concepts": [
+    "return values",
+    "None"
+  ]
+}

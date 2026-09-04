@@ -1,0 +1,15 @@
+{
+  "id": "java-009",
+  "language": "java",
+  "title": "Largest of Two Numbers",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Find and print the larger of two numbers.",
+  "code": "import java.util.Scanner;\n\npublic class LargestOfTwo {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int a = scanner.nextInt();\n        int b = scanner.nextInt();\n\n        if (a > b) {\n            System.out.println(a + \" is larger\");\n        } else if (b > a) {\n            System.out.println(b + \" is larger\");\n        } else {\n            System.out.println(\"Both numbers are equal\");\n        }\n    }\n}",
+  "exampleInput": "8\n15",
+  "expectedOutput": "15 is larger",
+  "concepts": [
+    "if/else if/else",
+    "comparison"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "java-generics-001",
+  "language": "java",
+  "section": "java",
+  "module": "Generics",
+  "moduleNumber": 21,
+  "lessonNumber": 22,
+  "title": "Generics",
+  "difficulty": "advanced",
+  "description": "Generic classes and methods, type parameters, bounded types, and wildcards.",
+  "objectives": [
+    "Write generic classes and methods",
+    "Use bounded type parameters",
+    "Understand wildcards (? extends, ? super)",
+    "Understand generics' compile-time type safety"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Generic Classes, Methods, and Bounded Types",
+      "body": "Generics let a class or method be parameterized over a type, written in angle brackets: class Box<T> { private T value; ... } lets Box work with any type T while the compiler still enforces type consistency — Box<String> can only ever hold a String, catching type errors at compile time rather than a ClassCastException at runtime (the problem generics were introduced to solve, replacing the pre-Java-5 pattern of raw, untyped collections). A generic method declares its own type parameter before the return type: static <T> T firstOf(List<T> list) { return list.get(0); }.\n\nA bounded type parameter restricts what T can be: <T extends Number> means T must be Number or a subclass of it (int wrapper Integer, Double, etc.), letting the generic code call Number's methods (like doubleValue()) on values of type T, which an unbounded <T> would not allow."
+    },
+    {
+      "type": "text",
+      "heading": "Wildcards",
+      "body": "Wildcards (?) are used when you need to work with a generic type without committing to a specific type parameter. List<?> means 'a list of some unknown type' — safe to read from generically (as Object) but not safe to add to (the compiler can't guarantee what type it actually is). <? extends T> (an upper-bounded wildcard) means 'some subtype of T', appropriate for a method that only reads from the collection (a 'producer'). <? super T> (a lower-bounded wildcard) means 'some supertype of T', appropriate for a method that only writes into the collection (a 'consumer'). This pattern is often summarized by the mnemonic PECS: Producer Extends, Consumer Super."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.List;\n\nclass Box<T> {\n    private T value;\n    void set(T value) { this.value = value; }\n    T get() { return value; }\n}\n\nclass NumberBox<T extends Number> {\n    T value;\n    NumberBox(T value) { this.value = value; }\n    double asDouble() { return value.doubleValue(); }   // allowed: T is bounded to Number\n}\n\npublic class Main {\n    static double sumAll(List<? extends Number> numbers) {   // producer: only reading\n        double total = 0;\n        for (Number n : numbers) total += n.doubleValue();\n        return total;\n    }\n\n    public static void main(String[] args) {\n        Box<String> box = new Box<>();\n        box.set(\"hello\");\n        System.out.println(box.get());\n        System.out.println(sumAll(List.of(1, 2, 3)));   // works with List<Integer> too\n    }\n}",
+      "explanation": "NumberBox<T extends Number> can call value.doubleValue() because the bound guarantees T is a Number. sumAll's ? extends Number wildcard lets it accept a List<Integer>, List<Double>, etc., not just List<Number>."
+    }
+  ],
+  "keyPoints": [
+    "Generics (<T>) provide compile-time type safety, catching type errors before runtime",
+    "A bounded type parameter (<T extends X>) restricts T to X or its subtypes, enabling calls to X's methods",
+    "? extends T (producer, read-only) and ? super T (consumer, write-only) are the two wildcard forms",
+    "Generic type information exists only at compile time (type erasure) — it's not available at runtime"
+  ],
+  "commonMistakes": [
+    "Using a raw (non-parameterized) generic type, losing compile-time type checking entirely",
+    "Trying to add elements to a List<? extends T>, which the compiler correctly disallows",
+    "Confusing which wildcard direction (extends vs. super) applies to reading vs. writing"
+  ],
+  "concepts": [
+    "generics",
+    "type parameters",
+    "bounded types",
+    "wildcards",
+    "PECS",
+    "type erasure"
+  ],
+  "previousLesson": "java-collections-framework-002",
+  "nextLesson": "java-wrapper-classes-001"
+}

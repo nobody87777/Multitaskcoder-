@@ -1,0 +1,57 @@
+{
+  "id": "c-preprocessor-001",
+  "language": "c",
+  "section": "c",
+  "module": "Preprocessor",
+  "moduleNumber": 19,
+  "lessonNumber": 20,
+  "title": "The Preprocessor",
+  "difficulty": "intermediate",
+  "description": "#include, #define, macros (including parameterized ones), conditional compilation, and include guards.",
+  "objectives": [
+    "Understand what the preprocessor does before real compilation",
+    "Write object-like and function-like (parameterized) macros",
+    "Use conditional compilation directives",
+    "Write header include guards"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "#include and #define",
+      "body": "The preprocessor runs before the compiler proper, performing purely textual transformations on the source based on lines starting with #. #include <file> or #include \"file\" literally pastes that file's entire contents in at that point, which is how header files share declarations across multiple source files. #define NAME value defines an object-like macro: every subsequent occurrence of NAME in the source is textually replaced with value before compilation — #define PI 3.14159 makes PI usable like a constant, though (unlike const) with no type checking at all, since it's pure text substitution."
+    },
+    {
+      "type": "text",
+      "heading": "Parameterized Macros and Conditional Compilation",
+      "body": "A function-like (parameterized) macro takes arguments: #define SQUARE(x) ((x) * (x)) — the parentheses around x and the whole expression are essential defensive habits, since naive substitution without them can produce surprising results with certain call-site expressions (SQUARE(a + b) without inner parentheses would expand to a + b * a + b, not (a+b)*(a+b)). Because macros are purely textual, they have no real type checking and can behave unexpectedly with expressions that have side effects (like SQUARE(x++), which would increment x twice) — this is a well-known category of macro pitfall, and for simple cases, a real inline function is often safer.\n\nConditional compilation directives (#if, #ifdef, #ifndef, #else, #endif) let code be selectively included or excluded at compile time, based on whether a macro is defined or a condition evaluates true — used for platform-specific code, debug-only logging, or feature toggles. Include guards, wrapping an entire header file's contents in #ifndef HEADER_NAME / #define HEADER_NAME / ... / #endif, prevent a header's contents from being pasted in more than once if it's (directly or indirectly) included multiple times in the same translation unit, which would otherwise cause duplicate-definition compile errors."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "// myheader.h\n#ifndef MYHEADER_H\n#define MYHEADER_H\n\n#define SQUARE(x) ((x) * (x))\n\n#ifdef DEBUG\n    #define LOG(msg) printf(\"[DEBUG] %s\\n\", msg)\n#else\n    #define LOG(msg)              // expands to nothing when DEBUG isn't defined\n#endif\n\n#endif // MYHEADER_H\n\n// main.c\n#include <stdio.h>\n#include \"myheader.h\"\n\nint main() {\n    printf(\"%d\\n\", SQUARE(5));   // 25\n    LOG(\"Starting up\");           // only prints if DEBUG was defined at compile time\n    return 0;\n}",
+      "explanation": "The #ifndef/#define/#endif guard prevents myheader.h's contents from being duplicated if included more than once. LOG expands to an actual printf call only when DEBUG is defined, and to nothing otherwise."
+    }
+  ],
+  "keyPoints": [
+    "The preprocessor performs purely textual substitution and file inclusion before real compilation",
+    "Parenthesize a parameterized macro's parameters and its whole expansion to avoid operator-precedence surprises",
+    "Macros have no type checking and can misbehave with argument expressions that have side effects",
+    "#ifndef/#define/#endif include guards prevent a header's contents from being duplicated when included multiple times"
+  ],
+  "commonMistakes": [
+    "Writing a parameterized macro without enough defensive parentheses, causing wrong results at certain call sites",
+    "Passing an expression with side effects (like x++) into a macro that references its parameter more than once",
+    "Forgetting include guards, causing 'redefinition' compile errors when a header is included from multiple places"
+  ],
+  "concepts": [
+    "preprocessor",
+    "#include",
+    "#define",
+    "macros",
+    "parameterized macros",
+    "conditional compilation",
+    "include guards"
+  ],
+  "previousLesson": "c-file-handling-001",
+  "nextLesson": "c-command-line-arguments-001"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-010",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Operators",
+  "question": "What does 'True and False or True' evaluate to?",
+  "options": [
+    "False",
+    "True",
+    "None",
+    "SyntaxError"
+  ],
+  "correctAnswer": 1,
+  "explanation": "`and` binds tighter than `or`, so this evaluates as (True and False) or True, which is False or True, giving True.",
+  "concepts": [
+    "logical operators",
+    "operator precedence"
+  ]
+}

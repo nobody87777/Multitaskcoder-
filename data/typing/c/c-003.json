@@ -1,0 +1,16 @@
+{
+  "id": "c-003",
+  "language": "c",
+  "title": "Variables and Data Types",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "description": "Declare variables of different data types and print their values.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int age = 21;\n    float height = 5.9f;\n    char grade = 'A';\n\n    printf(\"Age: %d\\n\", age);\n    printf(\"Height: %.1f\\n\", height);\n    printf(\"Grade: %c\\n\", grade);\n    return 0;\n}",
+  "expectedOutput": "Age: 21\nHeight: 5.9\nGrade: A",
+  "concepts": [
+    "int",
+    "float",
+    "char",
+    "format specifiers"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "python-operators-001",
+  "language": "python",
+  "section": "python",
+  "module": "Operators",
+  "moduleNumber": 3,
+  "lessonNumber": 3,
+  "title": "Operators",
+  "difficulty": "beginner",
+  "description": "Python's arithmetic, comparison, logical, bitwise, membership, and identity operators, plus precedence.",
+  "objectives": [
+    "Use arithmetic, comparison, and logical operators correctly",
+    "Understand membership (in) and identity (is) operators",
+    "Understand operator precedence and associativity",
+    "Use augmented assignment operators"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Operator Categories",
+      "body": "Arithmetic operators are + - * / (true division, always returns a float) // (floor division) % (modulus) and ** (exponentiation). Comparison operators (==, !=, <, >, <=, >=) return booleans and can be chained: 1 < x < 10 is valid Python and means (1 < x) and (x < 10). Logical operators are the words and, or, and not (not symbols like && in C/Java); they short-circuit, meaning the second operand is only evaluated if needed. Assignment operators include the augmented forms (+=, -=, *=, /=, //=, %=, **=), which modify a variable's binding in place syntactically (though for immutable types this still creates a new object).\n\nBitwise operators (&, |, ^, ~, <<, >>) work on the binary representation of integers. Membership operators, in and not in, test whether a value exists inside a sequence or collection (e.g., 3 in [1,2,3]). Identity operators, is and is not, test whether two names refer to the exact same object — not whether their values are equal."
+    },
+    {
+      "type": "text",
+      "heading": "Precedence and Associativity",
+      "body": "Python evaluates expressions according to a well-defined precedence order (highest to lowest, roughly): parentheses, exponentiation (**), unary +/-, multiplication/division/floor-division/modulus, addition/subtraction, bitwise shifts, bitwise AND, bitwise XOR, bitwise OR, comparisons, not, and, or. When operators share precedence, most are left-associative (evaluated left to right), except ** which is right-associative (2 ** 3 ** 2 is 2 ** (3 ** 2) = 512). When in doubt, use parentheses to make evaluation order explicit — this avoids subtle bugs and makes code more readable."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "print(7 // 2, 7 % 2, 2 ** 10)   # 3 1 1024\nprint(1 < 5 < 10)               # True (chained comparison)\nprint(3 in [1, 2, 3])           # True\n\na = [1, 2]\nb = [1, 2]\nprint(a == b, a is b)           # True False — equal value, different objects",
+      "explanation": "a == b compares values (both lists contain 1, 2, so True); a is b compares identity — they are two separate list objects in memory, so False."
+    }
+  ],
+  "keyPoints": [
+    "/ always produces a float; // performs floor division",
+    "and/or/not are the logical operators, written as words",
+    "Comparisons can be chained: 1 < x < 10",
+    "== checks value equality; is checks object identity",
+    "** is right-associative; most other operators are left-associative"
+  ],
+  "commonMistakes": [
+    "Using is to compare values instead of == (works by accident for small cached ints, fails for most other objects)",
+    "Forgetting / always returns a float even for two integers",
+    "Misjudging precedence and omitting parentheses in a complex expression"
+  ],
+  "concepts": [
+    "operators",
+    "precedence",
+    "associativity",
+    "is vs ==",
+    "membership operator",
+    "augmented assignment"
+  ],
+  "previousLesson": "python-variables-and-data-types-001",
+  "nextLesson": "python-input-output-001"
+}

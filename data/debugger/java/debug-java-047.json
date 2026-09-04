@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-047",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "bugType": "unhandled-file-exception",
+  "title": "Fix the Unhandled Missing File",
+  "description": "The program should attempt to read a file and handle the case where it doesn't exist.",
+  "buggyCode": "import java.io.FileReader;\nimport java.io.IOException;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        FileReader reader = new FileReader(\"does-not-exist.txt\");\n        System.out.println(\"File opened\");\n    }\n}",
+  "expectedBehavior": "If the file doesn't exist, the program should print a clear message instead of crashing with a stack trace.",
+  "actualProblem": "The FileNotFoundException that FileReader throws for a missing file is declared with throws IOException on main, which only postpones the crash — it's never actually caught, so the program still terminates abruptly with an uncaught exception and stack trace.",
+  "correctedCode": "import java.io.FileReader;\nimport java.io.FileNotFoundException;\n\npublic class Main {\n    public static void main(String[] args) {\n        try {\n            FileReader reader = new FileReader(\"does-not-exist.txt\");\n            System.out.println(\"File opened\");\n        } catch (FileNotFoundException e) {\n            System.out.println(\"Could not find the file.\");\n        }\n    }\n}",
+  "expectedOutput": "Could not find the file.",
+  "explanation": "Declaring throws on main only tells the compiler the exception is allowed to propagate — it does not handle it. Actually recovering from a missing file requires a try/catch around the code that might fail.",
+  "concepts": [
+    "file handling",
+    "FileNotFoundException",
+    "exception handling"
+  ]
+}

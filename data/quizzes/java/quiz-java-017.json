@@ -1,0 +1,22 @@
+{
+  "id": "quiz-java-017",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "code-analysis",
+  "topic": "Strings",
+  "question": "Why do these two comparisons produce different results?",
+  "code": "String a = \"cat\";\nString b = \"cat\";\nString c = new String(\"cat\");\nSystem.out.println(a == b);\nSystem.out.println(a == c);",
+  "options": [
+    "Both print true because Strings always compare by content",
+    "Both print false because == never works on Strings",
+    "The code fails to compile",
+    "a == b is true because literals share the same interned String object, while a == c is false because new String() creates a separate object"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Java interns String literals, so a and b (both literal 'cat') refer to the same pooled object, making a == b true. new String('cat') explicitly creates a new, distinct object, so a == c is false even though the content is equal.",
+  "concepts": [
+    "String pool",
+    "== vs .equals()",
+    "object identity"
+  ]
+}

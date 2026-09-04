@@ -1,0 +1,15 @@
+{
+  "id": "c-009",
+  "language": "c",
+  "title": "Largest of Two Numbers",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Find and print the larger of two numbers.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n\n    if (a > b)\n        printf(\"%d is larger\\n\", a);\n    else if (b > a)\n        printf(\"%d is larger\\n\", b);\n    else\n        printf(\"Both numbers are equal\\n\");\n\n    return 0;\n}",
+  "exampleInput": "8\n15",
+  "expectedOutput": "15 is larger",
+  "concepts": [
+    "if/else if/else",
+    "comparison"
+  ]
+}

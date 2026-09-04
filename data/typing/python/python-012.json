@@ -1,0 +1,15 @@
+{
+  "id": "python-012",
+  "language": "python",
+  "title": "Grade Calculator",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Assign a letter grade to a numeric score using an elif chain.",
+  "code": "score = int(input(\"Enter score (0-100): \"))\n\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"\n\nprint(\"Grade:\", grade)",
+  "exampleInput": "84",
+  "expectedOutput": "Enter score (0-100): Grade: B",
+  "concepts": [
+    "elif chain",
+    "range classification"
+  ]
+}

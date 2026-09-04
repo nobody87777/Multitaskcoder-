@@ -1,0 +1,21 @@
+{
+  "id": "debug-python-003",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Input",
+  "bugType": "type-error",
+  "title": "Fix the Age Difference Calculator",
+  "description": "The program should read two ages and print the numeric difference between them. Fix the bug.",
+  "buggyCode": "age1 = input(\"Enter first age: \")\nage2 = input(\"Enter second age: \")\nprint(age1 - age2)",
+  "expectedBehavior": "The program should subtract the second age from the first and print the numeric result.",
+  "actualProblem": "input() always returns a string, and Python does not support the - operator between two strings, so a TypeError is raised.",
+  "correctedCode": "age1 = int(input(\"Enter first age: \"))\nage2 = int(input(\"Enter second age: \"))\nprint(age1 - age2)",
+  "exampleInput": "30\n25",
+  "expectedOutput": "Enter first age: Enter second age: 5",
+  "explanation": "Values from input() must be explicitly converted with int() (or float()) before they can be used in arithmetic. Without the conversion, Python treats them as text and refuses the subtraction.",
+  "concepts": [
+    "input()",
+    "type conversion",
+    "int()"
+  ]
+}

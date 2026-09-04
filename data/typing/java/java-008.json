@@ -1,0 +1,15 @@
+{
+  "id": "java-008",
+  "language": "java",
+  "title": "Positive, Negative or Zero",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Classify a number as positive, negative, or zero.",
+  "code": "import java.util.Scanner;\n\npublic class SignChecker {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        double num = scanner.nextDouble();\n\n        if (num > 0) {\n            System.out.println(\"Positive\");\n        } else if (num < 0) {\n            System.out.println(\"Negative\");\n        } else {\n            System.out.println(\"Zero\");\n        }\n    }\n}",
+  "exampleInput": "-4.5",
+  "expectedOutput": "Negative",
+  "concepts": [
+    "if/else if/else",
+    "comparison operators"
+  ]
+}

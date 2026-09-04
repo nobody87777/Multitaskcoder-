@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-022",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "What is the main property that distinguishes a Python set from a list?",
+  "options": [
+    "Sets preserve insertion order like lists",
+    "Sets automatically discard duplicate elements",
+    "Sets allow indexing with numbers",
+    "Sets can only store strings"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A set is an unordered collection that automatically removes duplicate values, unlike a list which keeps every element including duplicates.",
+  "concepts": [
+    "sets",
+    "uniqueness"
+  ]
+}

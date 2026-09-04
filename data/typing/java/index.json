@@ -1,0 +1,356 @@
+{
+  "language": "java",
+  "count": 50,
+  "programs": [
+    {
+      "id": "java-001",
+      "title": "Hello World",
+      "difficulty": "beginner",
+      "topic": "Basics",
+      "file": "java-001.json"
+    },
+    {
+      "id": "java-002",
+      "title": "Reading User Input",
+      "difficulty": "beginner",
+      "topic": "Input/Output",
+      "file": "java-002.json"
+    },
+    {
+      "id": "java-003",
+      "title": "Variables and Data Types",
+      "difficulty": "beginner",
+      "topic": "Variables",
+      "file": "java-003.json"
+    },
+    {
+      "id": "java-004",
+      "title": "Arithmetic Operators",
+      "difficulty": "beginner",
+      "topic": "Operators",
+      "file": "java-004.json"
+    },
+    {
+      "id": "java-005",
+      "title": "Celsius to Fahrenheit Converter",
+      "difficulty": "beginner",
+      "topic": "Conversion",
+      "file": "java-005.json"
+    },
+    {
+      "id": "java-006",
+      "title": "Simple Calculator",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-006.json"
+    },
+    {
+      "id": "java-007",
+      "title": "Even or Odd Checker",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-007.json"
+    },
+    {
+      "id": "java-008",
+      "title": "Positive, Negative or Zero",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-008.json"
+    },
+    {
+      "id": "java-009",
+      "title": "Largest of Two Numbers",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-009.json"
+    },
+    {
+      "id": "java-010",
+      "title": "Largest of Three Numbers",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-010.json"
+    },
+    {
+      "id": "java-011",
+      "title": "Leap Year Checker",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-011.json"
+    },
+    {
+      "id": "java-012",
+      "title": "Grade Calculator",
+      "difficulty": "beginner",
+      "topic": "Conditionals",
+      "file": "java-012.json"
+    },
+    {
+      "id": "java-013",
+      "title": "Multiplication Table",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-013.json"
+    },
+    {
+      "id": "java-014",
+      "title": "Sum of First N Natural Numbers",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-014.json"
+    },
+    {
+      "id": "java-015",
+      "title": "Factorial Using a Loop",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-015.json"
+    },
+    {
+      "id": "java-016",
+      "title": "Fibonacci Series (Iterative)",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-016.json"
+    },
+    {
+      "id": "java-017",
+      "title": "Prime Number Checker",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-017.json"
+    },
+    {
+      "id": "java-018",
+      "title": "Reverse a Number",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-018.json"
+    },
+    {
+      "id": "java-019",
+      "title": "Palindrome Number Checker",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-019.json"
+    },
+    {
+      "id": "java-020",
+      "title": "Count Digits in a Number",
+      "difficulty": "beginner",
+      "topic": "Loops",
+      "file": "java-020.json"
+    },
+    {
+      "id": "java-021",
+      "title": "Array Sum",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-021.json"
+    },
+    {
+      "id": "java-022",
+      "title": "Array Maximum",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-022.json"
+    },
+    {
+      "id": "java-023",
+      "title": "Array Minimum",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-023.json"
+    },
+    {
+      "id": "java-024",
+      "title": "Array Reversal",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-024.json"
+    },
+    {
+      "id": "java-025",
+      "title": "Remove Duplicates From an Array",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-025.json"
+    },
+    {
+      "id": "java-026",
+      "title": "String Reversal",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "java-026.json"
+    },
+    {
+      "id": "java-027",
+      "title": "Count Vowels in a String",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "java-027.json"
+    },
+    {
+      "id": "java-028",
+      "title": "Character Frequency Counter",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "java-028.json"
+    },
+    {
+      "id": "java-029",
+      "title": "Anagram Checker",
+      "difficulty": "intermediate",
+      "topic": "Strings",
+      "file": "java-029.json"
+    },
+    {
+      "id": "java-030",
+      "title": "Matrix Addition",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-030.json"
+    },
+    {
+      "id": "java-031",
+      "title": "Matrix Transpose",
+      "difficulty": "intermediate",
+      "topic": "Arrays",
+      "file": "java-031.json"
+    },
+    {
+      "id": "java-032",
+      "title": "Linear Search",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "file": "java-032.json"
+    },
+    {
+      "id": "java-033",
+      "title": "Binary Search",
+      "difficulty": "intermediate",
+      "topic": "Searching",
+      "file": "java-033.json"
+    },
+    {
+      "id": "java-034",
+      "title": "Bubble Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "java-034.json"
+    },
+    {
+      "id": "java-035",
+      "title": "Selection Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "java-035.json"
+    },
+    {
+      "id": "java-036",
+      "title": "Insertion Sort",
+      "difficulty": "intermediate",
+      "topic": "Sorting",
+      "file": "java-036.json"
+    },
+    {
+      "id": "java-037",
+      "title": "Recursive Factorial",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "file": "java-037.json"
+    },
+    {
+      "id": "java-038",
+      "title": "Recursive Fibonacci",
+      "difficulty": "intermediate",
+      "topic": "Recursion",
+      "file": "java-038.json"
+    },
+    {
+      "id": "java-039",
+      "title": "Student Class",
+      "difficulty": "intermediate",
+      "topic": "OOP",
+      "file": "java-039.json"
+    },
+    {
+      "id": "java-040",
+      "title": "ArrayList of Student Records",
+      "difficulty": "intermediate",
+      "topic": "Collections",
+      "file": "java-040.json"
+    },
+    {
+      "id": "java-041",
+      "title": "Inheritance: Shapes Example",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "java-041.json"
+    },
+    {
+      "id": "java-042",
+      "title": "Interface Example: Payable",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "java-042.json"
+    },
+    {
+      "id": "java-043",
+      "title": "Exception Handling: Safe Division",
+      "difficulty": "advanced",
+      "topic": "Exceptions",
+      "file": "java-043.json"
+    },
+    {
+      "id": "java-044",
+      "title": "Writing to a File",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "java-044.json"
+    },
+    {
+      "id": "java-045",
+      "title": "Reading From a File",
+      "difficulty": "advanced",
+      "topic": "Files",
+      "file": "java-045.json"
+    },
+    {
+      "id": "java-046",
+      "title": "HashMap Frequency Counter",
+      "difficulty": "advanced",
+      "topic": "Collections",
+      "file": "java-046.json"
+    },
+    {
+      "id": "java-047",
+      "title": "Lambda Expression: Custom Comparator",
+      "difficulty": "advanced",
+      "topic": "Functional",
+      "file": "java-047.json"
+    },
+    {
+      "id": "java-048",
+      "title": "Stream API Example",
+      "difficulty": "advanced",
+      "topic": "Functional",
+      "file": "java-048.json"
+    },
+    {
+      "id": "java-049",
+      "title": "Contact Manager",
+      "difficulty": "advanced",
+      "topic": "Collections",
+      "file": "java-049.json"
+    },
+    {
+      "id": "java-050",
+      "title": "Simple Banking System",
+      "difficulty": "advanced",
+      "topic": "OOP",
+      "file": "java-050.json"
+    }
+  ]
+}

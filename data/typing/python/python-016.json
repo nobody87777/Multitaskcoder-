@@ -1,0 +1,16 @@
+{
+  "id": "python-016",
+  "language": "python",
+  "title": "Fibonacci Series (Iterative)",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Print the first N terms of the Fibonacci sequence using a loop.",
+  "code": "n = int(input(\"Enter number of terms: \"))\na, b = 0, 1\n\nfor _ in range(n):\n    print(a, end=\" \")\n    a, b = b, a + b\nprint()",
+  "exampleInput": "8",
+  "expectedOutput": "Enter number of terms: 0 1 1 2 3 5 8 13",
+  "concepts": [
+    "tuple unpacking",
+    "loop",
+    "sequences"
+  ]
+}

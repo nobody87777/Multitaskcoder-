@@ -1,0 +1,58 @@
+{
+  "id": "c-compilation-and-linking-001",
+  "language": "c",
+  "section": "c",
+  "module": "Compilation and Linking",
+  "moduleNumber": 26,
+  "lessonNumber": 28,
+  "title": "Compilation and Linking",
+  "difficulty": "intermediate",
+  "description": "The full pipeline from source to executable: preprocessing, compilation, assembly, object files, and linking.",
+  "objectives": [
+    "Understand each stage of the compile-link pipeline",
+    "Distinguish declarations from definitions",
+    "Understand static vs. dynamic linking at a conceptual level"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "The Full Pipeline",
+      "body": "Building a C program from source to a runnable executable happens in stages: preprocessing (expanding #include and #define directives, handled by the preprocessor, producing pure C source with no directives left) -> compilation (the compiler translates preprocessed C source into assembly language, a human-readable but CPU-specific low-level instruction representation) -> assembly (an assembler converts that assembly code into object code — actual machine instructions, in an object file, .o or .obj) -> linking (the linker combines one or more object files, plus any needed libraries, resolving references between them, into the final executable). A multi-file project compiles each .c file into its own object file independently, then links them all together at the end — this separation is why declarations in header files matter: they let one file's code reference a function defined in another file, with the actual connection resolved later, at link time."
+    },
+    {
+      "type": "text",
+      "heading": "Declarations vs. Definitions, and Static vs. Dynamic Linking",
+      "body": "A declaration announces that something (a function or variable) exists and describes its type/signature, without necessarily allocating storage or providing a body — int add(int, int); or extern int total;. A definition actually provides the function's body, or allocates storage for a variable — int add(int a, int b) { return a + b; } or int total = 0;. A given entity should have exactly one definition across a whole program (violating this causes a 'multiple definition' linker error), but can be declared multiple times (in every file that needs to reference it) without issue.\n\nStatic linking copies all the needed library code directly into the final executable at link time, producing a single, larger, self-contained file with no runtime dependency on that library being separately present. Dynamic linking instead has the executable reference a separate shared library file (.so on Linux, .dll on Windows, .dylib on macOS) that's loaded and linked at the moment the program actually runs — producing smaller executables and letting multiple programs share one copy of a common library in memory, at the cost of the executable depending on that shared library being correctly installed on the machine it runs on."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "// math_utils.h  (declaration)\nint add(int a, int b);\n\n// math_utils.c  (definition)\n#include \"math_utils.h\"\nint add(int a, int b) { return a + b; }\n\n// main.c\n#include <stdio.h>\n#include \"math_utils.h\"     // declaration lets main.c reference add()\n\nint main() {\n    printf(\"%d\\n\", add(2, 3));\n    return 0;\n}\n\n/*\ngcc -c math_utils.c -o math_utils.o   // compile to object code\ngcc -c main.c -o main.o                // compile to object code\ngcc math_utils.o main.o -o program     // link the object files into an executable\n*/",
+      "explanation": "main.c never sees add()'s actual implementation, only its declaration from the header — the linker is what actually connects main.c's call to add() with math_utils.o's definition of it."
+    }
+  ],
+  "keyPoints": [
+    "The pipeline is: preprocessing -> compilation (to assembly) -> assembly (to object code) -> linking (to an executable)",
+    "A declaration announces an entity's existence/type; a definition provides its actual body/storage",
+    "An entity may be declared many times but must be defined exactly once across the whole program",
+    "Static linking embeds library code in the executable; dynamic linking references a separate shared library file at runtime"
+  ],
+  "commonMistakes": [
+    "Defining the same function/variable in more than one place, causing a linker 'multiple definition' error",
+    "Forgetting to include a header that declares a function used in the current file, causing a compile error",
+    "Confusing a compile error (in one file, caught by the compiler) with a link error (across files, caught by the linker)"
+  ],
+  "concepts": [
+    "preprocessing",
+    "compilation",
+    "assembly",
+    "object files",
+    "linking",
+    "declarations",
+    "definitions",
+    "static linking",
+    "dynamic linking"
+  ],
+  "previousLesson": "c-memory-and-undefined-behavior-001",
+  "nextLesson": "c-advanced-c-001"
+}

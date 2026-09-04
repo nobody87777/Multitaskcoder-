@@ -1,0 +1,55 @@
+{
+  "id": "java-file-handling-001",
+  "language": "java",
+  "section": "java",
+  "module": "File Handling",
+  "moduleNumber": 23,
+  "lessonNumber": 24,
+  "title": "File Handling",
+  "difficulty": "intermediate",
+  "description": "Reading and writing files with File, Path/Files, and buffered streams, using try-with-resources.",
+  "objectives": [
+    "Use the legacy File class and the modern Path/Files API",
+    "Read and write text files with buffered streams",
+    "Apply try-with-resources for safe file handling"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "File, Path, and Files",
+      "body": "java.io.File represents a file or directory path (largely metadata: exists(), isDirectory(), length(), delete()) but does not itself read or write file content. The more modern java.nio.file API, centered on Path (a filesystem path, created with Path.of(\"data.txt\")) and the Files utility class, provides both convenience methods for simple cases (Files.readString(path), Files.writeString(path, text), Files.readAllLines(path)) and more flexible stream-based access for larger files or binary data (Files.newBufferedReader(path), Files.newInputStream(path)). For new code, the Path/Files API is generally preferred over the older File class."
+    },
+    {
+      "type": "text",
+      "heading": "Buffered Streams and try-with-resources",
+      "body": "For reading/writing text line by line, BufferedReader (wrapping a FileReader) and BufferedWriter (wrapping a FileWriter) add an internal buffer, reducing the number of actual, relatively slow I/O operations by reading/writing in larger chunks rather than character by character. BufferedReader.readLine() reads one line at a time, returning null at end-of-file — a common loop pattern is while ((line = reader.readLine()) != null) { ... }.\n\nAll of these should be used inside a try-with-resources block, since they implement AutoCloseable — this guarantees the underlying file handle is released even if an exception interrupts reading/writing partway through, without needing an explicit finally { reader.close(); } that's easy to forget or get wrong on the exception path."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.io.*;\nimport java.nio.file.*;\n\npublic class FileHandling {\n    public static void main(String[] args) throws IOException {\n        Path path = Path.of(\"notes.txt\");\n        Files.writeString(path, \"Line one\\nLine two\\n\");\n\n        try (BufferedReader reader = Files.newBufferedReader(path)) {\n            String line;\n            while ((line = reader.readLine()) != null) {\n                System.out.println(line);\n            }\n        }   // reader is automatically closed here, even if readLine() had thrown\n    }\n}",
+      "explanation": "Files.writeString provides a one-line way to write simple text. try-with-resources around the BufferedReader guarantees it's closed once the block exits, without a manual finally."
+    }
+  ],
+  "keyPoints": [
+    "File represents path metadata; Path/Files (java.nio.file) is the modern API for actual content I/O",
+    "BufferedReader/BufferedWriter reduce the number of underlying I/O operations for text processing",
+    "readLine() returns null at end-of-file, the standard loop-termination signal",
+    "Always use try-with-resources for file streams to guarantee they're closed"
+  ],
+  "commonMistakes": [
+    "Forgetting to close a file stream (or not using try-with-resources), risking a resource leak",
+    "Using File for content I/O when it only provides path metadata",
+    "Not handling IOException at all, letting a missing/inaccessible file crash the program uncontrolled"
+  ],
+  "concepts": [
+    "File",
+    "Path",
+    "Files",
+    "buffered streams",
+    "BufferedReader",
+    "try-with-resources"
+  ],
+  "previousLesson": "java-wrapper-classes-001",
+  "nextLesson": "java-packages-and-java-apis-001"
+}

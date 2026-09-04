@@ -1,0 +1,59 @@
+{
+  "id": "python-iterators-and-generators-001",
+  "language": "python",
+  "section": "python",
+  "module": "Iterators and Generators",
+  "moduleNumber": 18,
+  "lessonNumber": 20,
+  "title": "Iterators and Generators",
+  "difficulty": "advanced",
+  "description": "The iterator protocol, writing custom iterators, and generator functions for lazy, memory-efficient iteration.",
+  "objectives": [
+    "Understand the distinction between an iterable and an iterator",
+    "Implement the iterator protocol (__iter__/__next__) manually",
+    "Write generator functions using yield",
+    "Understand the memory advantages of lazy evaluation"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Iterables, Iterators, and the Protocol",
+      "body": "An iterable is anything you can loop over (implements __iter__, which returns an iterator). An iterator is the object that actually produces values one at a time (implements __next__, returning the next value, and raising StopIteration once exhausted). A for loop is really syntactic sugar: it calls iter(obj) to get an iterator, then repeatedly calls next() on it until StopIteration is raised. Most built-in containers (lists, dicts, sets, strings) are iterable but are not themselves iterators — calling iter() on them produces a fresh, separate iterator object each time, which is why you can loop over the same list multiple times."
+    },
+    {
+      "type": "text",
+      "heading": "Generator Functions and Lazy Evaluation",
+      "body": "Writing a full custom iterator class (with __iter__ and __next__) is verbose for simple cases. A generator function — any function containing at least one yield statement — is a much simpler way to create an iterator. Calling a generator function does not run its body immediately; it returns a generator object. Each call to next() (implicitly, via a for loop, or explicitly) resumes the function from where it last paused at yield, runs until the next yield (or the function ends, raising StopIteration automatically), and returns that yielded value.\n\nThis lazy evaluation is the key benefit: a generator produces values on demand, one at a time, without ever holding the entire sequence in memory — critical for processing very large or even infinite sequences. Generator expressions, (x * x for x in range(1000000)), offer the same laziness with list-comprehension-like syntax (note the parentheses, not square brackets)."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "def even_numbers(limit):\n    n = 0\n    while n <= limit:\n        yield n            # pauses here, resumes on next call\n        n += 2\n\nfor value in even_numbers(6):\n    print(value)            # 0 2 4 6\n\nsquares = (x * x for x in range(5))   # generator expression, lazy\nprint(next(squares), next(squares))    # 0 1",
+      "explanation": "even_numbers is a generator function; iterating it (via the for loop) drives it forward one yield at a time. The generator expression squares produces values lazily, one per next() call."
+    }
+  ],
+  "keyPoints": [
+    "An iterable provides __iter__; an iterator provides __next__ and raises StopIteration when exhausted",
+    "A for loop is sugar for repeatedly calling next() on iter(obj)",
+    "A generator function (containing yield) is a simple way to build an iterator without a full class",
+    "Generators produce values lazily, avoiding holding an entire large sequence in memory at once"
+  ],
+  "commonMistakes": [
+    "Printing a generator object directly, expecting to see its values instead of an object repr",
+    "Forgetting a custom __next__ must raise StopIteration, or the consuming loop never terminates",
+    "Trying to iterate an already-exhausted generator a second time and getting nothing"
+  ],
+  "concepts": [
+    "iterators",
+    "iterables",
+    "__iter__",
+    "__next__",
+    "StopIteration",
+    "generators",
+    "yield",
+    "lazy evaluation",
+    "generator expressions"
+  ],
+  "previousLesson": "python-oop-002",
+  "nextLesson": "python-functional-programming-001"
+}

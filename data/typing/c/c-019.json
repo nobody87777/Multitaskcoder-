@@ -1,0 +1,15 @@
+{
+  "id": "c-019",
+  "language": "c",
+  "title": "Palindrome Number Checker",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Check whether a given number reads the same forwards and backwards.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int num, original, reversed = 0;\n    scanf(\"%d\", &num);\n    original = num;\n\n    while (num > 0) {\n        int digit = num % 10;\n        reversed = reversed * 10 + digit;\n        num /= 10;\n    }\n\n    if (original == reversed)\n        printf(\"%d is a palindrome\\n\", original);\n    else\n        printf(\"%d is not a palindrome\\n\", original);\n\n    return 0;\n}",
+  "exampleInput": "1221",
+  "expectedOutput": "1221 is a palindrome",
+  "concepts": [
+    "while loop",
+    "digit reversal"
+  ]
+}

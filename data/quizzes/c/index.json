@@ -1,0 +1,356 @@
+{
+  "language": "c",
+  "count": 50,
+  "questions": [
+    {
+      "id": "quiz-c-001",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-c-001.json"
+    },
+    {
+      "id": "quiz-c-002",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-c-002.json"
+    },
+    {
+      "id": "quiz-c-003",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Input/Output",
+      "file": "quiz-c-003.json"
+    },
+    {
+      "id": "quiz-c-004",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Input/Output",
+      "file": "quiz-c-004.json"
+    },
+    {
+      "id": "quiz-c-005",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Variables",
+      "file": "quiz-c-005.json"
+    },
+    {
+      "id": "quiz-c-006",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Variables",
+      "file": "quiz-c-006.json"
+    },
+    {
+      "id": "quiz-c-007",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Input/Output",
+      "file": "quiz-c-007.json"
+    },
+    {
+      "id": "quiz-c-008",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-c-008.json"
+    },
+    {
+      "id": "quiz-c-009",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Conditionals",
+      "file": "quiz-c-009.json"
+    },
+    {
+      "id": "quiz-c-010",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Conditionals",
+      "file": "quiz-c-010.json"
+    },
+    {
+      "id": "quiz-c-011",
+      "difficulty": "beginner",
+      "type": "output",
+      "topic": "Loops",
+      "file": "quiz-c-011.json"
+    },
+    {
+      "id": "quiz-c-012",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-c-012.json"
+    },
+    {
+      "id": "quiz-c-013",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-c-013.json"
+    },
+    {
+      "id": "quiz-c-014",
+      "difficulty": "beginner",
+      "type": "true-false",
+      "topic": "Loops",
+      "file": "quiz-c-014.json"
+    },
+    {
+      "id": "quiz-c-015",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Loops",
+      "file": "quiz-c-015.json"
+    },
+    {
+      "id": "quiz-c-016",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Functions",
+      "file": "quiz-c-016.json"
+    },
+    {
+      "id": "quiz-c-017",
+      "difficulty": "beginner",
+      "type": "code-analysis",
+      "topic": "Functions",
+      "file": "quiz-c-017.json"
+    },
+    {
+      "id": "quiz-c-018",
+      "difficulty": "beginner",
+      "type": "true-false",
+      "topic": "Variables",
+      "file": "quiz-c-018.json"
+    },
+    {
+      "id": "quiz-c-019",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Operators",
+      "file": "quiz-c-019.json"
+    },
+    {
+      "id": "quiz-c-020",
+      "difficulty": "beginner",
+      "type": "mcq",
+      "topic": "Functions",
+      "file": "quiz-c-020.json"
+    },
+    {
+      "id": "quiz-c-021",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Arrays",
+      "file": "quiz-c-021.json"
+    },
+    {
+      "id": "quiz-c-022",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Arrays",
+      "file": "quiz-c-022.json"
+    },
+    {
+      "id": "quiz-c-023",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Strings",
+      "file": "quiz-c-023.json"
+    },
+    {
+      "id": "quiz-c-024",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Strings",
+      "file": "quiz-c-024.json"
+    },
+    {
+      "id": "quiz-c-025",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Recursion",
+      "file": "quiz-c-025.json"
+    },
+    {
+      "id": "quiz-c-026",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Pointers",
+      "file": "quiz-c-026.json"
+    },
+    {
+      "id": "quiz-c-027",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Pointers",
+      "file": "quiz-c-027.json"
+    },
+    {
+      "id": "quiz-c-028",
+      "difficulty": "intermediate",
+      "type": "code-analysis",
+      "topic": "Pointers",
+      "file": "quiz-c-028.json"
+    },
+    {
+      "id": "quiz-c-029",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-c-029.json"
+    },
+    {
+      "id": "quiz-c-030",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-c-030.json"
+    },
+    {
+      "id": "quiz-c-031",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-c-031.json"
+    },
+    {
+      "id": "quiz-c-032",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-c-032.json"
+    },
+    {
+      "id": "quiz-c-033",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Memory",
+      "file": "quiz-c-033.json"
+    },
+    {
+      "id": "quiz-c-034",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Basics",
+      "file": "quiz-c-034.json"
+    },
+    {
+      "id": "quiz-c-035",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Files",
+      "file": "quiz-c-035.json"
+    },
+    {
+      "id": "quiz-c-036",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Searching",
+      "file": "quiz-c-036.json"
+    },
+    {
+      "id": "quiz-c-037",
+      "difficulty": "intermediate",
+      "type": "output",
+      "topic": "Sorting",
+      "file": "quiz-c-037.json"
+    },
+    {
+      "id": "quiz-c-038",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Memory",
+      "file": "quiz-c-038.json"
+    },
+    {
+      "id": "quiz-c-039",
+      "difficulty": "intermediate",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-c-039.json"
+    },
+    {
+      "id": "quiz-c-040",
+      "difficulty": "intermediate",
+      "type": "true-false",
+      "topic": "Pointers",
+      "file": "quiz-c-040.json"
+    },
+    {
+      "id": "quiz-c-041",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Memory",
+      "file": "quiz-c-041.json"
+    },
+    {
+      "id": "quiz-c-042",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Memory",
+      "file": "quiz-c-042.json"
+    },
+    {
+      "id": "quiz-c-043",
+      "difficulty": "advanced",
+      "type": "code-analysis",
+      "topic": "Memory",
+      "file": "quiz-c-043.json"
+    },
+    {
+      "id": "quiz-c-044",
+      "difficulty": "advanced",
+      "type": "code-analysis",
+      "topic": "Memory",
+      "file": "quiz-c-044.json"
+    },
+    {
+      "id": "quiz-c-045",
+      "difficulty": "advanced",
+      "type": "output",
+      "topic": "Pointers",
+      "file": "quiz-c-045.json"
+    },
+    {
+      "id": "quiz-c-046",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Data Structures",
+      "file": "quiz-c-046.json"
+    },
+    {
+      "id": "quiz-c-047",
+      "difficulty": "advanced",
+      "type": "output",
+      "topic": "Data Structures",
+      "file": "quiz-c-047.json"
+    },
+    {
+      "id": "quiz-c-048",
+      "difficulty": "advanced",
+      "type": "true-false",
+      "topic": "Data Structures",
+      "file": "quiz-c-048.json"
+    },
+    {
+      "id": "quiz-c-049",
+      "difficulty": "advanced",
+      "type": "true-false",
+      "topic": "Preprocessor",
+      "file": "quiz-c-049.json"
+    },
+    {
+      "id": "quiz-c-050",
+      "difficulty": "advanced",
+      "type": "mcq",
+      "topic": "Advanced Pointers",
+      "file": "quiz-c-050.json"
+    }
+  ]
+}

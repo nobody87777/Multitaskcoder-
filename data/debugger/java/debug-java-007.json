@@ -1,0 +1,21 @@
+{
+  "id": "debug-java-007",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "bugType": "scanner-newline-bug",
+  "title": "Fix the Skipped Name Input",
+  "description": "The program should read an age and then a full name, printing both.",
+  "buggyCode": "import java.util.Scanner;\n\npublic class UserInfo {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter age: \");\n        int age = scanner.nextInt();\n        System.out.print(\"Enter full name: \");\n        String name = scanner.nextLine();\n        System.out.println(age + \" - \" + name);\n    }\n}",
+  "expectedBehavior": "The program should read the age, then read the full name typed on the next line, and print both together.",
+  "actualProblem": "nextInt() reads the number but leaves the trailing newline character in the input buffer. The very next nextLine() call then immediately consumes that leftover newline instead of waiting for the user's name, producing an empty name.",
+  "correctedCode": "import java.util.Scanner;\n\npublic class UserInfo {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter age: \");\n        int age = scanner.nextInt();\n        scanner.nextLine();\n        System.out.print(\"Enter full name: \");\n        String name = scanner.nextLine();\n        System.out.println(age + \" - \" + name);\n    }\n}",
+  "exampleInput": "30\nAsha Verma",
+  "expectedOutput": "Enter age: Enter full name: 30 - Asha Verma",
+  "explanation": "Scanner.nextInt() only consumes the digits, not the newline character that follows them when the user presses Enter. Adding a throwaway scanner.nextLine() call consumes that leftover newline before reading the actual next line of text.",
+  "concepts": [
+    "Scanner",
+    "input buffering",
+    "nextInt() vs nextLine()"
+  ]
+}

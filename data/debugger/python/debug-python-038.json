@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-038",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "inheritance-error",
+  "title": "Fix the Missing Super Call",
+  "description": "The program should define an Employee class that inherits name from a Person base class. Fix the bug.",
+  "buggyCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Employee(Person):\n    def __init__(self, name, salary):\n        self.salary = salary\n\ne = Employee(\"Asha\", 50000)\nprint(e.name)",
+  "expectedBehavior": "The program should print 'Asha', the employee's inherited name.",
+  "actualProblem": "Employee's constructor never calls the parent Person constructor, so self.name is never set. Accessing e.name raises an AttributeError.",
+  "correctedCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\nclass Employee(Person):\n    def __init__(self, name, salary):\n        super().__init__(name)\n        self.salary = salary\n\ne = Employee(\"Asha\", 50000)\nprint(e.name)",
+  "expectedOutput": "Asha",
+  "explanation": "When a subclass defines its own __init__, it overrides the parent's constructor entirely unless it explicitly calls super().__init__(...) to run the parent's initialization logic too.",
+  "concepts": [
+    "inheritance",
+    "super()",
+    "constructors"
+  ]
+}

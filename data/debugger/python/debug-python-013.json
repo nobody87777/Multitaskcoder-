@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-013",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Arrays",
+  "bugType": "index-out-of-bounds",
+  "title": "Fix the List Loop",
+  "description": "The program should print every element of a list using its indices. Fix the bug.",
+  "buggyCode": "numbers = [10, 20, 30]\nfor i in range(len(numbers) + 1):\n    print(numbers[i])",
+  "expectedBehavior": "The program should print 10, 20, and 30, one per line.",
+  "actualProblem": "range(len(numbers) + 1) produces one index too many (0, 1, 2, 3), and numbers[3] does not exist for a 3-element list, raising an IndexError.",
+  "correctedCode": "numbers = [10, 20, 30]\nfor i in range(len(numbers)):\n    print(numbers[i])",
+  "expectedOutput": "10\n20\n30",
+  "explanation": "A list of length n has valid indices 0 through n-1. Looping with range(len(numbers)) produces exactly those indices, without going one step past the end.",
+  "concepts": [
+    "lists",
+    "indexing",
+    "IndexError"
+  ]
+}

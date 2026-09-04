@@ -1,0 +1,22 @@
+{
+  "id": "quiz-java-049",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "code-analysis",
+  "topic": "OOP",
+  "question": "Why does calling s.area() run Circle's implementation, even though s is declared with the type Shape?",
+  "code": "interface Shape {\n    double area();\n}\n\nclass Circle implements Shape {\n    double radius;\n    Circle(double r) { radius = r; }\n    public double area() { return Math.PI * radius * radius; }\n}\n\nShape s = new Circle(2);\nSystem.out.println(s.area());",
+  "options": [
+    "Because Java ignores declared types entirely",
+    "Because interfaces automatically inline their implementing class's code at compile time",
+    "Because area() is static",
+    "Because Java uses the object's actual runtime type (Circle) to resolve the overridden method call — this is runtime polymorphism"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Even though the reference type is the interface Shape, the JVM dispatches the call based on the object's actual runtime class, Circle — this dynamic dispatch is how polymorphism works in Java.",
+  "concepts": [
+    "polymorphism",
+    "dynamic dispatch",
+    "interfaces"
+  ]
+}

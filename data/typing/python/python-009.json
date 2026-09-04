@@ -1,0 +1,15 @@
+{
+  "id": "python-009",
+  "language": "python",
+  "title": "Largest of Two Numbers",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Find and print the larger of two numbers.",
+  "code": "a = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\n\nif a > b:\n    print(a, \"is larger\")\nelif b > a:\n    print(b, \"is larger\")\nelse:\n    print(\"Both numbers are equal\")",
+  "exampleInput": "8\n15",
+  "expectedOutput": "Enter first number: Enter second number: 15 is larger",
+  "concepts": [
+    "if/elif/else",
+    "comparison"
+  ]
+}

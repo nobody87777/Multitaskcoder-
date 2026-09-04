@@ -1,0 +1,58 @@
+{
+  "id": "java-loops-001",
+  "language": "java",
+  "section": "java",
+  "module": "Loops",
+  "moduleNumber": 8,
+  "lessonNumber": 8,
+  "title": "Loops",
+  "difficulty": "beginner",
+  "description": "for, enhanced for, while, and do-while loops, plus break, continue, and nested loops.",
+  "objectives": [
+    "Write classic and enhanced for loops",
+    "Write while and do-while loops",
+    "Use break and continue, including in nested loops",
+    "Choose the right loop type for a given task"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "for, Enhanced for, while, and do-while",
+      "body": "The classic for loop, for (init; condition; update) { ... }, is ideal when you need explicit control over an index or counter. The enhanced for loop (also called for-each), for (Type item : collection) { ... }, iterates directly over the elements of an array or any Iterable (like an ArrayList), without manual index management — preferred whenever you don't actually need the index itself.\n\nwhile (condition) { ... } checks its condition before each iteration, suited to loops with an unknown number of iterations. do { ... } while (condition); checks its condition after each iteration, guaranteeing the body runs at least once even if the condition starts false — useful for input-validation loops that must prompt at least one time."
+    },
+    {
+      "type": "text",
+      "heading": "break, continue, and Nested Loops",
+      "body": "break immediately exits the nearest enclosing loop (or switch); continue skips the rest of the current iteration and proceeds to the loop's next check/update. In nested loops, both break and continue by default only affect the innermost loop they're written in — Java supports labeled break/continue (outer: for (...) { for (...) { break outer; } }) to affect a specifically named outer loop, an escape hatch used sparingly, since restructuring the logic (e.g., with a flag variable or extracting a method with early return) is usually clearer."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Loops {\n    public static void main(String[] args) {\n        int[] numbers = {10, 20, 30};\n        for (int n : numbers) {           // enhanced for\n            System.out.println(n);\n        }\n\n        int count = 0;\n        do {\n            System.out.println(\"Runs at least once: \" + count);\n            count++;\n        } while (count < 3);\n\n        outer:\n        for (int i = 0; i < 3; i++) {\n            for (int j = 0; j < 3; j++) {\n                if (j == 1) continue outer;    // labeled continue affects the OUTER loop\n                System.out.println(i + \",\" + j);\n            }\n        }\n    }\n}",
+      "explanation": "The enhanced for reads each array element without index bookkeeping. continue outer skips straight to the outer loop's next iteration, bypassing the rest of the inner loop entirely — a labeled loop control statement."
+    }
+  ],
+  "keyPoints": [
+    "Classic for gives explicit index control; enhanced for iterates elements directly",
+    "do-while guarantees at least one execution of the loop body",
+    "break/continue affect only the nearest enclosing loop by default",
+    "Labeled break/continue (label: ... break label;) can target a specific outer loop"
+  ],
+  "commonMistakes": [
+    "Using an enhanced for loop when the index itself is actually needed",
+    "Forgetting a do-while's semicolon after the while(condition)",
+    "Using unlabeled break/continue inside nested loops and being surprised it only affects the inner loop"
+  ],
+  "concepts": [
+    "for loop",
+    "enhanced for",
+    "while loop",
+    "do-while",
+    "break",
+    "continue",
+    "labeled loops",
+    "nested loops"
+  ],
+  "previousLesson": "java-conditionals-001",
+  "nextLesson": "java-arrays-001"
+}

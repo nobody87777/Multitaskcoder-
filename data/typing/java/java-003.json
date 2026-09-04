@@ -1,0 +1,16 @@
+{
+  "id": "java-003",
+  "language": "java",
+  "title": "Variables and Data Types",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "description": "Declare variables of different primitive types and print their values.",
+  "code": "public class Variables {\n    public static void main(String[] args) {\n        int age = 21;\n        double height = 5.9;\n        String name = \"Sam\";\n        boolean isStudent = true;\n\n        System.out.println(name + \" \" + age + \" \" + height + \" \" + isStudent);\n    }\n}",
+  "expectedOutput": "Sam 21 5.9 true",
+  "concepts": [
+    "int",
+    "double",
+    "String",
+    "boolean"
+  ]
+}

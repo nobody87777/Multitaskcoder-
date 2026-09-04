@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-026",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Comprehensions",
+  "bugType": "missing-filter-condition",
+  "title": "Fix the Even Squares Comprehension",
+  "description": "The program should build a list of squares of only the even numbers from 1 to 10. Fix the bug.",
+  "buggyCode": "squares = [n * n for n in range(1, 11)]\nprint(squares)",
+  "expectedBehavior": "The program should print [4, 16, 36, 64, 100], the squares of the even numbers 2, 4, 6, 8, 10.",
+  "actualProblem": "The comprehension squares every number from 1 to 10, with no filter condition to keep only the even ones, so odd numbers' squares are included too.",
+  "correctedCode": "squares = [n * n for n in range(1, 11) if n % 2 == 0]\nprint(squares)",
+  "expectedOutput": "[4, 16, 36, 64, 100]",
+  "explanation": "A list comprehension only filters elements when an if clause is added after the loop portion. Without it, every value produced by range() is transformed and included.",
+  "concepts": [
+    "list comprehension",
+    "filtering",
+    "modulus operator"
+  ]
+}

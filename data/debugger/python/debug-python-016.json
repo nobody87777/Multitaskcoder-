@@ -1,0 +1,19 @@
+{
+  "id": "debug-python-016",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Lists",
+  "bugType": "wrong-method-choice",
+  "title": "Fix the List Merge",
+  "description": "The program should combine two lists into one flat list of numbers. Fix the bug.",
+  "buggyCode": "numbers = [1, 2, 3]\nmore_numbers = [4, 5, 6]\nnumbers.append(more_numbers)\nprint(numbers)",
+  "expectedBehavior": "The program should print [1, 2, 3, 4, 5, 6], a single flat list.",
+  "actualProblem": "append() adds its argument as one single element, so the entire more_numbers list gets nested inside numbers as [1, 2, 3, [4, 5, 6]] instead of being merged.",
+  "correctedCode": "numbers = [1, 2, 3]\nmore_numbers = [4, 5, 6]\nnumbers.extend(more_numbers)\nprint(numbers)",
+  "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+  "explanation": "extend() adds each element of the given iterable individually to the list, while append() adds the whole argument as a single new element. Merging two lists requires extend(), not append().",
+  "concepts": [
+    "lists",
+    "append() vs extend()"
+  ]
+}

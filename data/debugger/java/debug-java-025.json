@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-025",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "wrong-return-value",
+  "title": "Fix the Copy-Pasted Getter",
+  "description": "The program should have separate getters for width and height that each return the correct field.",
+  "buggyCode": "public class Rectangle {\n    private int width;\n    private int height;\n\n    Rectangle(int width, int height) {\n        this.width = width;\n        this.height = height;\n    }\n\n    int getWidth() { return width; }\n    int getHeight() { return width; }\n\n    public static void main(String[] args) {\n        Rectangle r = new Rectangle(4, 9);\n        System.out.println(r.getHeight());\n    }\n}",
+  "expectedBehavior": "getHeight() should return 9, the rectangle's height.",
+  "actualProblem": "getHeight() was likely copy-pasted from getWidth() and never updated — it returns width instead of height, so r.getHeight() incorrectly prints 4.",
+  "correctedCode": "public class Rectangle {\n    private int width;\n    private int height;\n\n    Rectangle(int width, int height) {\n        this.width = width;\n        this.height = height;\n    }\n\n    int getWidth() { return width; }\n    int getHeight() { return height; }\n\n    public static void main(String[] args) {\n        Rectangle r = new Rectangle(4, 9);\n        System.out.println(r.getHeight());\n    }\n}",
+  "expectedOutput": "9",
+  "explanation": "Each getter method must return the field matching its own name and purpose. Copy-pasting one getter to create another is a common source of this kind of bug if the returned field isn't also updated.",
+  "concepts": [
+    "getters",
+    "OOP",
+    "copy-paste bug"
+  ]
+}

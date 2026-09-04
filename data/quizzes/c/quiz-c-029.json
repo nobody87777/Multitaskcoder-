@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-029",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "How do you access the age member of a struct variable p declared as struct Person p;?",
+  "options": [
+    "p->age",
+    "p[age]",
+    "p.age",
+    "p::age"
+  ],
+  "correctAnswer": 2,
+  "explanation": "The dot operator (.) accesses a member of a struct variable directly; the arrow operator (->) is used instead when accessing a member through a pointer to the struct.",
+  "concepts": [
+    "structures",
+    "dot operator"
+  ]
+}

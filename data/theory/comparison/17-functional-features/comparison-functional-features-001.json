@@ -1,0 +1,58 @@
+{
+  "id": "comparison-functional-features-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Functional Features",
+  "topic": "Functional Features",
+  "topicNumber": 17,
+  "lessonNumber": 17,
+  "title": "Functional Features: Lambdas, Higher-Order Functions, and Streams",
+  "difficulty": "advanced",
+  "description": "How lambda expressions, higher-order functions, and stream/generator-style processing compare across the three languages.",
+  "objectives": [
+    "Compare lambda expression support",
+    "Compare higher-order function support",
+    "Understand C's function-pointer-based alternative"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "lambda arguments: expression creates a single-expression anonymous function. Higher-order functions (functions taking/returning other functions) are natural, since functions are first-class objects; map(), filter(), and functools.reduce() are the classic functional trio, though list comprehensions often express the same logic more idiomatically. Generators (yield) provide lazy, stream-like processing of potentially large or infinite sequences."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Lambda expressions (since Java 8), (params) -> expression, implement a functional interface's single abstract method. Higher-order-function-style code is expressed through java.util.function's standard interfaces (Predicate, Function, Consumer, Supplier). The Stream API provides declarative, chainable, lazily-evaluated processing pipelines (filter/map/sorted/collect) directly analogous in spirit to Python's generators and comprehensions, though with a more explicit, class-based API."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C has no lambda expressions and no functional interfaces. The equivalent mechanism is function pointers: a function can be passed as an argument to another function (a callback), achieving a similar higher-order-function effect, but with none of the syntactic convenience of a true inline lambda — you must define a separate, named function elsewhere and pass its address. There's no equivalent to Python's generators or Java's Streams; lazy, on-demand sequence processing must be manually implemented (e.g., with a hand-rolled iterator struct and explicit 'next' function)."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python and Java both have genuine lambda syntax and rich functional-style standard library support (map/filter/reduce and comprehensions in Python; Stream API and java.util.function in Java); C has neither — only function pointers, which achieve some of the same higher-order-function flexibility but require a separate named function and none of the inline lambda convenience, generator laziness, or stream-pipeline chaining."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Porting a short, inline Python lambda or Java lambda to C means writing an entire separate, named function just to pass its address — a meaningful increase in verbosity for what's a one-line construct in the other two languages."
+    }
+  ],
+  "keyPoints": [
+    "Python and Java both have genuine lambda syntax and rich functional-style APIs (comprehensions/generators in Python; Streams in Java)",
+    "C has no lambdas — function pointers (passing a separate, named function's address) are the closest equivalent for higher-order functions",
+    "Neither generators (Python) nor the Stream API (Java) have a direct C equivalent — lazy sequence processing must be hand-implemented"
+  ],
+  "concepts": [
+    "lambda expressions",
+    "higher-order functions",
+    "function pointers",
+    "generators",
+    "Stream API"
+  ],
+  "previousLesson": "comparison-generics-001",
+  "nextLesson": "comparison-concurrency-001"
+}

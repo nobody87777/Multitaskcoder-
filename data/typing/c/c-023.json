@@ -1,0 +1,15 @@
+{
+  "id": "c-023",
+  "language": "c",
+  "title": "Array Minimum",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Find the minimum value in an array without using a library function.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {12, 45, 3, 89, 27, 56};\n    int n = sizeof(numbers) / sizeof(numbers[0]);\n    int smallest = numbers[0];\n\n    for (int i = 1; i < n; i++) {\n        if (numbers[i] < smallest) {\n            smallest = numbers[i];\n        }\n    }\n\n    printf(\"Smallest number: %d\\n\", smallest);\n    return 0;\n}",
+  "expectedOutput": "Smallest number: 3",
+  "concepts": [
+    "arrays",
+    "iteration",
+    "comparison"
+  ]
+}

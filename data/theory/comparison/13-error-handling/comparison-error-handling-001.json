@@ -1,0 +1,58 @@
+{
+  "id": "comparison-error-handling-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Error Handling",
+  "topic": "Error Handling",
+  "topicNumber": 13,
+  "lessonNumber": 13,
+  "title": "Error Handling: Exceptions vs. Return Codes",
+  "difficulty": "intermediate",
+  "description": "How Python's and Java's exception-based error handling compares to C's return-code convention.",
+  "objectives": [
+    "Compare exception-based error handling (Python, Java)",
+    "Compare C's return-code convention",
+    "Understand the tradeoffs between the two approaches"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Errors are represented as exceptions, raised with raise and handled with try/except/else/finally. Nearly every kind of failure (bad input, missing file, division by zero) surfaces as an exception, which propagates up the call stack automatically until caught — there's no need to manually check a return value for 'did this fail' after every single call."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Errors are also represented as exceptions (try/catch/finally, throw, throws), with a key structural distinction Python and C both lack: checked exceptions, which the compiler forces you to either catch or explicitly declare a method might propagate — a deliberate design choice to make certain failure modes (like file I/O) impossible to silently ignore at compile time."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C has no exception mechanism at all. The near-universal convention is returning a special value (often -1, NULL, or a nonzero integer) to signal failure, which the caller must remember to explicitly check after every call — nothing in the language enforces this, and forgetting to check a return value is a common, entirely silent source of bugs. Some failure conditions instead manifest as direct undefined behavior (like NULL pointer dereference) rather than any kind of signaled error at all."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python's and Java's exceptions propagate automatically and can't be silently ignored (an uncaught exception crashes the program loudly, with a traceback, rather than silently continuing with bad data) — Java additionally enforces at compile time that certain exceptions be acknowledged. C's return-code convention requires the programmer's active discipline at every single call site, with the compiler providing zero enforcement, and ignoring a failure typically continues execution with invalid/garbage data rather than stopping loudly."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "The consequence of forgetting to handle a possible failure differs sharply: in Python/Java, an unhandled exception is loud and immediate (the program stops with a clear error); in C, an unchecked return code typically results in silent, delayed misbehavior, often far from the actual point of failure — a significant reason C code demands more careful, disciplined error-checking habits."
+    }
+  ],
+  "keyPoints": [
+    "Python and Java both use exceptions that propagate automatically and can't be silently ignored",
+    "Java uniquely enforces checked exceptions at compile time for certain failure categories",
+    "C has no exceptions — failure is signaled via return codes, which the programmer must remember to check manually, with no compiler enforcement"
+  ],
+  "concepts": [
+    "exceptions",
+    "return codes",
+    "error handling patterns",
+    "checked exceptions",
+    "try/catch"
+  ],
+  "previousLesson": "comparison-oop-001",
+  "nextLesson": "comparison-file-handling-001"
+}

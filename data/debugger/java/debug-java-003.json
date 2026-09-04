@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-003",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "bugType": "uninitialized-variable",
+  "title": "Fix the Uninitialized Variable",
+  "description": "The program should double a number and print the result.",
+  "buggyCode": "public class Doubler {\n    public static void main(String[] args) {\n        int result;\n        result = result + 5;\n        System.out.println(result);\n    }\n}",
+  "expectedBehavior": "The program should print 5 (starting from 0 and adding 5).",
+  "actualProblem": "result is declared but never given an initial value before it's read on the right-hand side of the assignment, so the compiler reports 'variable result might not have been initialized'.",
+  "correctedCode": "public class Doubler {\n    public static void main(String[] args) {\n        int result = 0;\n        result = result + 5;\n        System.out.println(result);\n    }\n}",
+  "expectedOutput": "5",
+  "explanation": "Java requires local variables to be definitely assigned a value before they are read, unlike instance fields which get automatic defaults. Declaring int result; alone leaves it without a usable value.",
+  "concepts": [
+    "variables",
+    "initialization",
+    "compile-time checking"
+  ]
+}

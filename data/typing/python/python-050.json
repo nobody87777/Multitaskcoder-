@@ -1,0 +1,15 @@
+{
+  "id": "python-050",
+  "language": "python",
+  "title": "Mini Expense Tracker",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Build an in-memory expense tracker class that records expenses and reports a total.",
+  "code": "class ExpenseTracker:\n    def __init__(self):\n        self.expenses = []\n\n    def add_expense(self, category, amount):\n        self.expenses.append({\"category\": category, \"amount\": amount})\n\n    def total(self):\n        return sum(e[\"amount\"] for e in self.expenses)\n\n    def summary(self):\n        for e in self.expenses:\n            print(f\"{e['category']}: {e['amount']}\")\n        print(\"Total:\", self.total())\n\n\ntracker = ExpenseTracker()\ntracker.add_expense(\"Food\", 250)\ntracker.add_expense(\"Travel\", 120)\ntracker.summary()",
+  "expectedOutput": "Food: 250\nTravel: 120\nTotal: 370",
+  "concepts": [
+    "classes",
+    "generator expressions",
+    "sum()"
+  ]
+}

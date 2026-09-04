@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-028",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What must a non-abstract class do when it implements an interface?",
+  "options": [
+    "Nothing extra is required",
+    "Provide concrete implementations for all of the interface's abstract methods",
+    "Redeclare all of the interface's constants",
+    "Extend the interface using the extends keyword"
+  ],
+  "correctAnswer": 1,
+  "explanation": "A concrete class that implements an interface must supply working implementations for every abstract method the interface declares (unless it is itself abstract).",
+  "concepts": [
+    "interfaces",
+    "implements"
+  ]
+}

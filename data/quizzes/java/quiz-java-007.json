@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-007",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Conditionals",
+  "question": "What will this code print?",
+  "code": "int x = 4;\nif (x > 5) {\n    System.out.println(\"Big\");\n} else if (x == 4) {\n    System.out.println(\"Four\");\n} else {\n    System.out.println(\"Small\");\n}",
+  "options": [
+    "Big",
+    "Small",
+    "Four",
+    "Nothing prints"
+  ],
+  "correctAnswer": 2,
+  "explanation": "x is 4, which fails the first condition (x > 5) but matches the else if condition (x == 4), so 'Four' is printed.",
+  "concepts": [
+    "if/else if",
+    "conditionals"
+  ]
+}

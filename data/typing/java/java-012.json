@@ -1,0 +1,16 @@
+{
+  "id": "java-012",
+  "language": "java",
+  "title": "Grade Calculator",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Assign a letter grade to a numeric score using an if/else if chain.",
+  "code": "import java.util.Scanner;\n\npublic class GradeCalculator {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int score = scanner.nextInt();\n        char grade;\n\n        if (score >= 90) {\n            grade = 'A';\n        } else if (score >= 80) {\n            grade = 'B';\n        } else if (score >= 70) {\n            grade = 'C';\n        } else if (score >= 60) {\n            grade = 'D';\n        } else {\n            grade = 'F';\n        }\n\n        System.out.println(\"Grade: \" + grade);\n    }\n}",
+  "exampleInput": "84",
+  "expectedOutput": "Grade: B",
+  "concepts": [
+    "if/else if chain",
+    "char",
+    "range classification"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "python-regular-expressions-001",
+  "language": "python",
+  "section": "python",
+  "module": "Regular Expressions",
+  "moduleNumber": 24,
+  "lessonNumber": 26,
+  "title": "Regular Expressions",
+  "difficulty": "intermediate",
+  "description": "Pattern matching with the re module: character classes, quantifiers, groups, and common operations.",
+  "objectives": [
+    "Understand what a regular expression pattern describes",
+    "Use character classes and quantifiers",
+    "Use groups to extract parts of a match",
+    "Use search(), match(), findall(), and sub()"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Patterns, Character Classes, and Quantifiers",
+      "body": "A regular expression (regex) is a compact pattern language for describing text to match. Character classes match one character from a set: \\d (a digit), \\w (a word character: letter, digit, underscore), \\s (whitespace), and a custom class like [aeiou] (any one of those letters); prefixing a class with ^ inside brackets, [^0-9], negates it. Quantifiers control repetition: * (zero or more), + (one or more), ? (zero or one), and {n,m} (between n and m repetitions). . matches any character except a newline by default; ^ and $ anchor a pattern to the start/end of the string (or line, in multiline mode).\n\nGroups, written with parentheses (pattern), both group a sub-pattern for a quantifier to apply to, and capture the matched text for later extraction — match.group(1) retrieves the first captured group's text."
+    },
+    {
+      "type": "text",
+      "heading": "Common Operations",
+      "body": "The re module's key functions: re.search(pattern, text) finds the first match anywhere in the string (or None); re.match(pattern, text) only checks for a match at the very start of the string; re.findall(pattern, text) returns a list of all non-overlapping matches; re.sub(pattern, replacement, text) returns a new string with every match replaced. Compiling a frequently-reused pattern with re.compile(pattern) once, then calling .search()/.match() on the resulting object, is more efficient than repeatedly passing the raw pattern string. Regex patterns are commonly written as raw strings (r\"...\") to avoid Python's own backslash escaping colliding with regex's use of backslashes."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import re\n\ntext = \"Contact: asha@example.com or ravi@example.org\"\nemails = re.findall(r\"[\\w.]+@[\\w.]+\", text)\nprint(emails)   # ['asha@example.com', 'ravi@example.org']\n\nmatch = re.search(r\"(\\d{3})-(\\d{4})\", \"Call 555-1234 now\")\nif match:\n    print(match.group(0), match.group(1), match.group(2))   # 555-1234 555 1234\n\ncensored = re.sub(r\"\\d\", \"*\", \"My PIN is 4821\")\nprint(censored)   # My PIN is ****",
+      "explanation": "The email pattern uses a character class and + to match one or more word/dot characters on each side of @. Groups in the phone pattern let group(1)/group(2) retrieve the area code and number separately."
+    }
+  ],
+  "keyPoints": [
+    "\\d, \\w, \\s (and custom [..] classes) match categories of characters; *, +, ?, {n,m} control repetition",
+    "Parenthesized groups both scope a sub-pattern and capture matched text",
+    "search() finds a match anywhere; match() only anchors at the start of the string",
+    "findall() collects every match; sub() replaces every match with new text"
+  ],
+  "commonMistakes": [
+    "Using match() when search() was intended, missing matches not at the very start of the string",
+    "Forgetting to use raw strings (r\"...\"), causing Python's own escape sequences to interfere with the regex",
+    "Writing an overly greedy or ambiguous pattern that matches more (or less) text than intended"
+  ],
+  "concepts": [
+    "regular expressions",
+    "regex",
+    "character classes",
+    "quantifiers",
+    "groups",
+    "re.search()",
+    "re.findall()",
+    "re.sub()"
+  ],
+  "previousLesson": "python-copying-001",
+  "nextLesson": "python-standard-library-001"
+}

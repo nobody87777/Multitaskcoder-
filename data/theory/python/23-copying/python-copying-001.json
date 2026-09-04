@@ -1,0 +1,56 @@
+{
+  "id": "python-copying-001",
+  "language": "python",
+  "section": "python",
+  "module": "Copying",
+  "moduleNumber": 23,
+  "lessonNumber": 25,
+  "title": "Copying: Assignment, Shallow Copy, and Deep Copy",
+  "difficulty": "advanced",
+  "description": "The difference between assignment, shallow copies, and deep copies, especially for nested mutable structures.",
+  "objectives": [
+    "Distinguish assignment (aliasing) from copying",
+    "Understand what a shallow copy does and doesn't copy",
+    "Use copy.deepcopy() for fully independent nested structures",
+    "Recognize common copying mistakes"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Assignment vs. Shallow Copy",
+      "body": "b = a never copies a mutable object — it makes b an alias, another name for the exact same object as a. Any mutation through either name is visible through the other. To actually get a new, independent object, you need an explicit copy. list(a), a.copy(), or a[:] all create a shallow copy: a new outer container, but populated with references to the same inner elements as the original. For a flat list of immutable values (numbers, strings), a shallow copy behaves exactly like an independent copy, since those inner elements can't be mutated in place anyway.\n\nThe distinction becomes critical for nested mutable structures: a shallow copy of a list of lists creates a new outer list, but the inner lists inside it are still the very same objects as in the original — mutating an inner list through the copy still affects the original."
+    },
+    {
+      "type": "text",
+      "heading": "Deep Copy and the copy Module",
+      "body": "The copy module's copy.copy(obj) explicitly performs a shallow copy (same behavior as the shortcuts above but works generically on any type, not just lists). copy.deepcopy(obj) recursively copies every nested object it finds, producing a result with no shared mutable state with the original at any level — the only way to guarantee a truly independent nested structure. Deep copying costs more time and memory proportional to the structure's total size, so it should be used deliberately, not by default, when a shallow copy would suffice."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import copy\n\noriginal = [[1, 2], [3, 4]]\nshallow = copy.copy(original)\nshallow[0][0] = 99\nprint(original[0][0])          # 99 — inner list was shared!\n\ndeep = copy.deepcopy(original)\ndeep[0][0] = -1\nprint(original[0][0])          # still 99 — deep copy is fully independent",
+      "explanation": "The shallow copy's outer list is new, but its inner lists are shared with original, so mutating shallow[0] leaks into original. deepcopy() recursively duplicates every nested list, fully isolating the two structures."
+    }
+  ],
+  "keyPoints": [
+    "b = a aliases the same object — it is not a copy at all",
+    "A shallow copy (list(a), a.copy(), a[:], copy.copy()) copies the outer container only",
+    "Nested mutable objects are still shared between the original and a shallow copy",
+    "copy.deepcopy() recursively copies everything, at the cost of more time/memory"
+  ],
+  "commonMistakes": [
+    "Assuming a.copy() fully isolates a list of lists (it doesn't — only the outer list is new)",
+    "Confusing plain assignment with copying entirely",
+    "Reaching for deepcopy() by default even when a shallow copy (or no copy at all) would be sufficient and faster"
+  ],
+  "concepts": [
+    "copying",
+    "aliasing",
+    "shallow copy",
+    "deep copy",
+    "copy module",
+    "nested mutable objects"
+  ],
+  "previousLesson": "python-data-model-001",
+  "nextLesson": "python-regular-expressions-001"
+}

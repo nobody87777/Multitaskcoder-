@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-019",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Recursion",
+  "bugType": "missing-base-case",
+  "title": "Fix the Infinite Factorial",
+  "description": "The program should compute the factorial of a number using recursion. Fix the bug.",
+  "buggyCode": "def factorial(n):\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+  "expectedBehavior": "The program should print 120, the factorial of 5.",
+  "actualProblem": "There is no base case to stop the recursion, so factorial keeps calling itself with smaller and smaller n forever (n, n-1, n-2, ... into negative numbers), eventually raising a RecursionError.",
+  "correctedCode": "def factorial(n):\n    if n == 0 or n == 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))",
+  "expectedOutput": "120",
+  "explanation": "Every recursive function needs a base case — a condition where it stops calling itself and returns directly. Without one, the recursion never terminates and exhausts the call stack.",
+  "concepts": [
+    "recursion",
+    "base case",
+    "RecursionError"
+  ]
+}

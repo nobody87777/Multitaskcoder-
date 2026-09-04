@@ -1,0 +1,53 @@
+{
+  "id": "c-enumerations-and-typedef-001",
+  "language": "c",
+  "section": "c",
+  "module": "Enumerations and typedef",
+  "moduleNumber": 17,
+  "lessonNumber": 18,
+  "title": "Enumerations and typedef",
+  "difficulty": "intermediate",
+  "description": "Named integer constants with enum, and creating type aliases with typedef.",
+  "objectives": [
+    "Define and use enums for named integer constants",
+    "Create type aliases with typedef",
+    "Combine typedef with struct/enum for cleaner syntax"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "enum: Named Integer Constants",
+      "body": "enum Color { RED, GREEN, BLUE }; declares a set of named integer constants — by default, RED is 0, GREEN is 1, BLUE is 2, sequentially assigned unless overridden explicitly (enum Color { RED = 1, GREEN, BLUE }; makes GREEN 2 and BLUE 3, continuing sequentially from an explicit value). enum Color favoriteColor = GREEN; declares a variable of that enum type. Under the hood, an enum in C is really just an int with named values for readability — the compiler does not strictly enforce that a Color variable only ever holds RED/GREEN/BLUE; comparing it to an arbitrary unrelated integer is legal (if semantically meaningless) C, unlike Java's considerably more type-safe enums."
+    },
+    {
+      "type": "text",
+      "heading": "typedef",
+      "body": "typedef creates an alias for an existing type: typedef unsigned long ulong; lets ulong be used anywhere unsigned long could be, purely for readability/brevity. typedef is especially common paired with struct and enum, since referring to a plain struct type in C otherwise always requires repeating the struct keyword: typedef struct { int x, y; } Point; lets you write Point p; instead of the more verbose struct Point p; every time (note this particular form defines an anonymous struct with the typedef name attached directly, a very common idiom). typedef is purely a compile-time convenience — it introduces no new type at runtime, only an alternate name the compiler treats identically to the original type."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nenum Status { PENDING, ACTIVE, CLOSED };\n\ntypedef struct {\n    int x, y;\n} Point;\n\ntypedef enum { LOW, MEDIUM, HIGH } Priority;\n\nint main() {\n    enum Status s = ACTIVE;\n    printf(\"%d\\n\", s);           // 1\n\n    Point p = {3, 4};             // no 'struct' keyword needed, thanks to typedef\n    printf(\"(%d, %d)\\n\", p.x, p.y);\n\n    Priority level = HIGH;\n    printf(\"%d\\n\", level);        // 2\n    return 0;\n}",
+      "explanation": "ACTIVE prints as 1, confirming enum constants are just named integers under the hood. Point and Priority demonstrate typedef eliminating the need to repeat struct/enum at every variable declaration."
+    }
+  ],
+  "keyPoints": [
+    "enum defines named integer constants, sequentially numbered from 0 unless overridden",
+    "C enums are weakly type-checked — they're really just named ints, unlike Java's stronger enum type safety",
+    "typedef creates a compile-time-only alias for an existing type, introducing no new runtime type",
+    "typedef struct {...} Name; is the common idiom for using a struct type without repeating the struct keyword"
+  ],
+  "commonMistakes": [
+    "Assuming C enums prevent assigning an arbitrary, unrelated integer value (they don't enforce this)",
+    "Forgetting the struct keyword when declaring a struct variable without a typedef alias in place",
+    "Assuming typedef creates a genuinely distinct type rather than just an alternate name for an existing one"
+  ],
+  "concepts": [
+    "enum",
+    "typedef",
+    "type aliases",
+    "named constants"
+  ],
+  "previousLesson": "c-unions-001",
+  "nextLesson": "c-file-handling-001"
+}

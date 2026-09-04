@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-006",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Variables",
+  "bugType": "uninitialized-variable",
+  "title": "Fix the Uninitialized Total",
+  "description": "The program should sum three numbers and print the result.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int total;\n    total = total + 5 + 10 + 15;\n    printf(\"%d\\n\", total);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 30, the sum of 5, 10, and 15.",
+  "actualProblem": "total is read on the right-hand side of the assignment before it has ever been given a value. Its initial contents are indeterminate garbage left over in memory, so the result is unpredictable rather than 30.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int total = 0;\n    total = total + 5 + 10 + 15;\n    printf(\"%d\\n\", total);\n    return 0;\n}",
+  "expectedOutput": "30",
+  "explanation": "Unlike some languages, C does not automatically zero-initialize local variables. A variable must be explicitly given a starting value before it's used in a calculation, or the result is undefined.",
+  "concepts": [
+    "variables",
+    "initialization",
+    "undefined behavior"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-030",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "What is the defining characteristic of a C union, unlike a struct?",
+  "options": [
+    "A union can contain function pointers only",
+    "A union's members must all be the same type",
+    "A union cannot be used inside functions",
+    "All members of a union share the same memory location, so writing to one member overwrites the others"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Unlike a struct (where each member has its own storage), a union allocates a single shared block of memory sized for its largest member — all members overlap the same bytes.",
+  "concepts": [
+    "unions",
+    "memory layout"
+  ]
+}

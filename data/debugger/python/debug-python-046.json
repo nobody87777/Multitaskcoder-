@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-046",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Exceptions",
+  "bugType": "silent-exception-swallowing",
+  "title": "Fix the Silently Swallowed Exception",
+  "description": "The program should process a list of strings into integers and report any conversion problems. Fix the bug.",
+  "buggyCode": "def parse_all(values):\n    results = []\n    for v in values:\n        try:\n            results.append(int(v))\n        except:\n            pass\n    return results\n\nprint(parse_all([\"1\", \"2\", \"oops\", \"4\"]))",
+  "expectedBehavior": "The program should convert the valid numbers and clearly report that 'oops' could not be converted, rather than silently dropping it with no trace.",
+  "actualProblem": "The bare except: pass catches every exception (including the ValueError from int('oops')) and does nothing with it, silently discarding the failure. The caller has no idea the input was malformed or incomplete.",
+  "correctedCode": "def parse_all(values):\n    results = []\n    for v in values:\n        try:\n            results.append(int(v))\n        except ValueError:\n            print(f\"Skipping invalid value: {v}\")\n    return results\n\nprint(parse_all([\"1\", \"2\", \"oops\", \"4\"]))",
+  "expectedOutput": "Skipping invalid value: oops\n[1, 2, 4]",
+  "explanation": "A bare except: pass hides errors instead of handling them, making bugs far harder to diagnose. Catching the specific expected exception (ValueError here) and reporting it keeps failures visible while still letting the program continue.",
+  "concepts": [
+    "exception handling",
+    "bare except",
+    "silent failures"
+  ]
+}

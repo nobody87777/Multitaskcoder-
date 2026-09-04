@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-036",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "Collections",
+  "bugType": "concurrent-modification",
+  "title": "Fix the ConcurrentModificationException",
+  "description": "The program should remove all negative numbers from an ArrayList.",
+  "buggyCode": "import java.util.ArrayList;\n\npublic class RemoveNegatives {\n    public static void main(String[] args) {\n        ArrayList<Integer> numbers = new ArrayList<>();\n        numbers.add(3);\n        numbers.add(-1);\n        numbers.add(5);\n        numbers.add(-2);\n        for (int n : numbers) {\n            if (n < 0) {\n                numbers.remove(Integer.valueOf(n));\n            }\n        }\n        System.out.println(numbers);\n    }\n}",
+  "expectedBehavior": "The program should print [3, 5], with all negative numbers removed.",
+  "actualProblem": "Modifying an ArrayList (via remove()) while iterating over it with a for-each loop invalidates the loop's internal iterator, throwing a ConcurrentModificationException on the next iteration.",
+  "correctedCode": "import java.util.ArrayList;\nimport java.util.Iterator;\n\npublic class RemoveNegatives {\n    public static void main(String[] args) {\n        ArrayList<Integer> numbers = new ArrayList<>();\n        numbers.add(3);\n        numbers.add(-1);\n        numbers.add(5);\n        numbers.add(-2);\n        Iterator<Integer> it = numbers.iterator();\n        while (it.hasNext()) {\n            if (it.next() < 0) {\n                it.remove();\n            }\n        }\n        System.out.println(numbers);\n    }\n}",
+  "expectedOutput": "[3, 5]",
+  "explanation": "A for-each loop's iterator does not expect the underlying collection to change mid-iteration. Removing elements safely during iteration requires using the Iterator's own remove() method instead of the collection's.",
+  "concepts": [
+    "ArrayList",
+    "ConcurrentModificationException",
+    "Iterator"
+  ]
+}

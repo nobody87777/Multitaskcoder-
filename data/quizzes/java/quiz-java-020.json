@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-020",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Operators",
+  "question": "What does the expression 10 % 3 evaluate to in Java?",
+  "options": [
+    "3",
+    "1",
+    "3.33",
+    "0"
+  ],
+  "correctAnswer": 1,
+  "explanation": "% is the modulus operator, returning the remainder of integer division; 10 divided by 3 is 3 remainder 1.",
+  "concepts": [
+    "modulus operator",
+    "operators"
+  ]
+}

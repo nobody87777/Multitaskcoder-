@@ -1,0 +1,59 @@
+{
+  "id": "c-dynamic-memory-001",
+  "language": "c",
+  "section": "c",
+  "module": "Dynamic Memory",
+  "moduleNumber": 14,
+  "lessonNumber": 15,
+  "title": "Dynamic Memory",
+  "difficulty": "advanced",
+  "description": "Stack vs. heap, malloc/calloc/realloc/free, allocation failure, and the memory bugs that come with manual management.",
+  "objectives": [
+    "Understand the stack/heap distinction in C",
+    "Use malloc, calloc, realloc, and free correctly",
+    "Handle allocation failure",
+    "Recognize memory leaks, dangling pointers, use-after-free, and double free"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Stack vs. Heap, and malloc/calloc",
+      "body": "Local variables live on the stack, automatically allocated on function entry and freed on return — fast, but fixed in size and lifetime tied strictly to the enclosing function call. The heap is a separate region of memory that the programmer explicitly manages, letting data outlive the function that created it, and letting the size be determined at runtime rather than fixed at compile time.\n\nmalloc(size) requests size bytes from the heap and returns a void* pointer to the start of that (uninitialized — containing indeterminate garbage) block, or NULL if the allocation fails (e.g., insufficient memory available). calloc(count, size) allocates space for count elements of size bytes each (count * size total) and, unlike malloc, zero-initializes every byte — useful when you specifically need a clean, zeroed starting block, at a small extra performance cost for the zeroing."
+    },
+    {
+      "type": "text",
+      "heading": "realloc, free, and Common Memory Bugs",
+      "body": "realloc(ptr, newSize) attempts to resize a previously allocated block, possibly moving it to a new address and copying the old contents over if it can't grow in place, returning a pointer to the (possibly relocated) block, or NULL if it fails — critically, if it fails, the original block at ptr is left untouched, so realloc's result should always be assigned to a separate temporary pointer first, checked for NULL, and only then assigned back to the original variable; assigning directly (ptr = realloc(ptr, newSize);) risks losing the only reference to the original block on failure, leaking it.\n\nfree(ptr) releases a block back to the system once it's no longer needed. Every successful malloc()/calloc()/realloc() should eventually be matched with exactly one free() call. The classic memory bugs: a memory leak (losing the only pointer to an allocated block without freeing it first, so it can never be freed for the rest of the program's run); a dangling pointer (a pointer that still holds the address of memory that's already been freed); use-after-free (dereferencing a dangling pointer); and double free (calling free() twice on the same pointer) — all of these are undefined behavior, and setting a pointer to NULL immediately after freeing it is a common defensive habit that helps catch some of these mistakes."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 5;\n    int *arr = malloc(n * sizeof(int));   // size for n ints, not just one\n    if (arr == NULL) {\n        printf(\"Allocation failed\\n\");\n        return 1;\n    }\n    for (int i = 0; i < n; i++) arr[i] = i * i;\n\n    int *bigger = realloc(arr, 10 * sizeof(int));   // temp pointer, checked before reassigning\n    if (bigger == NULL) {\n        free(arr);\n        return 1;\n    }\n    arr = bigger;\n\n    printf(\"%d\\n\", arr[4]);   // 16\n    free(arr);                 // exactly one free() for this allocation\n    arr = NULL;                // defensive: avoid an accidental dangling-pointer reuse\n    return 0;\n}",
+      "explanation": "malloc(n * sizeof(int)) sizes the allocation for all n elements. realloc's result is checked via a separate temporary (bigger) before being assigned back to arr, avoiding a leak if it had failed."
+    }
+  ],
+  "keyPoints": [
+    "The heap allows runtime-sized, function-outliving allocations; malloc/calloc/realloc/free manage it manually",
+    "calloc zero-initializes its allocation; malloc leaves it as indeterminate garbage",
+    "realloc's result must be checked via a temporary pointer before overwriting the original, to avoid leaking on failure",
+    "Every malloc/calloc/realloc needs exactly one matching free() — no more, no less"
+  ],
+  "commonMistakes": [
+    "Not checking malloc/calloc/realloc's return value for NULL before using it",
+    "Assigning realloc's result directly back into the original pointer variable, risking a leak on failure",
+    "Freeing a pointer twice (double free) or using a pointer after it's already been freed (use-after-free)"
+  ],
+  "concepts": [
+    "stack vs heap",
+    "malloc",
+    "calloc",
+    "realloc",
+    "free",
+    "memory leaks",
+    "dangling pointers",
+    "use-after-free",
+    "double free"
+  ],
+  "previousLesson": "c-arrays-and-pointers-001",
+  "nextLesson": "c-structures-001"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "java-049",
+  "language": "java",
+  "title": "Contact Manager",
+  "difficulty": "advanced",
+  "topic": "Collections",
+  "description": "Build an in-memory contact manager backed by a HashMap, with sorted output.",
+  "code": "import java.util.HashMap;\nimport java.util.TreeMap;\n\npublic class ContactManager {\n    private final HashMap<String, String> contacts = new HashMap<>();\n\n    void addContact(String name, String phone) {\n        contacts.put(name, phone);\n    }\n\n    void listContacts() {\n        TreeMap<String, String> sorted = new TreeMap<>(contacts);\n        for (var entry : sorted.entrySet()) {\n            System.out.println(entry.getKey() + \": \" + entry.getValue());\n        }\n    }\n\n    public static void main(String[] args) {\n        ContactManager manager = new ContactManager();\n        manager.addContact(\"Asha\", \"9876543210\");\n        manager.addContact(\"Ravi\", \"9123456780\");\n        manager.listContacts();\n    }\n}",
+  "expectedOutput": "Asha: 9876543210\nRavi: 9123456780",
+  "concepts": [
+    "HashMap",
+    "TreeMap",
+    "encapsulation"
+  ]
+}

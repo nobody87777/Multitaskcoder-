@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-007",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Input/Output",
+  "question": "Which format specifier should be used with printf() to print a value of type double?",
+  "options": [
+    "%d",
+    "%c",
+    "%f",
+    "%s"
+  ],
+  "correctAnswer": 2,
+  "explanation": "%f is used to print floating-point values such as float and double in their decimal form.",
+  "concepts": [
+    "format specifiers",
+    "printf()"
+  ]
+}

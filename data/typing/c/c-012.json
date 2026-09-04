@@ -1,0 +1,16 @@
+{
+  "id": "c-012",
+  "language": "c",
+  "title": "Grade Calculator",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Assign a letter grade to a numeric score using an if/else if chain.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int score;\n    char grade;\n    scanf(\"%d\", &score);\n\n    if (score >= 90) grade = 'A';\n    else if (score >= 80) grade = 'B';\n    else if (score >= 70) grade = 'C';\n    else if (score >= 60) grade = 'D';\n    else grade = 'F';\n\n    printf(\"Grade: %c\\n\", grade);\n    return 0;\n}",
+  "exampleInput": "84",
+  "expectedOutput": "Grade: B",
+  "concepts": [
+    "if/else if chain",
+    "char",
+    "range classification"
+  ]
+}

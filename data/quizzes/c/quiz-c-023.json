@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-023",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Strings",
+  "question": "How does C typically represent the end of a string stored in a char array?",
+  "options": [
+    "With a null terminator character '\\0'",
+    "With a newline character",
+    "C strings have no defined end marker",
+    "With the character '#'"
+  ],
+  "correctAnswer": 0,
+  "explanation": "C strings are just char arrays that end with a null byte '\\0'; functions like printf(\"%s\") and strlen() rely on finding this terminator to know where the string ends.",
+  "concepts": [
+    "strings",
+    "null terminator"
+  ]
+}

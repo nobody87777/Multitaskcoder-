@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-041",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Memory",
+  "question": "What does malloc(n * sizeof(int)) return if the allocation succeeds?",
+  "options": [
+    "A pointer to a block of uninitialized memory large enough for n ints",
+    "An array initialized to all zeros",
+    "The integer value n",
+    "A file descriptor"
+  ],
+  "correctAnswer": 0,
+  "explanation": "malloc() reserves the requested number of bytes on the heap and returns a pointer to that block; unlike calloc(), the memory contents are left uninitialized (indeterminate).",
+  "concepts": [
+    "malloc()",
+    "dynamic memory allocation"
+  ]
+}

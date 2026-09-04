@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-024",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "type-error",
+  "title": "Fix the Set Indexing",
+  "description": "The program should print the first item added to a set of unique tags. Fix the bug.",
+  "buggyCode": "tags = {\"python\", \"java\", \"c\"}\nprint(tags[0])",
+  "expectedBehavior": "The program should print one of the tags without crashing.",
+  "actualProblem": "Sets are unordered and do not support indexing with square brackets; tags[0] raises a TypeError because 'set' object is not subscriptable.",
+  "correctedCode": "tags = {\"python\", \"java\", \"c\"}\nprint(next(iter(tags)))",
+  "expectedOutput": "A single tag string from the set (sets are unordered, so which one prints is not guaranteed).",
+  "explanation": "Unlike lists and tuples, sets have no defined order and provide no indexing operator. To get an arbitrary element out of a set, convert it to an iterator (or a list) first.",
+  "concepts": [
+    "sets",
+    "TypeError",
+    "subscriptable"
+  ]
+}

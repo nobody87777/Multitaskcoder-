@@ -1,0 +1,16 @@
+{
+  "id": "java-018",
+  "language": "java",
+  "title": "Reverse a Number",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Reverse the digits of an integer using a loop.",
+  "code": "import java.util.Scanner;\n\npublic class ReverseNumber {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int num = scanner.nextInt();\n        int original = num;\n        int reversed = 0;\n\n        while (num > 0) {\n            int digit = num % 10;\n            reversed = reversed * 10 + digit;\n            num /= 10;\n        }\n\n        System.out.println(\"Reverse of \" + original + \" is \" + reversed);\n    }\n}",
+  "exampleInput": "1234",
+  "expectedOutput": "Reverse of 1234 is 4321",
+  "concepts": [
+    "while loop",
+    "modulus",
+    "integer division"
+  ]
+}

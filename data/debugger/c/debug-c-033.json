@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-033",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "bugType": "typedef-error",
+  "title": "Fix the Typo in a Typedef Name",
+  "description": "The program should use a typedef alias for a Point structure.",
+  "buggyCode": "#include <stdio.h>\n\ntypedef struct {\n    int x, y;\n} Point;\n\nint main() {\n    Pointt p;\n    p.x = 1;\n    p.y = 2;\n    printf(\"%d,%d\\n\", p.x, p.y);\n    return 0;\n}",
+  "expectedBehavior": "The program should compile and print '1,2'.",
+  "actualProblem": "The typedef defines the alias Point, but main() uses Pointt (with an extra 't'), which was never defined anywhere. The compiler reports 'unknown type name Pointt'.",
+  "correctedCode": "#include <stdio.h>\n\ntypedef struct {\n    int x, y;\n} Point;\n\nint main() {\n    Point p;\n    p.x = 1;\n    p.y = 2;\n    printf(\"%d,%d\\n\", p.x, p.y);\n    return 0;\n}",
+  "expectedOutput": "1,2",
+  "explanation": "A typedef creates an exact new name for a type, and that name must be used precisely wherever the type is referenced afterward. Any typo in the alias is treated as a completely unknown, undefined type.",
+  "concepts": [
+    "typedef",
+    "structures",
+    "compile error"
+  ]
+}

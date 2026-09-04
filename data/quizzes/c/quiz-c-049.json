@@ -1,0 +1,19 @@
+{
+  "id": "quiz-c-049",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "true-false",
+  "topic": "Preprocessor",
+  "question": "True or False: A C preprocessor macro defined with #define is type-checked by the compiler just like a regular function.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "#define macros are simple text substitutions performed by the preprocessor before compilation — they have no type information and are not type-checked the way real functions are, which can lead to subtle bugs.",
+  "concepts": [
+    "macros",
+    "#define",
+    "preprocessor"
+  ]
+}

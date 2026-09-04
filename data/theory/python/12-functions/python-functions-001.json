@@ -1,0 +1,59 @@
+{
+  "id": "python-functions-001",
+  "language": "python",
+  "section": "python",
+  "module": "Functions",
+  "moduleNumber": 12,
+  "lessonNumber": 13,
+  "title": "Functions",
+  "difficulty": "intermediate",
+  "description": "Defining and calling functions: parameters, arguments, *args/**kwargs, return, docstrings, and scope.",
+  "objectives": [
+    "Define functions with positional, keyword, and default parameters",
+    "Use *args and **kwargs for variable-length arguments",
+    "Understand return values, including multiple returns via tuples",
+    "Understand local/global/nonlocal scope and first-class functions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Defining and Calling Functions",
+      "body": "Functions are defined with def name(parameters):, and called with name(arguments). Parameters can have default values (def greet(name=\"World\"):), making them optional at the call site. Arguments can be passed positionally (matched by order) or by keyword (matched by name, e.g. greet(name=\"Asha\")), and keyword arguments can appear in any order as long as they come after positional ones. A docstring — a string literal as the very first statement in a function body — documents what the function does and is accessible via help(func) or func.__doc__.\n\nVariable-length arguments let a function accept an arbitrary number of inputs: *args collects extra positional arguments into a tuple, and **kwargs collects extra keyword arguments into a dict. These are commonly used for wrapper/decorator functions that need to forward arbitrary arguments to another function."
+    },
+    {
+      "type": "text",
+      "heading": "Return Values and Scope",
+      "body": "return sends a value back to the caller and immediately exits the function; a function with no return statement (or a bare return) implicitly returns None. To 'return multiple values', a function actually returns a single tuple, which the caller typically unpacks: return min_val, max_val, then lo, hi = find_range(numbers).\n\nEvery function has its own local scope for variables assigned inside it. Reading a name that isn't local falls back to the enclosing (nonlocal), then global (module-level), then built-in scope — this lookup order is called LEGB. Assigning to a name inside a function makes it local by default, even if a same-named global exists; to instead modify a global from inside a function, you must declare it explicitly with the global keyword (or nonlocal, for enclosing-function variables in nested functions). Functions are first-class objects in Python: they can be assigned to variables, stored in data structures, and passed as arguments to other functions."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "def describe(name, age=0, *hobbies, **extra):\n    print(name, age, hobbies, extra)\n\ndescribe(\"Asha\", 21, \"chess\", \"reading\", city=\"Pune\")\n# Asha 21 ('chess', 'reading') {'city': 'Pune'}\n\ndef min_max(numbers):\n    return min(numbers), max(numbers)\n\nlo, hi = min_max([4, 1, 9, 2])\nprint(lo, hi)   # 1 9",
+      "explanation": "*hobbies collects any extra positional arguments as a tuple; **extra collects any extra keyword arguments as a dict. min_max returns a tuple that the caller unpacks into lo and hi."
+    }
+  ],
+  "keyPoints": [
+    "Parameters can be positional, keyword, or given default values",
+    "*args gathers extra positional arguments into a tuple; **kwargs gathers extra keyword arguments into a dict",
+    "return with a comma-separated list actually returns one tuple — 'multiple returns' means unpacking that tuple",
+    "LEGB (Local, Enclosing, Global, Built-in) governs name lookup; global/nonlocal are needed to rebind outer variables"
+  ],
+  "commonMistakes": [
+    "Assigning to a variable inside a function and expecting it to modify a same-named global without `global`",
+    "Forgetting that a function without a return statement returns None",
+    "Confusing *args (positional) with **kwargs (keyword) order and placement in a function signature"
+  ],
+  "concepts": [
+    "functions",
+    "parameters",
+    "*args",
+    "**kwargs",
+    "return",
+    "scope",
+    "LEGB",
+    "docstrings",
+    "first-class functions"
+  ],
+  "previousLesson": "python-dictionaries-001",
+  "nextLesson": "python-recursion-001"
+}

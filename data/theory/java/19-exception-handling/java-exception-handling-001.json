@@ -1,0 +1,58 @@
+{
+  "id": "java-exception-handling-001",
+  "language": "java",
+  "section": "java",
+  "module": "Exception Handling",
+  "moduleNumber": 19,
+  "lessonNumber": 19,
+  "title": "Exception Handling",
+  "difficulty": "intermediate",
+  "description": "Checked vs. unchecked exceptions, try/catch/finally, throw/throws, multi-catch, and try-with-resources.",
+  "objectives": [
+    "Distinguish checked exceptions, unchecked exceptions, and Errors",
+    "Use try/catch/finally, throw, and throws correctly",
+    "Define custom exceptions",
+    "Use multi-catch and try-with-resources"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "The Exception Hierarchy",
+      "body": "Java's Throwable hierarchy splits into Error (serious problems like OutOfMemoryError, not meant to be caught/handled by normal application code) and Exception. Exception itself splits into checked exceptions (subclasses of Exception other than RuntimeException — the compiler forces you to either catch them or declare them with throws on the method signature, e.g., IOException) and unchecked exceptions (RuntimeException and its subclasses, like NullPointerException or ArrayIndexOutOfBoundsException — the compiler does not require handling them, since they typically represent programming bugs rather than expected, recoverable conditions).\n\nA method that might throw a checked exception without catching it must declare that in its signature: void readFile() throws IOException { ... } — this propagates the responsibility to handle it up to the caller."
+    },
+    {
+      "type": "text",
+      "heading": "try/catch/finally, Custom Exceptions, and try-with-resources",
+      "body": "try { ... } catch (SpecificException e) { ... } finally { ... } works as in most languages: finally always runs, whether or not an exception occurred. Multi-catch, catch (IOException | SQLException e) { ... }, handles several unrelated exception types identically in one clause. throw new SomeException(\"message\") explicitly raises an exception; a custom exception is defined by extending Exception (checked) or RuntimeException (unchecked).\n\ntry-with-resources, try (Resource r = new Resource()) { ... }, automatically closes any resource implementing AutoCloseable (like FileReader or a database connection) when the block exits, even on an exception — eliminating the need for manual close() calls in a finally block, and avoiding the classic bug of a resource leak from a forgotten or exception-skipped close()."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "class InsufficientFundsException extends RuntimeException {\n    InsufficientFundsException(String message) { super(message); }\n}\n\npublic class Main {\n    static void withdraw(double balance, double amount) {\n        if (amount > balance) {\n            throw new InsufficientFundsException(\"Not enough funds\");\n        }\n    }\n\n    public static void main(String[] args) {\n        try {\n            withdraw(100, 150);\n        } catch (InsufficientFundsException e) {\n            System.out.println(\"Caught: \" + e.getMessage());\n        } finally {\n            System.out.println(\"Cleanup always runs\");\n        }\n\n        try (java.io.StringReader reader = new java.io.StringReader(\"data\")) {\n            System.out.println((char) reader.read());\n        } catch (java.io.IOException e) {\n            System.out.println(\"IO error\");\n        }   // reader.close() called automatically here\n    }\n}",
+      "explanation": "InsufficientFundsException is a custom unchecked exception carrying a clear message. try-with-resources guarantees reader is closed automatically, without a separate finally block."
+    }
+  ],
+  "keyPoints": [
+    "Checked exceptions must be caught or declared with throws; unchecked (RuntimeException) exceptions don't require this",
+    "finally runs whether or not an exception occurred, and even if a return happens inside try/catch",
+    "Multi-catch (catch (A | B e)) handles multiple exception types in one clause",
+    "try-with-resources automatically closes any AutoCloseable resource, avoiding manual close() bookkeeping"
+  ],
+  "commonMistakes": [
+    "Catching an overly broad Exception and silently hiding a real bug",
+    "Forgetting to declare throws for a checked exception a method doesn't catch itself",
+    "Manually closing resources in a finally block instead of using try-with-resources, and getting the cleanup logic wrong on an early exception"
+  ],
+  "concepts": [
+    "exceptions",
+    "checked exceptions",
+    "unchecked exceptions",
+    "try/catch/finally",
+    "throw",
+    "throws",
+    "custom exceptions",
+    "try-with-resources"
+  ],
+  "previousLesson": "java-interfaces-001",
+  "nextLesson": "java-collections-framework-001"
+}

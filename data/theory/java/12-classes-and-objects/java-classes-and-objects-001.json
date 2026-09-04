@@ -1,0 +1,57 @@
+{
+  "id": "java-classes-and-objects-001",
+  "language": "java",
+  "section": "java",
+  "module": "Classes and Objects",
+  "moduleNumber": 12,
+  "lessonNumber": 12,
+  "title": "Classes and Objects",
+  "difficulty": "intermediate",
+  "description": "Defining classes, fields, constructors, the this keyword, and creating objects.",
+  "objectives": [
+    "Define a class with fields, constructors, and methods",
+    "Understand the this keyword",
+    "Create and use objects",
+    "Understand default field values and object identity"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Fields, Constructors, and Object Creation",
+      "body": "A class defines fields (data each object holds) and methods (behavior). Objects are created with new ClassName(arguments), which allocates memory on the heap and runs a matching constructor — a special method sharing the class's exact name, with no return type, responsible for initializing the new object's fields. A class can have multiple constructors (constructor overloading, following the same rules as method overloading), and if you define no constructor at all, Java automatically provides a no-argument default constructor that does nothing beyond the fields' default initialization.\n\nUnlike local variables, instance fields that aren't explicitly initialized get an automatic default value: 0 for numeric types, false for boolean, '\\u0000' for char, and null for any reference type — relying on this default (rather than explicitly initializing) is usually considered poor style, since it isn't obvious to a reader."
+    },
+    {
+      "type": "text",
+      "heading": "The this Keyword",
+      "body": "this refers to the current object inside an instance method or constructor. Its most common use is disambiguating a field from a same-named constructor/method parameter: this.name = name; explicitly assigns to the field, since a plain name = name; would just assign the parameter to itself, leaving the actual field unset. this can also be used to call another constructor in the same class (this(args) as the very first statement in a constructor), a technique called constructor chaining, useful to avoid duplicating initialization logic across overloaded constructors."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Student {\n    String name;\n    int age;\n\n    Student(String name, int age) {\n        this.name = name;     // 'this.name' is the field, 'name' is the parameter\n        this.age = age;\n    }\n\n    Student(String name) {\n        this(name, 18);        // constructor chaining — delegates to the other constructor\n    }\n\n    public static void main(String[] args) {\n        Student s1 = new Student(\"Asha\", 21);\n        Student s2 = new Student(\"Ravi\");     // uses the default age of 18\n        System.out.println(s1.name + \" \" + s1.age + \", \" + s2.name + \" \" + s2.age);\n    }\n}",
+      "explanation": "this.name = name disambiguates the field from the parameter. this(name, 18) chains to the two-argument constructor, avoiding duplicated initialization logic."
+    }
+  ],
+  "keyPoints": [
+    "new ClassName(...) allocates an object and runs a matching constructor",
+    "Uninitialized instance fields get automatic defaults (0/false/null) — explicit initialization is better style",
+    "this refers to the current object, most often used to disambiguate a field from a parameter of the same name",
+    "this(args) as a constructor's first statement chains to another constructor in the same class"
+  ],
+  "commonMistakes": [
+    "Writing name = name; in a constructor instead of this.name = name;, leaving the field unset",
+    "Relying on a field's default value (0/null/false) without realizing it, rather than initializing explicitly",
+    "Forgetting that this(...) constructor chaining must be the very first statement in a constructor"
+  ],
+  "concepts": [
+    "classes",
+    "objects",
+    "fields",
+    "constructors",
+    "this keyword",
+    "default field values",
+    "constructor chaining"
+  ],
+  "previousLesson": "java-methods-001",
+  "nextLesson": "java-encapsulation-001"
+}

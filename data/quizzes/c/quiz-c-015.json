@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-015",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "What does continue do inside a for loop in C?",
+  "options": [
+    "Ends the loop immediately",
+    "Skips the remaining loop body for the current iteration and proceeds to the loop's update/condition check",
+    "Restarts the entire program",
+    "Is a syntax error inside for loops"
+  ],
+  "correctAnswer": 1,
+  "explanation": "continue jumps past the rest of the current iteration's body straight to the loop's increment/condition check, then proceeds normally.",
+  "concepts": [
+    "continue",
+    "for loop"
+  ]
+}

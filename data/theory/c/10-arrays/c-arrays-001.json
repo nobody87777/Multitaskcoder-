@@ -1,0 +1,56 @@
+{
+  "id": "c-arrays-001",
+  "language": "c",
+  "section": "c",
+  "module": "Arrays",
+  "moduleNumber": 10,
+  "lessonNumber": 10,
+  "title": "Arrays",
+  "difficulty": "beginner",
+  "description": "One- and multi-dimensional arrays, initialization, traversal, and array bounds.",
+  "objectives": [
+    "Declare, initialize, and traverse one-dimensional arrays",
+    "Declare and traverse multidimensional arrays",
+    "Understand that C performs no automatic bounds checking",
+    "Pass arrays to functions correctly"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "One-Dimensional Arrays and Bounds",
+      "body": "An array is a fixed-size, contiguous block of same-typed elements: int numbers[5]; declares an uninitialized array of 5 ints; int numbers[] = {1, 2, 3}; declares and initializes one, with its size (3) inferred from the initializer list. Valid indices run from 0 to size - 1. Critically, unlike Java or Python, C performs no automatic bounds checking whatsoever: accessing numbers[10] on a 5-element array does not raise any error — it reads or writes whatever memory happens to be at that (out-of-bounds) location, silently corrupting nearby data or crashing unpredictably. This is a foundational source of C bugs and security vulnerabilities (buffer overflows), and the programmer is entirely responsible for staying within bounds."
+    },
+    {
+      "type": "text",
+      "heading": "Multidimensional Arrays and Passing to Functions",
+      "body": "A two-dimensional array, int grid[3][4];, is laid out in memory as one contiguous block, row by row (row-major order) — grid[i][j] accesses row i, column j. Traversal typically uses nested for loops over both dimensions.\n\nWhen an array is passed to a function, it decays into a pointer to its first element — the function receives no information about the array's original length (sizeof inside the function would report a pointer's size, not the array's), so the length must always be passed as a separate parameter alongside the array itself: void process(int arr[], int length) { ... }."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nvoid printAll(int arr[], int length) {\n    for (int i = 0; i < length; i++) {\n        printf(\"%d \", arr[i]);\n    }\n    printf(\"\\n\");\n}\n\nint main() {\n    int numbers[] = {10, 20, 30};\n    int length = sizeof(numbers) / sizeof(numbers[0]);   // valid HERE, before decay\n    printAll(numbers, length);\n\n    int grid[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 3; j++) {\n            printf(\"%d \", grid[i][j]);\n        }\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "explanation": "sizeof(numbers) / sizeof(numbers[0]) correctly computes the element count only in main(), where numbers is still a true array — this pattern would give a wrong result if written inside printAll(), where arr is really just a pointer."
+    }
+  ],
+  "keyPoints": [
+    "C performs no automatic bounds checking — out-of-range array access is undefined behavior, not a caught error",
+    "Multidimensional arrays are stored contiguously in row-major order",
+    "An array passed to a function decays into a pointer, losing its size information",
+    "Always pass an array's length as a separate parameter, since sizeof won't work correctly inside the function"
+  ],
+  "commonMistakes": [
+    "Reading or writing an out-of-bounds array index, silently corrupting memory",
+    "Using sizeof(arr)/sizeof(arr[0]) inside a function that received arr as a parameter, getting a wrong (pointer-based) result",
+    "Off-by-one errors in loop bounds against an array's size"
+  ],
+  "concepts": [
+    "arrays",
+    "multidimensional arrays",
+    "array bounds",
+    "undefined behavior",
+    "array decay",
+    "arrays in functions"
+  ],
+  "previousLesson": "c-storage-and-scope-001",
+  "nextLesson": "c-strings-001"
+}

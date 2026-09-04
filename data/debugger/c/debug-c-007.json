@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-007",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Constants",
+  "bugType": "const-violation",
+  "title": "Fix the Modified Constant",
+  "description": "The program should use a fixed tax rate constant in a calculation.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    const float taxRate = 0.08;\n    taxRate = 0.10;\n    printf(\"%.2f\\n\", taxRate);\n    return 0;\n}",
+  "expectedBehavior": "The program should compile and print the tax rate used in the calculation.",
+  "actualProblem": "taxRate is declared const, meaning it cannot be reassigned after initialization. Attempting taxRate = 0.10 is a compile error: 'assignment of read-only variable taxRate'.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    const float taxRate = 0.10;\n    printf(\"%.2f\\n\", taxRate);\n    return 0;\n}",
+  "expectedOutput": "0.10",
+  "explanation": "const marks a variable as read-only after its initial value is set. If a different value is actually needed, it must be assigned once at declaration rather than reassigned later.",
+  "concepts": [
+    "const",
+    "constants",
+    "compile error"
+  ]
+}

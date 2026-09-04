@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-049",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Data Structures",
+  "bugType": "linked-list-head-not-updated",
+  "title": "Fix the Linked List Insertion That Loses the New Node",
+  "description": "The program should insert a new node at the front of a linked list.",
+  "buggyCode": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nvoid insertFront(struct Node *head, int value) {\n    struct Node *newNode = malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = head;\n    head = newNode;\n}\n\nint main() {\n    struct Node *head = NULL;\n    insertFront(head, 10);\n    if (head == NULL) {\n        printf(\"List is still empty\\n\");\n    } else {\n        printf(\"%d\\n\", head->data);\n    }\n    return 0;\n}",
+  "expectedBehavior": "After inserting 10 at the front, head should point to the new node, and the program should print 10.",
+  "actualProblem": "head is passed to insertFront by value, so the head = newNode; assignment inside the function only updates the function's local copy of the pointer. main's own head variable never changes and remains NULL, so the new node is effectively lost (and leaked).",
+  "correctedCode": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nvoid insertFront(struct Node **headRef, int value) {\n    struct Node *newNode = malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = *headRef;\n    *headRef = newNode;\n}\n\nint main() {\n    struct Node *head = NULL;\n    insertFront(&head, 10);\n    if (head == NULL) {\n        printf(\"List is still empty\\n\");\n    } else {\n        printf(\"%d\\n\", head->data);\n    }\n    return 0;\n}",
+  "expectedOutput": "10",
+  "explanation": "To let a function update the caller's own head pointer (not just a local copy), the function must take a pointer to the pointer (struct Node **) and modify *headRef, rather than reassigning a by-value copy.",
+  "concepts": [
+    "linked lists",
+    "pointers to pointers",
+    "pass by value"
+  ]
+}

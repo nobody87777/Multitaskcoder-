@@ -1,0 +1,56 @@
+{
+  "id": "java-inheritance-001",
+  "language": "java",
+  "section": "java",
+  "module": "Inheritance",
+  "moduleNumber": 14,
+  "lessonNumber": 14,
+  "title": "Inheritance",
+  "difficulty": "intermediate",
+  "description": "Building class hierarchies with extends, super, constructor behavior, and method overriding.",
+  "objectives": [
+    "Use extends to create a subclass",
+    "Use super to access parent constructors and methods",
+    "Understand constructor behavior in an inheritance hierarchy",
+    "Override methods correctly"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "extends and super",
+      "body": "class Dog extends Animal makes Dog a subclass of Animal, inheriting its public and protected fields/methods (private members are not directly accessible from the subclass, though they still exist and can be reached through inherited public/protected methods). Java only supports single inheritance of classes (a class extends exactly one other class — multiple inheritance of behavior is instead achieved through interfaces, covered separately), avoiding the ambiguity that multiple class inheritance can create.\n\nsuper refers to the parent class. super.method(...) explicitly calls the parent's version of a method (useful inside an override that wants to extend, not fully replace, the parent's behavior). super(args), as the first statement in a subclass constructor, calls a specific parent constructor."
+    },
+    {
+      "type": "text",
+      "heading": "Constructor Behavior and Overriding",
+      "body": "Every subclass constructor implicitly calls the parent's no-argument constructor (super()) as its very first action, unless you explicitly call a different super(args) yourself. If the parent class has no no-argument constructor (only ones requiring arguments), the subclass constructor must explicitly call super(args) with matching arguments, or the code fails to compile — this is the same rule that produces the classic 'constructor Person in class Person cannot be applied to given types' error.\n\nOverriding replaces an inherited method's implementation in the subclass: the overriding method must have the same name and parameter list (same signature) as the parent's version. The @Override annotation, while not strictly required, tells the compiler to verify you're actually overriding something — catching typos (a mismatched signature that would otherwise silently create an unrelated overload instead of an override)."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "class Animal {\n    String name;\n    Animal(String name) { this.name = name; }\n    String speak() { return \"...\"; }\n}\n\nclass Dog extends Animal {\n    Dog(String name) {\n        super(name);            // must call, since Animal has no no-arg constructor\n    }\n    @Override\n    String speak() {\n        return name + \" says Woof (base: \" + super.speak() + \")\";\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog(\"Rex\");\n        System.out.println(d.speak());   // Rex says Woof (base: ...)\n    }\n}",
+      "explanation": "Dog's constructor must call super(name) since Animal only has a one-argument constructor. speak() overrides Animal's version but still calls super.speak() to incorporate the parent's original behavior."
+    }
+  ],
+  "keyPoints": [
+    "extends creates single inheritance from exactly one parent class",
+    "A subclass constructor must call super(args) matching one of the parent's constructors, implicitly or explicitly",
+    "Overriding requires matching the parent method's exact name and parameter list",
+    "@Override lets the compiler catch accidental signature mismatches"
+  ],
+  "commonMistakes": [
+    "Forgetting an explicit super(args) call when the parent has no no-argument constructor",
+    "Giving an 'override' a slightly different signature, accidentally creating an overload instead",
+    "Assuming private parent members are directly accessible from the subclass"
+  ],
+  "concepts": [
+    "inheritance",
+    "extends",
+    "super",
+    "constructor chaining",
+    "method overriding",
+    "@Override"
+  ],
+  "previousLesson": "java-encapsulation-001",
+  "nextLesson": "java-polymorphism-001"
+}

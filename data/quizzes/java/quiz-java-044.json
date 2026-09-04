@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-044",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "JVM",
+  "question": "Where are local primitive variables typically stored during a Java method's execution?",
+  "options": [
+    "The heap",
+    "The method area / metaspace",
+    "The garbage collector's root set only",
+    "The call stack, in that method's stack frame"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Local variables (including primitives) live in the stack frame created for each method call, while objects themselves are allocated on the heap.",
+  "concepts": [
+    "JVM internals",
+    "stack vs heap"
+  ]
+}

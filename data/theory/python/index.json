@@ -1,0 +1,403 @@
+{
+  "language": "python",
+  "section": "python",
+  "moduleCount": 29,
+  "lessonCount": 32,
+  "modules": [
+    {
+      "moduleNumber": 1,
+      "module": "Introduction to Python",
+      "moduleSlug": "01-introduction",
+      "lessons": [
+        {
+          "id": "python-introduction-001",
+          "title": "What Is Python?",
+          "difficulty": "beginner",
+          "file": "01-introduction/python-introduction-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 2,
+      "module": "Variables and Data Types",
+      "moduleSlug": "02-variables-and-data-types",
+      "lessons": [
+        {
+          "id": "python-variables-and-data-types-001",
+          "title": "Variables and Data Types",
+          "difficulty": "beginner",
+          "file": "02-variables-and-data-types/python-variables-and-data-types-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 3,
+      "module": "Operators",
+      "moduleSlug": "03-operators",
+      "lessons": [
+        {
+          "id": "python-operators-001",
+          "title": "Operators",
+          "difficulty": "beginner",
+          "file": "03-operators/python-operators-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 4,
+      "module": "Input and Output",
+      "moduleSlug": "04-input-output",
+      "lessons": [
+        {
+          "id": "python-input-output-001",
+          "title": "Input and Output",
+          "difficulty": "beginner",
+          "file": "04-input-output/python-input-output-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 5,
+      "module": "Conditional Statements",
+      "moduleSlug": "05-conditionals",
+      "lessons": [
+        {
+          "id": "python-conditionals-001",
+          "title": "Conditional Statements",
+          "difficulty": "beginner",
+          "file": "05-conditionals/python-conditionals-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 6,
+      "module": "Loops",
+      "moduleSlug": "06-loops",
+      "lessons": [
+        {
+          "id": "python-loops-001",
+          "title": "Loops",
+          "difficulty": "beginner",
+          "file": "06-loops/python-loops-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 7,
+      "module": "Strings",
+      "moduleSlug": "07-strings",
+      "lessons": [
+        {
+          "id": "python-strings-001",
+          "title": "String Fundamentals: Creation, Indexing, and Slicing",
+          "difficulty": "beginner",
+          "file": "07-strings/python-strings-001.json"
+        },
+        {
+          "id": "python-strings-002",
+          "title": "String Methods, Formatting, and Encoding",
+          "difficulty": "beginner",
+          "file": "07-strings/python-strings-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 8,
+      "module": "Lists",
+      "moduleSlug": "08-lists",
+      "lessons": [
+        {
+          "id": "python-lists-001",
+          "title": "Lists",
+          "difficulty": "beginner",
+          "file": "08-lists/python-lists-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 9,
+      "module": "Tuples",
+      "moduleSlug": "09-tuples",
+      "lessons": [
+        {
+          "id": "python-tuples-001",
+          "title": "Tuples",
+          "difficulty": "beginner",
+          "file": "09-tuples/python-tuples-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 10,
+      "module": "Sets",
+      "moduleSlug": "10-sets",
+      "lessons": [
+        {
+          "id": "python-sets-001",
+          "title": "Sets",
+          "difficulty": "intermediate",
+          "file": "10-sets/python-sets-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 11,
+      "module": "Dictionaries",
+      "moduleSlug": "11-dictionaries",
+      "lessons": [
+        {
+          "id": "python-dictionaries-001",
+          "title": "Dictionaries",
+          "difficulty": "intermediate",
+          "file": "11-dictionaries/python-dictionaries-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 12,
+      "module": "Functions",
+      "moduleSlug": "12-functions",
+      "lessons": [
+        {
+          "id": "python-functions-001",
+          "title": "Functions",
+          "difficulty": "intermediate",
+          "file": "12-functions/python-functions-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 13,
+      "module": "Recursion",
+      "moduleSlug": "13-recursion",
+      "lessons": [
+        {
+          "id": "python-recursion-001",
+          "title": "Recursion",
+          "difficulty": "intermediate",
+          "file": "13-recursion/python-recursion-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 14,
+      "module": "Modules and Packages",
+      "moduleSlug": "14-modules-and-packages",
+      "lessons": [
+        {
+          "id": "python-modules-and-packages-001",
+          "title": "Modules and Packages",
+          "difficulty": "intermediate",
+          "file": "14-modules-and-packages/python-modules-and-packages-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 15,
+      "module": "Exception Handling",
+      "moduleSlug": "15-exceptions",
+      "lessons": [
+        {
+          "id": "python-exceptions-001",
+          "title": "Exception Handling",
+          "difficulty": "intermediate",
+          "file": "15-exceptions/python-exceptions-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 16,
+      "module": "File Handling",
+      "moduleSlug": "16-files",
+      "lessons": [
+        {
+          "id": "python-files-001",
+          "title": "File Handling",
+          "difficulty": "intermediate",
+          "file": "16-files/python-files-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 17,
+      "module": "Object-Oriented Programming",
+      "moduleSlug": "17-oop",
+      "lessons": [
+        {
+          "id": "python-oop-001",
+          "title": "OOP Fundamentals: Classes, Objects, and Attributes",
+          "difficulty": "intermediate",
+          "file": "17-oop/python-oop-001.json"
+        },
+        {
+          "id": "python-oop-002",
+          "title": "Inheritance, Polymorphism, and Dunder Methods",
+          "difficulty": "intermediate",
+          "file": "17-oop/python-oop-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 18,
+      "module": "Iterators and Generators",
+      "moduleSlug": "18-iterators-and-generators",
+      "lessons": [
+        {
+          "id": "python-iterators-and-generators-001",
+          "title": "Iterators and Generators",
+          "difficulty": "advanced",
+          "file": "18-iterators-and-generators/python-iterators-and-generators-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 19,
+      "module": "Lambda and Functional Programming",
+      "moduleSlug": "19-functional-programming",
+      "lessons": [
+        {
+          "id": "python-functional-programming-001",
+          "title": "Lambda and Functional Programming",
+          "difficulty": "intermediate",
+          "file": "19-functional-programming/python-functional-programming-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 20,
+      "module": "Decorators",
+      "moduleSlug": "20-decorators",
+      "lessons": [
+        {
+          "id": "python-decorators-001",
+          "title": "Decorators",
+          "difficulty": "advanced",
+          "file": "20-decorators/python-decorators-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 21,
+      "module": "Context Managers",
+      "moduleSlug": "21-context-managers",
+      "lessons": [
+        {
+          "id": "python-context-managers-001",
+          "title": "Context Managers",
+          "difficulty": "advanced",
+          "file": "21-context-managers/python-context-managers-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 22,
+      "module": "Python Data Model",
+      "moduleSlug": "22-data-model",
+      "lessons": [
+        {
+          "id": "python-data-model-001",
+          "title": "The Python Data Model",
+          "difficulty": "advanced",
+          "file": "22-data-model/python-data-model-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 23,
+      "module": "Copying",
+      "moduleSlug": "23-copying",
+      "lessons": [
+        {
+          "id": "python-copying-001",
+          "title": "Copying: Assignment, Shallow Copy, and Deep Copy",
+          "difficulty": "advanced",
+          "file": "23-copying/python-copying-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 24,
+      "module": "Regular Expressions",
+      "moduleSlug": "24-regular-expressions",
+      "lessons": [
+        {
+          "id": "python-regular-expressions-001",
+          "title": "Regular Expressions",
+          "difficulty": "intermediate",
+          "file": "24-regular-expressions/python-regular-expressions-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 25,
+      "module": "Standard Library Tour",
+      "moduleSlug": "25-standard-library",
+      "lessons": [
+        {
+          "id": "python-standard-library-001",
+          "title": "Standard Library Tour",
+          "difficulty": "intermediate",
+          "file": "25-standard-library/python-standard-library-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 26,
+      "module": "JSON and CSV",
+      "moduleSlug": "26-json-and-csv",
+      "lessons": [
+        {
+          "id": "python-json-and-csv-001",
+          "title": "JSON and CSV",
+          "difficulty": "intermediate",
+          "file": "26-json-and-csv/python-json-and-csv-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 27,
+      "module": "Type Hints",
+      "moduleSlug": "27-type-hints",
+      "lessons": [
+        {
+          "id": "python-type-hints-001",
+          "title": "Type Hints",
+          "difficulty": "advanced",
+          "file": "27-type-hints/python-type-hints-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 28,
+      "module": "Advanced Python",
+      "moduleSlug": "28-advanced-python",
+      "lessons": [
+        {
+          "id": "python-advanced-python-001",
+          "title": "Language Internals: Closures, Namespaces, and Memory Management",
+          "difficulty": "advanced",
+          "file": "28-advanced-python/python-advanced-python-001.json"
+        },
+        {
+          "id": "python-advanced-python-002",
+          "title": "Concurrency Overview: GIL, Threading, Multiprocessing, and Asyncio",
+          "difficulty": "advanced",
+          "file": "28-advanced-python/python-advanced-python-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 29,
+      "module": "Best Practices",
+      "moduleSlug": "29-best-practices",
+      "lessons": [
+        {
+          "id": "python-best-practices-001",
+          "title": "Python Best Practices",
+          "difficulty": "intermediate",
+          "file": "29-best-practices/python-best-practices-001.json"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-023",
+  "language": "python",
+  "title": "Find Minimum in a List",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Find the minimum value in a list without using the built-in min() function.",
+  "code": "numbers = [12, 45, 3, 89, 27, 56]\nsmallest = numbers[0]\n\nfor n in numbers:\n    if n < smallest:\n        smallest = n\n\nprint(\"Smallest number:\", smallest)",
+  "expectedOutput": "Smallest number: 3",
+  "concepts": [
+    "lists",
+    "iteration",
+    "comparison"
+  ]
+}

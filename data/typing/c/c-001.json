@@ -1,0 +1,15 @@
+{
+  "id": "c-001",
+  "language": "c",
+  "title": "Hello World",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "description": "Write a C program that prints Hello, World! to the console.",
+  "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}",
+  "expectedOutput": "Hello, World!",
+  "concepts": [
+    "stdio.h",
+    "main",
+    "printf"
+  ]
+}

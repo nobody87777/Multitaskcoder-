@@ -1,0 +1,19 @@
+{
+  "id": "quiz-java-032",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Exceptions",
+  "question": "When does the code inside a Java finally block execute?",
+  "options": [
+    "Only if no exception was thrown",
+    "Almost always, whether or not an exception was thrown or caught",
+    "Only if the exception is uncaught",
+    "Only when System.exit() is called"
+  ],
+  "correctAnswer": 1,
+  "explanation": "The finally block runs after the try/catch completes, regardless of whether an exception occurred, was caught, or wasn't — making it ideal for cleanup code.",
+  "concepts": [
+    "try/catch/finally"
+  ]
+}

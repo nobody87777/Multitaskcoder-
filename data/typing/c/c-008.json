@@ -1,0 +1,15 @@
+{
+  "id": "c-008",
+  "language": "c",
+  "title": "Positive, Negative or Zero",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Classify a number as positive, negative, or zero.",
+  "code": "#include <stdio.h>\n\nint main() {\n    float num;\n    scanf(\"%f\", &num);\n\n    if (num > 0)\n        printf(\"Positive\\n\");\n    else if (num < 0)\n        printf(\"Negative\\n\");\n    else\n        printf(\"Zero\\n\");\n\n    return 0;\n}",
+  "exampleInput": "-4.5",
+  "expectedOutput": "Negative",
+  "concepts": [
+    "if/else if/else",
+    "comparison operators"
+  ]
+}

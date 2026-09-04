@@ -1,0 +1,20 @@
+{
+  "id": "quiz-java-015",
+  "language": "java",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Strings",
+  "question": "Why does == often give unexpected results when comparing two Java String objects for equality?",
+  "options": [
+    "Strings cannot be compared at all",
+    "== compares object references, not the string's content, so use .equals() to compare content",
+    "== always returns true for strings",
+    "Strings must be converted to char arrays first"
+  ],
+  "correctAnswer": 1,
+  "explanation": "== on objects compares whether two references point to the same object in memory; two separately created Strings with equal content may still be different objects, so .equals() should be used to compare their content.",
+  "concepts": [
+    "String comparison",
+    "== vs .equals()"
+  ]
+}

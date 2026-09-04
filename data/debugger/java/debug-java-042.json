@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-042",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Functional",
+  "bugType": "lambda-signature-mismatch",
+  "title": "Fix the Lambda With the Wrong Parameter Count",
+  "description": "The program should use a lambda to implement a functional interface that compares two integers.",
+  "buggyCode": "public class Main {\n    interface Comparer {\n        int compare(int a, int b);\n    }\n\n    public static void main(String[] args) {\n        Comparer cmp = (a) -> a;\n        System.out.println(cmp.compare(3, 5));\n    }\n}",
+  "expectedBehavior": "The program should compile and print the result of comparing 3 and 5.",
+  "actualProblem": "The Comparer interface's single abstract method takes two parameters, but the lambda (a) -> a only declares one. Java rejects this at compile time because the lambda's parameter count doesn't match the functional interface's method signature.",
+  "correctedCode": "public class Main {\n    interface Comparer {\n        int compare(int a, int b);\n    }\n\n    public static void main(String[] args) {\n        Comparer cmp = (a, b) -> a - b;\n        System.out.println(cmp.compare(3, 5));\n    }\n}",
+  "expectedOutput": "-2",
+  "explanation": "A lambda expression must match the parameter count (and compatible types) of the functional interface's single abstract method exactly, since the lambda is essentially providing that method's implementation.",
+  "concepts": [
+    "lambda expressions",
+    "functional interfaces",
+    "compile error"
+  ]
+}

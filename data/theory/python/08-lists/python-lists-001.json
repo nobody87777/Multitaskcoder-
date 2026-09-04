@@ -1,0 +1,57 @@
+{
+  "id": "python-lists-001",
+  "language": "python",
+  "section": "python",
+  "module": "Lists",
+  "moduleNumber": 8,
+  "lessonNumber": 9,
+  "title": "Lists",
+  "difficulty": "beginner",
+  "description": "Python's mutable, ordered sequence type: creation, mutation methods, nesting, aliasing, and comprehensions.",
+  "objectives": [
+    "Create, index, and slice lists",
+    "Use the core mutating methods: append, extend, insert, remove, pop, clear, sort, reverse",
+    "Understand list aliasing vs. copying",
+    "Write basic list comprehensions"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Creating and Mutating Lists",
+      "body": "A list is an ordered, mutable collection, written with square brackets: [1, 2, 3]. Lists support the same indexing and slicing syntax as strings, but unlike strings, lists can be modified in place. Key mutating methods: append(x) adds a single item to the end; extend(iterable) adds every item from another iterable individually (merging lists); insert(i, x) inserts x at position i; remove(x) deletes the first occurrence of value x (raising ValueError if absent); pop(i) removes and returns the item at index i (defaulting to the last item); clear() empties the list. sort() sorts in place (use sorted(list) if you want a new sorted list instead); reverse() reverses in place. copy() (or list(original) or original[:]) creates a shallow copy — a new list object containing the same element references."
+    },
+    {
+      "type": "text",
+      "heading": "Nested Lists, Aliasing, and Comprehensions",
+      "body": "Lists can contain any type, including other lists (nested lists), which is how you'd represent a 2D grid or matrix in plain Python. Because lists are mutable, assigning one variable to another (b = a) does not copy the list — both names refer to the same underlying object, an effect called aliasing. Mutating through either name (like b.append(x)) is visible through the other. To get an independent copy, use a.copy() (a shallow copy — nested lists inside are still shared; see the Copying module for a full treatment).\n\nList comprehensions provide a compact way to build a new list from an existing iterable: [expression for item in iterable if condition]. They are generally considered more Pythonic and often faster than the equivalent explicit for loop with .append()."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "numbers = [3, 1, 4, 1, 5]\nnumbers.append(9)\nnumbers.sort()\nprint(numbers)                 # [1, 1, 3, 4, 5, 9]\n\na = [1, 2, 3]\nb = a                          # aliasing — b and a are the SAME list\nb.append(4)\nprint(a)                       # [1, 2, 3, 4]\n\nsquares = [x * x for x in range(6) if x % 2 == 0]\nprint(squares)                 # [0, 4, 16]",
+      "explanation": "b = a creates an alias, not a copy — appending through b changes what a sees too. The list comprehension both filters (only even x) and transforms (squares each) in one expression."
+    }
+  ],
+  "keyPoints": [
+    "Lists are ordered and mutable — indexing, slicing, and in-place methods all apply",
+    "append() adds one element; extend() merges in every element of another iterable",
+    "b = a aliases the same list object; use .copy() (or slicing) for an independent shallow copy",
+    "List comprehensions [expr for x in iterable if cond] build a new list concisely"
+  ],
+  "commonMistakes": [
+    "Using append() when extend() was intended (nesting a whole list as one element)",
+    "Assuming b = a makes an independent copy of a mutable list",
+    "Mutating a list while iterating over it with a for loop, causing skipped elements"
+  ],
+  "concepts": [
+    "lists",
+    "mutation",
+    "append()",
+    "extend()",
+    "aliasing",
+    "shallow copy",
+    "list comprehensions"
+  ],
+  "previousLesson": "python-strings-002",
+  "nextLesson": "python-tuples-001"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-021",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "bugType": "sizeof-pointer-confusion",
+  "title": "Fix the Wrong Array Size Inside a Function",
+  "description": "The program should count the elements of an array using sizeof, both at the top level and inside a function.",
+  "buggyCode": "#include <stdio.h>\n\nvoid printCount(int arr[]) {\n    int count = sizeof(arr) / sizeof(arr[0]);\n    printf(\"%d\\n\", count);\n}\n\nint main() {\n    int numbers[5] = {1, 2, 3, 4, 5};\n    printCount(numbers);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 5, the number of elements in the array.",
+  "actualProblem": "When an array is passed to a function, it decays into a plain pointer. Inside printCount, sizeof(arr) measures the size of a pointer (commonly 8 bytes), not the original array, so the calculation gives the wrong count.",
+  "correctedCode": "#include <stdio.h>\n\nvoid printCount(int arr[], int length) {\n    printf(\"%d\\n\", length);\n}\n\nint main() {\n    int numbers[5] = {1, 2, 3, 4, 5};\n    printCount(numbers, sizeof(numbers) / sizeof(numbers[0]));\n    return 0;\n}",
+  "expectedOutput": "5",
+  "explanation": "sizeof only knows the true size of an array within the scope where it was actually declared as an array. Once passed to a function it's just a pointer, so the array's length must be passed in separately as an extra parameter.",
+  "concepts": [
+    "arrays",
+    "sizeof",
+    "array decay"
+  ]
+}

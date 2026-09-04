@@ -1,0 +1,15 @@
+{
+  "id": "python-024",
+  "language": "python",
+  "title": "Remove Duplicates from a List",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Remove duplicate values from a list while preserving the original order.",
+  "code": "numbers = [1, 2, 2, 3, 4, 4, 4, 5, 1]\nunique = []\n\nfor n in numbers:\n    if n not in unique:\n        unique.append(n)\n\nprint(\"Original:\", numbers)\nprint(\"Unique:\", unique)",
+  "expectedOutput": "Original: [1, 2, 2, 3, 4, 4, 4, 5, 1]\nUnique: [1, 2, 3, 4, 5]",
+  "concepts": [
+    "lists",
+    "membership operator",
+    "deduplication"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "c-command-line-arguments-001",
+  "language": "c",
+  "section": "c",
+  "module": "Command-Line Arguments",
+  "moduleNumber": 20,
+  "lessonNumber": 21,
+  "title": "Command-Line Arguments",
+  "difficulty": "intermediate",
+  "description": "Reading command-line arguments via argc and argv, and processing them safely.",
+  "objectives": [
+    "Understand the meaning of argc and argv",
+    "Safely access and process command-line arguments"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "argc and argv",
+      "body": "int main(int argc, char *argv[]) is the form of main() that receives command-line arguments. argc (argument count) is the total number of arguments, always at least 1. argv (argument vector) is an array of C strings; argv[0] is conventionally the program's own name (as invoked, which can vary by platform/shell and shouldn't be relied on for anything beyond display purposes), and argv[1] through argv[argc - 1] are the actual arguments supplied by the user. By convention (required by the C standard), argv[argc] is always a NULL pointer, marking the end of the array — useful for iterating without needing argc in some styles of code, though checking against argc directly is more common and explicit."
+    },
+    {
+      "type": "text",
+      "heading": "Processing Arguments Safely",
+      "body": "Since argv[i] is a char* (a string), any argument meant to be numeric must be explicitly converted, typically with atoi()/atof() (simple but silently return 0 on invalid input, with no error indication) or the more robust strtol()/strtod() (which can report exactly how much of the string was successfully parsed, letting you detect invalid input properly). Always check argc before accessing argv[1] or beyond — accessing argv[1] when the program was run with no arguments at all reads a NULL pointer, and dereferencing/printing it as a string is undefined behavior."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main(int argc, char *argv[]) {\n    if (argc < 2) {\n        printf(\"Usage: %s <number>\\n\", argv[0]);\n        return 1;\n    }\n\n    char *endptr;\n    long value = strtol(argv[1], &endptr, 10);\n    if (*endptr != '\\0') {\n        printf(\"'%s' is not a valid number\\n\", argv[1]);\n        return 1;\n    }\n\n    printf(\"You entered: %ld\\n\", value);\n    return 0;\n}",
+      "explanation": "The argc check happens before argv[1] is ever accessed. strtol's endptr lets the program detect whether the entire argument was successfully consumed as a number, catching invalid input that atoi() would have silently ignored."
+    }
+  ],
+  "keyPoints": [
+    "argc is the argument count (always at least 1); argv[0] is the program name, argv[1..argc-1] are the real arguments",
+    "argv[argc] is guaranteed to be NULL, marking the array's end",
+    "Numeric arguments must be explicitly converted from strings, ideally with strtol/strtod for proper error detection",
+    "Always check argc before accessing argv[1] or beyond"
+  ],
+  "commonMistakes": [
+    "Accessing argv[1] without first checking argc, risking a NULL pointer dereference",
+    "Using atoi() and silently treating invalid input as 0, rather than detecting the error explicitly",
+    "Assuming argv[0] is always a full, reliable path to the executable across all platforms"
+  ],
+  "concepts": [
+    "command-line arguments",
+    "argc",
+    "argv",
+    "strtol",
+    "input validation"
+  ],
+  "previousLesson": "c-preprocessor-001",
+  "nextLesson": "c-function-pointers-001"
+}

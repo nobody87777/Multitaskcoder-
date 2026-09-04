@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-048",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "code-analysis",
+  "topic": "Exceptions",
+  "question": "Why is it useful to define a custom exception class that inherits from Exception, rather than raising a generic Exception everywhere?",
+  "code": "class InsufficientFundsError(Exception):\n    pass\n\ndef withdraw(balance, amount):\n    if amount > balance:\n        raise InsufficientFundsError(\"Not enough funds\")\n    return balance - amount",
+  "options": [
+    "It makes the program run faster",
+    "It is required by Python syntax rules",
+    "It automatically fixes the error condition",
+    "It lets calling code catch that specific error type separately from other, unrelated exceptions"
+  ],
+  "correctAnswer": 3,
+  "explanation": "A custom exception subclass lets callers use `except InsufficientFundsError` to handle that specific failure distinctly, instead of catching every possible exception with a generic handler.",
+  "concepts": [
+    "custom exceptions",
+    "exception hierarchy"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-029",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "bugType": "incorrect-recursive-step",
+  "title": "Fix the Broken Fibonacci",
+  "description": "The program should compute Fibonacci numbers using recursion. Fix the bug.",
+  "buggyCode": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 1)\n\nprint(fibonacci(6))",
+  "expectedBehavior": "fibonacci(6) should print 8, following the sequence 0, 1, 1, 2, 3, 5, 8.",
+  "actualProblem": "The recursive call uses fibonacci(n - 1) twice instead of fibonacci(n - 1) + fibonacci(n - 2), so it doesn't implement the Fibonacci recurrence at all and produces the wrong values.",
+  "correctedCode": "def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n\nprint(fibonacci(6))",
+  "expectedOutput": "8",
+  "explanation": "The Fibonacci recurrence defines each term as the sum of the two preceding ones: fib(n-1) + fib(n-2). Calling fibonacci(n - 1) twice ignores the n-2 term entirely and computes a different (incorrect) sequence.",
+  "concepts": [
+    "recursion",
+    "Fibonacci sequence",
+    "recursive formula"
+  ]
+}

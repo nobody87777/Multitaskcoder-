@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-001",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "bugType": "missing-include",
+  "title": "Fix the Missing Header",
+  "description": "The program should print a greeting message using printf.",
+  "buggyCode": "int main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}",
+  "expectedBehavior": "The program should compile cleanly and print 'Hello, World!'.",
+  "actualProblem": "printf() is declared in stdio.h, which is never included. Most compilers will at least warn about an implicit declaration of printf, and on stricter/modern compilers this is a hard error.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}",
+  "expectedOutput": "Hello, World!",
+  "explanation": "Standard library functions like printf() must have their declarations pulled in via the appropriate header — #include <stdio.h> for printf, scanf, and other standard I/O functions — before they can be used.",
+  "concepts": [
+    "#include",
+    "stdio.h",
+    "compilation"
+  ]
+}

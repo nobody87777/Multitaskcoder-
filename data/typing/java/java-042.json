@@ -1,0 +1,15 @@
+{
+  "id": "java-042",
+  "language": "java",
+  "title": "Interface Example: Payable",
+  "difficulty": "advanced",
+  "topic": "OOP",
+  "description": "Define a Payable interface and implement it in two different classes.",
+  "code": "public class PayableExample {\n    interface Payable {\n        double calculatePay();\n    }\n\n    static class Employee implements Payable {\n        double hours, rate;\n        Employee(double hours, double rate) { this.hours = hours; this.rate = rate; }\n        public double calculatePay() { return hours * rate; }\n    }\n\n    static class Freelancer implements Payable {\n        double projectFee;\n        Freelancer(double projectFee) { this.projectFee = projectFee; }\n        public double calculatePay() { return projectFee; }\n    }\n\n    public static void main(String[] args) {\n        Payable[] people = { new Employee(40, 20), new Freelancer(500) };\n        for (Payable p : people) {\n            System.out.println(\"Pay: \" + p.calculatePay());\n        }\n    }\n}",
+  "expectedOutput": "Pay: 800.0\nPay: 500.0",
+  "concepts": [
+    "interfaces",
+    "implements",
+    "polymorphism"
+  ]
+}

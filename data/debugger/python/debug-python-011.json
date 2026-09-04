@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-011",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "wrong-loop-control-statement",
+  "title": "Fix the Skip-Negative Printer",
+  "description": "The program should print every number in a list except negative ones. Fix the bug.",
+  "buggyCode": "numbers = [3, -1, 5, -2, 8]\nfor n in numbers:\n    if n < 0:\n        break\n    print(n)",
+  "expectedBehavior": "The program should print 3, 5, and 8, skipping the negative numbers but still checking the rest of the list.",
+  "actualProblem": "break exits the loop entirely the moment the first negative number is found, so 5 and 8 are never printed even though they are positive.",
+  "correctedCode": "numbers = [3, -1, 5, -2, 8]\nfor n in numbers:\n    if n < 0:\n        continue\n    print(n)",
+  "expectedOutput": "3\n5\n8",
+  "explanation": "break stops the loop completely, while continue only skips the rest of the current iteration and moves on to the next item. Skipping unwanted values (rather than stopping altogether) calls for continue.",
+  "concepts": [
+    "break",
+    "continue",
+    "loop control"
+  ]
+}

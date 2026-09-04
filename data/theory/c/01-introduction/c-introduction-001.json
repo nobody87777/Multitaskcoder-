@@ -1,0 +1,56 @@
+{
+  "id": "c-introduction-001",
+  "language": "c",
+  "section": "c",
+  "module": "Introduction to C",
+  "moduleNumber": 1,
+  "lessonNumber": 1,
+  "title": "Introduction to C",
+  "difficulty": "beginner",
+  "description": "C's history and characteristics as a systems language, and the compile-link-execute pipeline.",
+  "objectives": [
+    "Understand C's role as a systems-level, compiled language",
+    "Understand the pipeline from source code to a running executable",
+    "Know the roles of the compiler, linker, and preprocessor"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "C's History and Characteristics",
+      "body": "C was developed by Dennis Ritchie at Bell Labs in the early 1970s, originally to implement the Unix operating system. It remains foundational to systems programming: operating system kernels, embedded firmware, device drivers, and the runtimes of many other languages are written in (or interoperate closely with) C. Its defining characteristics are: it compiles directly to native machine code (no virtual machine or bytecode layer between your program and the hardware), it gives the programmer direct, largely unchecked access to memory via pointers, and it provides very little built-in safety net — no automatic bounds checking, no garbage collection, no runtime exceptions for most errors. This makes C fast and predictable, but it places the full burden of correctness (memory safety, bounds checking, resource cleanup) on the programmer, unlike Python or Java."
+    },
+    {
+      "type": "text",
+      "heading": "Source Code, Object Code, and the Executable",
+      "body": "A C program starts as source code (.c files, human-readable text). The compiler (like gcc or clang) translates this into object code (.o or .obj files) — machine instructions for a specific target CPU architecture, but not yet a runnable program, since references to functions/data defined elsewhere (in other object files, or in libraries) aren't resolved yet. The linker combines one or more object files together with any needed libraries, resolving those cross-references, to produce the final executable — the actual runnable program.\n\nThe preprocessor runs before the real compilation step, handling directives that start with # (#include, #define, and conditional compilation directives), essentially performing textual substitution and file inclusion on the source before the compiler proper ever sees it."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n\n/*\ngcc hello.c -o hello    // preprocess, compile, and link in one command\n./hello                 // run the resulting executable\n*/",
+      "explanation": "A single gcc invocation typically runs the preprocessor, compiler, and linker in sequence, producing a runnable executable named hello from the single source file."
+    }
+  ],
+  "keyPoints": [
+    "C compiles directly to native machine code, with no virtual machine layer",
+    "C gives direct memory access via pointers with minimal built-in safety checks",
+    "The pipeline is: preprocessing -> compilation (source to object code) -> linking (object code + libraries to an executable)",
+    "The programmer is responsible for memory safety and resource cleanup that other languages might handle automatically"
+  ],
+  "commonMistakes": [
+    "Assuming C has the same safety guarantees (bounds checking, garbage collection) as Python or Java",
+    "Confusing 'compiling' (source to object code) with 'linking' (combining object code into an executable) as if they were the same single step",
+    "Forgetting the preprocessor runs before real compilation and works purely textually"
+  ],
+  "concepts": [
+    "C history",
+    "systems programming",
+    "compiler",
+    "linker",
+    "preprocessor",
+    "object code",
+    "executable"
+  ],
+  "previousLesson": null,
+  "nextLesson": "c-program-structure-001"
+}

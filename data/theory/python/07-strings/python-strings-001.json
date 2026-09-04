@@ -1,0 +1,56 @@
+{
+  "id": "python-strings-001",
+  "language": "python",
+  "section": "python",
+  "module": "Strings",
+  "moduleNumber": 7,
+  "lessonNumber": 7,
+  "title": "String Fundamentals: Creation, Indexing, and Slicing",
+  "difficulty": "beginner",
+  "description": "How Python strings are created, indexed, sliced, and why they are immutable.",
+  "objectives": [
+    "Create strings with single, double, and triple quotes",
+    "Index and slice strings",
+    "Understand string immutability and its implications",
+    "Use concatenation, repetition, and membership with strings"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Creating and Indexing Strings",
+      "body": "Strings can be written with single quotes ('text'), double quotes (\"text\"), or triple quotes ('''text''' or \"\"\"text\"\"\"), which allow the string to span multiple lines and are also used for docstrings. Each character in a string has a zero-based index, so text[0] is the first character. Negative indices count from the end: text[-1] is the last character, text[-2] the second-to-last, and so on.\n\nStrings are sequences, so slicing works with the [start:stop:step] syntax, following the same 'stop is excluded' rule as range(): text[1:4] gives characters at indices 1, 2, 3. Omitting start or stop defaults to the beginning or end respectively, so text[:3] is the first three characters and text[3:] is everything from index 3 onward. A step of -1, text[::-1], reverses the string."
+    },
+    {
+      "type": "text",
+      "heading": "Immutability, Concatenation, and Membership",
+      "body": "Strings are immutable: once created, individual characters cannot be reassigned (text[0] = 'X' raises a TypeError). Every string 'modification' — concatenation, replacement, upper-casing — actually produces a brand-new string object; the original is untouched. Strings support + for concatenation and * for repetition (\"ab\" * 3 is \"ababab\"). The in operator tests substring membership: \"cat\" in \"concatenate\" is True. Strings can be compared with ==, <, >, etc., using lexicographic (dictionary) ordering based on character code points."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "text = \"Python\"\nprint(text[0], text[-1])     # P n\nprint(text[1:4])             # yth\nprint(text[::-1])            # nohtyP\n\ngreeting = \"Hello\" + \", \" + \"World\" + \"!\"\nprint(\"World\" in greeting)   # True\n# text[0] = \"J\"               # TypeError: strings are immutable",
+      "explanation": "Slicing and negative indexing avoid manual index arithmetic. Attempting text[0] = \"J\" demonstrates immutability — it always raises a TypeError, regardless of the string's content."
+    }
+  ],
+  "keyPoints": [
+    "Strings are zero-indexed and support negative indices from the end",
+    "Slicing [start:stop:step] excludes stop, matching range()'s convention",
+    "Strings are immutable — every transformation returns a new string",
+    "+ concatenates, * repeats, and in tests substring membership"
+  ],
+  "commonMistakes": [
+    "Trying to assign to a string index and being surprised by a TypeError",
+    "Off-by-one slicing mistakes (forgetting stop is excluded)",
+    "Assuming string concatenation with + in a tight loop is efficient (it's O(n²) for many small concatenations; str.join() is preferred)"
+  ],
+  "concepts": [
+    "strings",
+    "indexing",
+    "slicing",
+    "immutability",
+    "concatenation",
+    "membership operator"
+  ],
+  "previousLesson": "python-loops-001",
+  "nextLesson": "python-strings-002"
+}

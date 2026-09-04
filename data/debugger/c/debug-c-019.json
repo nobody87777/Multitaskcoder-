@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-019",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Strings",
+  "bugType": "buffer-overflow",
+  "title": "Fix the Undersized String Buffer",
+  "description": "The program should copy the word 'Elephant' into a character array.",
+  "buggyCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char name[8];\n    strcpy(name, \"Elephant\");\n    printf(\"%s\\n\", name);\n    return 0;\n}",
+  "expectedBehavior": "The program should store and print 'Elephant' correctly.",
+  "actualProblem": "\"Elephant\" is 8 characters plus a null terminator, needing 9 bytes total, but name only has room for 8. strcpy writes the terminator one byte past the end of the array, corrupting adjacent memory (a classic buffer overflow).",
+  "correctedCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char name[9];\n    strcpy(name, \"Elephant\");\n    printf(\"%s\\n\", name);\n    return 0;\n}",
+  "expectedOutput": "Elephant",
+  "explanation": "A C string needs room for every character plus one extra byte for the terminating '\\0'. A char array meant to hold an 8-character word must be sized at least 9, not 8.",
+  "concepts": [
+    "strings",
+    "buffer overflow",
+    "null terminator"
+  ]
+}

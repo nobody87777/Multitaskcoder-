@@ -1,0 +1,55 @@
+{
+  "id": "java-packages-and-java-apis-001",
+  "language": "java",
+  "section": "java",
+  "module": "Packages and Java APIs",
+  "moduleNumber": 24,
+  "lessonNumber": 25,
+  "title": "The Java Standard Library and APIs",
+  "difficulty": "intermediate",
+  "description": "An overview of Java's core packages and how to navigate its API documentation.",
+  "objectives": [
+    "Know the purpose of Java's most important core packages",
+    "Understand how to read and use Java API documentation"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Core Packages",
+      "body": "java.lang is imported automatically into every Java file (no explicit import needed) and contains fundamentals: Object (the root of every class hierarchy), String, the wrapper classes, Math, and the core exception types. java.util holds the Collections Framework (List, Map, Set, etc.), Scanner, Random, Optional, and date/time-adjacent utilities. java.io provides the classic (stream-based) I/O classes: File, FileReader/FileWriter, BufferedReader, and their binary counterparts. java.nio (New I/O) offers a more modern, often higher-performance I/O model, including the Path/Files API covered in File Handling, and NIO's buffer- and channel-based approach for more advanced use cases. java.time (Java 8+) provides the modern date/time API (LocalDate, LocalDateTime, Duration — covered in the Date and Time lesson), replacing the older, notoriously error-prone java.util.Date and Calendar classes."
+    },
+    {
+      "type": "text",
+      "heading": "Reading API Documentation",
+      "body": "Java's official API documentation (the Javadoc for the standard library) documents every public class and method: its purpose, parameters, return value, and thrown exceptions. Learning to navigate it — searching for a class, scanning its method summary, and reading a method's full description before using it — is a core professional skill, since the standard library is enormous and no one memorizes all of it. Method signatures in the docs show overloads together, parameter types, and any checked exceptions a method declares (via @throws), which directly tells you whether you'll need a try/catch or a throws declaration when calling it."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.Optional;\nimport java.time.LocalDate;\n\npublic class ApiTour {\n    public static void main(String[] args) {\n        // java.lang — no import needed\n        System.out.println(Math.max(3, 7));\n\n        // java.util\n        Optional<String> maybeName = Optional.of(\"Asha\");\n        System.out.println(maybeName.orElse(\"Unknown\"));\n\n        // java.time\n        LocalDate today = LocalDate.now();\n        System.out.println(today);\n    }\n}",
+      "explanation": "Math and String need no import (java.lang), while Optional (java.util) and LocalDate (java.time) do — this reflects how Java's standard library is organized into purposeful packages."
+    }
+  ],
+  "keyPoints": [
+    "java.lang is auto-imported; java.util, java.io, java.nio, and java.time each cover distinct areas",
+    "java.time is the modern, preferred date/time API over the legacy Date/Calendar classes",
+    "Learning to read Javadoc (parameters, return values, thrown exceptions) is essential for using the standard library effectively",
+    "A method's declared checked exceptions in its documentation tell you what handling is required at the call site"
+  ],
+  "commonMistakes": [
+    "Reinventing functionality the standard library already provides robustly",
+    "Using the legacy java.util.Date/Calendar classes in new code instead of java.time",
+    "Guessing at a method's behavior instead of checking its documentation for edge cases and exceptions"
+  ],
+  "concepts": [
+    "java.lang",
+    "java.util",
+    "java.io",
+    "java.nio",
+    "java.time",
+    "Javadoc",
+    "API documentation"
+  ],
+  "previousLesson": "java-file-handling-001",
+  "nextLesson": "java-lambda-expressions-001"
+}

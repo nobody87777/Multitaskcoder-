@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-045",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "output",
+  "topic": "Pointers",
+  "question": "What will this code print?",
+  "code": "int square(int x) { return x * x; }\n\nint main() {\n    int (*fp)(int) = square;\n    printf(\"%d\\n\", fp(5));\n    return 0;\n}",
+  "options": [
+    "25",
+    "5",
+    "Compilation error",
+    "10"
+  ],
+  "correctAnswer": 0,
+  "explanation": "fp is a function pointer assigned to square; calling fp(5) invokes square(5), which returns 5 * 5 = 25.",
+  "concepts": [
+    "function pointers"
+  ]
+}

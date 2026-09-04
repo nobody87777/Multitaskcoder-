@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-025",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Recursion",
+  "question": "What will this code print?",
+  "code": "int power(int base, int exp) {\n    if (exp == 0) return 1;\n    return base * power(base, exp - 1);\n}\n\nprintf(\"%d\\n\", power(2, 4));",
+  "options": [
+    "8",
+    "4",
+    "16",
+    "32"
+  ],
+  "correctAnswer": 2,
+  "explanation": "power(2,4) recursively multiplies 2 four times (2*2*2*2*1), which equals 16.",
+  "concepts": [
+    "recursion",
+    "base case"
+  ]
+}

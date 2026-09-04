@@ -1,0 +1,58 @@
+{
+  "id": "python-advanced-python-001",
+  "language": "python",
+  "section": "python",
+  "module": "Advanced Python",
+  "moduleNumber": 28,
+  "lessonNumber": 30,
+  "title": "Language Internals: Closures, Namespaces, and Memory Management",
+  "difficulty": "advanced",
+  "description": "Closures, the LEGB lookup rule, descriptors and properties, metaclasses, and how CPython manages memory.",
+  "objectives": [
+    "Understand closures and how they capture enclosing variables",
+    "Understand namespaces and the LEGB rule in more depth",
+    "Know what descriptors and metaclasses are, conceptually",
+    "Understand reference counting and garbage collection at a conceptual level"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Closures and Namespaces",
+      "body": "A closure is a nested (inner) function that 'remembers' variables from its enclosing function's scope, even after the outer function has returned. This works because Python functions carry a reference to the variables they use from an enclosing scope, not a snapshot of their values at definition time — a subtlety that causes a well-known bug when creating multiple closures inside a loop, since they all end up referencing the same enclosing variable by the time they're actually called, not a value 'frozen' per iteration.\n\nA namespace is a mapping from names to objects — Python has several nested namespaces at any point in execution (local, enclosing function, global/module, and built-in), searched in that order (LEGB) whenever a name is looked up that isn't assigned locally."
+    },
+    {
+      "type": "text",
+      "heading": "Descriptors, Metaclasses, and Memory Management",
+      "body": "A descriptor is an object that customizes attribute access by implementing __get__/__set__/__delete__; @property is actually implemented on top of the descriptor protocol, and understanding descriptors explains why properties behave the way they do. A metaclass is 'the class of a class' — just as an object is an instance of a class, a class is (by default) an instance of type. Custom metaclasses let you customize class creation itself (rarely needed in everyday code, but foundational to frameworks like ORMs).\n\nCPython manages memory primarily through reference counting: every object tracks how many references point to it, and is deallocated the moment that count hits zero. This alone can't reclaim reference cycles (two objects referencing each other, with nothing external pointing to either), so CPython also runs a periodic cyclic garbage collector to find and clean those up. Understanding this helps explain both typical Python memory behavior and occasional performance considerations around object creation/destruction."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "def make_multiplier(factor):\n    def multiply(x):\n        return x * factor      # closure: captures 'factor' from the enclosing scope\n    return multiply\n\ntriple = make_multiplier(3)\nprint(triple(7))                # 21 — 'factor' was remembered after make_multiplier returned\n\n# Classic closure-in-a-loop pitfall:\nfuncs = [lambda: i for i in range(3)]\nprint([f() for f in funcs])     # [2, 2, 2] — all three lambdas share the SAME 'i'",
+      "explanation": "triple still has access to factor=3 long after make_multiplier finished running — that's the closure. The loop pitfall shows all three lambdas capturing the same variable i, not a separate value per iteration."
+    }
+  ],
+  "keyPoints": [
+    "A closure captures a reference to an enclosing variable, not a frozen snapshot of its value",
+    "LEGB (Local, Enclosing, Global, Built-in) governs name lookup order",
+    "Descriptors (__get__/__set__) are the mechanism behind @property; metaclasses control how classes themselves are created",
+    "CPython uses reference counting for most memory reclamation, plus a cyclic garbage collector for reference cycles"
+  ],
+  "commonMistakes": [
+    "Creating closures inside a loop and expecting each one to capture that iteration's value, not the shared final one",
+    "Assuming Python has no garbage collection just because reference counting handles most cases",
+    "Reaching for a custom metaclass when a much simpler tool (a decorator, a mixin) would solve the problem"
+  ],
+  "concepts": [
+    "closures",
+    "namespaces",
+    "LEGB",
+    "descriptors",
+    "properties",
+    "metaclasses",
+    "reference counting",
+    "garbage collection"
+  ],
+  "previousLesson": "python-type-hints-001",
+  "nextLesson": "python-advanced-python-002"
+}

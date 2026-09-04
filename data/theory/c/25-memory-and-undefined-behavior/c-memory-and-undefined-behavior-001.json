@@ -1,0 +1,56 @@
+{
+  "id": "c-memory-and-undefined-behavior-001",
+  "language": "c",
+  "section": "c",
+  "module": "Memory and Undefined Behavior",
+  "moduleNumber": 25,
+  "lessonNumber": 27,
+  "title": "Memory and Undefined Behavior",
+  "difficulty": "advanced",
+  "description": "Undefined, implementation-defined, and unspecified behavior, and the memory-safety bugs that stem from them.",
+  "objectives": [
+    "Distinguish undefined, implementation-defined, and unspecified behavior",
+    "Recognize the major categories of memory-safety bugs in C",
+    "Understand why relying on undefined behavior is dangerous even when it 'seems to work'"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Three Kinds of 'It Depends'",
+      "body": "The C standard distinguishes three categories of behavior it doesn't fully pin down. Undefined behavior (UB) means the standard places absolutely no requirements on what happens — the program might crash, produce nonsensical output, appear to work correctly, or (in principle) do literally anything; compilers are explicitly permitted to assume UB never occurs and optimize accordingly, which can make code relying on it behave differently (or 'break') under a different compiler, optimization level, or even an unrelated code change elsewhere in the same file. Implementation-defined behavior means the standard requires each specific compiler/platform to choose a defined, documented behavior, but different implementations are allowed to choose differently (e.g., the exact size of int, or whether >> on a negative number sign-extends). Unspecified behavior is similar but doesn't require the implementation to document its choice at all (e.g., the order function arguments are evaluated in)."
+    },
+    {
+      "type": "text",
+      "heading": "Common Memory-Safety Bugs, All Undefined Behavior",
+      "body": "Buffer overflow: writing past the end of an allocated block (an array or malloc'd buffer), corrupting adjacent memory. Invalid pointer use: dereferencing a NULL, wild (uninitialized), or dangling (already-freed) pointer. Uninitialized variables: reading a local variable's value before it's been assigned anything meaningful. Out-of-bounds access: reading or writing an array index outside its valid range — C performs no bounds checking, so this compiles and often 'runs', just incorrectly and unpredictably. Strict aliasing: a more subtle rule stating that accessing memory through a pointer of an incompatible type (e.g., reinterpreting a float* as an int* without a union) is technically UB, even though it might seem to work, since it can confuse compiler optimizations that assume pointers of different types don't refer to overlapping memory. Lifetime issues: using an object (like a local variable, or freed heap memory) after its lifetime has ended.\n\nThe danger of UB specifically is that 'it happened to work when I tested it' is not evidence of correctness — a program invoking UB has no defined behavior at all, and can fail unpredictably later, on a different machine, compiler version, or optimization setting, precisely because the compiler was never obligated to make it behave consistently in the first place."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main() {\n    int arr[5] = {1, 2, 3, 4, 5};\n    // arr[5] = 100;      // UB: out-of-bounds write, undefined behavior\n\n    int x;\n    // printf(\"%d\\n\", x);  // UB: reading an uninitialized variable\n\n    int *p = NULL;\n    // printf(\"%d\\n\", *p);  // UB: dereferencing NULL\n\n    // All three lines above compile without error, but each one has no defined\n    // behavior at runtime — they might crash, print garbage, or 'seem fine'.\n    printf(\"Demonstrating what NOT to do (all commented out)\\n\");\n    return 0;\n}",
+      "explanation": "Each commented line compiles just fine — the compiler is not required to detect or reject undefined behavior. Their actual runtime effect is entirely unspecified by the C standard, which is exactly what makes UB dangerous to rely on, even 'accidentally', without noticing."
+    }
+  ],
+  "keyPoints": [
+    "Undefined behavior means the standard gives NO guarantees — anything can happen, including 'seeming to work'",
+    "Implementation-defined behavior is pinned down per-platform/compiler but can differ between them",
+    "Buffer overflows, invalid pointer dereferences, uninitialized reads, and out-of-bounds access are all UB",
+    "Code that 'happens to work' while invoking UB is not proven correct — it can break under a different compiler or setting"
+  ],
+  "commonMistakes": [
+    "Treating 'it worked when I ran it' as proof that code invoking undefined behavior is actually correct",
+    "Assuming the compiler will catch out-of-bounds access, uninitialized reads, or invalid pointer use (it generally won't)",
+    "Reinterpreting a pointer's type casually, unaware of C's strict aliasing rule"
+  ],
+  "concepts": [
+    "undefined behavior",
+    "implementation-defined behavior",
+    "unspecified behavior",
+    "buffer overflow",
+    "uninitialized variables",
+    "out-of-bounds access",
+    "strict aliasing"
+  ],
+  "previousLesson": "c-bit-manipulation-001",
+  "nextLesson": "c-compilation-and-linking-001"
+}

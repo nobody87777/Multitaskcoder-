@@ -1,0 +1,15 @@
+{
+  "id": "python-040",
+  "language": "python",
+  "title": "Student Records Using Dictionaries",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "description": "Store and display student records using a list of dictionaries.",
+  "code": "students = [\n    {\"name\": \"Asha\", \"marks\": 88},\n    {\"name\": \"Ravi\", \"marks\": 74},\n    {\"name\": \"Meera\", \"marks\": 92}\n]\n\nfor student in students:\n    print(f\"{student['name']} scored {student['marks']} marks\")\n\ntop_student = max(students, key=lambda s: s[\"marks\"])\nprint(\"Top scorer:\", top_student[\"name\"])",
+  "expectedOutput": "Asha scored 88 marks\nRavi scored 74 marks\nMeera scored 92 marks\nTop scorer: Meera",
+  "concepts": [
+    "list of dictionaries",
+    "lambda",
+    "max() with key"
+  ]
+}

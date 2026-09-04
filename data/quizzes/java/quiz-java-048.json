@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-048",
+  "language": "java",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Concurrency",
+  "question": "What does marking a method as synchronized accomplish in Java?",
+  "options": [
+    "It makes the method run faster",
+    "It prevents the method from ever throwing exceptions",
+    "It ensures only one thread at a time can execute that method on a given object, preventing race conditions",
+    "It converts the method into a static method"
+  ],
+  "correctAnswer": 2,
+  "explanation": "synchronized acquires a lock on the object (or class) before running the method body, so only one thread can execute it at a time on that lock, protecting shared state from concurrent modification.",
+  "concepts": [
+    "synchronization",
+    "locks",
+    "threads"
+  ]
+}

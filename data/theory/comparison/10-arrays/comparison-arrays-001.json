@@ -1,0 +1,59 @@
+{
+  "id": "comparison-arrays-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Arrays",
+  "topic": "Arrays",
+  "topicNumber": 10,
+  "lessonNumber": 10,
+  "title": "Arrays: Declaration, Indexing, Size, and Dynamic Alternatives",
+  "difficulty": "intermediate",
+  "description": "How fixed-size arrays and their dynamic collection alternatives compare across the three languages.",
+  "objectives": [
+    "Compare array declaration and indexing",
+    "Compare bounds checking behavior",
+    "Compare dynamic, resizable alternatives to fixed arrays"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Python has no separate, fixed-size 'array' type in everyday use — list serves that role and is dynamically resizable by default (append, insert, remove all work in place). Indexing out of range raises IndexError, a caught, well-defined exception, not silent memory corruption. For genuinely fixed-size, homogeneous numeric arrays, the array module or NumPy exist, but list covers the vast majority of everyday use."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Arrays (int[] arr = new int[5];) are fixed-size once created, with a .length field, and bounds-checked at runtime — an out-of-range access throws ArrayIndexOutOfBoundsException, a caught exception, not memory corruption. For resizable collections, ArrayList<T> (backed internally by a resizable array) is the standard dynamic alternative."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "Arrays (int arr[5];) are fixed-size, with no built-in length tracking (sizeof(arr)/sizeof(arr[0]) works only in the declaring scope, before any decay) and absolutely no bounds checking — an out-of-range access is undefined behavior, silently corrupting memory rather than raising any error. There is no built-in dynamic array type at all; achieving resizable behavior requires manually managing a heap-allocated buffer with malloc/realloc."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Both Python's list and Java's arrays are bounds-checked, raising a clear, catchable error on out-of-range access; C provides zero bounds checking, making out-of-range access a silent, potentially serious bug rather than a caught error. Python's list is dynamically resizable by default; Java requires ArrayList (or similar) for resizability, since its arrays are fixed; C has no built-in resizable array type at all."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "This is one of the most consequential safety differences in the whole comparison: an off-by-one array bug in Python or Java surfaces immediately as a clear exception; the same bug in C can silently corrupt memory and manifest as a confusing crash (or security vulnerability) much later, far from its actual cause."
+    }
+  ],
+  "keyPoints": [
+    "Python's list and Java's arrays are both bounds-checked, raising clear exceptions on out-of-range access",
+    "C performs no bounds checking at all — out-of-range access is undefined behavior, not a caught error",
+    "Python's list is dynamically resizable by default; Java needs ArrayList; C has no built-in resizable array type"
+  ],
+  "concepts": [
+    "arrays",
+    "indexing",
+    "bounds checking",
+    "dynamic arrays",
+    "ArrayIndexOutOfBoundsException",
+    "IndexError"
+  ],
+  "previousLesson": "comparison-strings-001",
+  "nextLesson": "comparison-data-structures-001"
+}

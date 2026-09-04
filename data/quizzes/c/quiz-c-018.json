@@ -1,0 +1,18 @@
+{
+  "id": "quiz-c-018",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "true-false",
+  "topic": "Variables",
+  "question": "True or False: A variable declared with const int x = 5; can later be reassigned with x = 10; without any compiler error.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "const marks a variable as read-only after initialization; attempting to reassign it triggers a compiler error.",
+  "concepts": [
+    "const",
+    "constants"
+  ]
+}

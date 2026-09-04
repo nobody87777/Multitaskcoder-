@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-035",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Files",
+  "question": "What does fopen(\"data.txt\", \"r\") return if the file cannot be opened (e.g. it doesn't exist)?",
+  "options": [
+    "NULL",
+    "An empty string",
+    "0.0",
+    "It always throws a compiler error"
+  ],
+  "correctAnswer": 0,
+  "explanation": "fopen() returns a NULL pointer on failure, which should always be checked before using the returned FILE* to avoid undefined behavior.",
+  "concepts": [
+    "file handling",
+    "fopen()",
+    "NULL"
+  ]
+}

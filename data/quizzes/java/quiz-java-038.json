@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-038",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Recursion",
+  "question": "What will this code print?",
+  "code": "static int sum(int n) {\n    if (n == 0) return 0;\n    return n + sum(n - 1);\n}\n\nSystem.out.println(sum(4));",
+  "options": [
+    "4",
+    "24",
+    "9",
+    "10"
+  ],
+  "correctAnswer": 3,
+  "explanation": "sum(4) recursively adds 4 + sum(3), which expands to 4+3+2+1+0, totaling 10.",
+  "concepts": [
+    "recursion",
+    "accumulation"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "java-stream-api-001",
+  "language": "java",
+  "section": "java",
+  "module": "Stream API",
+  "moduleNumber": 26,
+  "lessonNumber": 27,
+  "title": "Stream API",
+  "difficulty": "advanced",
+  "description": "Processing collections declaratively with streams: map, filter, sorted, reduce, collect, and lazy evaluation.",
+  "objectives": [
+    "Build and process a stream pipeline with intermediate and terminal operations",
+    "Use map, filter, sorted, reduce, collect, and forEach",
+    "Understand streams' lazy evaluation and single-use nature"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Building a Stream Pipeline",
+      "body": "A stream (java.util.stream.Stream) represents a sequence of elements supporting functional-style, declarative operations, obtained from a collection via .stream() (or Stream.of(...), IntStream.range(...), etc.). A pipeline consists of a source, zero or more intermediate operations (each returning a new stream, allowing chaining), and exactly one terminal operation that actually triggers processing and produces a result. Intermediate operations include filter(predicate) (keep matching elements), map(function) (transform each element), and sorted() (order elements, optionally with a Comparator). Terminal operations include forEach(consumer) (perform an action per element), collect(collector) (gather results into a collection, most commonly via Collectors.toList()), reduce(...) (fold the stream down to a single accumulated value), and count()."
+    },
+    {
+      "type": "text",
+      "heading": "Lazy Evaluation and Single-Use Streams",
+      "body": "Intermediate operations are lazy: nothing actually runs until a terminal operation is invoked — the pipeline is effectively a recipe, executed only once and exactly when its result is needed, and only doing the minimum work required (e.g., a short-circuiting terminal operation like findFirst() can stop processing the source early). A crucial constraint: a stream can only be consumed once by a terminal operation; calling a second terminal operation on the same (now-closed) stream throws IllegalStateException. Streams are also generally intended to avoid mutating their source or relying on shared mutable state inside lambda bodies, since stream operations can, in principle, be executed in parallel (via .parallelStream())."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.List;\nimport java.util.stream.Collectors;\n\npublic class Streams {\n    public static void main(String[] args) {\n        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8);\n\n        List<Integer> result = numbers.stream()\n                .filter(n -> n % 2 == 0)          // intermediate\n                .map(n -> n * n)                   // intermediate\n                .sorted((a, b) -> b - a)            // intermediate, descending\n                .collect(Collectors.toList());      // terminal\n\n        System.out.println(result);   // [64, 36, 16, 4]\n\n        int sum = numbers.stream().reduce(0, Integer::sum);\n        System.out.println(sum);       // 36\n    }\n}",
+      "explanation": "The pipeline filters even numbers, squares them, sorts descending, and collects into a new list — none of it runs until collect() (the terminal operation) is called. reduce(0, Integer::sum) folds the stream into a single summed value."
+    }
+  ],
+  "keyPoints": [
+    "A pipeline needs a source, zero or more intermediate operations, and exactly one terminal operation",
+    "filter/map/sorted are lazy intermediate operations; collect/reduce/forEach/count trigger actual processing",
+    "A stream can only be consumed once — reusing an already-terminated stream throws IllegalStateException",
+    "Streams favor avoiding shared mutable state, since operations may run in parallel via parallelStream()"
+  ],
+  "commonMistakes": [
+    "Trying to call a second terminal operation on an already-consumed stream",
+    "Forgetting a terminal operation entirely, so the pipeline never actually runs",
+    "Mutating external state from inside a stream's lambda, risky especially with parallel streams"
+  ],
+  "concepts": [
+    "Stream API",
+    "map()",
+    "filter()",
+    "sorted()",
+    "reduce()",
+    "collect()",
+    "lazy evaluation",
+    "terminal operations"
+  ],
+  "previousLesson": "java-lambda-expressions-001",
+  "nextLesson": "java-date-and-time-001"
+}

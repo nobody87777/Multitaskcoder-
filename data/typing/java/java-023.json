@@ -1,0 +1,15 @@
+{
+  "id": "java-023",
+  "language": "java",
+  "title": "Array Minimum",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Find the minimum value in an array without using a library method.",
+  "code": "public class ArrayMinimum {\n    public static void main(String[] args) {\n        int[] numbers = {12, 45, 3, 89, 27, 56};\n        int smallest = numbers[0];\n\n        for (int n : numbers) {\n            if (n < smallest) {\n                smallest = n;\n            }\n        }\n\n        System.out.println(\"Smallest number: \" + smallest);\n    }\n}",
+  "expectedOutput": "Smallest number: 3",
+  "concepts": [
+    "arrays",
+    "iteration",
+    "comparison"
+  ]
+}

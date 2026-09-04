@@ -1,0 +1,16 @@
+{
+  "id": "python-018",
+  "language": "python",
+  "title": "Reverse a Number",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Reverse the digits of an integer using a loop.",
+  "code": "num = int(input(\"Enter a number: \"))\noriginal = num\nreversed_num = 0\n\nwhile num > 0:\n    digit = num % 10\n    reversed_num = reversed_num * 10 + digit\n    num //= 10\n\nprint(f\"Reverse of {original} is {reversed_num}\")",
+  "exampleInput": "1234",
+  "expectedOutput": "Enter a number: Reverse of 1234 is 4321",
+  "concepts": [
+    "while loop",
+    "modulus",
+    "floor division"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "python-033",
+  "language": "python",
+  "title": "Linear Search",
+  "difficulty": "intermediate",
+  "topic": "Searching",
+  "description": "Search for a target value in a list using linear search.",
+  "code": "numbers = [4, 8, 15, 16, 23, 42]\ntarget = 23\nindex = -1\n\nfor i in range(len(numbers)):\n    if numbers[i] == target:\n        index = i\n        break\n\nif index != -1:\n    print(f\"Found {target} at index {index}\")\nelse:\n    print(f\"{target} not found\")",
+  "expectedOutput": "Found 23 at index 4",
+  "concepts": [
+    "linear search",
+    "loop with break"
+  ]
+}

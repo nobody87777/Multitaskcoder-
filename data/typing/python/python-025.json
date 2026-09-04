@@ -1,0 +1,15 @@
+{
+  "id": "python-025",
+  "language": "python",
+  "title": "Count Frequency of List Elements",
+  "difficulty": "intermediate",
+  "topic": "Data Structures",
+  "description": "Count how many times each element appears in a list using a dictionary.",
+  "code": "items = [\"apple\", \"banana\", \"apple\", \"orange\", \"banana\", \"apple\"]\nfrequency = {}\n\nfor item in items:\n    frequency[item] = frequency.get(item, 0) + 1\n\nfor item, count in frequency.items():\n    print(f\"{item}: {count}\")",
+  "expectedOutput": "apple: 3\nbanana: 2\norange: 1",
+  "concepts": [
+    "dictionaries",
+    "dict.get()",
+    "counting pattern"
+  ]
+}

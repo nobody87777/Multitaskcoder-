@@ -1,0 +1,15 @@
+{
+  "id": "java-040",
+  "language": "java",
+  "title": "ArrayList of Student Records",
+  "difficulty": "intermediate",
+  "topic": "Collections",
+  "description": "Store student records in an ArrayList and find the top scorer.",
+  "code": "import java.util.ArrayList;\n\npublic class StudentRecords {\n    static class Student {\n        String name;\n        int marks;\n\n        Student(String name, int marks) {\n            this.name = name;\n            this.marks = marks;\n        }\n    }\n\n    public static void main(String[] args) {\n        ArrayList<Student> students = new ArrayList<>();\n        students.add(new Student(\"Asha\", 88));\n        students.add(new Student(\"Ravi\", 74));\n        students.add(new Student(\"Meera\", 92));\n\n        Student top = students.get(0);\n        for (Student s : students) {\n            System.out.println(s.name + \" scored \" + s.marks + \" marks\");\n            if (s.marks > top.marks) {\n                top = s;\n            }\n        }\n\n        System.out.println(\"Top scorer: \" + top.name);\n    }\n}",
+  "expectedOutput": "Asha scored 88 marks\nRavi scored 74 marks\nMeera scored 92 marks\nTop scorer: Meera",
+  "concepts": [
+    "ArrayList",
+    "generics",
+    "nested classes"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "python-decorators-001",
+  "language": "python",
+  "section": "python",
+  "module": "Decorators",
+  "moduleNumber": 20,
+  "lessonNumber": 22,
+  "title": "Decorators",
+  "difficulty": "advanced",
+  "description": "How decorators work as functions that wrap other functions, the @ syntax, and practical use cases.",
+  "objectives": [
+    "Understand that functions are objects that can be passed around and wrapped",
+    "Write and apply a decorator using @ syntax",
+    "Handle arguments and return values correctly inside a decorator",
+    "Stack multiple decorators on one function"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Functions as Objects and the Decorator Pattern",
+      "body": "Because Python functions are first-class objects, a function can accept another function as an argument, and return a function as its result. A decorator is exactly this pattern applied to modify or extend a function's behavior without changing its source code: a decorator function takes a function, defines an inner wrapper function that adds behavior around a call to the original, and returns that wrapper. The @decorator_name syntax placed directly above a function definition is shorthand for func = decorator_name(func) — it's applied once, at definition time.\n\nA correct decorator's wrapper function must accept *args, **kwargs (to transparently forward whatever arguments the original function is called with) and must return whatever the original function returns — a wrapper that calls the original but forgets to return its result silently discards the return value, a very common decorator bug."
+    },
+    {
+      "type": "text",
+      "heading": "Arguments, Stacking, and Practical Examples",
+      "body": "Multiple decorators can be stacked on one function; they apply bottom-up (the one closest to the function runs first, and its result is then passed to the next one up). Common real-world uses include logging (printing before/after a call), timing (measuring execution duration), caching (functools.lru_cache is a built-in decorator that memoizes results), access control (checking permissions before allowing a call), and retry logic. functools.wraps(func), applied to the wrapper function inside your decorator, preserves the original function's __name__ and docstring, which would otherwise be replaced by the wrapper's own — good practice for any decorator meant for general use."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import functools\n\ndef log_call(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__}\")\n        result = func(*args, **kwargs)     # must call AND return\n        print(f\"Finished {func.__name__}\")\n        return result\n    return wrapper\n\n@log_call\ndef add(a, b):\n    return a + b\n\nprint(add(2, 3))   # Calling add / Finished add / 5",
+      "explanation": "@log_call is equivalent to add = log_call(add). wrapper forwards any arguments with *args/**kwargs and returns func's result, so add(2, 3) still behaves like addition with logging added around it."
+    }
+  ],
+  "keyPoints": [
+    "A decorator is a function that takes a function and returns a (usually wrapping) function",
+    "@decorator above a function is shorthand for func = decorator(func)",
+    "A wrapper must accept *args, **kwargs and return the original function's result",
+    "functools.wraps preserves the original function's name/docstring on the wrapper"
+  ],
+  "commonMistakes": [
+    "Writing a wrapper that calls the original function but forgets to return its result",
+    "Forgetting *args, **kwargs, breaking the decorator for any function with arguments",
+    "Not using functools.wraps, so introspection tools and debuggers see the wrapper's identity instead of the original function's"
+  ],
+  "concepts": [
+    "decorators",
+    "first-class functions",
+    "closures",
+    "@ syntax",
+    "functools.wraps",
+    "*args",
+    "**kwargs"
+  ],
+  "previousLesson": "python-functional-programming-001",
+  "nextLesson": "python-context-managers-001"
+}

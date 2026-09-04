@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-039",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "When a struct is passed to a function by value in C (not by pointer), what happens to modifications made inside the function?",
+  "options": [
+    "They only affect the function's local copy of the struct, not the original",
+    "They always modify the original struct back in the caller",
+    "The program fails to compile",
+    "Only the first member of the struct is copied"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Passing a struct by value copies the entire struct into the function's parameter; changes to that copy do not propagate back to the caller's original struct.",
+  "concepts": [
+    "structures",
+    "pass by value"
+  ]
+}

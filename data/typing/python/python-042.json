@@ -1,0 +1,15 @@
+{
+  "id": "python-042",
+  "language": "python",
+  "title": "CSV Data Processing",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Write rows to a CSV file using the csv module, then read and print them back.",
+  "code": "import csv\n\nrows = [[\"name\", \"score\"], [\"Asha\", \"88\"], [\"Ravi\", \"74\"]]\n\nwith open(\"scores.csv\", \"w\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerows(rows)\n\nwith open(\"scores.csv\", \"r\", newline=\"\") as f:\n    reader = csv.reader(f)\n    for row in reader:\n        print(row)",
+  "expectedOutput": "['name', 'score']\n['Asha', '88']\n['Ravi', '74']",
+  "concepts": [
+    "csv module",
+    "file I/O",
+    "iteration"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-010",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "bugType": "missing-break-fallthrough",
+  "title": "Fix the Switch Fall-Through",
+  "description": "The program should print the name of a day based on a number.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int day = 2;\n    switch (day) {\n        case 1:\n            printf(\"Monday\\n\");\n        case 2:\n            printf(\"Tuesday\\n\");\n        case 3:\n            printf(\"Wednesday\\n\");\n        default:\n            printf(\"Unknown\\n\");\n    }\n    return 0;\n}",
+  "expectedBehavior": "For day = 2, the program should print only 'Tuesday'.",
+  "actualProblem": "None of the cases end with a break, so once execution matches case 2, it falls through and also runs the code for case 3 and default, printing three lines instead of one.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int day = 2;\n    switch (day) {\n        case 1:\n            printf(\"Monday\\n\");\n            break;\n        case 2:\n            printf(\"Tuesday\\n\");\n            break;\n        case 3:\n            printf(\"Wednesday\\n\");\n            break;\n        default:\n            printf(\"Unknown\\n\");\n    }\n    return 0;\n}",
+  "expectedOutput": "Tuesday",
+  "explanation": "Without break, C's switch statement continues executing every subsequent case's code regardless of its label. Adding break after each case's logic stops this fall-through behavior.",
+  "concepts": [
+    "switch",
+    "fall-through",
+    "break"
+  ]
+}

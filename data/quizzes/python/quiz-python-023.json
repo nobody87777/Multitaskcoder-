@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-023",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "Given d = {'a': 1, 'b': 2}, what does d['c'] raise if the key 'c' does not exist?",
+  "options": [
+    "IndexError",
+    "TypeError",
+    "KeyError",
+    "AttributeError"
+  ],
+  "correctAnswer": 2,
+  "explanation": "Accessing a dictionary with a missing key using square brackets raises a KeyError; use d.get('c') to avoid the exception.",
+  "concepts": [
+    "dictionaries",
+    "KeyError"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-021",
+  "language": "python",
+  "title": "List Basics and Slicing",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Create a list, append items, and practice slicing operations.",
+  "code": "numbers = [10, 20, 30, 40, 50]\nnumbers.append(60)\n\nprint(\"Full list:\", numbers)\nprint(\"First three:\", numbers[:3])\nprint(\"Last two:\", numbers[-2:])\nprint(\"Reversed:\", numbers[::-1])",
+  "expectedOutput": "Full list: [10, 20, 30, 40, 50, 60]\nFirst three: [10, 20, 30]\nLast two: [50, 60]\nReversed: [60, 50, 40, 30, 20, 10]",
+  "concepts": [
+    "lists",
+    "append()",
+    "slicing"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-027",
+  "language": "python",
+  "difficulty": "intermediate",
+  "topic": "Functions",
+  "bugType": "wrong-argument-order",
+  "title": "Fix the Swapped Arguments",
+  "description": "The program should compute base raised to the power of exponent using a helper function. Fix the bug.",
+  "buggyCode": "def power(base, exponent):\n    return base ** exponent\n\ndef compute_power_of_two(n):\n    return power(n, 2)\n\nprint(compute_power_of_two(2))",
+  "expectedBehavior": "compute_power_of_two(2) should compute 2 raised to the power of 2, so it should print 4; more importantly, calling compute_power_of_two(3) should raise 2 to the power of 3 (8), not 3 to the power of 2.",
+  "actualProblem": "compute_power_of_two is supposed to always raise 2 to the power of n, but it calls power(n, 2), which computes n ** 2 instead of 2 ** n — the arguments are passed in the wrong order for the intended meaning.",
+  "correctedCode": "def power(base, exponent):\n    return base ** exponent\n\ndef compute_power_of_two(n):\n    return power(2, n)\n\nprint(compute_power_of_two(3))",
+  "expectedOutput": "8",
+  "explanation": "When calling a function with positional arguments, the order matters — power(n, 2) and power(2, n) compute completely different things. The fix passes 2 as the base and n as the exponent, matching the function's intended purpose.",
+  "concepts": [
+    "functions",
+    "argument order",
+    "positional arguments"
+  ]
+}

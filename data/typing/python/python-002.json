@@ -1,0 +1,15 @@
+{
+  "id": "python-002",
+  "language": "python",
+  "title": "Reading User Input",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "description": "Write a Python program that reads the user's name and greets them.",
+  "code": "name = input(\"Enter your name: \")\nprint(\"Hello, \" + name + \"!\")",
+  "exampleInput": "Alex",
+  "expectedOutput": "Enter your name: Hello, Alex!",
+  "concepts": [
+    "input()",
+    "string concatenation"
+  ]
+}

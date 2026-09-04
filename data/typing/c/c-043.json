@@ -1,0 +1,15 @@
+{
+  "id": "c-043",
+  "language": "c",
+  "title": "Dynamic Memory Allocation",
+  "difficulty": "advanced",
+  "topic": "Memory",
+  "description": "Allocate an array on the heap at runtime using malloc, then free it.",
+  "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n = 5;\n    int *arr = (int *)malloc(n * sizeof(int));\n\n    for (int i = 0; i < n; i++) {\n        arr[i] = (i + 1) * 10;\n    }\n\n    printf(\"Allocated array: \");\n    for (int i = 0; i < n; i++) {\n        printf(\"%d \", arr[i]);\n    }\n    printf(\"\\n\");\n\n    free(arr);\n    return 0;\n}",
+  "expectedOutput": "Allocated array: 10 20 30 40 50 ",
+  "concepts": [
+    "malloc()",
+    "free()",
+    "heap memory"
+  ]
+}

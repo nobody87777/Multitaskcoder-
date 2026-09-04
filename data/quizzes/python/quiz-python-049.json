@@ -1,0 +1,19 @@
+{
+  "id": "quiz-python-049",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "true-false",
+  "topic": "Performance",
+  "question": "True or False: Checking whether a value exists in a Python set is generally faster on average than checking membership in a list of the same size.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Sets are backed by a hash table giving average O(1) membership checks, while lists require an O(n) linear scan in the worst case.",
+  "concepts": [
+    "performance",
+    "sets vs lists",
+    "time complexity"
+  ]
+}

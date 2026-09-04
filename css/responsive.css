@@ -1,0 +1,38 @@
+/* MultitaskCoder - Responsive Layout */
+
+/* Mobile Safe Areas */
+@supports (padding: max(0px)) {
+  header {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+  nav.fixed.bottom-0 {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Prevent accidental horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Responsive container breakpoints */
+@media (min-width: 640px) {
+  .sm\:flex-row { flex-direction: row; }
+  .sm\:items-center { align-items: center; }
+  .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+  .sm\:w-64 { width: 16rem; }
+  
+  main#main-content {
+    max-width: 28rem;
+  }
+  nav.fixed.bottom-0 {
+    max-width: 28rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .text-3xl { font-size: 1.5rem; }
+  .p-5 { padding: 1rem; }
+  .p-6 { padding: 1.25rem; }
+}

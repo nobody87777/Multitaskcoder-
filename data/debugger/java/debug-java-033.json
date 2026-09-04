@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-033",
+  "language": "java",
+  "difficulty": "intermediate",
+  "topic": "OOP",
+  "bugType": "abstract-instantiation-error",
+  "title": "Fix the Direct Instantiation of an Abstract Class",
+  "description": "The program should create a concrete Circle shape and print its area.",
+  "buggyCode": "abstract class Shape {\n    abstract double area();\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape s = new Shape();\n        System.out.println(s.area());\n    }\n}",
+  "expectedBehavior": "The program should print the area of a concrete shape, such as a circle.",
+  "actualProblem": "Shape is declared abstract and cannot be instantiated directly with new Shape() — the compiler rejects this with 'Shape is abstract; cannot be instantiated'.",
+  "correctedCode": "abstract class Shape {\n    abstract double area();\n}\n\nclass Circle extends Shape {\n    double radius;\n    Circle(double radius) { this.radius = radius; }\n    double area() { return Math.PI * radius * radius; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape s = new Circle(2);\n        System.out.println(s.area());\n    }\n}",
+  "expectedOutput": "12.566370614359172",
+  "explanation": "An abstract class exists to be extended, not instantiated directly — it may have unimplemented (abstract) methods with no body. A concrete subclass, like Circle, must implement those methods before an object can actually be created.",
+  "concepts": [
+    "abstract classes",
+    "instantiation",
+    "compile error"
+  ]
+}

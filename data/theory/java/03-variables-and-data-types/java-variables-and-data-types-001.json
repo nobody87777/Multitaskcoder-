@@ -1,0 +1,57 @@
+{
+  "id": "java-variables-and-data-types-001",
+  "language": "java",
+  "section": "java",
+  "module": "Variables and Data Types",
+  "moduleNumber": 3,
+  "lessonNumber": 3,
+  "title": "Variables and Data Types",
+  "difficulty": "beginner",
+  "description": "Java's eight primitive types, reference types, literals, constants, and local variable type inference.",
+  "objectives": [
+    "Know all eight primitive types and their general size/range",
+    "Distinguish primitive types from reference types",
+    "Declare constants with final",
+    "Use var for local variable type inference where appropriate"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Primitive Types",
+      "body": "Java has exactly eight primitive types, each with a fixed size, unlike Python where int has arbitrary precision: byte (8-bit integer), short (16-bit), int (32-bit, the default integer type), long (64-bit, literals suffixed with L, e.g. 10000000000L), float (32-bit floating point, literals suffixed with f), double (64-bit floating point, the default for decimal literals), char (a single 16-bit Unicode character, in single quotes: 'A'), and boolean (true or false only — unlike C, Java does not treat integers as booleans). Every variable must be declared with an explicit type before use: int age = 21;."
+    },
+    {
+      "type": "text",
+      "heading": "Reference Types, Literals, Constants, and var",
+      "body": "Anything that isn't one of the eight primitives is a reference type: String, arrays, and every class (including wrapper classes like Integer). A reference type variable holds a reference to an object on the heap, not the object's data directly (this parallels Python's model of names referencing objects, but Java's primitives are genuinely different — they hold their value directly, with no object involved).\n\nfinal marks a variable as a constant: once assigned, it cannot be reassigned (final int MAX_SIZE = 100;). Since Java 10, the var keyword lets the compiler infer a local variable's type from its initializer (var name = \"Asha\"; infers String) — this is type inference, not dynamic typing: the type is still fixed at compile time, var is just a shorthand for the compiler to figure out and enforce that type, and it can only be used for local variables with an initializer, never for fields or method parameters."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Types {\n    public static void main(String[] args) {\n        int age = 21;\n        double price = 19.99;\n        char grade = 'A';\n        boolean isActive = true;\n        final int MAX_SIZE = 100;    // constant\n        var name = \"Asha\";            // inferred as String\n\n        System.out.println(age + \" \" + price + \" \" + grade + \" \" + isActive + \" \" + name);\n    }\n}",
+      "explanation": "Each primitive is explicitly typed. var infers String from the string literal at compile time — name is still statically typed as String, it's just not spelled out."
+    }
+  ],
+  "keyPoints": [
+    "Java has exactly 8 primitive types: byte, short, int, long, float, double, char, boolean",
+    "Everything else (String, arrays, classes) is a reference type, holding a reference to a heap object",
+    "final makes a variable a constant — assignable only once",
+    "var infers a local variable's type at compile time; it does not make Java dynamically typed"
+  ],
+  "commonMistakes": [
+    "Confusing var (compile-time type inference) with Python-style dynamic typing",
+    "Forgetting the L or f suffix on long/float literals when needed",
+    "Trying to use a boolean where an int (or vice versa) is expected — Java does not auto-convert between them"
+  ],
+  "concepts": [
+    "primitive types",
+    "reference types",
+    "literals",
+    "constants",
+    "final",
+    "var",
+    "type inference"
+  ],
+  "previousLesson": "java-syntax-and-structure-001",
+  "nextLesson": "java-type-conversion-and-casting-001"
+}

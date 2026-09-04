@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-023",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Strings",
+  "bugType": "strcmp-logic-error",
+  "title": "Fix the Backwards String Comparison",
+  "description": "The program should check whether two strings are equal.",
+  "buggyCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[] = \"cat\";\n    char b[] = \"cat\";\n    if (strcmp(a, b)) {\n        printf(\"Strings are equal\\n\");\n    } else {\n        printf(\"Strings are different\\n\");\n    }\n    return 0;\n}",
+  "expectedBehavior": "Since a and b both contain 'cat', the program should print 'Strings are equal'.",
+  "actualProblem": "strcmp() returns 0 when the strings are equal (and non-zero when they differ), which is the opposite of a typical boolean 'true means yes'. Treating the return value directly as if non-zero means 'equal' inverts the logic, so equal strings are reported as different.",
+  "correctedCode": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char a[] = \"cat\";\n    char b[] = \"cat\";\n    if (strcmp(a, b) == 0) {\n        printf(\"Strings are equal\\n\");\n    } else {\n        printf(\"Strings are different\\n\");\n    }\n    return 0;\n}",
+  "expectedOutput": "Strings are equal",
+  "explanation": "strcmp() returns 0 for equal strings, and a positive or negative number reflecting their ordering otherwise. Checking explicitly for == 0 (rather than treating the raw return value as a boolean) correctly detects equality.",
+  "concepts": [
+    "strcmp()",
+    "string comparison",
+    "logic errors"
+  ]
+}

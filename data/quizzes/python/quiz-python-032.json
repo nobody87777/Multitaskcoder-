@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-032",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "Exceptions",
+  "question": "What will this code print?",
+  "code": "try:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Caught it\")\nfinally:\n    print(\"Cleanup\")",
+  "options": [
+    "Cleanup only",
+    "Caught it only",
+    "An unhandled exception is raised",
+    "Caught it, then Cleanup"
+  ],
+  "correctAnswer": 3,
+  "explanation": "The ZeroDivisionError is caught by the except block, which prints 'Caught it'; the finally block always runs afterward, printing 'Cleanup'.",
+  "concepts": [
+    "try/except/finally",
+    "exception handling"
+  ]
+}

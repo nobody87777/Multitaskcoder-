@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-011",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Conditionals",
+  "question": "What will this code print?",
+  "code": "x = 7\nif x % 2 == 0:\n    print(\"Even\")\nelif x > 5:\n    print(\"Big and Odd\")\nelse:\n    print(\"Small and Odd\")",
+  "options": [
+    "Even",
+    "Small and Odd",
+    "Big and Odd",
+    "Nothing is printed"
+  ],
+  "correctAnswer": 2,
+  "explanation": "7 is odd, so the first branch is skipped; since 7 > 5 the elif condition is true, printing 'Big and Odd'.",
+  "concepts": [
+    "if/elif/else",
+    "conditionals"
+  ]
+}

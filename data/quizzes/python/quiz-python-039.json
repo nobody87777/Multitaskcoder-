@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-039",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "code-analysis",
+  "topic": "Data Structures",
+  "question": "Why does calling d.get('b', 'not found') not raise a KeyError even though 'b' is not a key in d?",
+  "code": "d = {\"a\": 1}\nvalue = d.get(\"b\", \"not found\")\nprint(value)",
+  "options": [
+    "Because get() ignores missing keys and returns None always",
+    "Because get() adds the missing key to the dictionary automatically",
+    "Because get() returns the provided default value instead of raising an exception when the key is absent",
+    "Because dictionaries silently allow any key to be accessed"
+  ],
+  "correctAnswer": 2,
+  "explanation": "dict.get(key, default) looks up the key and returns default instead of raising KeyError if the key isn't found, unlike square-bracket access.",
+  "concepts": [
+    "dictionaries",
+    "dict.get()"
+  ]
+}

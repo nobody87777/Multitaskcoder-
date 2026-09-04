@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-044",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Functional",
+  "bugType": "lambda-capture-error",
+  "title": "Fix the Lambda Capturing a Reassigned Variable",
+  "description": "The program should build a lambda that captures a loop-computed message.",
+  "buggyCode": "import java.util.function.Supplier;\n\npublic class Main {\n    public static void main(String[] args) {\n        String message;\n        message = \"Initial\";\n        Supplier<String> greeter = () -> message;\n        message = \"Updated\";\n        System.out.println(greeter.get());\n    }\n}",
+  "expectedBehavior": "The program should compile and print whichever value message held at the time the lambda captured it.",
+  "actualProblem": "message is reassigned after the lambda is created, so it is not 'effectively final'. Java requires any local variable captured by a lambda to never change after its first assignment, so this code fails to compile: 'local variables referenced from a lambda expression must be final or effectively final'.",
+  "correctedCode": "import java.util.function.Supplier;\n\npublic class Main {\n    public static void main(String[] args) {\n        final String message = \"Initial\";\n        Supplier<String> greeter = () -> message;\n        System.out.println(greeter.get());\n    }\n}",
+  "expectedOutput": "Initial",
+  "explanation": "Lambdas capture local variables by value at the point of capture, and Java enforces that such variables never change afterward (effectively final) to avoid confusing or inconsistent behavior. Reassigning a captured variable after the lambda is created is not allowed.",
+  "concepts": [
+    "lambda expressions",
+    "effectively final",
+    "variable capture"
+  ]
+}

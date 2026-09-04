@@ -1,0 +1,15 @@
+{
+  "id": "java-047",
+  "language": "java",
+  "title": "Lambda Expression: Custom Comparator",
+  "difficulty": "advanced",
+  "topic": "Functional",
+  "description": "Sort a list of names by length using a lambda expression as a Comparator.",
+  "code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class LambdaComparator {\n    public static void main(String[] args) {\n        List<String> names = new ArrayList<>(List.of(\"Ravi\", \"Al\", \"Christopher\", \"Sam\"));\n        names.sort((a, b) -> a.length() - b.length());\n        System.out.println(names);\n    }\n}",
+  "expectedOutput": "[Al, Sam, Ravi, Christopher]",
+  "concepts": [
+    "lambda expressions",
+    "Comparator",
+    "List.sort()"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-037",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "OOP",
+  "question": "What is the purpose of calling super().__init__() inside a subclass's constructor?",
+  "options": [
+    "To run the parent class's constructor logic before adding the subclass's own initialization",
+    "To delete the parent class",
+    "To turn the subclass into an abstract class",
+    "To skip calling the subclass's own __init__"
+  ],
+  "correctAnswer": 0,
+  "explanation": "super().__init__() invokes the parent class's constructor, ensuring the inherited attributes are set up before the subclass adds its own.",
+  "concepts": [
+    "inheritance",
+    "super()"
+  ]
+}

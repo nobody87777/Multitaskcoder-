@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-019",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Strings",
+  "question": "What does text[1:4] return for text = 'Python'?",
+  "options": [
+    "'Pyth'",
+    "'yth'",
+    "'ytho'",
+    "'ytho n'"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Slicing [1:4] returns characters from index 1 up to (not including) index 4: 'y', 't', 'h' → 'yth'.",
+  "concepts": [
+    "slicing",
+    "strings"
+  ]
+}

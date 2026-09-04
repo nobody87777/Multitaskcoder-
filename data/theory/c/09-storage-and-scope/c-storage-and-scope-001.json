@@ -1,0 +1,58 @@
+{
+  "id": "c-storage-and-scope-001",
+  "language": "c",
+  "section": "c",
+  "module": "Storage and Scope",
+  "moduleNumber": 9,
+  "lessonNumber": 9,
+  "title": "Storage Classes and Scope",
+  "difficulty": "intermediate",
+  "description": "Local and global variables, static, extern, auto, register, and the concepts of scope and lifetime.",
+  "objectives": [
+    "Distinguish scope (where a name is visible) from lifetime (how long storage persists)",
+    "Use static for persistent local state and internal linkage",
+    "Use extern to share a global variable across files",
+    "Understand auto and register conceptually"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Scope vs. Lifetime, and Global Variables",
+      "body": "Scope is about where in the source code a name is visible; lifetime is about how long the underlying storage actually exists during program execution — these are related but distinct concepts. An ordinary local variable has block scope and automatic storage duration: it's created when its enclosing block is entered and destroyed when that block exits, with a fresh, uninitialized (unless explicitly initialized) value on each entry.\n\nA global variable, declared outside any function, has file scope (visible throughout the rest of that file, and other files via extern) and static storage duration: it exists for the entire program's execution, retaining its value between function calls. Global variables should generally be used sparingly, since they create implicit coupling between any functions that read/write them, making code harder to reason about and test."
+    },
+    {
+      "type": "text",
+      "heading": "static, extern, auto, and register",
+      "body": "static has two distinct meanings depending on context. On a local variable, static int count = 0; inside a function makes that variable retain its value between calls (like a global, but still scoped/visible only inside that function) — created once, on the first call, not re-initialized on each subsequent call. On a global variable or function, static restricts its linkage to internal only, meaning it's only visible within its own source file, not accessible via extern from other files — useful for genuinely private, file-local helpers.\n\nextern declares that a variable is defined elsewhere (in another source file), letting multiple files share one actual global variable. auto is the default storage class for local variables (rarely written explicitly, since it's implicit) — not related to C++11's very different auto type-inference keyword. register is a hint (which modern compilers routinely ignore, optimizing far better on their own) suggesting a variable should be kept in a CPU register rather than memory for faster access."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nvoid counter() {\n    static int count = 0;   // initialized once; persists across calls\n    count++;\n    printf(\"%d \", count);\n}\n\nint main() {\n    counter();\n    counter();\n    counter();               // 1 2 3 — count retained its value each time\n    printf(\"\\n\");\n    return 0;\n}",
+      "explanation": "static int count = 0; inside counter() is initialized only once, on the very first call; subsequent calls see the value left by the previous call, rather than resetting to 0 each time."
+    }
+  ],
+  "keyPoints": [
+    "Scope (visibility in source code) and lifetime (how long storage persists) are distinct concepts",
+    "static on a local variable makes it persist across calls; on a global/function, it restricts linkage to the file",
+    "extern lets multiple source files share one actual global variable definition",
+    "register is a compiler hint modern compilers largely ignore in favor of their own optimizations"
+  ],
+  "commonMistakes": [
+    "Expecting a plain local variable to retain its value between function calls without static",
+    "Overusing global variables, creating hidden coupling between unrelated functions",
+    "Confusing C's static local-variable persistence with static's very different meaning in some other languages"
+  ],
+  "concepts": [
+    "storage classes",
+    "scope",
+    "lifetime",
+    "static",
+    "extern",
+    "auto",
+    "register",
+    "global variables"
+  ],
+  "previousLesson": "c-functions-001",
+  "nextLesson": "c-arrays-001"
+}

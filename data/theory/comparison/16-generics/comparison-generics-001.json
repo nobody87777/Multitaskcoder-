@@ -1,0 +1,59 @@
+{
+  "id": "comparison-generics-001",
+  "language": "comparison",
+  "section": "comparison",
+  "module": "Generics / Generic Programming",
+  "topic": "Generics / Generic Programming",
+  "topicNumber": 16,
+  "lessonNumber": 16,
+  "title": "Generics and Generic Programming",
+  "difficulty": "advanced",
+  "description": "How Python achieves generic-like flexibility dynamically, how Java's generics work, and C's generic programming techniques.",
+  "objectives": [
+    "Understand Python's dynamic-typing approach to 'generic' code",
+    "Understand Java's compile-time generics",
+    "Understand C's techniques for generic programming without language-level generics"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Python",
+      "body": "Python needs no explicit generics mechanism, because its dynamic typing already makes ordinary code inherently 'generic' — a function like def first(items): return items[0] works with a list, a tuple, or any other indexable sequence, with no type parameter declared anywhere. Optional type hints (List[T] via typing, or the newer list[T] syntax) can express intended generic constraints for static analysis tools, but nothing is enforced by the language at runtime."
+    },
+    {
+      "type": "text",
+      "heading": "Java",
+      "body": "Generics (class Box<T> { ... }) are a genuine, compile-time-checked language feature: a parameterized type ensures, at compile time, that a Box<String> only ever holds Strings — this catches type errors before runtime and eliminates the need for unsafe casts that pre-generics Java code required. Generic type information is erased at runtime (type erasure), a deliberate implementation choice for backward compatibility, meaning generics exist purely as a compile-time safety mechanism."
+    },
+    {
+      "type": "text",
+      "heading": "C",
+      "body": "C has no generics as a language feature at all. Generic-like behavior is achieved through other techniques: void* (a generic, type-less pointer) combined with an explicit size parameter, as qsort() in the standard library does; function-like macros, which are expanded textually and so work with any type the expansion happens to be valid for, at the cost of no type checking whatsoever; or, in more modern C (C11+), _Generic, a compile-time mechanism to select different code based on an expression's type. None of these provide anything close to Java's compile-time-checked type parameters."
+    },
+    {
+      "type": "text",
+      "heading": "Key Differences",
+      "body": "Python achieves generic-like flexibility simply by virtue of being dynamically typed, with no dedicated 'generics' feature needed. Java has a real, compile-time-checked generics system. C has no generics feature at all — void*, macros, and _Generic are all workarounds with meaningfully weaker (or entirely absent) type safety compared to Java's generics."
+    },
+    {
+      "type": "text",
+      "heading": "When It Matters",
+      "body": "Writing a genuinely reusable, type-safe container or algorithm is straightforward with Java generics, natural (if unchecked) in Python, and requires real design tradeoffs in C — usually accepting either void* type-unsafety or macro-based textual expansion."
+    }
+  ],
+  "keyPoints": [
+    "Python's dynamic typing makes most code inherently generic, with no dedicated language feature needed",
+    "Java's generics provide genuine compile-time type-parameter checking (with runtime type erasure)",
+    "C has no generics — void* pointers, macros, and (in C11+) _Generic are all weaker workarounds"
+  ],
+  "concepts": [
+    "generics",
+    "type parameters",
+    "type erasure",
+    "void pointers",
+    "macros",
+    "generic programming"
+  ],
+  "previousLesson": "comparison-modules-and-packages-001",
+  "nextLesson": "comparison-functional-features-001"
+}

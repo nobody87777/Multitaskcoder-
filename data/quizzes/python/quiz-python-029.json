@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-029",
+  "language": "python",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Functions",
+  "question": "What does the lambda expression `lambda x, y: x + y` represent in Python?",
+  "options": [
+    "An anonymous function that takes two arguments and returns their sum",
+    "A named function called lambda",
+    "A syntax error because Python has no anonymous functions",
+    "A tuple of two values"
+  ],
+  "correctAnswer": 0,
+  "explanation": "lambda creates a small anonymous (unnamed) function; here it takes x and y and returns their sum.",
+  "concepts": [
+    "lambda",
+    "anonymous functions"
+  ]
+}

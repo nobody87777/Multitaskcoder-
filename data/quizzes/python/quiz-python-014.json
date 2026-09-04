@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-014",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Loops",
+  "question": "What values does range(2, 10, 2) produce?",
+  "options": [
+    "0, 2, 4, 6, 8",
+    "2, 4, 6, 8",
+    "2, 5, 8",
+    "2, 4, 6, 8, 10"
+  ],
+  "correctAnswer": 1,
+  "explanation": "range(start, stop, step) generates values from 2 up to (but not including) 10, stepping by 2: 2, 4, 6, 8.",
+  "concepts": [
+    "range()",
+    "loops"
+  ]
+}

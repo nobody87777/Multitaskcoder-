@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-026",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Pointers",
+  "question": "What does the expression &x produce in C, where x is an int variable?",
+  "options": [
+    "The value stored in x",
+    "A new copy of x",
+    "A boolean indicating whether x is zero",
+    "The memory address where x is stored"
+  ],
+  "correctAnswer": 3,
+  "explanation": "The & (address-of) operator yields the memory address of its operand, which can be stored in a pointer variable.",
+  "concepts": [
+    "pointers",
+    "address-of operator"
+  ]
+}

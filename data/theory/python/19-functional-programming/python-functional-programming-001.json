@@ -1,0 +1,57 @@
+{
+  "id": "python-functional-programming-001",
+  "language": "python",
+  "section": "python",
+  "module": "Lambda and Functional Programming",
+  "moduleNumber": 19,
+  "lessonNumber": 21,
+  "title": "Lambda and Functional Programming",
+  "difficulty": "intermediate",
+  "description": "Anonymous functions with lambda, and the core functional tools: map(), filter(), reduce(), and sorted() with key functions.",
+  "objectives": [
+    "Write lambda expressions for short, throwaway functions",
+    "Use map(), filter(), and functools.reduce()",
+    "Use key functions with sorted() and other functions",
+    "Recognize when functional style improves (or hurts) readability"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "lambda and map()/filter()",
+      "body": "lambda arguments: expression creates a small, anonymous (unnamed) function in a single expression — equivalent to a def with just one return statement, but usable inline wherever a function is expected. It cannot contain statements (like assignments or loops), only a single expression.\n\nmap(function, iterable) applies function to every element of iterable, returning a lazy map object (wrap it in list(...) to see the results eagerly). filter(function, iterable) keeps only the elements for which function returns a truthy value. Both are commonly used with a lambda for a quick, throwaway transformation or predicate, though for anything non-trivial, a named function (or, very often, a plain list comprehension) is usually considered more readable in idiomatic Python."
+    },
+    {
+      "type": "text",
+      "heading": "reduce() and Key Functions",
+      "body": "functools.reduce(function, iterable, initializer) repeatedly applies a two-argument function to accumulate a single result from a sequence (e.g., reduce(lambda a, b: a + b, numbers) sums a list, though sum(numbers) is the idiomatic way to actually do that). reduce() is less commonly used directly in everyday Python than map/filter, since a plain loop or a built-in like sum()/max()/min() is often clearer.\n\nA key function is a much more idiomatic and pervasive functional pattern in Python: sorted(iterable, key=function) sorts by the value function returns for each element, rather than the elements themselves — for example, sorted(words, key=len) sorts strings by length. The same key parameter pattern appears in max(), min(), and list.sort()."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from functools import reduce\n\nnums = [1, 2, 3, 4, 5]\nsquares = list(map(lambda x: x * x, nums))\nevens = list(filter(lambda x: x % 2 == 0, nums))\ntotal = reduce(lambda a, b: a + b, nums)\nprint(squares, evens, total)   # [1,4,9,16,25] [2,4] 15\n\nwords = [\"kiwi\", \"fig\", \"blueberry\"]\nprint(sorted(words, key=len))   # ['fig', 'kiwi', 'blueberry'] — sorted by length",
+      "explanation": "map/filter/reduce demonstrate the classic functional trio, though list comprehensions often express the same map/filter logic more readably in Python. key=len sorts strings by their length rather than alphabetically."
+    }
+  ],
+  "keyPoints": [
+    "lambda args: expr creates a single-expression anonymous function",
+    "map() transforms every element; filter() keeps only elements matching a predicate",
+    "functools.reduce() folds a sequence down to one accumulated value",
+    "key= functions (in sorted(), max(), min(), .sort()) customize comparison without changing the elements themselves"
+  ],
+  "commonMistakes": [
+    "Overusing map()/filter() with lambda where a plain list comprehension would be clearer",
+    "Forgetting map()/filter() return lazy iterators in Python 3, not lists, until wrapped in list(...)",
+    "Trying to put a statement (like an assignment) inside a lambda body, which is a SyntaxError"
+  ],
+  "concepts": [
+    "lambda",
+    "map()",
+    "filter()",
+    "reduce()",
+    "sorted()",
+    "key functions",
+    "functional programming"
+  ],
+  "previousLesson": "python-iterators-and-generators-001",
+  "nextLesson": "python-decorators-001"
+}

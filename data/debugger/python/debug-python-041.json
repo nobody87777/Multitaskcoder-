@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-041",
+  "language": "python",
+  "difficulty": "advanced",
+  "topic": "Generators",
+  "bugType": "generator-misuse",
+  "title": "Fix the Unused Generator",
+  "description": "The program should print each even number produced by a generator function. Fix the bug.",
+  "buggyCode": "def even_numbers(limit):\n    n = 0\n    while n <= limit:\n        yield n\n        n += 2\n\nresult = even_numbers(6)\nprint(result)",
+  "expectedBehavior": "The program should print 0, 2, 4, 6 — the even numbers produced by the generator.",
+  "actualProblem": "Calling even_numbers(6) creates a generator object but doesn't run its code yet; printing result just shows something like '<generator object ...>' instead of the actual values, because the generator was never iterated over.",
+  "correctedCode": "def even_numbers(limit):\n    n = 0\n    while n <= limit:\n        yield n\n        n += 2\n\nfor value in even_numbers(6):\n    print(value)",
+  "expectedOutput": "0\n2\n4\n6",
+  "explanation": "A generator function returns a generator object immediately, without running any of its code. Values are only produced as the generator is iterated (e.g. with a for loop or next()) — printing the generator itself just shows its object representation.",
+  "concepts": [
+    "generators",
+    "yield",
+    "lazy evaluation"
+  ]
+}

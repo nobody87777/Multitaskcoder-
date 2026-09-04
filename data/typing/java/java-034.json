@@ -1,0 +1,15 @@
+{
+  "id": "java-034",
+  "language": "java",
+  "title": "Bubble Sort",
+  "difficulty": "intermediate",
+  "topic": "Sorting",
+  "description": "Sort an array of numbers in ascending order using bubble sort.",
+  "code": "import java.util.Arrays;\n\npublic class BubbleSort {\n    public static void main(String[] args) {\n        int[] numbers = {64, 34, 25, 12, 22, 11, 90};\n        int n = numbers.length;\n\n        for (int i = 0; i < n - 1; i++) {\n            for (int j = 0; j < n - 1 - i; j++) {\n                if (numbers[j] > numbers[j + 1]) {\n                    int temp = numbers[j];\n                    numbers[j] = numbers[j + 1];\n                    numbers[j + 1] = temp;\n                }\n            }\n        }\n\n        System.out.println(\"Sorted array: \" + Arrays.toString(numbers));\n    }\n}",
+  "expectedOutput": "Sorted array: [11, 12, 22, 25, 34, 64, 90]",
+  "concepts": [
+    "bubble sort",
+    "nested loops",
+    "swapping"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "java-001",
+  "language": "java",
+  "title": "Hello World",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "description": "Write a Java program that prints Hello, World! to the console.",
+  "code": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "expectedOutput": "Hello, World!",
+  "concepts": [
+    "class",
+    "main method",
+    "System.out.println"
+  ]
+}

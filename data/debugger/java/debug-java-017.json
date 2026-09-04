@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-017",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Strings",
+  "bugType": "index-out-of-bounds",
+  "title": "Fix the Substring Bounds",
+  "description": "The program should extract the first three characters of a word.",
+  "buggyCode": "public class SubstringExample {\n    public static void main(String[] args) {\n        String word = \"Java\";\n        System.out.println(word.substring(0, 4));\n    }\n}",
+  "expectedBehavior": "The program should print 'Jav', the first three characters of 'Java'.",
+  "actualProblem": "substring(0, 4) is called intending to get 3 characters, but the end index 4 makes it return all 4 characters of 'Java' instead of the intended 3.",
+  "correctedCode": "public class SubstringExample {\n    public static void main(String[] args) {\n        String word = \"Java\";\n        System.out.println(word.substring(0, 3));\n    }\n}",
+  "expectedOutput": "Jav",
+  "explanation": "String.substring(begin, end) includes begin but excludes end, similar to array/list slicing. To get exactly 3 characters starting at index 0, the end index must be 3, not 4.",
+  "concepts": [
+    "String methods",
+    "substring()",
+    "off-by-one error"
+  ]
+}

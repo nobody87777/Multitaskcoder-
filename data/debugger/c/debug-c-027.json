@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-027",
+  "language": "c",
+  "difficulty": "intermediate",
+  "topic": "Pointers",
+  "bugType": "wild-pointer",
+  "title": "Fix the Wild Pointer Dereference",
+  "description": "The program should store a value through a pointer and print it.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int *ptr;\n    *ptr = 10;\n    printf(\"%d\\n\", *ptr);\n    return 0;\n}",
+  "expectedBehavior": "The program should safely store 10 through the pointer and print it.",
+  "actualProblem": "ptr is declared but never assigned a valid address — it's a 'wild' pointer pointing at an arbitrary, indeterminate memory location. Writing through it with *ptr = 10 is undefined behavior and commonly crashes the program.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int value;\n    int *ptr = &value;\n    *ptr = 10;\n    printf(\"%d\\n\", *ptr);\n    return 0;\n}",
+  "expectedOutput": "10",
+  "explanation": "A pointer must be assigned a valid address — either the address of an existing variable (with &) or memory obtained from malloc() — before it is dereferenced. An uninitialized pointer's value is garbage, not a safe, writable address.",
+  "concepts": [
+    "pointers",
+    "wild pointer",
+    "undefined behavior"
+  ]
+}

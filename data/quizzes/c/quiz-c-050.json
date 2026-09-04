@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-050",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "mcq",
+  "topic": "Advanced Pointers",
+  "question": "What is meant by 'undefined behavior' in C, such as when dereferencing a NULL pointer?",
+  "options": [
+    "A behavior that is always guaranteed to crash immediately",
+    "A behavior explicitly defined by the C standard to print an error",
+    "A behavior that only occurs on Windows systems",
+    "A behavior the C standard places no requirements on — the program might crash, produce garbage output, or appear to work, with no guarantees"
+  ],
+  "correctAnswer": 3,
+  "explanation": "Undefined behavior means the C standard imposes no requirements on what happens — the compiler and runtime are free to do anything, from crashing to silently producing incorrect results, which is why relying on it (like dereferencing NULL) is dangerous.",
+  "concepts": [
+    "undefined behavior",
+    "NULL pointers"
+  ]
+}

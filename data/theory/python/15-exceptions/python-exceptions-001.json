@@ -1,0 +1,55 @@
+{
+  "id": "python-exceptions-001",
+  "language": "python",
+  "section": "python",
+  "module": "Exception Handling",
+  "moduleNumber": 15,
+  "lessonNumber": 16,
+  "title": "Exception Handling",
+  "difficulty": "intermediate",
+  "description": "Handling runtime errors gracefully with try/except/else/finally, raising exceptions, and custom exception classes.",
+  "objectives": [
+    "Distinguish syntax errors, runtime errors, and logical errors",
+    "Use try/except/else/finally correctly",
+    "Raise exceptions and define custom exception classes",
+    "Follow good error-handling practices"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Kinds of Errors and try/except",
+      "body": "It's useful to distinguish three kinds of problems: syntax errors (the code isn't even valid Python — caught before the program runs), runtime errors / exceptions (the code is valid but something goes wrong while executing, like dividing by zero or accessing a missing dictionary key), and logical errors (the code runs without crashing but produces the wrong result — these are the hardest to catch automatically, since nothing 'fails').\n\nA try block wraps code that might raise an exception; one or more except clauses catch specific exception types and handle them. Catching the most specific exception type you expect (except ZeroDivisionError:) is much better practice than a bare except: or except Exception:, which can silently swallow bugs you didn't anticipate. An optional else clause runs only if the try block completed with no exception. A finally clause always runs, whether or not an exception occurred — ideal for cleanup code (closing a file or connection) that must happen regardless of outcome."
+    },
+    {
+      "type": "text",
+      "heading": "Raising Exceptions and Custom Exception Classes",
+      "body": "raise ValueError(\"message\") explicitly triggers an exception, useful for validating function inputs. Python's built-in exceptions form a hierarchy rooted at BaseException (with Exception as the ancestor of most 'normal' errors you should catch); catching a parent class also catches all its subclasses, so except Exception: catches nearly everything. You can define your own exception types by subclassing Exception (or a more specific built-in exception), which lets calling code catch your specific error condition separately from unrelated ones. except (TypeError, ValueError) as e: catches multiple exception types in one clause. Exception chaining (raise NewError(...) from original_error) preserves the original traceback when translating one exception into another, which is valuable for debugging."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "class InsufficientFundsError(Exception):\n    pass\n\ndef withdraw(balance, amount):\n    if amount > balance:\n        raise InsufficientFundsError(\"Not enough funds\")\n    return balance - amount\n\ntry:\n    withdraw(100, 150)\nexcept InsufficientFundsError as e:\n    print(\"Caught:\", e)\nfinally:\n    print(\"Cleanup always runs\")",
+      "explanation": "The custom InsufficientFundsError lets calling code catch this specific business-logic failure separately from other, unrelated exceptions. finally runs whether or not the exception was raised."
+    }
+  ],
+  "keyPoints": [
+    "Syntax errors are caught before running; runtime errors (exceptions) happen during execution; logical errors produce wrong results silently",
+    "Catch the most specific exception type you can — avoid bare except:",
+    "else runs only on success; finally always runs, ideal for cleanup",
+    "Custom exception classes (subclassing Exception) let callers handle specific failure conditions distinctly"
+  ],
+  "commonMistakes": [
+    "Using a bare except: (or except Exception: pass) that silently hides real bugs",
+    "Forgetting that finally runs even when a return or another exception happens inside the try/except",
+    "Raising a generic Exception instead of a specific or custom exception type, making it hard for callers to react precisely"
+  ],
+  "concepts": [
+    "exceptions",
+    "try/except/else/finally",
+    "raise",
+    "custom exceptions",
+    "exception hierarchy"
+  ],
+  "previousLesson": "python-modules-and-packages-001",
+  "nextLesson": "python-files-001"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-005",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "bugType": "wrong-format-specifier",
+  "title": "Fix the Mismatched String Specifier",
+  "description": "The program should print an integer count using printf.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int count = 42;\n    printf(\"Count: %s\\n\", count);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 'Count: 42'.",
+  "actualProblem": "%s tells printf to treat the argument as a pointer to a null-terminated string, but count is a plain int, not an address. printf tries to read a string starting at whatever memory address the integer 42 happens to represent, which is undefined behavior (often a crash).",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int count = 42;\n    printf(\"Count: %d\\n\", count);\n    return 0;\n}",
+  "expectedOutput": "Count: 42",
+  "explanation": "Each printf format specifier expects a specific argument type: %d for int, %s for a char* string, %f for float/double, and so on. Using the wrong specifier misinterprets the bytes of the argument, with unpredictable results.",
+  "concepts": [
+    "printf()",
+    "format specifiers",
+    "undefined behavior"
+  ]
+}

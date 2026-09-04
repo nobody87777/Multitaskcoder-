@@ -1,0 +1,54 @@
+{
+  "id": "java-input-output-001",
+  "language": "java",
+  "section": "java",
+  "module": "Input and Output",
+  "moduleNumber": 6,
+  "lessonNumber": 6,
+  "title": "Input and Output",
+  "difficulty": "beginner",
+  "description": "Reading console input with Scanner, and formatting output with System.out and printf.",
+  "objectives": [
+    "Read different types of input using Scanner",
+    "Format output with System.out.printf",
+    "Understand System.in and System.out at a conceptual level"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Reading Input with Scanner",
+      "body": "java.util.Scanner is the standard way to read console input: Scanner scanner = new Scanner(System.in); wraps the standard input stream, and methods like nextInt(), nextDouble(), and nextLine() read a value of the corresponding type. A well-known gotcha: nextInt() (and similar numeric methods) only consumes the number itself, leaving the trailing newline character in the input buffer — calling nextLine() immediately afterward then reads that leftover empty line instead of waiting for new input. The fix is an extra throwaway scanner.nextLine() call to consume the leftover newline before reading an actual line of text.\n\nBufferedReader (java.io.BufferedReader, wrapping an InputStreamReader around System.in) is a lower-level, more efficient alternative for reading text, commonly seen in performance-sensitive or competitive-programming contexts, though Scanner is friendlier for typical console I/O."
+    },
+    {
+      "type": "text",
+      "heading": "Output with System.out and printf",
+      "body": "System.out.println(x) prints x followed by a newline; System.out.print(x) omits the newline. System.out.printf(format, args...) provides C-style formatted output using format specifiers: %d for integers, %f for floating-point (with optional precision, like %.2f for two decimal places), %s for strings, and %n for a platform-appropriate newline. System.in and System.out are Java's standard input and output streams, conceptually equivalent to stdin/stdout in other languages."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "import java.util.Scanner;\n\npublic class InputOutput {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter your age: \");\n        int age = scanner.nextInt();\n        scanner.nextLine();                     // consume leftover newline\n        System.out.print(\"Enter your name: \");\n        String name = scanner.nextLine();\n\n        System.out.printf(\"%s is %d years old%n\", name, age);\n    }\n}",
+      "explanation": "The extra scanner.nextLine() after nextInt() prevents the following nextLine() call from immediately returning an empty string. printf formats the output using %s and %d placeholders."
+    }
+  ],
+  "keyPoints": [
+    "Scanner(System.in) with nextInt()/nextDouble()/nextLine() reads typed console input",
+    "nextInt() leaves a trailing newline that a following nextLine() will immediately consume unless cleared first",
+    "System.out.printf uses C-style format specifiers: %d, %f, %s, %n",
+    "System.in/System.out are Java's standard input/output streams"
+  ],
+  "commonMistakes": [
+    "Calling nextLine() right after nextInt()/nextDouble() and getting an unexpectedly empty string",
+    "Forgetting %n (or \\n) to add a newline in printf output",
+    "Not validating Scanner input, leading to InputMismatchException on unexpected input"
+  ],
+  "concepts": [
+    "Scanner",
+    "System.in",
+    "System.out",
+    "printf",
+    "console input"
+  ],
+  "previousLesson": "java-operators-001",
+  "nextLesson": "java-conditionals-001"
+}

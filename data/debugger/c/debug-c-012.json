@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-012",
+  "language": "c",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "infinite-loop",
+  "title": "Fix the Stuck Countdown",
+  "description": "The program should count down from 5 to 1 and then stop.",
+  "buggyCode": "#include <stdio.h>\n\nint main() {\n    int n = 5;\n    while (n > 0) {\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}",
+  "expectedBehavior": "The program should print 5, 4, 3, 2, 1 and then terminate.",
+  "actualProblem": "n is never modified inside the loop body, so the condition n > 0 stays true forever, producing an infinite loop that endlessly prints 5.",
+  "correctedCode": "#include <stdio.h>\n\nint main() {\n    int n = 5;\n    while (n > 0) {\n        printf(\"%d\\n\", n);\n        n--;\n    }\n    return 0;\n}",
+  "expectedOutput": "5\n4\n3\n2\n1",
+  "explanation": "A while loop only stops once its condition becomes false. The loop body must update the tested variable (here, decrementing n), or the condition never changes.",
+  "concepts": [
+    "while loop",
+    "infinite loop",
+    "loop variable update"
+  ]
+}

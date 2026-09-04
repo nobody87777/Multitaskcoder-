@@ -1,0 +1,20 @@
+{
+  "id": "debug-python-009",
+  "language": "python",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "bugType": "infinite-loop",
+  "title": "Fix the Infinite Countdown",
+  "description": "The program should count down from 5 to 1 and then stop. Fix the bug.",
+  "buggyCode": "n = 5\nwhile n > 0:\n    print(n)",
+  "expectedBehavior": "The program should print 5, 4, 3, 2, 1 and then terminate.",
+  "actualProblem": "n is never changed inside the loop body, so the condition n > 0 stays true forever, producing an infinite loop.",
+  "correctedCode": "n = 5\nwhile n > 0:\n    print(n)\n    n -= 1",
+  "expectedOutput": "5\n4\n3\n2\n1",
+  "explanation": "A while loop only stops once its condition becomes false. The loop body must update the variable being tested (here, decrementing n) or the loop will never end.",
+  "concepts": [
+    "while loop",
+    "infinite loop",
+    "loop variable update"
+  ]
+}

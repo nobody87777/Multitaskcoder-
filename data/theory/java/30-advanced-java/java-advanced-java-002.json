@@ -1,0 +1,55 @@
+{
+  "id": "java-advanced-java-002",
+  "language": "java",
+  "section": "java",
+  "module": "Advanced Java",
+  "moduleNumber": 30,
+  "lessonNumber": 32,
+  "title": "Annotations, Reflection, and Modern Java Features",
+  "difficulty": "advanced",
+  "description": "Annotations, a conceptual look at reflection and serialization, and modern features: records and sealed classes.",
+  "objectives": [
+    "Understand what annotations are and how they're used",
+    "Understand reflection and serialization conceptually",
+    "Understand records and sealed classes as modern Java features"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Annotations and Reflection",
+      "body": "An annotation (@Override, @Deprecated, @FunctionalInterface, and many framework-defined ones) attaches metadata to code — a class, method, field, or parameter — without directly changing its behavior on its own. Some annotations are purely informational for developers or the compiler (@Override); others are read at runtime by frameworks (via reflection) to drive behavior, such as Spring's @Autowired or JUnit's @Test, which tell those frameworks which methods to treat specially.\n\nReflection (java.lang.reflect) is the ability for a running program to inspect and manipulate its own classes, methods, and fields at runtime — even calling a method or reading a field by name, discovered dynamically, rather than referencing it directly in source code. This is powerful (it's how many frameworks and libraries work generically, without knowing your specific classes at compile time) but comes with real costs: reduced performance compared to direct calls, weaker compile-time safety, and code that's harder to follow statically."
+    },
+    {
+      "type": "text",
+      "heading": "Serialization, Records, and Sealed Classes",
+      "body": "Serialization (implementing java.io.Serializable) is the process of converting an object's state into a byte stream (for storage or transmission) and reconstructing it later — largely superseded in modern applications by explicit, more controllable formats like JSON, but still present in the language and occasionally relevant for framework interoperability.\n\nRecords (Java 16+) are a compact syntax for an immutable data-carrier class: record Point(int x, int y) {} automatically generates a constructor, accessor methods (x(), y()), equals(), hashCode(), and toString() — eliminating the substantial boilerplate that a hand-written equivalent class would require. Sealed classes (Java 17+) let a class or interface explicitly restrict which other classes are permitted to extend/implement it (sealed interface Shape permits Circle, Square {}), giving the compiler enough information to verify a switch over the sealed type's subtypes is exhaustive.\n\nNote on versions: records and sealed classes are both stable, finalized features usable in any Java 17+ project. Using them together with pattern matching in a switch (case Circle c -> ...), as in the example below, additionally requires Java 21+ specifically — that combination was still a preview feature in Java 17-20 and only became a standard, non-preview language feature in Java 21. Always check which JDK version a project targets before relying on it."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "record Point(int x, int y) {}   // constructor, accessors, equals/hashCode/toString all generated\n\nsealed interface Shape permits Circle, Square {}\nrecord Circle(double radius) implements Shape {}\nrecord Square(double side) implements Shape {}\n\npublic class ModernJava {\n    static double area(Shape shape) {\n        return switch (shape) {\n            case Circle c -> Math.PI * c.radius() * c.radius();\n            case Square s -> s.side() * s.side();\n            // no default needed — the compiler knows these are the ONLY permitted subtypes\n        };\n    }\n\n    public static void main(String[] args) {\n        Point p = new Point(1, 2);\n        System.out.println(p);                 // Point[x=1, y=2] — generated toString()\n        System.out.println(area(new Circle(2)));\n    }\n}",
+      "explanation": "Point needs no hand-written constructor, accessors, or toString(). The sealed Shape hierarchy lets the switch expression in area() be exhaustive without a default case, since the compiler knows exactly which types are possible. Requires Java 21+ to compile as written; on Java 17-20 the same pattern-matching switch syntax is only available as a preview feature."
+    }
+  ],
+  "keyPoints": [
+    "Annotations attach metadata to code, read by the compiler, tools, or frameworks (often via reflection)",
+    "Reflection lets code inspect/manipulate classes and members at runtime, at some cost to performance and static safety",
+    "Records (record Name(fields) {}) eliminate data-class boilerplate: constructor, accessors, equals/hashCode/toString",
+    "Sealed classes/interfaces restrict which types may extend/implement them, enabling exhaustive switch checking"
+  ],
+  "commonMistakes": [
+    "Using heavy reflection where a simpler, direct approach would work and perform better",
+    "Writing a full hand-rolled immutable data class where a record would eliminate the boilerplate",
+    "Treating sealed classes as if they prevented subclassing entirely, rather than just restricting it to a known, permitted set"
+  ],
+  "concepts": [
+    "annotations",
+    "reflection",
+    "serialization",
+    "records",
+    "sealed classes",
+    "modern Java features"
+  ],
+  "previousLesson": "java-advanced-java-001",
+  "nextLesson": "java-best-practices-001"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-032",
+  "language": "python",
+  "title": "Matrix Transpose",
+  "difficulty": "intermediate",
+  "topic": "Arrays",
+  "description": "Compute the transpose of a matrix (rows become columns).",
+  "code": "matrix = [[1, 2, 3], [4, 5, 6]]\nrows = len(matrix)\ncols = len(matrix[0])\ntranspose = [[0] * rows for _ in range(cols)]\n\nfor i in range(rows):\n    for j in range(cols):\n        transpose[j][i] = matrix[i][j]\n\nfor row in transpose:\n    print(row)",
+  "expectedOutput": "[1, 4]\n[2, 5]\n[3, 6]",
+  "concepts": [
+    "nested lists",
+    "list comprehension",
+    "matrices"
+  ]
+}

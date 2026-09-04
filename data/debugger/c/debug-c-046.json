@@ -1,0 +1,20 @@
+{
+  "id": "debug-c-046",
+  "language": "c",
+  "difficulty": "advanced",
+  "topic": "Pointers",
+  "bugType": "use-after-free",
+  "title": "Fix the Use-After-Free",
+  "description": "The program should allocate memory, use it, free it, and not touch it again.",
+  "buggyCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *ptr = malloc(sizeof(int));\n    *ptr = 100;\n    free(ptr);\n    printf(\"%d\\n\", *ptr);\n    return 0;\n}",
+  "expectedBehavior": "The program should print 100 using the value before it's freed, and never dereference the pointer afterward.",
+  "actualProblem": "After free(ptr), the memory ptr pointed to is returned to the system and may be reused for something else at any time. Dereferencing ptr afterward (*ptr) reads memory that no longer belongs to this pointer — a use-after-free, which is undefined behavior.",
+  "correctedCode": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *ptr = malloc(sizeof(int));\n    *ptr = 100;\n    printf(\"%d\\n\", *ptr);\n    free(ptr);\n    return 0;\n}",
+  "expectedOutput": "100",
+  "explanation": "Once memory is freed, the pointer to it becomes dangling — it may still hold the old address, but that memory is no longer valid to read or write. Any use of the pointer's value must happen before free() is called, not after.",
+  "concepts": [
+    "use-after-free",
+    "dangling pointer",
+    "undefined behavior"
+  ]
+}

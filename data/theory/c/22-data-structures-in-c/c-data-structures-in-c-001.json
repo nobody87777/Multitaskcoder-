@@ -1,0 +1,55 @@
+{
+  "id": "c-data-structures-in-c-001",
+  "language": "c",
+  "section": "c",
+  "module": "Data Structures in C",
+  "moduleNumber": 22,
+  "lessonNumber": 23,
+  "title": "Linear Data Structures: Linked Lists, Stacks, and Queues",
+  "difficulty": "advanced",
+  "description": "Implementing singly linked lists, array-based and linked stacks, and array-based and circular queues in C.",
+  "objectives": [
+    "Implement a singly linked list with insertion and traversal",
+    "Implement a stack using an array",
+    "Implement a queue, including a circular queue"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Singly Linked Lists",
+      "body": "A linked list is built from nodes, each a struct holding data and a pointer to the next node: struct Node { int data; struct Node *next; };. Unlike an array, a linked list's nodes need not be contiguous in memory — each is individually malloc()'d and linked via pointers, letting the list grow dynamically without a pre-declared fixed capacity, at the cost of losing O(1) indexed access (finding the i-th element requires walking i nodes from the head).\n\nInserting at the front requires updating the caller's head pointer itself, which (as covered in the Pointers lesson) requires a pointer to a pointer (struct Node **headRef) if done inside a separate function, since a plain struct Node *head parameter would only receive a local copy of the pointer."
+    },
+    {
+      "type": "text",
+      "heading": "Stacks and Queues",
+      "body": "A stack (LIFO — last in, first out) can be implemented with a fixed-size array and a top index: push() increments top and writes the new value; pop() reads the value at top and decrements it — both should check for overflow (stack full) and underflow (stack empty) respectively before proceeding.\n\nA queue (FIFO — first in, first out) can similarly use a fixed-size array with front and rear indices: enqueue() writes at rear and advances it; dequeue() reads at front and advances it — but a naive array-based queue 'wastes' the freed space at the front as elements are dequeued. A circular queue fixes this by wrapping the indices back to 0 using modulus arithmetic once they reach the array's end ((rear + 1) % capacity), reusing the freed slots and letting a fixed-size array support continuous enqueue/dequeue cycling without ever needing to shift elements."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node { int data; struct Node *next; };\n\nvoid insertFront(struct Node **headRef, int value) {\n    struct Node *newNode = malloc(sizeof(struct Node));\n    newNode->data = value;\n    newNode->next = *headRef;\n    *headRef = newNode;\n}\n\n#define CAP 5\nint queue[CAP], front = 0, rear = 0, count = 0;\n\nvoid enqueue(int value) {\n    if (count == CAP) { printf(\"Queue full\\n\"); return; }\n    queue[rear] = value;\n    rear = (rear + 1) % CAP;    // circular wraparound\n    count++;\n}\n\nint main() {\n    struct Node *head = NULL;\n    insertFront(&head, 10);\n    insertFront(&head, 20);\n    printf(\"%d -> %d\\n\", head->data, head->next->data);   // 20 -> 10\n\n    enqueue(1); enqueue(2);\n    printf(\"front value: %d\\n\", queue[front]);\n    return 0;\n}",
+      "explanation": "insertFront uses a pointer-to-pointer to correctly update the caller's head. The circular queue's rear = (rear + 1) % CAP wraps the index back to 0 once it reaches the array's capacity, reusing freed slots."
+    }
+  ],
+  "keyPoints": [
+    "A linked list's nodes are individually allocated and linked via pointers, allowing dynamic growth without a fixed capacity",
+    "Updating a linked list's head from inside a function requires a pointer to a pointer",
+    "An array-based stack uses a single top index; check for overflow/underflow before push/pop",
+    "A circular queue uses modulus arithmetic on its front/rear indices to reuse freed array slots"
+  ],
+  "commonMistakes": [
+    "Forgetting to check for stack overflow/underflow before push()/pop()",
+    "Implementing a naive (non-circular) array-based queue that wastes freed space at the front",
+    "Passing a plain pointer (not a pointer-to-pointer) to a function that needs to update the list's head"
+  ],
+  "concepts": [
+    "linked lists",
+    "stacks",
+    "queues",
+    "circular queues",
+    "malloc()",
+    "pointer to pointer"
+  ],
+  "previousLesson": "c-function-pointers-001",
+  "nextLesson": "c-data-structures-in-c-002"
+}

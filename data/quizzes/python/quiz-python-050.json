@@ -1,0 +1,18 @@
+{
+  "id": "quiz-python-050",
+  "language": "python",
+  "difficulty": "advanced",
+  "type": "true-false",
+  "topic": "Advanced OOP",
+  "question": "True or False: In Python, integers are immutable, meaning that operations like `x += 1` modify the integer object in place.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "correctAnswer": 1,
+  "explanation": "Integers are immutable — x += 1 does not mutate the original int object; it creates a new int object and rebinds the name x to it.",
+  "concepts": [
+    "immutability",
+    "integers"
+  ]
+}

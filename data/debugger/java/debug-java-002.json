@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-002",
+  "language": "java",
+  "difficulty": "beginner",
+  "topic": "Basics",
+  "bugType": "incorrect-main-signature",
+  "title": "Fix the Broken Entry Point",
+  "description": "The program should run as a standalone Java application and print a message.",
+  "buggyCode": "public class Launcher {\n    public static void main(String args) {\n        System.out.println(\"Launching...\");\n    }\n}",
+  "expectedBehavior": "Running the program should print 'Launching...'.",
+  "actualProblem": "main's parameter is declared as String args instead of String[] args. The JVM only recognizes the exact signature public static void main(String[] args) as the program's entry point, so it reports 'Error: Main method not found'.",
+  "correctedCode": "public class Launcher {\n    public static void main(String[] args) {\n        System.out.println(\"Launching...\");\n    }\n}",
+  "expectedOutput": "Launching...",
+  "explanation": "The JVM looks for main with this precise signature — a String array parameter — to know where to start execution. Any deviation, like a plain String instead of String[], means the JVM can't find a runnable entry point.",
+  "concepts": [
+    "main method",
+    "program structure",
+    "JVM entry point"
+  ]
+}

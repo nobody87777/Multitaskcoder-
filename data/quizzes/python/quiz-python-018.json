@@ -1,0 +1,21 @@
+{
+  "id": "quiz-python-018",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "output",
+  "topic": "Strings",
+  "question": "What will this code print?",
+  "code": "text = \"Python\"\nprint(text[-1])",
+  "options": [
+    "n",
+    "P",
+    "IndexError",
+    "None"
+  ],
+  "correctAnswer": 0,
+  "explanation": "Negative indices count from the end of the string, so text[-1] is the last character, 'n'.",
+  "concepts": [
+    "indexing",
+    "negative index"
+  ]
+}

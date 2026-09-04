@@ -1,0 +1,16 @@
+{
+  "id": "java-002",
+  "language": "java",
+  "title": "Reading User Input",
+  "difficulty": "beginner",
+  "topic": "Input/Output",
+  "description": "Read the user's name using Scanner and greet them.",
+  "code": "import java.util.Scanner;\n\npublic class ReadInput {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print(\"Enter your name: \");\n        String name = scanner.nextLine();\n        System.out.println(\"Hello, \" + name + \"!\");\n    }\n}",
+  "exampleInput": "Alex",
+  "expectedOutput": "Enter your name: Hello, Alex!",
+  "concepts": [
+    "Scanner",
+    "nextLine()",
+    "string concatenation"
+  ]
+}

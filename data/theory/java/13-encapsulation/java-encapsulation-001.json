@@ -1,0 +1,57 @@
+{
+  "id": "java-encapsulation-001",
+  "language": "java",
+  "section": "java",
+  "module": "Encapsulation",
+  "moduleNumber": 13,
+  "lessonNumber": 13,
+  "title": "Encapsulation",
+  "difficulty": "intermediate",
+  "description": "Access modifiers, data hiding, and the getter/setter pattern for controlled field access.",
+  "objectives": [
+    "Use private, public, and protected appropriately",
+    "Understand the purpose of data hiding",
+    "Write getters and setters that add validation"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Access Modifiers and Data Hiding",
+      "body": "Encapsulation means bundling an object's data together with the methods that operate on it, and restricting direct external access to that data — the core idea being that an object's internal state should only be changed in ways the object itself controls and validates. Java enforces this with access modifiers: private members are accessible only within their own class; public members are accessible from anywhere; protected members are accessible within the same package and by subclasses (even in other packages); and package-private (no modifier at all) is accessible only within the same package.\n\nThe conventional pattern is to make fields private and expose controlled access through public getter and setter methods — this lets a class validate any incoming value (a setter can reject a negative age, for instance) and lets the internal representation change later without breaking code outside the class that only ever used the getters/setters, not the raw fields."
+    },
+    {
+      "type": "text",
+      "heading": "Getters, Setters, and Why It Matters",
+      "body": "A getter typically follows the pattern getFieldName() (or isFieldName() for a boolean), simply returning the field's value. A setter, setFieldName(value), assigns the field, but critically can also validate: rejecting an invalid value, throwing an exception, or clamping it to a valid range, rather than blindly accepting whatever is passed in — something a public field could never do. This is why exposing public fields directly (bypassing encapsulation) is generally considered poor practice in Java: it removes any opportunity to enforce invariants about an object's own data."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class BankAccount {\n    private double balance;    // private: cannot be accessed directly from outside\n\n    public double getBalance() {\n        return balance;\n    }\n\n    public void deposit(double amount) {\n        if (amount <= 0) {\n            throw new IllegalArgumentException(\"Deposit must be positive\");\n        }\n        balance += amount;\n    }\n\n    public static void main(String[] args) {\n        BankAccount acc = new BankAccount();\n        acc.deposit(100);\n        System.out.println(acc.getBalance());   // 100.0\n        // acc.balance = -50;                    // compile error: balance has private access\n    }\n}",
+      "explanation": "balance can only be modified through deposit(), which validates the amount — a caller cannot set an invalid balance directly, since the field itself is private."
+    }
+  ],
+  "keyPoints": [
+    "private restricts access to the declaring class; public allows access from anywhere",
+    "protected allows access within the package and by subclasses elsewhere",
+    "Fields are conventionally private, exposed through public getters/setters",
+    "Setters can validate input in ways a directly-exposed public field never could"
+  ],
+  "commonMistakes": [
+    "Making fields public 'for convenience', losing the ability to validate or later change the internal representation",
+    "Writing getters/setters that just pass values through with no actual validation, gaining little benefit over a public field",
+    "Confusing protected's actual scope (package + subclasses) with private's narrower one"
+  ],
+  "concepts": [
+    "encapsulation",
+    "access modifiers",
+    "private",
+    "public",
+    "protected",
+    "getters",
+    "setters",
+    "data hiding"
+  ],
+  "previousLesson": "java-classes-and-objects-001",
+  "nextLesson": "java-inheritance-001"
+}

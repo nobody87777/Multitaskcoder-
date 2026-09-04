@@ -1,0 +1,15 @@
+{
+  "id": "java-045",
+  "language": "java",
+  "title": "Reading From a File",
+  "difficulty": "advanced",
+  "topic": "Files",
+  "description": "Write a line to a file, then read it back using BufferedReader.",
+  "code": "import java.io.*;\n\npublic class FileReadExample {\n    public static void main(String[] args) throws IOException {\n        try (FileWriter writer = new FileWriter(\"data.txt\")) {\n            writer.write(\"Reading files in Java is straightforward\");\n        }\n\n        try (BufferedReader reader = new BufferedReader(new FileReader(\"data.txt\"))) {\n            String line = reader.readLine();\n            System.out.println(\"Read: \" + line);\n        }\n    }\n}",
+  "expectedOutput": "Read: Reading files in Java is straightforward",
+  "concepts": [
+    "BufferedReader",
+    "FileReader",
+    "try-with-resources"
+  ]
+}

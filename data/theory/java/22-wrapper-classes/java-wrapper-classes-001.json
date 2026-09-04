@@ -1,0 +1,57 @@
+{
+  "id": "java-wrapper-classes-001",
+  "language": "java",
+  "section": "java",
+  "module": "Wrapper Classes",
+  "moduleNumber": 22,
+  "lessonNumber": 23,
+  "title": "Wrapper Classes",
+  "difficulty": "intermediate",
+  "description": "The object wrappers for each primitive type, autoboxing/unboxing, and the pitfalls they introduce.",
+  "objectives": [
+    "Know each primitive type's wrapper class",
+    "Understand autoboxing and unboxing",
+    "Recognize common wrapper-related pitfalls"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Wrapper Classes and Autoboxing",
+      "body": "Every primitive type has a corresponding wrapper class: int/Integer, double/Double, char/Character, boolean/Boolean, and similarly for the others. Wrapper classes exist because primitives cannot be used where an object is required — generic type parameters (List<int> is illegal; List<Integer> is required), and anywhere the code specifically needs null as a possible value (a primitive can never be null).\n\nAutoboxing is the compiler's automatic conversion from a primitive to its wrapper (Integer x = 5; — really Integer.valueOf(5) behind the scenes); unboxing is the reverse (int y = someInteger; calls someInteger.intValue()). This happens transparently almost everywhere a primitive/wrapper mismatch would otherwise require an explicit conversion, including inside collections: adding an int to a List<Integer> autoboxes it automatically."
+    },
+    {
+      "type": "text",
+      "heading": "Wrapper Pitfalls",
+      "body": "Wrapper classes are objects, so == on two wrapper references compares identity, not value — exactly like String. Java caches (interns) small Integer values from -128 to 127 for performance, so Integer a = 100, b = 100; a == b happens to be true, but Integer a = 200, b = 200; a == b is false, since 200 falls outside the cached range — a notoriously confusing inconsistency that reinforces why .equals() (or, better, comparing the unboxed primitives directly) should always be used to compare wrapper values, never ==.\n\nUnboxing a null wrapper throws a NullPointerException: if an Integer variable is null and you use it in an int context (like arithmetic, or assigning to an int), Java attempts to unbox it automatically and crashes — this is a common, easy-to-miss source of NPEs, especially with values coming from a Map.get() that might return null."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "code": "public class Wrappers {\n    public static void main(String[] args) {\n        Integer a = 100, b = 100;\n        System.out.println(a == b);       // true — cached small integers\n\n        Integer c = 200, d = 200;\n        System.out.println(c == d);       // false — outside the cache range\n\n        System.out.println(c.equals(d));  // true — correct way to compare\n\n        Integer maybeNull = null;\n        // int x = maybeNull;              // NullPointerException on unboxing\n    }\n}",
+      "explanation": "The a == b vs c == d inconsistency happens purely because of Integer's internal caching of small values — it's a trap, not something to rely on. .equals() always gives the correct, consistent answer for wrapper value comparison."
+    }
+  ],
+  "keyPoints": [
+    "Every primitive has a wrapper class (int/Integer, double/Double, etc.), needed for generics and nullability",
+    "Autoboxing/unboxing convert between primitives and wrappers automatically",
+    "Never use == to compare wrapper values — small-integer caching makes it inconsistent; use .equals()",
+    "Unboxing a null wrapper throws NullPointerException"
+  ],
+  "commonMistakes": [
+    "Comparing wrapper objects with == and getting inconsistent results depending on the value's magnitude",
+    "Unboxing a possibly-null wrapper (e.g., from Map.get()) without a null check first",
+    "Using List<int> instead of List<Integer>, not realizing generics require a reference type"
+  ],
+  "concepts": [
+    "wrapper classes",
+    "Integer",
+    "Double",
+    "Character",
+    "Boolean",
+    "autoboxing",
+    "unboxing",
+    "NullPointerException"
+  ],
+  "previousLesson": "java-generics-001",
+  "nextLesson": "java-file-handling-001"
+}

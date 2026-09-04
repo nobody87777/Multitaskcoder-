@@ -1,0 +1,423 @@
+{
+  "language": "java",
+  "section": "java",
+  "moduleCount": 31,
+  "lessonCount": 33,
+  "modules": [
+    {
+      "moduleNumber": 1,
+      "module": "Introduction to Java",
+      "moduleSlug": "01-introduction",
+      "lessons": [
+        {
+          "id": "java-introduction-001",
+          "title": "Introduction to Java",
+          "difficulty": "beginner",
+          "file": "01-introduction/java-introduction-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 2,
+      "module": "Java Syntax and Program Structure",
+      "moduleSlug": "02-syntax-and-structure",
+      "lessons": [
+        {
+          "id": "java-syntax-and-structure-001",
+          "title": "Java Syntax and Program Structure",
+          "difficulty": "beginner",
+          "file": "02-syntax-and-structure/java-syntax-and-structure-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 3,
+      "module": "Variables and Data Types",
+      "moduleSlug": "03-variables-and-data-types",
+      "lessons": [
+        {
+          "id": "java-variables-and-data-types-001",
+          "title": "Variables and Data Types",
+          "difficulty": "beginner",
+          "file": "03-variables-and-data-types/java-variables-and-data-types-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 4,
+      "module": "Type Conversion and Casting",
+      "moduleSlug": "04-type-conversion-and-casting",
+      "lessons": [
+        {
+          "id": "java-type-conversion-and-casting-001",
+          "title": "Type Conversion and Casting",
+          "difficulty": "beginner",
+          "file": "04-type-conversion-and-casting/java-type-conversion-and-casting-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 5,
+      "module": "Operators",
+      "moduleSlug": "05-operators",
+      "lessons": [
+        {
+          "id": "java-operators-001",
+          "title": "Operators",
+          "difficulty": "beginner",
+          "file": "05-operators/java-operators-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 6,
+      "module": "Input and Output",
+      "moduleSlug": "06-input-output",
+      "lessons": [
+        {
+          "id": "java-input-output-001",
+          "title": "Input and Output",
+          "difficulty": "beginner",
+          "file": "06-input-output/java-input-output-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 7,
+      "module": "Conditional Statements",
+      "moduleSlug": "07-conditionals",
+      "lessons": [
+        {
+          "id": "java-conditionals-001",
+          "title": "Conditional Statements",
+          "difficulty": "beginner",
+          "file": "07-conditionals/java-conditionals-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 8,
+      "module": "Loops",
+      "moduleSlug": "08-loops",
+      "lessons": [
+        {
+          "id": "java-loops-001",
+          "title": "Loops",
+          "difficulty": "beginner",
+          "file": "08-loops/java-loops-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 9,
+      "module": "Arrays",
+      "moduleSlug": "09-arrays",
+      "lessons": [
+        {
+          "id": "java-arrays-001",
+          "title": "Arrays",
+          "difficulty": "beginner",
+          "file": "09-arrays/java-arrays-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 10,
+      "module": "Strings",
+      "moduleSlug": "10-strings",
+      "lessons": [
+        {
+          "id": "java-strings-001",
+          "title": "Strings",
+          "difficulty": "beginner",
+          "file": "10-strings/java-strings-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 11,
+      "module": "Methods",
+      "moduleSlug": "11-methods",
+      "lessons": [
+        {
+          "id": "java-methods-001",
+          "title": "Methods",
+          "difficulty": "intermediate",
+          "file": "11-methods/java-methods-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 12,
+      "module": "Classes and Objects",
+      "moduleSlug": "12-classes-and-objects",
+      "lessons": [
+        {
+          "id": "java-classes-and-objects-001",
+          "title": "Classes and Objects",
+          "difficulty": "intermediate",
+          "file": "12-classes-and-objects/java-classes-and-objects-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 13,
+      "module": "Encapsulation",
+      "moduleSlug": "13-encapsulation",
+      "lessons": [
+        {
+          "id": "java-encapsulation-001",
+          "title": "Encapsulation",
+          "difficulty": "intermediate",
+          "file": "13-encapsulation/java-encapsulation-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 14,
+      "module": "Inheritance",
+      "moduleSlug": "14-inheritance",
+      "lessons": [
+        {
+          "id": "java-inheritance-001",
+          "title": "Inheritance",
+          "difficulty": "intermediate",
+          "file": "14-inheritance/java-inheritance-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 15,
+      "module": "Polymorphism",
+      "moduleSlug": "15-polymorphism",
+      "lessons": [
+        {
+          "id": "java-polymorphism-001",
+          "title": "Polymorphism",
+          "difficulty": "intermediate",
+          "file": "15-polymorphism/java-polymorphism-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 16,
+      "module": "Abstraction",
+      "moduleSlug": "16-abstraction",
+      "lessons": [
+        {
+          "id": "java-abstraction-001",
+          "title": "Abstraction",
+          "difficulty": "intermediate",
+          "file": "16-abstraction/java-abstraction-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 17,
+      "module": "Packages and Access Modifiers",
+      "moduleSlug": "17-packages-and-access-modifiers",
+      "lessons": [
+        {
+          "id": "java-packages-and-access-modifiers-001",
+          "title": "Packages and Access Modifiers",
+          "difficulty": "intermediate",
+          "file": "17-packages-and-access-modifiers/java-packages-and-access-modifiers-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 18,
+      "module": "Interfaces",
+      "moduleSlug": "18-interfaces",
+      "lessons": [
+        {
+          "id": "java-interfaces-001",
+          "title": "Interfaces in Depth",
+          "difficulty": "intermediate",
+          "file": "18-interfaces/java-interfaces-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 19,
+      "module": "Exception Handling",
+      "moduleSlug": "19-exception-handling",
+      "lessons": [
+        {
+          "id": "java-exception-handling-001",
+          "title": "Exception Handling",
+          "difficulty": "intermediate",
+          "file": "19-exception-handling/java-exception-handling-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 20,
+      "module": "Collections Framework",
+      "moduleSlug": "20-collections-framework",
+      "lessons": [
+        {
+          "id": "java-collections-framework-001",
+          "title": "Collections: List and Set",
+          "difficulty": "intermediate",
+          "file": "20-collections-framework/java-collections-framework-001.json"
+        },
+        {
+          "id": "java-collections-framework-002",
+          "title": "Collections: Map and Queue",
+          "difficulty": "intermediate",
+          "file": "20-collections-framework/java-collections-framework-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 21,
+      "module": "Generics",
+      "moduleSlug": "21-generics",
+      "lessons": [
+        {
+          "id": "java-generics-001",
+          "title": "Generics",
+          "difficulty": "advanced",
+          "file": "21-generics/java-generics-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 22,
+      "module": "Wrapper Classes",
+      "moduleSlug": "22-wrapper-classes",
+      "lessons": [
+        {
+          "id": "java-wrapper-classes-001",
+          "title": "Wrapper Classes",
+          "difficulty": "intermediate",
+          "file": "22-wrapper-classes/java-wrapper-classes-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 23,
+      "module": "File Handling",
+      "moduleSlug": "23-file-handling",
+      "lessons": [
+        {
+          "id": "java-file-handling-001",
+          "title": "File Handling",
+          "difficulty": "intermediate",
+          "file": "23-file-handling/java-file-handling-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 24,
+      "module": "Packages and Java APIs",
+      "moduleSlug": "24-packages-and-java-apis",
+      "lessons": [
+        {
+          "id": "java-packages-and-java-apis-001",
+          "title": "The Java Standard Library and APIs",
+          "difficulty": "intermediate",
+          "file": "24-packages-and-java-apis/java-packages-and-java-apis-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 25,
+      "module": "Lambda Expressions",
+      "moduleSlug": "25-lambda-expressions",
+      "lessons": [
+        {
+          "id": "java-lambda-expressions-001",
+          "title": "Lambda Expressions",
+          "difficulty": "advanced",
+          "file": "25-lambda-expressions/java-lambda-expressions-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 26,
+      "module": "Stream API",
+      "moduleSlug": "26-stream-api",
+      "lessons": [
+        {
+          "id": "java-stream-api-001",
+          "title": "Stream API",
+          "difficulty": "advanced",
+          "file": "26-stream-api/java-stream-api-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 27,
+      "module": "Date and Time",
+      "moduleSlug": "27-date-and-time",
+      "lessons": [
+        {
+          "id": "java-date-and-time-001",
+          "title": "Date and Time",
+          "difficulty": "intermediate",
+          "file": "27-date-and-time/java-date-and-time-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 28,
+      "module": "Multithreading",
+      "moduleSlug": "28-multithreading",
+      "lessons": [
+        {
+          "id": "java-multithreading-001",
+          "title": "Multithreading",
+          "difficulty": "advanced",
+          "file": "28-multithreading/java-multithreading-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 29,
+      "module": "JVM and Memory",
+      "moduleSlug": "29-jvm-and-memory",
+      "lessons": [
+        {
+          "id": "java-jvm-and-memory-001",
+          "title": "JVM Architecture and Memory",
+          "difficulty": "advanced",
+          "file": "29-jvm-and-memory/java-jvm-and-memory-001.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 30,
+      "module": "Advanced Java",
+      "moduleSlug": "30-advanced-java",
+      "lessons": [
+        {
+          "id": "java-advanced-java-001",
+          "title": "Nested, Inner, and Anonymous Classes, and Enums",
+          "difficulty": "advanced",
+          "file": "30-advanced-java/java-advanced-java-001.json"
+        },
+        {
+          "id": "java-advanced-java-002",
+          "title": "Annotations, Reflection, and Modern Java Features",
+          "difficulty": "advanced",
+          "file": "30-advanced-java/java-advanced-java-002.json"
+        }
+      ]
+    },
+    {
+      "moduleNumber": 31,
+      "module": "Best Practices",
+      "moduleSlug": "31-best-practices",
+      "lessons": [
+        {
+          "id": "java-best-practices-001",
+          "title": "Java Best Practices",
+          "difficulty": "intermediate",
+          "file": "31-best-practices/java-best-practices-001.json"
+        }
+      ]
+    }
+  ]
+}

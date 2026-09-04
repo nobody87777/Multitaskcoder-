@@ -1,0 +1,14 @@
+{
+  "id": "c-031",
+  "language": "c",
+  "title": "Linear Search",
+  "difficulty": "intermediate",
+  "topic": "Searching",
+  "description": "Search for a target value in an array using linear search.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int numbers[] = {4, 8, 15, 16, 23, 42};\n    int n = sizeof(numbers) / sizeof(numbers[0]);\n    int target = 23, index = -1;\n\n    for (int i = 0; i < n; i++) {\n        if (numbers[i] == target) {\n            index = i;\n            break;\n        }\n    }\n\n    if (index != -1)\n        printf(\"Found %d at index %d\\n\", target, index);\n    else\n        printf(\"%d not found\\n\", target);\n\n    return 0;\n}",
+  "expectedOutput": "Found 23 at index 4",
+  "concepts": [
+    "linear search",
+    "loop with break"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quiz-c-031",
+  "language": "c",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "topic": "Data Structures",
+  "question": "What is the default value of the first member of a C enum, if no value is explicitly assigned?",
+  "options": [
+    "0",
+    "1",
+    "-1",
+    "It is undefined"
+  ],
+  "correctAnswer": 0,
+  "explanation": "By default, C enum members are assigned sequential integers starting at 0, unless explicit values are given.",
+  "concepts": [
+    "enums",
+    "default values"
+  ]
+}

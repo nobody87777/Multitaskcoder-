@@ -1,0 +1,59 @@
+{
+  "id": "python-variables-and-data-types-001",
+  "language": "python",
+  "section": "python",
+  "module": "Variables and Data Types",
+  "moduleNumber": 2,
+  "lessonNumber": 2,
+  "title": "Variables and Data Types",
+  "difficulty": "beginner",
+  "description": "How Python variables work, the built-in data types, and the difference between mutable and immutable objects.",
+  "objectives": [
+    "Understand variable assignment and Python's dynamic typing",
+    "Know the core built-in data types",
+    "Understand the difference between mutable and immutable types",
+    "Understand object identity vs. equality using id() and type()"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Variables and Dynamic Typing",
+      "body": "In Python, a variable is really just a name bound to an object in memory — assignment (x = 5) doesn't copy a value into a labeled box the way it does conceptually in C; it makes the name x refer to an integer object holding 5. Because of this, Python is dynamically typed: the same name can be rebound to a value of a completely different type later (x = 5 then x = \"hello\" is perfectly legal), and type checking happens at runtime, not compile time. Python also supports multiple assignment in one statement: a, b, c = 1, 2, 3 unpacks the right-hand tuple into three names in one line, and a = b = 5 binds both names to the same value.\n\nVariable naming rules mirror identifier rules: letters, digits, and underscores, not starting with a digit, case-sensitive, and not a reserved keyword. By convention, variable and function names use snake_case."
+    },
+    {
+      "type": "text",
+      "heading": "Built-in Data Types",
+      "body": "Python's core built-in types include: int (arbitrary-precision integers), float (double-precision floating point), complex (numbers with a real and imaginary part, e.g. 2+3j), bool (True/False, actually a subtype of int), str (immutable text), bytes and bytearray (immutable and mutable sequences of raw bytes, respectively), and the special singleton None, representing 'no value'. You can check any object's type with type(obj), and get its unique identity (its memory address, in CPython) with id(obj).\n\nA crucial distinction runs through the whole language: mutable vs. immutable types. Immutable types (int, float, bool, str, tuple, frozenset) cannot be changed in place — any 'modification' actually creates a new object. Mutable types (list, dict, set, and custom objects by default) can be changed in place, and every variable referring to that same object will see the change. This matters enormously once you pass objects into functions or store them in collections."
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "x = 5          # int\nx = \"now text\" # legal — x is rebound to a new type\n\na = [1, 2, 3]  # mutable list\nb = a          # b refers to the SAME list object as a\nb.append(4)\nprint(a)       # [1, 2, 3, 4] — a changed too, since a and b are the same object\n\nprint(type(3.14), id(3.14) == id(3.14))  # types and identity",
+      "explanation": "b = a does not copy the list; both names point at the same mutable object, so mutating it through b is visible through a as well. This is a very common source of bugs for beginners."
+    }
+  ],
+  "keyPoints": [
+    "Assignment binds a name to an object; it does not copy the object",
+    "Python is dynamically typed — a name's type can change at runtime",
+    "Core types: int, float, complex, bool, str, bytes, bytearray, None",
+    "Mutable types (list, dict, set) can change in place; immutable types (int, str, tuple) cannot",
+    "type() reveals an object's type; id() reveals its identity"
+  ],
+  "commonMistakes": [
+    "Assuming b = a copies a mutable object instead of sharing a reference",
+    "Confusing == (equality of value) with is (identity of object)",
+    "Forgetting that bool is technically a subtype of int (True == 1 is True)"
+  ],
+  "concepts": [
+    "variables",
+    "dynamic typing",
+    "mutable",
+    "immutable",
+    "id()",
+    "type()",
+    "None",
+    "data types"
+  ],
+  "previousLesson": "python-introduction-001",
+  "nextLesson": "python-operators-001"
+}

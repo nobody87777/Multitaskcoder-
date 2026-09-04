@@ -1,0 +1,20 @@
+{
+  "id": "quiz-python-004",
+  "language": "python",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Input/Output",
+  "question": "What data type does input() always return in Python, regardless of what the user types?",
+  "options": [
+    "int",
+    "float",
+    "str",
+    "depends on the input"
+  ],
+  "correctAnswer": 2,
+  "explanation": "input() always returns a string; the caller is responsible for converting it with int(), float(), etc. if a number is needed.",
+  "concepts": [
+    "input()",
+    "type conversion"
+  ]
+}

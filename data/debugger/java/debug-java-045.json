@@ -1,0 +1,20 @@
+{
+  "id": "debug-java-045",
+  "language": "java",
+  "difficulty": "advanced",
+  "topic": "Functional",
+  "bugType": "stream-reuse-error",
+  "title": "Fix the Reused Stream",
+  "description": "The program should count elements matching a filter, and then separately compute their sum.",
+  "buggyCode": "import java.util.List;\nimport java.util.stream.Stream;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);\n        Stream<Integer> stream = numbers.stream().filter(n -> n % 2 == 0);\n        long count = stream.count();\n        int sum = stream.mapToInt(Integer::intValue).sum();\n        System.out.println(count + \" \" + sum);\n    }\n}",
+  "expectedBehavior": "The program should print '3 12' — 3 even numbers (2, 4, 6) summing to 12.",
+  "actualProblem": "A Java Stream can only be consumed by one terminal operation. After stream.count() runs, the stream is already closed; calling stream.mapToInt(...).sum() on it throws IllegalStateException: 'stream has already been operated upon or closed'.",
+  "correctedCode": "import java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);\n        long count = numbers.stream().filter(n -> n % 2 == 0).count();\n        int sum = numbers.stream().filter(n -> n % 2 == 0).mapToInt(Integer::intValue).sum();\n        System.out.println(count + \" \" + sum);\n    }\n}",
+  "expectedOutput": "3 12",
+  "explanation": "Each Stream pipeline can be traversed exactly once by its terminal operation. To perform two separate computations over the same data, a fresh stream must be created for each one (e.g. by calling .stream() again from the source collection).",
+  "concepts": [
+    "Stream API",
+    "IllegalStateException",
+    "stream reuse"
+  ]
+}

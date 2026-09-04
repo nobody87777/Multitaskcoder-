@@ -1,0 +1,15 @@
+{
+  "id": "python-008",
+  "language": "python",
+  "title": "Positive, Negative or Zero",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Classify a number as positive, negative, or zero.",
+  "code": "num = float(input(\"Enter a number: \"))\n\nif num > 0:\n    print(\"Positive\")\nelif num < 0:\n    print(\"Negative\")\nelse:\n    print(\"Zero\")",
+  "exampleInput": "-4.5",
+  "expectedOutput": "Enter a number: Negative",
+  "concepts": [
+    "if/elif/else",
+    "comparison operators"
+  ]
+}

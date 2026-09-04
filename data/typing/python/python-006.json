@@ -1,0 +1,15 @@
+{
+  "id": "python-006",
+  "language": "python",
+  "title": "Simple Calculator",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Build a calculator that performs +, -, * or / based on user-chosen operator.",
+  "code": "a = float(input(\"Enter first number: \"))\nb = float(input(\"Enter second number: \"))\nop = input(\"Enter operator (+,-,*,/): \")\n\nif op == \"+\":\n    result = a + b\nelif op == \"-\":\n    result = a - b\nelif op == \"*\":\n    result = a * b\nelif op == \"/\":\n    result = a / b\nelse:\n    result = None\n    print(\"Invalid operator\")\n\nif result is not None:\n    print(\"Result:\", result)",
+  "exampleInput": "10\n4\n*",
+  "expectedOutput": "Enter first number: Enter second number: Enter operator (+,-,*,/): Result: 40.0",
+  "concepts": [
+    "if/elif/else",
+    "type casting"
+  ]
+}

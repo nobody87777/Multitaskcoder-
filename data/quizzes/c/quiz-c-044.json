@@ -1,0 +1,22 @@
+{
+  "id": "quiz-c-044",
+  "language": "c",
+  "difficulty": "advanced",
+  "type": "code-analysis",
+  "topic": "Memory",
+  "question": "Why is it risky to write p = realloc(p, newSize); instead of using a separate temporary pointer?",
+  "code": "int *p = malloc(5 * sizeof(int));\np = realloc(p, 10 * sizeof(int));",
+  "options": [
+    "It isn't risky at all — this is the recommended pattern",
+    "realloc() cannot resize memory that was allocated with malloc()",
+    "If realloc() fails, it returns NULL, and assigning directly to p overwrites the original pointer, leaking the original block and losing access to it",
+    "realloc() automatically frees p before resizing, causing a double free"
+  ],
+  "correctAnswer": 2,
+  "explanation": "If realloc() fails, it returns NULL but leaves the original block untouched. Assigning the NULL result straight back into p discards the only reference to that original block, causing a memory leak. The safe pattern uses a temporary pointer to check for failure first.",
+  "concepts": [
+    "realloc()",
+    "memory leaks",
+    "error handling"
+  ]
+}

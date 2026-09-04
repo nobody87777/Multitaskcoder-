@@ -1,0 +1,14 @@
+{
+  "id": "c-038",
+  "language": "c",
+  "title": "Recursive Fibonacci",
+  "difficulty": "intermediate",
+  "topic": "Recursion",
+  "description": "Generate the first N Fibonacci numbers using a recursive function.",
+  "code": "#include <stdio.h>\n\nint fibonacci(int n) {\n    if (n <= 1) {\n        return n;\n    }\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\nint main() {\n    for (int i = 0; i < 10; i++) {\n        printf(\"%d \", fibonacci(i));\n    }\n    printf(\"\\n\");\n\n    return 0;\n}",
+  "expectedOutput": "0 1 1 2 3 5 8 13 21 34 ",
+  "concepts": [
+    "recursion",
+    "sequences"
+  ]
+}

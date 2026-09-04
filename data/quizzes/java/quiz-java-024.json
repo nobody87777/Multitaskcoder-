@@ -1,0 +1,21 @@
+{
+  "id": "quiz-java-024",
+  "language": "java",
+  "difficulty": "intermediate",
+  "type": "output",
+  "topic": "OOP",
+  "question": "What will this code print?",
+  "code": "class Counter {\n    private int count = 0;\n    void increment() { count++; }\n    int getCount() { return count; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Counter c = new Counter();\n        c.increment();\n        c.increment();\n        System.out.println(c.getCount());\n    }\n}",
+  "options": [
+    "0",
+    "2",
+    "1",
+    "Compilation error: count is private"
+  ],
+  "correctAnswer": 1,
+  "explanation": "increment() is called twice, each time adding 1 to the private count field; getCount() then returns its current value, 2.",
+  "concepts": [
+    "encapsulation",
+    "private fields"
+  ]
+}

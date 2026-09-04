@@ -1,0 +1,54 @@
+{
+  "id": "c-data-structures-in-c-002",
+  "language": "c",
+  "section": "c",
+  "module": "Data Structures in C",
+  "moduleNumber": 22,
+  "lessonNumber": 24,
+  "title": "Trees and Hash Tables: Concepts",
+  "difficulty": "advanced",
+  "description": "A conceptual introduction to binary trees and hash tables, and how they'd be represented in C.",
+  "objectives": [
+    "Understand the conceptual structure of a binary tree in C",
+    "Understand the conceptual structure and purpose of a hash table"
+  ],
+  "content": [
+    {
+      "type": "text",
+      "heading": "Binary Trees",
+      "body": "A binary tree node, like a linked list node, is a struct — but with (up to) two pointers to child nodes instead of one 'next' pointer: struct TreeNode { int data; struct TreeNode *left; struct TreeNode *right; };. A binary search tree (BST) additionally maintains an ordering invariant: every node's left subtree contains only smaller values, and its right subtree only larger ones, which makes searching, insertion, and deletion all average O(log n) for a reasonably balanced tree (though a poorly-balanced tree, such as one built by inserting already-sorted data, degrades toward O(n), behaving like a linked list). Tree operations (insertion, traversal, search) are naturally expressed recursively, since each subtree has the exact same shape as the whole tree."
+    },
+    {
+      "type": "text",
+      "heading": "Hash Tables",
+      "body": "A hash table maps keys to values with average O(1) lookup, insertion, and deletion — dramatically faster than a linear search through an array or list for large datasets. Conceptually, it works by applying a hash function to a key, producing an index into a fixed-size array of 'buckets'; the value (or key-value pair) is stored at that bucket. Because different keys can hash to the same bucket index (a collision), a real implementation needs a collision-resolution strategy — commonly chaining (each bucket holds a linked list of entries that hashed there) or open addressing (probing for the next free slot according to some rule).\n\nC has no built-in hash table in its standard library (unlike Python's dict or Java's HashMap) — implementing one yourself (or using a well-tested third-party library) requires writing the hash function, the bucket array, and the collision-resolution logic explicitly, which is a genuinely instructive exercise in understanding what higher-level languages' built-in dictionary/map types are actually doing underneath."
+    },
+    {
+      "type": "code",
+      "language": "c",
+      "code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct TreeNode { int data; struct TreeNode *left, *right; };\n\nstruct TreeNode *insert(struct TreeNode *root, int value) {\n    if (root == NULL) {\n        struct TreeNode *node = malloc(sizeof(struct TreeNode));\n        node->data = value;\n        node->left = node->right = NULL;\n        return node;\n    }\n    if (value < root->data) root->left = insert(root->left, value);\n    else root->right = insert(root->right, value);\n    return root;\n}\n\nvoid inorder(struct TreeNode *root) {          // prints values in sorted order for a BST\n    if (root == NULL) return;\n    inorder(root->left);\n    printf(\"%d \", root->data);\n    inorder(root->right);\n}\n\nint main() {\n    struct TreeNode *root = NULL;\n    int values[] = {5, 3, 8, 1, 4};\n    for (int i = 0; i < 5; i++) root = insert(root, values[i]);\n    inorder(root);                               // 1 3 4 5 8\n    printf(\"\\n\");\n    return 0;\n}",
+      "explanation": "insert() recursively descends left or right based on the BST ordering invariant. inorder() recursively visits left, then the node, then right — which, for a valid BST, always visits values in ascending sorted order."
+    }
+  ],
+  "keyPoints": [
+    "A binary tree node holds data plus left/right child pointers; a BST maintains a left-smaller/right-larger ordering invariant",
+    "BST operations average O(log n) on a balanced tree but can degrade toward O(n) if poorly balanced",
+    "A hash table maps a hash function's output to bucket indices for average O(1) access",
+    "C has no built-in hash table — implementing one requires writing the hash function and collision resolution yourself"
+  ],
+  "commonMistakes": [
+    "Inserting already-sorted data into a plain BST, producing a degenerate, linked-list-like (unbalanced) tree",
+    "Forgetting to handle hash collisions when implementing a hash table from scratch",
+    "Leaking tree/list nodes by losing a pointer to a subtree without freeing it first"
+  ],
+  "concepts": [
+    "binary trees",
+    "binary search tree",
+    "recursion",
+    "hash table",
+    "hash function",
+    "collision resolution"
+  ],
+  "previousLesson": "c-data-structures-in-c-001",
+  "nextLesson": "c-searching-and-sorting-001"
+}

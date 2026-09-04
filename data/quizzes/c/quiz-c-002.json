@@ -1,0 +1,21 @@
+{
+  "id": "quiz-c-002",
+  "language": "c",
+  "difficulty": "beginner",
+  "type": "mcq",
+  "topic": "Basics",
+  "question": "What does the preprocessor directive #include <stdio.h> do?",
+  "options": [
+    "Declares a variable named stdio",
+    "Inserts the contents of the standard I/O header, making functions like printf() available",
+    "Compiles the program",
+    "Creates a new file called stdio.h"
+  ],
+  "correctAnswer": 1,
+  "explanation": "#include tells the preprocessor to paste in the contents of the named header file before compilation, giving access to declarations like printf() and scanf() from stdio.h.",
+  "concepts": [
+    "#include",
+    "preprocessor",
+    "headers"
+  ]
+}

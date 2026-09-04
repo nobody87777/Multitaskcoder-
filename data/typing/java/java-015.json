@@ -1,0 +1,16 @@
+{
+  "id": "java-015",
+  "language": "java",
+  "title": "Factorial Using a Loop",
+  "difficulty": "beginner",
+  "topic": "Loops",
+  "description": "Compute the factorial of a number using an iterative loop.",
+  "code": "import java.util.Scanner;\n\npublic class FactorialLoop {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        long factorial = 1;\n\n        for (int i = 1; i <= n; i++) {\n            factorial *= i;\n        }\n\n        System.out.println(\"Factorial of \" + n + \" is \" + factorial);\n    }\n}",
+  "exampleInput": "6",
+  "expectedOutput": "Factorial of 6 is 720",
+  "concepts": [
+    "for loop",
+    "long",
+    "accumulator pattern"
+  ]
+}

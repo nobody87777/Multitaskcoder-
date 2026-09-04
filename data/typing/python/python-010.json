@@ -1,0 +1,15 @@
+{
+  "id": "python-010",
+  "language": "python",
+  "title": "Largest of Three Numbers",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Find and print the largest of three numbers using nested conditionals.",
+  "code": "a = int(input(\"Enter first number: \"))\nb = int(input(\"Enter second number: \"))\nc = int(input(\"Enter third number: \"))\n\nif a >= b and a >= c:\n    largest = a\nelif b >= a and b >= c:\n    largest = b\nelse:\n    largest = c\n\nprint(\"Largest number is:\", largest)",
+  "exampleInput": "4\n9\n7",
+  "expectedOutput": "Enter first number: Enter second number: Enter third number: Largest number is: 9",
+  "concepts": [
+    "logical operators",
+    "nested conditionals"
+  ]
+}

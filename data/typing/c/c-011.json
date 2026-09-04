@@ -1,0 +1,16 @@
+{
+  "id": "c-011",
+  "language": "c",
+  "title": "Leap Year Checker",
+  "difficulty": "beginner",
+  "topic": "Conditionals",
+  "description": "Determine whether a given year is a leap year.",
+  "code": "#include <stdio.h>\n\nint main() {\n    int year;\n    scanf(\"%d\", &year);\n\n    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))\n        printf(\"%d is a leap year\\n\", year);\n    else\n        printf(\"%d is not a leap year\\n\", year);\n\n    return 0;\n}",
+  "exampleInput": "2024",
+  "expectedOutput": "2024 is a leap year",
+  "concepts": [
+    "modulus",
+    "logical operators",
+    "leap year rule"
+  ]
+}

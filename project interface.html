@@ -1,0 +1,1128 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultitaskCoder - Learn. Build. Master.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090a10',
+                        cardBg: '#121422',
+                        cardHover: '#1a1d30',
+                        accentPurple: '#7c3aed',
+                        accentBlue: '#2563eb',
+                        accentCyan: '#06b6d4',
+                        neonGlow: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Three.js for 3D Loading Simulation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Light / Dark Mode Colors */
+        body.dark {
+            background-color: #090a10;
+            color: #f3f4f6;
+        }
+        body:not(.dark) {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+
+        body.dark .glass-card {
+            background: rgba(18, 20, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+        body:not(.dark) .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+        }
+
+
+        body.dark .sub-card {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        body:not(.dark) .sub-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+
+
+        body.dark .code-box {
+            background: #0b0c10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        body:not(.dark) .code-box {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
+        }
+
+
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .glow-purple {
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+        }
+        .glow-btn {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100, 100, 100, 0.3);
+            border-radius: 3px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+
+        /* Slide menu item entrance animation */
+        .menu-item-animate {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .menu-open .menu-item-animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .menu-open .menu-item-animate:nth-child(1) { transition-delay: 0.05s; }
+        .menu-open .menu-item-animate:nth-child(2) { transition-delay: 0.10s; }
+        .menu-open .menu-item-animate:nth-child(3) { transition-delay: 0.15s; }
+        .menu-open .menu-item-animate:nth-child(4) { transition-delay: 0.20s; }
+        .menu-open .menu-item-animate:nth-child(5) { transition-delay: 0.25s; }
+        .menu-open .menu-item-animate:nth-child(6) { transition-delay: 0.30s; }
+        .menu-open .menu-item-animate:nth-child(7) { transition-delay: 0.35s; }
+        .menu-open .menu-item-animate:nth-child(8) { transition-delay: 0.40s; }
+    </style>
+</head>
+<body class="dark min-h-screen pb-32 selection:bg-purple-600 selection:text-white">
+
+
+    <!-- 3D Mind-Blowing Loading Screen -->
+    <div id="loaderScreen" class="fixed inset-0 z-[100] bg-[#07080c] flex flex-col items-center justify-center transition-opacity duration-700">
+        <div id="canvas-container" class="absolute inset-0 z-0"></div>
+        <div class="relative z-10 text-center space-y-6 pointer-events-none p-6">
+            <div class="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white text-3xl shadow-2xl glow-purple animate-bounce">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <div class="space-y-2">
+                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">MultitaskCoder</h1>
+                <p id="loaderStatusText" class="text-xs text-purple-300 font-mono tracking-widest uppercase">Initializing 3D Matrix...</p>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-48 sm:w-64 h-2 bg-white/10 rounded-full mx-auto overflow-hidden p-0.5 border border-white/10">
+                <div id="loaderProgressBar" class="h-full bg-gradient-to-r from-purple-500 via-indigo-500 to-cyan-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-card px-4 py-3 flex items-center justify-between border-b backdrop-blur-md transition-all duration-300">
+        <div class="flex items-center space-x-3">
+            <button onclick="openMenu()" class="opacity-80 hover:opacity-100 p-1 text-xl transition-transform active:scale-95">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="flex items-center space-x-2 cursor-pointer group" onclick="switchTab('home')">
+                <div class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-2 rounded-xl text-white shadow-lg glow-purple group-hover:rotate-6 transition-transform">
+                    <i class="fa-solid fa-code text-sm"></i>
+                </div>
+                <span class="font-extrabold text-lg bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent">MultitaskCoder</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2.5">
+            <!-- Theme Toggle Button -->
+            <button onclick="toggleTheme()" id="themeToggleBtn" class="w-9 h-9 rounded-full sub-card flex items-center justify-center text-purple-400 hover:scale-110 active:scale-95 transition-all shadow-sm" title="Toggle Theme">
+                <i class="fa-solid fa-moon transition-transform duration-500" id="themeIcon"></i>
+            </button>
+
+
+            <div class="flex items-center space-x-1.5 sub-card px-2.5 py-1 rounded-full text-xs font-bold text-orange-400 shadow-sm">
+                <i class="fa-solid fa-fire text-orange-500 animate-bounce"></i>
+                <span id="streakCount">7</span>
+            </div>
+            <div class="flex items-center space-x-1.5 sub-card px-2.5 py-1 rounded-full text-xs font-bold text-purple-400 shadow-sm">
+                <i class="fa-solid fa-gem text-purple-400 animate-pulse"></i>
+                <span id="gemCount">870</span>
+            </div>
+            <button onclick="switchTab('profile')" class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-0.5 shadow-md hover:scale-110 active:scale-95 transition-transform">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full">
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Slide-Out Navigation Drawer Menu -->
+    <div id="slideMenuOverlay" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden opacity-0 transition-opacity duration-300" onclick="closeMenu()"></div>
+    <div id="slideMenuDrawer" class="fixed top-0 bottom-0 left-0 z-50 w-72 glass-card border-r border-purple-500/25 transform -translate-x-full transition-transform duration-400 cubic-bezier(0.16, 1, 0.3, 1) p-6 flex flex-col justify-between shadow-2xl">
+        <div class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-2 rounded-xl text-white shadow-lg glow-purple">
+                        <i class="fa-solid fa-code text-sm"></i>
+                    </div>
+                    <span class="font-extrabold text-base tracking-tight">Navigation</span>
+                </div>
+                <button onclick="closeMenu()" class="w-8 h-8 rounded-full sub-card flex items-center justify-center opacity-75 hover:opacity-100 hover:rotate-90 transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+
+            <!-- Menu Links -->
+            <div id="menuLinksContainer" class="space-y-2 text-sm font-semibold">
+                <a href="#" onclick="handleMenuClick('Theory Reference', 'Access comprehensive theory modules and syntax documentation.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <i class="fa-solid fa-book-bookmark text-xs"></i>
+                    </div>
+                    <span>Theory Reference</span>
+                </a>
+                <a href="#" onclick="handleMenuClick('Speed Typing', 'Practice syntax typing velocity and words-per-minute drills.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                        <i class="fa-solid fa-bolt text-xs"></i>
+                    </div>
+                    <span>Speed Typing</span>
+                </a>
+                <a href="#" onclick="handleMenuClick('Debugger Arena', 'Analyze runtime execution stacks and fix tricky bug scripts.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center">
+                        <i class="fa-solid fa-bug text-xs"></i>
+                    </div>
+                    <span>Debugger Arena</span>
+                </a>
+                <a href="#" onclick="handleMenuClick('Brain Quizzes', 'Challenge your mind with advanced data structures and algorithm puzzles.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                        <i class="fa-solid fa-bullseye text-xs"></i>
+                    </div>
+                    <span>Brain Quizzes</span>
+                </a>
+                <a href="#" onclick="handleMenuClick('Performance Analytics', 'Review your weekly coding hours, completed exercises, and accuracy.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
+                        <i class="fa-solid fa-chart-line text-xs"></i>
+                    </div>
+                    <span>Performance Analytics</span>
+                </a>
+
+
+                <div class="pt-2 pb-1 border-t border-black/5 dark:border-white/5"></div>
+
+
+                <a href="#" onclick="handleMenuClick('About Workspace', 'MultitaskCoder is an all-in-one platform built for modern programmers to learn, build, and master software engineering.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                        <i class="fa-solid fa-circle-info text-xs"></i>
+                    </div>
+                    <span>About Workspace</span>
+                </a>
+                <a href="#" onclick="handleMenuClick('Contact Us', 'Reach out to our support team at contact@multitaskcoder.com for inquiries and feedback.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                        <i class="fa-solid fa-envelope text-xs"></i>
+                    </div>
+                    <span>Contact Us</span>
+                </a>
+                <a href="#" onclick="handleMenuClick('License Terms', 'Licensed under the MIT License. Free for educational and commercial use.')" class="menu-item-animate flex items-center space-x-3.5 p-3 rounded-2xl sub-card hover:border-purple-500/40 hover:translate-x-1.5 transition-all">
+                    <div class="w-8 h-8 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center">
+                        <i class="fa-solid fa-file-shield text-xs"></i>
+                    </div>
+                    <span>License Terms</span>
+                </a>
+            </div>
+        </div>
+        <div class="text-[11px] opacity-60 text-center pt-4 border-t border-black/5 dark:border-white/5">
+            MultitaskCoder Studio v3.4
+        </div>
+    </div>
+
+
+    <!-- Main Container with Dynamic Views -->
+    <main class="max-w-md mx-auto px-4 pt-6 space-y-6">
+
+
+        <!-- TAB 1: HOME VIEW -->
+        <div id="tab-home-view" class="tab-content active space-y-6">
+            <!-- Hero Section -->
+            <section class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#15122b] via-[#10101d] to-[#090a10] border border-purple-500/20 p-6 shadow-2xl text-white">
+                <div class="absolute -top-12 -right-12 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+                <div class="absolute bottom-0 right-10 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl pointer-events-none"></div>
+
+
+                <div class="relative z-10 space-y-4">
+                    <div class="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/30 px-3 py-1 rounded-full text-[11px] font-semibold text-purple-300">
+                        <i class="fa-solid fa-sparkles text-amber-400"></i>
+                        <span>Version 3.4 Live Studio</span>
+                    </div>
+                    <h1 class="text-3xl font-extrabold tracking-tight leading-tight">
+                        Learn. Build. <br>
+                        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-300 bg-clip-text text-transparent">Master.</span>
+                    </h1>
+                    <p class="text-xs text-gray-300 max-w-[240px] leading-relaxed">
+                        Your all-in-one platform to learn syntax, test algorithms, and build real-world software.
+                    </p>
+
+
+                    <!-- Category Icons Pills -->
+                    <div class="flex items-center justify-between pt-2">
+                        <div class="flex flex-col items-center space-y-1 cursor-pointer group" onclick="switchTab('learn')">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                                <i class="fa-solid fa-book-open text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-300 font-medium">Theory</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-1 cursor-pointer group" onclick="switchTab('code')">
+                            <div class="w-10 h-10 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                                <i class="fa-solid fa-code text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-300 font-medium">Code</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-1 cursor-pointer group" onclick="openModal('Debugger Arena', 'Analyze runtime execution stacks, spot memory leaks, and debug complex multi-threaded bugs.')">
+                            <div class="w-10 h-10 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                                <i class="fa-solid fa-bug text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-300 font-medium">Debug</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-1 cursor-pointer group" onclick="openModal('Speed Typing', 'Test your words-per-minute and syntax reflex velocity with live highlighting.')">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                                <i class="fa-solid fa-bolt text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-300 font-medium">Typing</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-1 cursor-pointer group" onclick="switchTab('quizzes')">
+                            <div class="w-10 h-10 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                                <i class="fa-solid fa-bullseye text-sm"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-300 font-medium">Quizzes</span>
+                        </div>
+                    </div>
+
+
+                    <!-- Action Buttons -->
+                    <div class="pt-2 space-y-2.5">
+                        <button onclick="switchTab('learn')" class="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 font-bold text-sm text-white shadow-lg glow-btn flex items-center justify-center space-x-2 hover:opacity-95 active:scale-[0.98] transition-all">
+                            <i class="fa-solid fa-rocket animate-pulse"></i>
+                            <span>Start Learning</span>
+                        </button>
+                        <button onclick="installApp()" class="w-full py-3 px-4 rounded-2xl sub-card font-semibold text-xs text-white flex items-center justify-center space-x-2 hover:bg-white/5 active:scale-[0.98] transition-all border border-white/10">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            <span>Install PWA App</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Quick Stats Grid -->
+            <section class="grid grid-cols-5 gap-2">
+                <div class="glass-card p-2.5 rounded-2xl text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="text-emerald-400 mb-1"><i class="fa-solid fa-book-bookmark text-xs"></i></div>
+                    <div class="text-sm font-extrabold">120+</div>
+                    <div class="text-[9px] opacity-75">Lessons</div>
+                </div>
+                <div class="glass-card p-2.5 rounded-2xl text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="text-purple-400 mb-1"><i class="fa-solid fa-laptop-code text-xs"></i></div>
+                    <div class="text-sm font-extrabold">500+</div>
+                    <div class="text-[9px] opacity-75">Programs</div>
+                </div>
+                <div class="glass-card p-2.5 rounded-2xl text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="text-rose-400 mb-1"><i class="fa-solid fa-spider text-xs"></i></div>
+                    <div class="text-sm font-extrabold">150+</div>
+                    <div class="text-[9px] opacity-75">Debug</div>
+                </div>
+                <div class="glass-card p-2.5 rounded-2xl text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="text-amber-400 mb-1"><i class="fa-solid fa-award text-xs"></i></div>
+                    <div class="text-sm font-extrabold">50+</div>
+                    <div class="text-[9px] opacity-75">Quizzes</div>
+                </div>
+                <div class="glass-card p-2.5 rounded-2xl text-center flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer">
+                    <div class="text-blue-400 mb-1"><i class="fa-solid fa-circle-question text-xs"></i></div>
+                    <div class="text-sm font-extrabold">1000+</div>
+                    <div class="text-[9px] opacity-75">Questions</div>
+                </div>
+            </section>
+
+
+            <!-- Choose Your Language Section -->
+            <section class="space-y-4">
+                <div class="flex items-center justify-center space-x-3 my-2">
+                    <div class="h-px bg-gradient-to-r from-transparent to-purple-500/50 w-16"></div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Choose Your Language</span>
+                    <div class="h-px bg-gradient-to-l from-transparent to-purple-500/50 w-16"></div>
+                </div>
+
+
+                <!-- Python Card -->
+                <div class="glass-card rounded-3xl p-5 relative overflow-hidden group hover:border-purple-500/40 transition-all">
+                    <div class="flex justify-between items-start">
+                        <div class="flex space-x-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-2xl shadow-inner group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-python"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base">Python</h3>
+                                <p class="text-xs opacity-75 mt-0.5 max-w-[170px]">Easy to learn, powerful and in-demand.</p>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12 flex items-center justify-center">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3.5" class="opacity-20" fill="transparent"/>
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3.5" class="text-emerald-400" stroke-dasharray="125.6" stroke-dashoffset="31.4" stroke-linecap="round" fill="transparent"/>
+                            </svg>
+                            <span class="absolute text-[11px] font-bold text-emerald-400">75%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-black/5 dark:border-white/5">
+                        <button onclick="openModal('Python Theory', 'Comprehensive guide covering Python syntax, dynamic typing, decorators, generators, and OOP architecture.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-book text-emerald-400 text-[10px]"></i>
+                            <span>Theory</span>
+                        </button>
+                        <button onclick="openModal('Python Programs', 'Over 150+ solved Python script exercises spanning data science, web scraping, and automation.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-laptop-code text-purple-400 text-[10px]"></i>
+                            <span>Programs</span>
+                        </button>
+                        <button onclick="openModal('Python Quiz', 'Test your Python proficiency with interactive MCQs designed by senior software architects.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                            <span>Quiz</span>
+                        </button>
+                    </div>
+                    <button onclick="switchTab('code')" class="w-full mt-3 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-xs font-bold text-white shadow-md flex items-center justify-center space-x-2 hover:opacity-95 transition-opacity">
+                        <span>Explore Python in Sandbox</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+
+
+                <!-- Java Card -->
+                <div class="glass-card rounded-3xl p-5 relative overflow-hidden group hover:border-purple-500/40 transition-all">
+                    <div class="flex justify-between items-start">
+                        <div class="flex space-x-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 text-2xl shadow-inner group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-java"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base">Java</h3>
+                                <p class="text-xs opacity-75 mt-0.5 max-w-[170px]">Write once, run anywhere.</p>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12 flex items-center justify-center">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3.5" class="opacity-20" fill="transparent"/>
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3.5" class="text-purple-400" stroke-dasharray="125.6" stroke-dashoffset="50.2" stroke-linecap="round" fill="transparent"/>
+                            </svg>
+                            <span class="absolute text-[11px] font-bold text-purple-400">60%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-black/5 dark:border-white/5">
+                        <button onclick="openModal('Java Theory', 'Master Java JVM internals, garbage collection, multithreading, collections framework, and design patterns.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-book text-emerald-400 text-[10px]"></i>
+                            <span>Theory</span>
+                        </button>
+                        <button onclick="openModal('Java Programs', 'Explore robust Java enterprise programs, streams API, and concurrent data structures.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-laptop-code text-purple-400 text-[10px]"></i>
+                            <span>Programs</span>
+                        </button>
+                        <button onclick="openModal('Java Quiz', 'Challenge yourself with enterprise Java certification level questions.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                            <span>Quiz</span>
+                        </button>
+                    </div>
+                    <button onclick="switchTab('code')" class="w-full mt-3 py-3 rounded-2xl bg-gradient-to-r from-purple-700 to-indigo-800 text-xs font-bold text-white shadow-md flex items-center justify-center space-x-2 hover:opacity-95 transition-opacity">
+                        <span>Explore Java in Sandbox</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+
+
+                <!-- C Card -->
+                <div class="glass-card rounded-3xl p-5 relative overflow-hidden group hover:border-purple-500/40 transition-all">
+                    <div class="flex justify-between items-start">
+                        <div class="flex space-x-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-extrabold shadow-inner group-hover:scale-110 transition-transform">
+                                C
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base">C</h3>
+                                <p class="text-xs opacity-75 mt-0.5 max-w-[170px]">The foundation of modern programming.</p>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12 flex items-center justify-center">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3.5" class="opacity-20" fill="transparent"/>
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3.5" class="text-blue-400" stroke-dasharray="125.6" stroke-dashoffset="75.3" stroke-linecap="round" fill="transparent"/>
+                            </svg>
+                            <span class="absolute text-[11px] font-bold text-blue-400">40%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-black/5 dark:border-white/5">
+                        <button onclick="openModal('C Theory', 'Deep dive into raw memory allocation, pointer arithmetic, struct alignment, and hardware interaction.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-book text-emerald-400 text-[10px]"></i>
+                            <span>Theory</span>
+                        </button>
+                        <button onclick="openModal('C Programs', 'Low-level systems programming, custom memory allocators, and sorting algorithms.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-laptop-code text-purple-400 text-[10px]"></i>
+                            <span>Programs</span>
+                        </button>
+                        <button onclick="openModal('C Quiz', 'Test your understanding of pointer manipulation and segmentation faults.')" class="py-2 px-3 rounded-xl sub-card text-[11px] font-semibold flex items-center justify-center space-x-1.5 hover:bg-purple-500/10 transition-colors">
+                            <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                            <span>Quiz</span>
+                        </button>
+                    </div>
+                    <button onclick="switchTab('code')" class="w-full mt-3 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-xs font-bold text-white shadow-md flex items-center justify-center space-x-2 hover:opacity-95 transition-opacity">
+                        <span>Explore C in Sandbox</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </section>
+
+
+            <!-- Quick Access Section -->
+            <section class="space-y-3">
+                <div class="flex items-center justify-center space-x-3 my-2">
+                    <div class="h-px bg-gradient-to-r from-transparent to-purple-500/50 w-16"></div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Quick Access</span>
+                    <div class="h-px bg-gradient-to-l from-transparent to-purple-500/50 w-16"></div>
+                </div>
+
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div onclick="openModal('Speed Typing Arena', 'Practice typing complex algorithms and syntax constructs under strict timed pressure.')" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center cursor-pointer hover:scale-[1.03] active:scale-[0.98] transition-all">
+                        <div class="w-11 h-11 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-2">
+                            <i class="fa-solid fa-bolt text-base"></i>
+                        </div>
+                        <h4 class="text-xs font-bold">Speed Typing</h4>
+                        <p class="text-[10px] opacity-75 mt-1 leading-tight">Improve your typing speed</p>
+                    </div>
+                    <div onclick="openModal('Debugger Arena', 'Find and squash hidden logical bugs in simulated enterprise codebase snippets.')" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center cursor-pointer hover:scale-[1.03] active:scale-[0.98] transition-all">
+                        <div class="w-11 h-11 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-2">
+                            <i class="fa-solid fa-bug text-base"></i>
+                        </div>
+                        <h4 class="text-xs font-bold">Debugger Arena</h4>
+                        <p class="text-[10px] opacity-75 mt-1 leading-tight">Find bugs and fix the code</p>
+                    </div>
+                    <div onclick="openModal('Brain Quizzes', 'Challenge your mind with advanced algorithms, time-complexity, and architecture puzzles.')" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center cursor-pointer hover:scale-[1.03] active:scale-[0.98] transition-all">
+                        <div class="w-11 h-11 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
+                            <i class="fa-solid fa-bullseye text-base"></i>
+                        </div>
+                        <h4 class="text-xs font-bold">Brain Quizzes</h4>
+                        <p class="text-[10px] opacity-75 mt-1 leading-tight">Test your knowledge</p>
+                    </div>
+                    <div onclick="openModal('Analytics Dashboard', 'Review your weekly coding hours, completed exercises, and accuracy metrics.')" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center cursor-pointer hover:scale-[1.03] active:scale-[0.98] transition-all">
+                        <div class="w-11 h-11 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-2">
+                            <i class="fa-solid fa-chart-column text-base"></i>
+                        </div>
+                        <h4 class="text-xs font-bold">Analytics</h4>
+                        <p class="text-[10px] opacity-75 mt-1 leading-tight">Track your progress</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Daily Challenge Card -->
+            <section class="glass-card rounded-3xl p-5 border border-purple-500/20 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-fire text-orange-500 animate-bounce"></i>
+                        <h3 class="font-bold text-sm">Daily Challenge</h3>
+                    </div>
+                    <span class="text-xs font-bold text-purple-400">+50 XP</span>
+                </div>
+                <p class="text-xs opacity-75">Fix the bug in the code</p>
+
+
+                <div class="code-box rounded-2xl p-3.5 code-font text-xs overflow-x-auto shadow-inner">
+                    <span class="text-purple-400">for</span>(int i = <span class="text-orange-400">0</span>; i &lt;= <span class="text-orange-400">5</span>; i++) &#123;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">if</span>(i == <span class="text-orange-400">3</span>) <span class="text-rose-400">continue</span>;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;printf(<span class="text-emerald-400">"%d "</span>, i);<br>
+                    &#125;
+                </div>
+
+
+                <div class="flex items-center justify-between text-xs pt-1">
+                    <span class="text-emerald-400 font-semibold">Difficulty: Easy</span>
+                </div>
+
+
+                <button onclick="solveChallenge()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 font-bold text-xs text-white shadow-lg glow-btn flex items-center justify-center space-x-2 hover:opacity-95 active:scale-[0.98] transition-all">
+                    <span>Solve Now</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+            </section>
+
+
+            <!-- Your Progress Card -->
+            <section class="glass-card rounded-3xl p-5 border border-purple-500/20 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-sm">Your Progress</h3>
+                    <span class="bg-purple-500/20 border border-purple-500/30 text-purple-400 px-3 py-1 rounded-full text-xs font-extrabold">Level 8</span>
+                </div>
+
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-xs font-bold">
+                        <span class="text-base" id="xpText">870 <span class="text-xs font-normal opacity-75">/ 1000 XP</span></span>
+                    </div>
+                    <div class="w-full h-2.5 bg-black/10 dark:bg-neutral-900 rounded-full overflow-hidden p-0.5 border border-white/5">
+                        <div id="xpBar" class="h-full bg-gradient-to-r from-purple-600 to-indigo-500 rounded-full transition-all duration-700 ease-out" style="width: 87%"></div>
+                    </div>
+                </div>
+
+
+                <div class="grid grid-cols-2 gap-3 pt-2">
+                    <div class="sub-card rounded-2xl p-3 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+                            <i class="fa-solid fa-fire text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-black" id="streakDisplay">7</div>
+                            <div class="text-[10px] opacity-75">Day Streak</div>
+                        </div>
+                    </div>
+                    <div class="sub-card rounded-2xl p-3 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-400">
+                            <i class="fa-solid fa-award text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-black">12</div>
+                            <div class="text-[10px] opacity-75">Badges</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="pt-2 border-t border-black/5 dark:border-white/5">
+                    <div class="flex justify-between text-xs opacity-75 mb-1.5">
+                        <span>Next Milestone</span>
+                        <span class="text-purple-400 font-semibold" id="xpToGo">130 XP to go</span>
+                    </div>
+                    <div class="text-xs font-bold mb-2">Reach Level 9</div>
+                    <div class="w-full h-1.5 bg-black/10 dark:bg-neutral-900 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full transition-all duration-700" style="width: 70%"></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Footer Section -->
+            <footer class="pt-6 pb-4 text-center space-y-4">
+                <div class="flex items-center justify-center space-x-2">
+                    <div class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-1.5 rounded-lg text-white shadow-md">
+                        <i class="fa-solid fa-code text-xs"></i>
+                    </div>
+                    <span class="font-extrabold text-base tracking-tight">MultitaskCoder</span>
+                </div>
+
+
+                <!-- Social Icons Row -->
+                <div class="flex items-center justify-center space-x-3">
+                    <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-2xl glass-card flex items-center justify-center hover:scale-110 active:scale-95 transition-transform">
+                        <i class="fa-brands fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="https://whatsapp.com" target="_blank" class="w-11 h-11 rounded-2xl glass-card flex items-center justify-center hover:scale-110 active:scale-95 transition-transform">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="w-11 h-11 rounded-2xl glass-card flex items-center justify-center hover:scale-110 active:scale-95 transition-transform">
+                        <i class="fa-brands fa-github text-sm"></i>
+                    </a>
+                    <a href="https://x.com" target="_blank" class="w-11 h-11 rounded-2xl glass-card flex items-center justify-center hover:scale-110 active:scale-95 transition-transform" title="X (Twitter)">
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="mailto:contact@multitaskcoder.com" class="w-11 h-11 rounded-2xl glass-card flex items-center justify-center hover:scale-110 active:scale-95 transition-transform">
+                        <i class="fa-solid fa-envelope text-sm"></i>
+                    </a>
+                </div>
+
+
+                <!-- License & Copyright -->
+                <div class="space-y-1 text-xs opacity-70">
+                    <div class="flex items-center justify-center space-x-1.5">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span>Licensed under the MIT License</span>
+                    </div>
+                    <div>© 2026 MultitaskCoder. All rights reserved.</div>
+                </div>
+            </footer>
+        </div>
+
+
+        <!-- TAB 2: LEARN VIEW -->
+        <div id="tab-learn-view" class="tab-content space-y-4">
+            <div class="glass-card rounded-3xl p-5 border border-purple-500/30 space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-sm">Interactive Curriculum</h2>
+                        <p class="text-[11px] opacity-75">120+ Structured modules across languages</p>
+                    </div>
+                </div>
+                <div class="space-y-2 pt-2">
+                    <div onclick="openModal('Module 1: Introduction to Variables', 'Learn memory allocation, primitive data types, type casting, and naming conventions in Python and Java.')" class="sub-card p-3.5 rounded-2xl flex items-center justify-between cursor-pointer hover:border-purple-500/40 hover:scale-[1.01] transition-all">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-xs font-bold">1</div>
+                            <div>
+                                <h4 class="text-xs font-bold">Variables & Memory</h4>
+                                <span class="text-[10px] text-emerald-400">Completed • 15 Lessons</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                    </div>
+                    <div onclick="openModal('Module 2: Control Flow & Loops', 'Master conditional branching, for/while loops, break/continue statements, and switch cases.')" class="sub-card p-3.5 rounded-2xl flex items-center justify-between cursor-pointer hover:border-purple-500/40 hover:scale-[1.01] transition-all">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-xs font-bold">2</div>
+                            <div>
+                                <h4 class="text-xs font-bold">Control Flow & Loops</h4>
+                                <span class="text-[10px] text-amber-400">In Progress • 8/12 Lessons</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right opacity-75 text-xs"></i>
+                    </div>
+                    <div onclick="openModal('Module 3: Object Oriented Programming', 'Dive deep into Classes, Inheritance, Polymorphism, Encapsulation, and Abstract Interfaces.')" class="sub-card p-3.5 rounded-2xl flex items-center justify-between cursor-pointer hover:border-purple-500/40 hover:scale-[1.01] transition-all">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg opacity-50 flex items-center justify-center text-xs font-bold">3</div>
+                            <div>
+                                <h4 class="text-xs font-bold">Object Oriented Architecture</h4>
+                                <span class="text-[10px] opacity-60">Locked • 20 Lessons</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-lock opacity-50 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TAB 3: CODE / SANDBOX VIEW -->
+        <div id="tab-code-view" class="tab-content space-y-4">
+            <div class="glass-card rounded-3xl p-5 border border-purple-500/30 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-laptop-code text-purple-400 text-base"></i>
+                        <h2 class="font-bold text-sm">Live Code Sandbox</h2>
+                    </div>
+                    <select id="codeLangSelect" class="sub-card rounded-xl px-2.5 py-1 text-xs text-purple-400 font-semibold focus:outline-none">
+                        <option value="python">Python 3.11</option>
+                        <option value="java">Java 17</option>
+                        <option value="c">C (GCC)</option>
+                    </select>
+                </div>
+                <!-- Interactive Code Editor -->
+                <div class="code-box rounded-2xl p-4 code-font text-xs space-y-2 shadow-inner">
+                    <textarea id="sandboxCode" class="w-full h-36 bg-transparent resize-none focus:outline-none" spellcheck="false">def calculate_fibonacci(n):
+    if n <= 1:
+        return n
+    return calculate_fibonacci(n-1) + calculate_fibonacci(n-2)
+
+
+print("Fibonacci(6) =", calculate_fibonacci(6))</textarea>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="runSandboxCode()" class="flex-1 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 font-bold text-xs text-white shadow-lg flex items-center justify-center space-x-2 hover:opacity-95 active:scale-[0.98] transition-all">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Run Code</span>
+                    </button>
+                    <button onclick="clearSandbox()" class="px-4 py-3 rounded-2xl sub-card font-semibold text-xs hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                        Clear
+                    </button>
+                </div>
+                <!-- Output Box -->
+                <div class="space-y-1.5 pt-2">
+                    <span class="text-[11px] font-bold opacity-75">Execution Output:</span>
+                    <div id="sandboxOutput" class="sub-card rounded-2xl p-3 code-font text-xs text-emerald-400 min-h-[60px] flex items-center">
+                        Click "Run Code" to compile and execute snippet...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TAB 4: QUIZZES VIEW -->
+        <div id="tab-quizzes-view" class="tab-content space-y-4">
+            <div class="glass-card rounded-3xl p-5 border border-purple-500/30 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-sm">Quiz Arena & Battles</h2>
+                        <p class="text-[11px] opacity-75">Test your reflexes and algorithmic trivia</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="sub-card p-4 rounded-2xl space-y-2 hover:border-purple-500/40 transition-all">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold">Python Speed Trivia</span>
+                            <span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded-full font-bold">+100 XP</span>
+                        </div>
+                        <p class="text-[11px] opacity-75">10 questions • 3 minutes timer</p>
+                        <button onclick="openModal('Quiz Started', 'Loading Python Speed Trivia questions... Prepare your answers!')" class="w-full mt-2 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 font-bold text-xs text-white active:scale-[0.98] transition-all">Start Quiz</button>
+                    </div>
+                    <div class="sub-card p-4 rounded-2xl space-y-2 hover:border-purple-500/40 transition-all">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold">Data Structures Challenge</span>
+                            <span class="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded-full font-bold">+250 XP</span>
+                        </div>
+                        <p class="text-[11px] opacity-75">Trees, Graphs, Hash Maps & Big-O</p>
+                        <button onclick="openModal('Quiz Started', 'Loading Data Structures challenge pack...')" class="w-full mt-2 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 font-bold text-xs text-white active:scale-[0.98] transition-all">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TAB 5: PROFILE VIEW -->
+        <div id="tab-profile-view" class="tab-content space-y-4">
+            <div class="glass-card rounded-3xl p-6 border border-purple-500/30 space-y-5 text-center">
+                <div class="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-1 shadow-xl animate-pulse">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div>
+                    <h2 class="text-base font-bold">You (Master Coder)</h2>
+                    <p class="text-xs text-purple-400 font-semibold mt-0.5">Level 8 Software Engineer</p>
+                </div>
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-black/5 dark:border-white/5">
+                    <div class="sub-card p-3 rounded-2xl">
+                        <div class="text-sm font-black" id="profileXp">870</div>
+                        <div class="text-[10px] opacity-75">Total XP</div>
+                    </div>
+                    <div class="sub-card p-3 rounded-2xl">
+                        <div class="text-sm font-black" id="profileStreak">7</div>
+                        <div class="text-[10px] opacity-75">Streak</div>
+                    </div>
+                    <div class="sub-card p-3 rounded-2xl">
+                        <div class="text-sm font-black">12</div>
+                        <div class="text-[10px] opacity-75">Badges</div>
+                    </div>
+                </div>
+                <button onclick="openModal('Account Settings', 'Manage your email, password, notification preferences, and subscription tier.')" class="w-full py-3 rounded-2xl sub-card text-xs font-semibold hover:bg-black/5 dark:hover:bg-white/5 active:scale-[0.98] transition-all">
+                    Edit Profile Settings
+                </button>
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto glass-card px-4 py-3 flex items-center justify-between border-t z-50 rounded-t-3xl shadow-2xl">
+        <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center space-y-1 text-purple-500 hover:scale-110 active:scale-95 transition-all">
+            <i class="fa-solid fa-house text-base"></i>
+            <span class="text-[10px] font-semibold">Home</span>
+        </button>
+        <button onclick="switchTab('learn')" id="nav-learn" class="flex flex-col items-center space-y-1 opacity-60 hover:opacity-100 hover:scale-110 active:scale-95 transition-all">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span class="text-[10px] font-semibold">Learn</span>
+        </button>
+        <button onclick="switchTab('code')" id="nav-code" class="relative -top-5 w-14 h-14 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shadow-xl glow-btn hover:scale-110 active:scale-90 transition-transform">
+            <i class="fa-solid fa-code text-xl"></i>
+        </button>
+        <button onclick="switchTab('quizzes')" id="nav-quizzes" class="flex flex-col items-center space-y-1 opacity-60 hover:opacity-100 hover:scale-110 active:scale-95 transition-all">
+            <i class="fa-solid fa-trophy text-base"></i>
+            <span class="text-[10px] font-semibold">Quizzes</span>
+        </button>
+        <button onclick="switchTab('profile')" id="nav-profile" class="flex flex-col items-center space-y-1 opacity-60 hover:opacity-100 hover:scale-110 active:scale-95 transition-all">
+            <i class="fa-solid fa-user text-base"></i>
+            <span class="text-[10px] font-semibold">Profile</span>
+        </button>
+    </nav>
+
+
+    <!-- Interactive Modal Popup -->
+    <div id="appModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-card border border-purple-500/30 rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl relative animate-[fadeInScale_0.3s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+            <div class="flex justify-between items-center">
+                <h3 id="modalTitle" class="text-base font-bold">Feature</h3>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full sub-card flex items-center justify-center opacity-75 hover:opacity-100 hover:rotate-90 transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p id="modalDesc" class="text-xs opacity-85 leading-relaxed"></p>
+            <div class="pt-2">
+                <button onclick="closeModal()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 font-bold text-xs text-white shadow-lg active:scale-[0.98] transition-transform">Got it</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript Interactivity & Three.js 3D Loader -->
+    <script>
+        let currentXP = 870;
+        let currentStreak = 7;
+        let currentGems = 870;
+
+
+        // --- Three.js 3D Loader Initialization ---
+        window.addEventListener('load', () => {
+            init3DLoader();
+        });
+
+
+        function init3DLoader() {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 7;
+
+
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+
+            // Create glowing 3D torus knot & floating particle ring
+            const geometry = new THREE.TorusKnotGeometry(1.5, 0.4, 128, 32);
+            const material = new THREE.MeshStandardMaterial({
+                color: 0x8b5cf6,
+                roughness: 0.2,
+                metalness: 0.8,
+                emissive: 0x4c1d95,
+                wireframe: false
+            });
+            const torusKnot = new THREE.Mesh(geometry, material);
+            scene.add(torusKnot);
+
+
+            // Add particle field
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 300;
+            const posArray = new Float32Array(particlesCount * 3);
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 12;
+            }
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.04,
+                color: 0x06b6d4,
+                transparent: true,
+                opacity: 0.8
+            });
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0x7c3aed, 3, 50);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+
+            // Animation Loop
+            let animationFrameId;
+            function animate() {
+                animationFrameId = requestAnimationFrame(animate);
+                torusKnot.rotation.x += 0.01;
+                torusKnot.rotation.y += 0.015;
+                particlesMesh.rotation.y -= 0.005;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+
+            // Simulate Loading Progress
+            let progress = 0;
+            const progressBar = document.getElementById('loaderProgressBar');
+            const statusText = document.getElementById('loaderStatusText');
+            const statuses = [
+                "Initializing 3D Matrix...",
+                "Loading Compiler Modules...",
+                "Syncing User Profiles...",
+                "Preparing Sandbox Workspace...",
+                "Ready!"
+            ];
+
+
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 18) + 12;
+                if(progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    statusText.innerText = "Ready!";
+                    progressBar.style.width = '100%';
+                    setTimeout(() => {
+                        cancelAnimationFrame(animationFrameId);
+                        const loader = document.getElementById('loaderScreen');
+                        loader.style.opacity = '0';
+                        setTimeout(() => loader.remove(), 700);
+                    }, 400);
+                } else {
+                    progressBar.style.width = progress + '%';
+                    const statusIdx = Math.min(Math.floor((progress / 100) * statuses.length), statuses.length - 1);
+                    statusText.innerText = statuses[statusIdx];
+                }
+            }, 180);
+
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            themeIcon.style.transform = 'rotate(360deg)';
+            setTimeout(() => themeIcon.style.transform = 'rotate(0deg)', 300);
+
+
+            if(body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                body.classList.add('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+
+        function openMenu() {
+            const overlay = document.getElementById('slideMenuOverlay');
+            const drawer = document.getElementById('slideMenuDrawer');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                drawer.classList.remove('-translate-x-full');
+                drawer.classList.add('menu-open');
+            }, 10);
+        }
+
+
+        function closeMenu() {
+            const overlay = document.getElementById('slideMenuOverlay');
+            const drawer = document.getElementById('slideMenuDrawer');
+            drawer.classList.remove('menu-open');
+            drawer.classList.add('-translate-x-full');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+
+        function handleMenuClick(title, desc) {
+            closeMenu();
+            openModal(title, desc);
+        }
+
+
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            const modal = document.getElementById('appModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+
+        function closeModal() {
+            const modal = document.getElementById('appModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+
+        function installApp() {
+            openModal('Install PWA App', 'MultitaskCoder is ready to install as a Progressive Web App. Tap "Add to Home Screen" in your mobile browser options!');
+        }
+
+
+        function solveChallenge() {
+            currentXP += 50;
+            currentGems += 25;
+            document.getElementById('xpText').innerHTML = `${currentXP} <span class="text-xs font-normal opacity-75">/ 1000 XP</span>`;
+            document.getElementById('xpBar').style.width = `${(currentXP/1000)*100}%`;
+            document.getElementById('gemCount').innerText = currentGems;
+            document.getElementById('profileXp').innerText = currentXP;
+            openModal('Challenge Solved! 🎉', 'You successfully fixed the loop bug! +50 XP and +25 Gems credited to your account.');
+        }
+
+
+        function runSandboxCode() {
+            const outputEl = document.getElementById('sandboxOutput');
+            outputEl.innerHTML = '<span class="text-amber-400 animate-pulse">Compiling & executing...</span>';
+            setTimeout(() => {
+                outputEl.innerHTML = 'Fibonacci(6) = 8<br><span class="text-purple-400 font-bold">[Execution finished in 42ms with 0 errors]</span>';
+            }, 600);
+        }
+
+
+        function clearSandbox() {
+            document.getElementById('sandboxCode').value = '';
+            document.getElementById('sandboxOutput').innerHTML = 'Sandbox cleared.';
+        }
+
+
+        function switchTab(tab) {
+            ['home', 'learn', 'code', 'quizzes', 'profile'].forEach(t => {
+                const view = document.getElementById(`tab-${t}-view`);
+                if(view) view.classList.remove('active');
+
+
+                const navEl = document.getElementById(`nav-${t}`);
+                if(navEl && t !== 'code') {
+                    navEl.classList.remove('text-purple-500');
+                    navEl.classList.add('opacity-60');
+                }
+            });
+
+
+            const activeView = document.getElementById(`tab-${tab}-view`);
+            if(activeView) activeView.classList.add('active');
+
+
+            if(tab !== 'code') {
+                const activeNav = document.getElementById(`nav-${tab}`);
+                if(activeNav) {
+                    activeNav.classList.remove('opacity-60');
+                    activeNav.classList.add('text-purple-500');
+                }
+            }
+
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
