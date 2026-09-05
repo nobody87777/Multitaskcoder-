@@ -53,11 +53,31 @@ MultitaskCoder underwent a complete production-grade source code audit, remediat
    * **Root Cause**: Several feature modules and icon files were missing from the precache list or referenced with absolute URLs.
    * **Fix**: Bumped cache name to `multitaskcoder-v4.1`. Precached all 49 core shell and feature modules (`js/features/*`, icons, fonts, CSS files). Verified 100% presence on disk. Used relative paths (`./...`) to guarantee flawless offline execution on GitHub Pages subpaths.
 
-9. **Accessibility & Keyboard Usability**:
-   * **Fix**: Added `<label for="...">` and `aria-label` attributes to dropdown selectors, code inputs, and search bars. Added `role="button"`, `tabindex="0"`, and `Enter`/`Space` keyboard triggers to interactive card pills and header logo. Added `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, and `aria-describedby` to the global modal component.
+9. **Accessibility, Touch Targets & Visible Focus**:
+   * **Root Cause**: Touch targets for header hamburger, theme toggle, avatar button, and drawer close button measured 32×32px (below the 40-48px recommended minimum). Interactive elements lacked a dedicated `:focus-visible` ring across themes. Select and textarea in sandbox lacked explicit aria-labels.
+   * **Fix**: Added universal `:focus-visible { outline: 2px solid #a855f7; outline-offset: 2px; }` in `css/main.css`. Enlarged header and drawer button touch targets to 40×40px (`w-10 h-10`). Added `aria-label` attributes to `#codeLangSelect` and `#sandboxCode`. Added `<label for="...">` and `aria-label` attributes to dropdown selectors, code inputs, and search bars. Added `role="button"`, `tabindex="0"`, and `Enter`/`Space` keyboard triggers to interactive card pills and header logo.
 
 10. **Flash of Unstyled Content (FOUC) Elimination (`index.html`)**:
     * **Fix**: Synchronized theme detection in the inline `<head>` script to apply or remove `.dark` before initial DOM paint, preventing white-to-dark flashes on page reload.
+
+11. **Bottom Navigation Specificity & Contrast Token Refinement (`css/components.css`, `js/components/bottom-nav.js`)**:
+    * **Root Cause**: `bottom-nav.js` injected hardcoded `text-purple-500` on active buttons, overriding CSS theme tokens. In light mode, inactive buttons lacked explicit color definition causing low contrast.
+    * **Fix**: Removed inline `text-purple-500` utility class. Defined explicit `.bottom-nav-btn { color: #94a3b8; }`, `.bottom-nav-btn.active { color: #a855f7; }`, `html:not(.dark) .bottom-nav-btn { color: #64748b; }`, and `html:not(.dark) .bottom-nav-btn.active { color: #7c3aed; }`.
+
+12. **Light-Mode Dark-Hero Sub-Card Contrast (`css/components.css`)**:
+    * **Root Cause**: In light mode, `.sub-card` set `background: #ffffff`, but the hero section wrapper had `text-white` with a deep purple gradient background. This made `#heroInstallPwaBtn` unreadable white-on-white.
+    * **Fix**: Added `section.text-white .sub-card { background: rgba(255, 255, 255, 0.1); color: #ffffff; }`, ensuring clear contrast in both light and dark modes.
+
+13. **Clean First-Run Quiz Metric Display (`js/pages/profile.js`)**:
+    * **Root Cause**: A brand new user with 0 quizzes completed rendered "0/0 correct (100% accuracy)".
+    * **Fix**: Updated quiz stats block to conditionally display "No quizzes taken yet" when `stats.quizzesTaken === 0`.
+
+14. **Desktop Shell & Header Centering Alignment (`js/components/header.js`)**:
+    * **Root Cause**: Page body and bottom navigation were constrained to `max-w-md mx-auto` (448px), but header controls were spaced out to the full viewport width on wide displays (1024px–1440px).
+    * **Fix**: Wrapped inner header content in `max-w-md mx-auto` while preserving full-width glass header styling, achieving consistent column alignment across mobile and desktop.
+
+15. **Search Engine Indexing Directive (`index.html`)**:
+    * **Fix**: Added `<meta name="robots" content="index, follow">` alongside existing Open Graph, Twitter Cards, canonical URL, and sitemap references.
 
 ---
 

@@ -11,41 +11,43 @@ import { openMenu } from "./sidebar.js";
 export function createHeader() {
   const currentState = getState();
   const header = document.createElement("header");
-  header.className = "sticky top-0 z-40 glass-card px-4 py-3 flex items-center justify-between border-b backdrop-blur-md transition-all duration-300";
+  header.className = "sticky top-0 z-40 glass-card border-b backdrop-blur-md transition-all duration-300";
   header.innerHTML = `
-    <div class="flex items-center space-x-3">
-      <button id="headerMenuBtn" aria-label="Open Navigation Drawer" class="opacity-80 hover:opacity-100 p-1 text-xl transition-transform active:scale-95 cursor-pointer">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <div id="headerLogo" role="button" tabindex="0" aria-label="MultitaskCoder Home" class="flex items-center space-x-2 cursor-pointer group">
-        <div class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-2 rounded-xl text-white shadow-lg glow-purple group-hover:rotate-6 transition-transform">
-          <i class="fa-solid fa-code text-sm"></i>
+    <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <button id="headerMenuBtn" aria-label="Open Navigation Drawer" class="w-10 h-10 rounded-xl flex items-center justify-center opacity-80 hover:opacity-100 text-xl transition-transform active:scale-95 cursor-pointer">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="headerLogo" role="button" tabindex="0" aria-label="MultitaskCoder Home" class="flex items-center space-x-2 cursor-pointer group">
+          <div class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-2 rounded-xl text-white shadow-lg glow-purple group-hover:rotate-6 transition-transform">
+            <i class="fa-solid fa-code text-sm"></i>
+          </div>
+          <span class="font-extrabold text-lg bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent">MultitaskCoder</span>
         </div>
-        <span class="font-extrabold text-lg bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent">MultitaskCoder</span>
       </div>
-    </div>
-    <div class="flex items-center space-x-2.5">
-      <!-- Theme Toggle Button -->
-      <button id="themeToggleBtn" class="w-9 h-9 rounded-full sub-card flex items-center justify-center text-purple-400 hover:scale-110 active:scale-95 transition-all shadow-sm cursor-pointer" title="Toggle Theme" aria-label="Toggle Theme">
-        <i class="fa-solid ${currentState.theme === "dark" ? "fa-moon" : "fa-sun"} transition-transform duration-500" id="themeIcon"></i>
-      </button>
+      <div class="flex items-center space-x-2.5">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" class="w-10 h-10 rounded-full sub-card flex items-center justify-center text-purple-400 hover:scale-110 active:scale-95 transition-all shadow-sm cursor-pointer" title="Toggle Theme" aria-label="Toggle Theme">
+          <i class="fa-solid ${currentState.theme === "dark" ? "fa-moon" : "fa-sun"} transition-transform duration-500" id="themeIcon"></i>
+        </button>
 
-      <!-- Streak Badge -->
-      <div class="flex items-center space-x-1.5 sub-card px-2.5 py-1 rounded-full text-xs font-bold text-orange-400 shadow-sm" title="Day Streak">
-        <i class="fa-solid fa-fire text-orange-500 animate-bounce"></i>
-        <span id="streakCount">${currentState.streak}</span>
+        <!-- Streak Badge -->
+        <div class="flex items-center space-x-1.5 sub-card px-2.5 py-1 rounded-full text-xs font-bold text-orange-400 shadow-sm" title="Day Streak">
+          <i class="fa-solid fa-fire text-orange-500 animate-bounce"></i>
+          <span id="streakCount">${currentState.streak}</span>
+        </div>
+
+        <!-- Gems Badge -->
+        <div class="flex items-center space-x-1.5 sub-card px-2.5 py-1 rounded-full text-xs font-bold text-purple-400 shadow-sm" title="Gems">
+          <i class="fa-solid fa-gem text-purple-400 animate-pulse"></i>
+          <span id="gemCount">${currentState.gems}</span>
+        </div>
+
+        <!-- Avatar Profile Link -->
+        <button id="headerAvatarBtn" class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-0.5 shadow-md hover:scale-110 active:scale-95 transition-transform cursor-pointer" title="Your Profile" aria-label="View Your Profile">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='assets/icons/favicon-32x32.png';">
+        </button>
       </div>
-
-      <!-- Gems Badge -->
-      <div class="flex items-center space-x-1.5 sub-card px-2.5 py-1 rounded-full text-xs font-bold text-purple-400 shadow-sm" title="Gems">
-        <i class="fa-solid fa-gem text-purple-400 animate-pulse"></i>
-        <span id="gemCount">${currentState.gems}</span>
-      </div>
-
-      <!-- Avatar Profile Link -->
-      <button id="headerAvatarBtn" class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-0.5 shadow-md hover:scale-110 active:scale-95 transition-transform cursor-pointer" title="Your Profile" aria-label="View Your Profile">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='assets/icons/favicon-32x32.png';">
-      </button>
     </div>
   `;
 

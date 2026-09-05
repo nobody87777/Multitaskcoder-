@@ -26,6 +26,19 @@ body:not(.dark) .sub-card {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 }
 
+/* Sub-card inside permanently dark sections (e.g. Hero banner) */
+section.text-white .sub-card,
+body:not(.dark) section.text-white .sub-card {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+section.text-white .sub-card:hover,
+body:not(.dark) section.text-white .sub-card:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
 /* Code Box */
 body.dark .code-box {
   background: #0b0c10;
@@ -140,17 +153,25 @@ body:not(.dark) .bottom-nav-bar {
   -webkit-tap-highlight-color: transparent;
 }
 
+.bottom-nav-btn {
+  color: #64748b;
+}
+
+.dark .bottom-nav-btn,
 body.dark .bottom-nav-btn {
   color: #94a3b8;
 }
+.dark .bottom-nav-btn:hover,
 body.dark .bottom-nav-btn:hover {
   color: #c084fc;
   transform: scale(1.05);
 }
 
+:root:not(.dark) body:not(.dark) .bottom-nav-btn,
 body:not(.dark) .bottom-nav-btn {
   color: #64748b;
 }
+:root:not(.dark) body:not(.dark) .bottom-nav-btn:hover,
 body:not(.dark) .bottom-nav-btn:hover {
   color: #7c3aed;
   transform: scale(1.05);
@@ -164,20 +185,31 @@ body:not(.dark) .bottom-nav-btn:hover {
   box-shadow: 0 0 0 2px #a855f7;
 }
 
+.bottom-nav-btn.active {
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.dark .bottom-nav-btn.active,
 body.dark .bottom-nav-btn.active {
   color: #a855f7;
   font-weight: 700;
 }
+.dark .bottom-nav-btn.active svg,
 body.dark .bottom-nav-btn.active svg,
+.dark .bottom-nav-btn.active i,
 body.dark .bottom-nav-btn.active i {
   filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
 }
 
+:root:not(.dark) body:not(.dark) .bottom-nav-btn.active,
 body:not(.dark) .bottom-nav-btn.active {
   color: #7c3aed;
   font-weight: 700;
 }
+:root:not(.dark) body:not(.dark) .bottom-nav-btn.active svg,
 body:not(.dark) .bottom-nav-btn.active svg,
+:root:not(.dark) body:not(.dark) .bottom-nav-btn.active i,
 body:not(.dark) .bottom-nav-btn.active i {
   filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.4));
 }

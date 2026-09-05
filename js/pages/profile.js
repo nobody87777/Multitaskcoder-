@@ -105,7 +105,7 @@ export async function renderProfilePage(container) {
               </div>
               <div>
                 <div class="font-bold text-[11px]">Quiz Scores &amp; Accuracy</div>
-                <div class="text-[9px] opacity-70">Score: ${state.quizStats?.totalCorrect || quizCount} / ${state.quizStats?.quizzesCompleted || quizCount} correct (${quizCount > 0 ? Math.round(((state.quizStats?.totalCorrect || quizCount) / Math.max(1, state.quizStats?.quizzesCompleted || quizCount)) * 100) : 100}% accuracy)</div>
+                <div class="text-[9px] opacity-70">${quizCount > 0 ? `Score: ${state.quizStats?.totalCorrect || 0} / ${state.quizStats?.quizzesCompleted || quizCount} correct (${Math.round(((state.quizStats?.totalCorrect || 0) / Math.max(1, state.quizStats?.quizzesCompleted || quizCount)) * 100)}% accuracy)` : "No quizzes taken yet"}</div>
               </div>
             </div>
             <span class="text-xs font-black text-cyan-400">${quizCount} Quizzes</span>

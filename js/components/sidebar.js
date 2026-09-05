@@ -55,8 +55,8 @@ export function createSidebar() {
             </div>
             <span class="font-extrabold text-base tracking-tight">Navigation</span>
           </div>
-          <button id="closeDrawerBtn" aria-label="Close Navigation Drawer" class="w-8 h-8 rounded-full sub-card flex items-center justify-center opacity-75 hover:opacity-100 hover:rotate-90 transition-all cursor-pointer">
-            <i class="fa-solid fa-xmark"></i>
+          <button id="closeDrawerBtn" aria-label="Close Navigation Drawer" class="w-10 h-10 rounded-full sub-card flex items-center justify-center opacity-75 hover:opacity-100 hover:rotate-90 transition-all cursor-pointer">
+            <i class="fa-solid fa-xmark text-sm"></i>
           </button>
         </div>
 

@@ -16,7 +16,7 @@ export function createBottomNav() {
 
   nav.innerHTML = `
     <!-- Home Navigation Item -->
-    <button data-nav="home" id="nav-home" class="bottom-nav-btn active text-purple-500 cursor-pointer" aria-label="Home" aria-current="page">
+    <button data-nav="home" id="nav-home" class="bottom-nav-btn active cursor-pointer" aria-label="Home" aria-current="page">
       <span class="nav-icon flex items-center justify-center w-6 h-6">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -102,11 +102,11 @@ export function updateActiveNav(activeRoute) {
     const el = document.getElementById(`nav-${item}`);
     if (el) {
       if (activeRoute === item) {
-        el.classList.add("active", "text-purple-500");
+        el.classList.add("active");
         el.classList.remove("opacity-60");
         el.setAttribute("aria-current", "page");
       } else {
-        el.classList.remove("active", "text-purple-500");
+        el.classList.remove("active");
         el.removeAttribute("aria-current");
       }
     }

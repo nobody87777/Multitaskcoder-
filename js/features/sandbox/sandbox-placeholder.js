@@ -16,7 +16,7 @@ export function renderSandboxPlaceholder(container) {
           <h2 class="font-bold text-sm">Live Code Sandbox</h2>
           <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-bold border border-purple-500/30">Beta / Placeholder</span>
         </div>
-        <select id="codeLangSelect" class="sub-card rounded-xl px-2.5 py-1 text-xs text-purple-400 font-semibold focus:outline-none">
+        <select id="codeLangSelect" aria-label="Select Programming Language" class="sub-card rounded-xl px-2.5 py-1 text-xs text-purple-400 font-semibold focus:outline-none">
           <option value="python">Python 3.11</option>
           <option value="java">Java 17</option>
           <option value="c">C (GCC)</option>
@@ -27,7 +27,7 @@ export function renderSandboxPlaceholder(container) {
 
       <!-- Interactive Code Editor -->
       <div class="code-box rounded-2xl p-4 code-font text-xs space-y-2 shadow-inner">
-        <textarea id="sandboxCode" class="w-full h-36 bg-transparent resize-none focus:outline-none leading-relaxed" spellcheck="false">def calculate_fibonacci(n):
+        <textarea id="sandboxCode" aria-label="Sandbox Code Editor" class="w-full h-36 bg-transparent resize-none focus:outline-none leading-relaxed" spellcheck="false">def calculate_fibonacci(n):
     if n <= 1:
         return n
     return calculate_fibonacci(n-1) + calculate_fibonacci(n-2)

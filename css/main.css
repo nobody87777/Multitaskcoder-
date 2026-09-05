@@ -35,6 +35,11 @@ button {
   appearance: none;
 }
 
+:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
