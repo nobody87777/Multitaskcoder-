@@ -1,7 +1,7 @@
 // MultitaskCoder
 // Module: Profile Page
 
-import { getState, resetState, toggleTheme } from "../state.js";
+import { getState, resetState, toggleTheme, calculateUnlockedBadgeIds } from "../state.js";
 import { BADGES } from "../constants.js";
 import { openModal } from "../components/modal.js";
 import { escapeHtml } from "../utils.js";
@@ -11,6 +11,7 @@ import { escapeHtml } from "../utils.js";
  */
 export async function renderProfilePage(container) {
   const state = getState();
+  const unlockedBadges = new Set(calculateUnlockedBadgeIds(state));
 
   const typingCount = (state.completedTyping || []).length;
   const quizCount = (state.completedQuizzes || []).length;
@@ -153,15 +154,19 @@ export async function renderProfilePage(container) {
         </div>
 
         <div class="grid grid-cols-3 gap-2.5 pt-1">
-          ${BADGES.map((b, idx) => `
-            <div data-badge-id="${b.id}" class="badge-item sub-card p-3 rounded-2xl flex flex-col items-center text-center space-y-1 hover:border-purple-500/30 transition-all cursor-pointer">
-              <div class="w-9 h-9 rounded-xl bg-purple-500/10 flex items-center justify-center ${b.color} text-sm">
+          ${BADGES.map((b) => {
+            const isUnlocked = unlockedBadges.has(b.id);
+            return `
+            <div data-badge-id="${b.id}" class="badge-item sub-card p-3 rounded-2xl flex flex-col items-center text-center space-y-1 hover:border-purple-500/30 transition-all cursor-pointer ${isUnlocked ? 'border-purple-500/30 shadow-sm' : 'opacity-40 grayscale'}">
+              <div class="w-9 h-9 rounded-xl bg-purple-500/10 flex items-center justify-center ${b.color} text-sm relative">
                 <i class="fa-solid ${b.icon}"></i>
+                ${isUnlocked ? '<div class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 flex items-center justify-center text-[8px] text-white"><i class="fa-solid fa-check"></i></div>' : ''}
               </div>
               <span class="text-[11px] font-bold leading-tight">${escapeHtml(b.name)}</span>
               <span class="text-[9px] opacity-60 leading-tight">${escapeHtml(b.desc)}</span>
             </div>
-          `).join("")}
+            `;
+          }).join("")}
         </div>
       </div>
 
@@ -195,15 +200,19 @@ export async function renderProfilePage(container) {
     el.addEventListener("click", () => {
       const bId = el.getAttribute("data-badge-id");
       const badge = BADGES.find(b => b.id === bId);
+      const isUnlocked = unlockedBadges.has(bId);
       if (badge) {
         openModal(
           `Badge: ${badge.name}`,
           `<div class="text-center space-y-2">
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-purple-500/20 flex items-center justify-center ${badge.color} text-2xl mb-2">
+            <div class="w-14 h-14 mx-auto rounded-2xl ${isUnlocked ? 'bg-purple-500/20' : 'bg-white/5'} flex items-center justify-center ${isUnlocked ? badge.color : 'text-gray-400'} text-2xl mb-2">
               <i class="fa-solid ${badge.icon}"></i>
             </div>
             <p class="font-bold text-xs text-white">${escapeHtml(badge.desc)}</p>
-            <p class="text-[11px] text-purple-400 font-semibold">Status: Unlocked &amp; Active</p>
+            <p class="text-[11px] ${isUnlocked ? 'text-emerald-400 font-bold' : 'text-purple-400 font-semibold'}">
+              <i class="fa-solid ${isUnlocked ? 'fa-circle-check' : 'fa-lock'} mr-1"></i>
+              ${isUnlocked ? 'Unlocked &amp; Earned!' : 'Locked — Complete requirement to unlock!'}
+            </p>
           </div>`
         );
       }

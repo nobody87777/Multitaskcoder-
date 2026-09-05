@@ -180,6 +180,7 @@ export function initState() {
   }
 
   // Ensure storage keys are populated
+  updateDerivedStats();
   persist(true);
 
   // Apply theme to document
@@ -187,6 +188,92 @@ export function initState() {
 
   emit("stateInitialized", state);
   return state;
+}
+
+/**
+ * Calculates which badge IDs are unlocked based on user activity.
+ */
+export function calculateUnlockedBadgeIds(s) {
+  const unlocked = [];
+  const totalCompleted = (s.completedLessons?.length || 0) + 
+                         (s.completedTyping?.length || 0) + 
+                         (s.completedQuizzes?.length || 0) + 
+                         (s.completedDebugger?.length || 0);
+                         
+  if (totalCompleted >= 1 || (s.xp || 0) > 0) unlocked.push("first-step");
+  if ((s.typingStats?.bestWpm || 0) >= 40) unlocked.push("speed-typist");
+  if ((s.completedDebugger?.length || 0) >= 5 || (s.debuggerStats?.bugsFixed || 0) >= 5) unlocked.push("bug-hunter");
+  if ((s.quizStats?.totalCorrect || 0) >= 5) unlocked.push("quiz-master");
+  
+  const allCompletedIds = [
+    ...(s.completedTyping || []),
+    ...(s.completedLessons || []),
+    ...(s.completedDebugger || []),
+    ...(s.completedQuizzes || [])
+  ];
+  
+  const hasPy = allCompletedIds.some(id => id.includes("py") || id.includes("python"));
+  const hasJava = allCompletedIds.some(id => id.includes("java"));
+  const hasC = allCompletedIds.some(id => id.includes("c-") || id.includes("-c") || id.includes("/c/"));
+  
+  if (hasPy && (s.xp >= 100 || totalCompleted >= 3)) unlocked.push("python-pro");
+  if (hasJava && (s.xp >= 100 || totalCompleted >= 3)) unlocked.push("java-champion");
+  if (hasC && (s.xp >= 100 || totalCompleted >= 3)) unlocked.push("c-warrior");
+  if (hasPy && hasJava && hasC) unlocked.push("polyglot");
+  if ((s.streak || 0) >= 7) unlocked.push("streak-week");
+  if (s.theme === "dark" && (s.xp || 0) > 0) unlocked.push("night-owl");
+  if ((s.completedLessons?.length || 0) >= 15) unlocked.push("scholar");
+  if ((s.xp || 0) >= 800) unlocked.push("master-coder");
+  
+  return unlocked;
+}
+
+/**
+ * Recomputes derived stats such as level and badgesCount.
+ */
+export function updateDerivedStats() {
+  if (typeof state.xp === "number" && !Number.isNaN(state.xp)) {
+    state.level = Math.max(1, Math.floor(state.xp / 100));
+  } else {
+    state.xp = 0;
+    state.level = 1;
+  }
+  state.gems = typeof state.gems === "number" && !Number.isNaN(state.gems) ? state.gems : 0;
+  state.streak = typeof state.streak === "number" && !Number.isNaN(state.streak) ? state.streak : 0;
+  state.badgesCount = calculateUnlockedBadgeIds(state).length;
+}
+
+// Cross-tab / cross-window synchronization via storage events
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (event) => {
+    try {
+      if (event.key === "mtc_theme") {
+        const newTheme = event.newValue === "light" ? "light" : "dark";
+        if (state.theme !== newTheme) {
+          state.theme = newTheme;
+          applyThemeToDOM(newTheme);
+          emit("themeChanged", newTheme);
+        }
+      } else if (event.key === "mtc_stats" || event.key === "mtc_progress") {
+        const loadedStats = getStats();
+        const loadedProgress = getProgress();
+        state = {
+          ...state,
+          ...loadedStats,
+          completedTyping: Array.from(new Set([...state.completedTyping, ...loadedProgress.completedTyping, ...loadedStats.completedTyping])),
+          completedQuizzes: Array.from(new Set([...state.completedQuizzes, ...loadedProgress.completedQuizzes, ...loadedStats.completedQuizzes])),
+          completedDebugger: Array.from(new Set([...state.completedDebugger, ...loadedProgress.completedDebugger, ...loadedStats.completedDebugger])),
+          completedLessons: Array.from(new Set([...state.completedLessons, ...loadedProgress.completedLessons, ...loadedStats.completedLessons]))
+        };
+        updateDerivedStats();
+        emit("statsChanged", state);
+      } else if (event.key === null) {
+        initState();
+      }
+    } catch (err) {
+      console.warn("[State] Cross-page storage event handling error:", err);
+    }
+  });
 }
 
 /**
@@ -205,9 +292,7 @@ export function setState(updates) {
   } else if (typeof updates === "object" && updates !== null) {
     state = { ...state, ...updates };
   }
-  if (typeof state.xp === "number") {
-    state.level = Math.max(1, Math.floor(state.xp / 100));
-  }
+  updateDerivedStats();
   if (updates && typeof updates === "object" && "theme" in updates) {
     applyThemeToDOM(state.theme);
     saveTheme(state.theme);
@@ -218,18 +303,16 @@ export function setState(updates) {
   return { ...state };
 }
 
-
 /**
  * Adds XP and Gems to user account, updates level, persists, and emits events.
  */
 export function addXP(amount, gems = 0, reason = "") {
-  state.xp += amount;
-  state.gems += gems;
+  const prevLevel = state.level;
+  state.xp = (typeof state.xp === "number" && !Number.isNaN(state.xp) ? state.xp : 0) + amount;
+  state.gems = (typeof state.gems === "number" && !Number.isNaN(state.gems) ? state.gems : 0) + gems;
   
-  // Level threshold: every 100 XP is 1 level
-  const newLevel = Math.max(1, Math.floor(state.xp / 100));
-  const levelUp = newLevel > state.level;
-  state.level = newLevel;
+  updateDerivedStats();
+  const levelUp = state.level > prevLevel;
 
   persist();
   emit("xpChanged", { xp: state.xp, amount, reason });
@@ -378,4 +461,5 @@ export function resetState() {
   resetAllData();
   initState();
   emit("stateReset", state);
+  emit("statsChanged", state);
 }

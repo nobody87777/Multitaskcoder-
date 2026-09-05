@@ -25,14 +25,23 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  let reqPath = decodeURI(req.url.split("?")[0]);
+  let reqPath;
+  try {
+    reqPath = decodeURI(req.url.split("?")[0]);
+  } catch {
+    res.writeHead(400, { "Content-Type": "text/plain" });
+    res.end("400 Bad Request");
+    return;
+  }
+
   if (reqPath === "/" || reqPath === "") reqPath = "/index.html";
   if (reqPath === "/favicon.ico") reqPath = "/assets/icons/favicon-32x32.png";
 
   let fullPath = path.normalize(path.join(ROOT, reqPath));
 
-  // Security check: prevent directory traversal
-  if (!fullPath.startsWith(ROOT)) {
+  // Security check: canonical path traversal prevention
+  const rel = path.relative(ROOT, fullPath);
+  if (rel.startsWith("..") || path.isAbsolute(rel)) {
     res.writeHead(403, { "Content-Type": "text/plain" });
     res.end("403 Forbidden");
     return;
@@ -57,7 +66,10 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-Type": contentType,
       "Access-Control-Allow-Origin": "*",
-      "Cache-Control": ext === ".html" ? "no-cache" : "public, max-age=3600"
+      "Cache-Control": ext === ".html" ? "no-cache" : "public, max-age=3600",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Referrer-Policy": "strict-origin-when-cross-origin"
     });
 
     const stream = fs.createReadStream(fullPath);
