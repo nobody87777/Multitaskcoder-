@@ -84,7 +84,7 @@ export function renderQuizCard(container, question, onAnswer = null, onNext = nu
       <!-- Options List -->
       <div class="space-y-2.5" id="optionsContainer">
         ${(question.options || []).map((opt, idx) => `
-          <button data-opt-index="${idx}" class="quiz-option-btn w-full p-3.5 rounded-2xl sub-card text-left flex items-center space-x-3 hover:border-purple-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer border border-transparent">
+          <button data-opt-index="${idx}" aria-label="Option ${optionLetters[idx] || idx + 1}: ${escapeHtml(opt)}" class="quiz-option-btn w-full p-3.5 rounded-2xl sub-card text-left flex items-center space-x-3 hover:border-purple-500/40 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer border border-transparent">
             <div class="w-7 h-7 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0 option-letter">
               ${optionLetters[idx] || idx + 1}
             </div>

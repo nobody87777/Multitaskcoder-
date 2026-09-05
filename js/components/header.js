@@ -17,7 +17,7 @@ export function createHeader() {
       <button id="headerMenuBtn" aria-label="Open Navigation Drawer" class="opacity-80 hover:opacity-100 p-1 text-xl transition-transform active:scale-95 cursor-pointer">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <div id="headerLogo" class="flex items-center space-x-2 cursor-pointer group">
+      <div id="headerLogo" role="button" tabindex="0" aria-label="MultitaskCoder Home" class="flex items-center space-x-2 cursor-pointer group">
         <div class="bg-gradient-to-tr from-purple-600 to-indigo-500 p-2 rounded-xl text-white shadow-lg glow-purple group-hover:rotate-6 transition-transform">
           <i class="fa-solid fa-code text-sm"></i>
         </div>
@@ -26,7 +26,7 @@ export function createHeader() {
     </div>
     <div class="flex items-center space-x-2.5">
       <!-- Theme Toggle Button -->
-      <button id="themeToggleBtn" class="w-9 h-9 rounded-full sub-card flex items-center justify-center text-purple-400 hover:scale-110 active:scale-95 transition-all shadow-sm cursor-pointer" title="Toggle Theme">
+      <button id="themeToggleBtn" class="w-9 h-9 rounded-full sub-card flex items-center justify-center text-purple-400 hover:scale-110 active:scale-95 transition-all shadow-sm cursor-pointer" title="Toggle Theme" aria-label="Toggle Theme">
         <i class="fa-solid ${currentState.theme === "dark" ? "fa-moon" : "fa-sun"} transition-transform duration-500" id="themeIcon"></i>
       </button>
 
@@ -43,8 +43,8 @@ export function createHeader() {
       </div>
 
       <!-- Avatar Profile Link -->
-      <button id="headerAvatarBtn" class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-0.5 shadow-md hover:scale-110 active:scale-95 transition-transform cursor-pointer" title="Your Profile">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full">
+      <button id="headerAvatarBtn" class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-0.5 shadow-md hover:scale-110 active:scale-95 transition-transform cursor-pointer" title="Your Profile" aria-label="View Your Profile">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='assets/icons/favicon-32x32.png';">
       </button>
     </div>
   `;
@@ -54,7 +54,15 @@ export function createHeader() {
   if (menuBtn) menuBtn.addEventListener("click", openMenu);
 
   const logoBtn = header.querySelector("#headerLogo");
-  if (logoBtn) logoBtn.addEventListener("click", () => navigate("home"));
+  if (logoBtn) {
+    logoBtn.addEventListener("click", () => navigate("home"));
+    logoBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        navigate("home");
+      }
+    });
+  }
 
   const avatarBtn = header.querySelector("#headerAvatarBtn");
   if (avatarBtn) avatarBtn.addEventListener("click", () => navigate("profile"));

@@ -52,8 +52,8 @@ export async function renderTypingPage(container, params = {}) {
       <div class="glass-card rounded-2xl p-3 border border-purple-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
         <!-- Drill Select Dropdown -->
         <div class="flex-1">
-          <label class="text-[10px] font-bold opacity-75 block mb-1">Select Drill:</label>
-          <select id="drillSelect" class="w-full sub-card rounded-xl p-2 text-xs font-semibold text-purple-300 focus:outline-none cursor-pointer">
+          <label for="drillSelect" class="text-[10px] font-bold opacity-75 block mb-1">Select Drill:</label>
+          <select id="drillSelect" name="drillSelect" aria-label="Select Typing Drill" class="w-full sub-card rounded-xl p-2 text-xs font-semibold text-purple-300 focus:outline-none cursor-pointer">
             <option value="">Loading drills...</option>
           </select>
         </div>

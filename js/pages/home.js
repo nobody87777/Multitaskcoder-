@@ -134,6 +134,7 @@ export async function renderHomePage(container) {
               <div>
                 <h3 class="font-bold text-base">Python</h3>
                 <p class="text-xs opacity-75 mt-0.5 max-w-[170px]">Easy to learn, powerful and in-demand.</p>
+                ${pythonProgress === 0 ? '<span class="inline-block mt-1 text-[10px] text-emerald-400 font-semibold">Start learning</span>' : `<span class="inline-block mt-1 text-[10px] text-emerald-400 font-semibold">${pythonProgress}% completed</span>`}
               </div>
             </div>
             ${renderProgressRing(pythonProgress, "text-emerald-400", 48)}
@@ -168,6 +169,7 @@ export async function renderHomePage(container) {
               <div>
                 <h3 class="font-bold text-base">Java</h3>
                 <p class="text-xs opacity-75 mt-0.5 max-w-[170px]">Write once, run anywhere.</p>
+                ${javaProgress === 0 ? '<span class="inline-block mt-1 text-[10px] text-purple-400 font-semibold">Start learning</span>' : `<span class="inline-block mt-1 text-[10px] text-purple-400 font-semibold">${javaProgress}% completed</span>`}
               </div>
             </div>
             ${renderProgressRing(javaProgress, "text-purple-400", 48)}
@@ -202,6 +204,7 @@ export async function renderHomePage(container) {
               <div>
                 <h3 class="font-bold text-base">C</h3>
                 <p class="text-xs opacity-75 mt-0.5 max-w-[170px]">The foundation of modern programming.</p>
+                ${cProgress === 0 ? '<span class="inline-block mt-1 text-[10px] text-blue-400 font-semibold">Start learning</span>' : `<span class="inline-block mt-1 text-[10px] text-blue-400 font-semibold">${cProgress}% completed</span>`}
               </div>
             </div>
             ${renderProgressRing(cProgress, "text-blue-400", 48)}
@@ -303,6 +306,12 @@ export async function renderHomePage(container) {
         </div>
 
         <div class="space-y-1.5">
+          ${state.xp === 0 ? `
+            <div class="sub-card p-2.5 rounded-2xl flex items-center space-x-2.5 text-xs text-purple-300/90 border border-purple-500/20 mb-2">
+              <i class="fa-solid fa-graduation-cap text-purple-400 text-sm"></i>
+              <span><strong>No progress yet</strong> — Complete your first lesson to begin!</span>
+            </div>
+          ` : ""}
           <div class="flex justify-between text-xs font-bold">
             <span class="text-base" id="xpText">${state.xp} <span class="text-xs font-normal opacity-75">/ 1000 XP</span></span>
           </div>
@@ -386,9 +395,20 @@ export async function renderHomePage(container) {
 
   // Attach navigation events to pills and cards
   container.querySelectorAll("[data-pill-route]").forEach((el) => {
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    const target = el.getAttribute("data-pill-route");
+    if (target) {
+      el.setAttribute("aria-label", `Navigate to ${target}`);
+    }
     el.addEventListener("click", () => {
-      const target = el.getAttribute("data-pill-route");
       if (target) navigate(target);
+    });
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (target) navigate(target);
+      }
     });
   });
 
@@ -428,13 +448,18 @@ export async function renderHomePage(container) {
   const btnDaily = container.querySelector("#btnDailyChallenge");
   if (btnDaily) {
     btnDaily.addEventListener("click", () => {
+      if (state.dailyChallengeDone) {
+        openModal(
+          "Daily Challenge Completed",
+          "You have already claimed today's challenge rewards! A new daily challenge resets tomorrow."
+        );
+        return;
+      }
       solveDailyChallenge();
-      btnDaily.innerHTML = "<span>Challenge Solved Today! ✓</span>";
       openModal(
         "Challenge Solved! 🎉",
         "You successfully fixed the loop bug! <strong>+50 XP</strong> and <strong>+25 Gems</strong> credited to your account."
       );
-      // Re-render home page to reflect updated stats
       renderHomePage(container);
     });
   }

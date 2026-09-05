@@ -13,9 +13,9 @@
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 
-const ROOT = "C:/Users/jamun/Desktop/nobody/nob";
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const TEST_PORT = 8999;
 const BASE_URL = `http://localhost:${TEST_PORT}`;
 
@@ -131,7 +131,11 @@ try {
   assert(manifestJson.name === "MultitaskCoder", "Manifest name is 'MultitaskCoder'");
   assert(Array.isArray(manifestJson.icons) && manifestJson.icons.length >= 2, "Manifest defines at least 2 launcher icons");
 
-  // 2.3 Service Worker
+  // 2.3 Favicon
+  const resFav = await fetch(`${BASE_URL}/favicon.ico`);
+  assert(resFav.status === 200, "GET /favicon.ico returns 200");
+
+  // 2.4 Service Worker
   const resSw = await fetch(`${BASE_URL}/sw.js`);
   assert(resSw.status === 200, "GET /sw.js returns 200");
   assert(resSw.headers.get("content-type")?.includes("javascript"), "sw.js content-type is application/javascript");
@@ -330,9 +334,12 @@ try {
 
   // Daily challenge state
   const prevXp = stateMod.getState().xp;
-  stateMod.solveDailyChallenge();
+  const solveResult1 = stateMod.solveDailyChallenge();
+  assert(solveResult1 === true, "State: solveDailyChallenge returns true on first solve");
   assert(stateMod.getState().dailyChallengeDone === true, "State: solveDailyChallenge marks dailyChallengeDone true");
   assert(stateMod.getState().xp === prevXp + constants.XP_REWARDS.DAILY_CHALLENGE, "State: solveDailyChallenge awards 50 XP");
+  const solveResult2 = stateMod.solveDailyChallenge();
+  assert(solveResult2 === false, "State: solveDailyChallenge returns false and prevents duplicate reward on same day");
 
   // 5.5 Router Module
   const routerMod = await importModule("js/router.js");

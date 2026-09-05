@@ -42,11 +42,11 @@ export const GEM_REWARDS = {
 };
 
 export const DEFAULT_STATS = {
-  xp: 870,
-  streak: 7,
-  gems: 870,
-  level: 8,
-  badgesCount: 12,
+  xp: 0,
+  streak: 0,
+  gems: 0,
+  level: 1,
+  badgesCount: 0,
   completedTyping: [],
   completedQuizzes: [],
   completedDebugger: [],

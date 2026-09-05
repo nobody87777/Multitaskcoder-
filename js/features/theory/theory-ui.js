@@ -22,8 +22,8 @@ export function renderModuleList(container, section, modules, onSelectLesson, on
     <div class="space-y-4">
       <!-- Search Input -->
       <div class="relative">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-xs text-purple-400"></i>
-        <input id="theorySearchInput" type="text" placeholder="Search concepts, topics, or lessons..." class="w-full pl-9 pr-4 py-2.5 rounded-2xl sub-card text-xs focus:outline-none focus:border-purple-500/50 border border-transparent transition-all">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-xs text-purple-400" aria-hidden="true"></i>
+        <input id="theorySearchInput" type="text" placeholder="Search concepts, topics, or lessons..." aria-label="Search concepts, topics, or lessons" class="w-full pl-9 pr-4 py-2.5 rounded-2xl sub-card text-xs focus:outline-none focus:border-purple-500/50 border border-transparent transition-all">
       </div>
 
       <!-- Modules Accordion -->
@@ -36,7 +36,7 @@ export function renderModuleList(container, section, modules, onSelectLesson, on
 
           return `
             <div class="glass-card rounded-2xl overflow-hidden border border-purple-500/20 transition-all">
-              <button data-mod-idx="${modIdx}" class="module-header-btn w-full p-4 flex items-center justify-between text-left hover:bg-white/5 active:scale-[0.99] transition-all cursor-pointer">
+              <button data-mod-idx="${modIdx}" aria-expanded="false" aria-controls="module-lessons-${modIdx}" class="module-header-btn w-full p-4 flex items-center justify-between text-left hover:bg-white/5 active:scale-[0.99] transition-all cursor-pointer">
                 <div class="flex items-center space-x-3">
                   <div class="w-8 h-8 rounded-xl ${isAllDone ? "bg-emerald-500/20 text-emerald-400" : "bg-purple-500/10 text-purple-400"} flex items-center justify-center text-xs font-bold shrink-0">
                     ${isAllDone ? '<i class="fa-solid fa-check"></i>' : modIdx + 1}
@@ -91,7 +91,9 @@ export function renderModuleList(container, section, modules, onSelectLesson, on
       const body = container.querySelector(`#module-lessons-${idx}`);
       const chevron = btn.querySelector(".chevron-icon");
       if (body) {
+        const isClosed = body.classList.contains("hidden");
         body.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", isClosed ? "true" : "false");
         if (chevron) chevron.classList.toggle("rotate-180");
       }
     });
@@ -239,11 +241,11 @@ export function renderLesson(container, lesson, onNavigateLesson, onBack) {
 
       <!-- Bottom Next / Previous Navigation -->
       <div class="flex items-center justify-between pt-2 border-t border-black/5 dark:border-white/5 text-xs">
-        <button id="btnPrevLesson" class="py-2.5 px-4 rounded-xl sub-card font-semibold flex items-center space-x-1.5 ${lesson.previousLesson ? "hover:bg-white/5 active:scale-95 cursor-pointer" : "opacity-40 cursor-not-allowed"}" ${lesson.previousLesson ? "" : "disabled"}>
+        <button id="btnPrevLesson" aria-label="Previous Lesson" class="py-2.5 px-4 rounded-xl sub-card font-semibold flex items-center space-x-1.5 ${lesson.previousLesson ? "hover:bg-white/5 active:scale-95 cursor-pointer" : "opacity-40 cursor-not-allowed"}" ${lesson.previousLesson ? "" : "disabled"}>
           <i class="fa-solid fa-chevron-left text-[10px]"></i>
           <span>Previous</span>
         </button>
-        <button id="btnNextLesson" class="py-2.5 px-4 rounded-xl sub-card font-semibold flex items-center space-x-1.5 ${lesson.nextLesson ? "hover:bg-white/5 active:scale-95 cursor-pointer text-purple-400" : "opacity-40 cursor-not-allowed"}" ${lesson.nextLesson ? "" : "disabled"}>
+        <button id="btnNextLesson" aria-label="Next Lesson" class="py-2.5 px-4 rounded-xl sub-card font-semibold flex items-center space-x-1.5 ${lesson.nextLesson ? "hover:bg-white/5 active:scale-95 cursor-pointer text-purple-400" : "opacity-40 cursor-not-allowed"}" ${lesson.nextLesson ? "" : "disabled"}>
           <span>Next</span>
           <i class="fa-solid fa-chevron-right text-[10px]"></i>
         </button>

@@ -26,6 +26,15 @@ input, textarea, select, button {
   color: inherit;
 }
 
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
@@ -274,6 +283,7 @@ input, textarea, select, button {
 .overflow-y-auto { overflow-y: auto; }
 .whitespace-nowrap { white-space: nowrap; }
 .whitespace-pre-wrap { white-space: pre-wrap; }
+.whitespace-pre { white-space: pre; }
 .resize-none { resize: none; }
 .resize-y { resize: vertical; }
 .object-cover { object-fit: cover; }
@@ -317,6 +327,7 @@ input, textarea, select, button {
 .group:hover .group-hover\:rotate-6 { transform: rotate(6deg); }
 .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
 
+.transform { transform-origin: center; }
 .-translate-x-full { transform: translateX(-100%); }
 .-rotate-90 { transform: rotate(-90deg); }
 .blur-2xl { filter: blur(40px); }
@@ -334,6 +345,9 @@ input, textarea, select, button {
 .rotate-180 { transform: rotate(180deg); }
 .hover\:rotate-90:hover { transform: rotate(90deg); }
 .focus\:border-purple-500\/50:focus { border-color: rgba(139, 92, 246, 0.5) !important; }
+.focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
+.focus-visible\:ring-2:focus-visible { box-shadow: 0 0 0 2px #7c3aed; }
+.focus-visible\:ring-purple-500:focus-visible { box-shadow: 0 0 0 2px #a855f7; }
 .list-disc { list-style-type: disc; }
 .list-inside { list-style-position: inside; }
 .fill-current { fill: currentColor; }

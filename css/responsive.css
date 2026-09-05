@@ -36,3 +36,17 @@ html, body {
   .p-5 { padding: 1rem; }
   .p-6 { padding: 1.25rem; }
 }
+
+@media (max-width: 340px) {
+  #slideMenuDrawer {
+    width: calc(100vw - 32px);
+    max-width: 280px;
+  }
+  .bottom-nav-bar {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .bottom-nav-btn {
+    min-width: 3rem;
+  }
+}

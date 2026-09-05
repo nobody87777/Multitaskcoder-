@@ -1,11 +1,12 @@
 // MultitaskCoder - Progressive Web App Service Worker
-// Version: 4.0
+// Version: 4.1
 
-const CACHE_NAME = "multitaskcoder-v4.0";
+const CACHE_NAME = "multitaskcoder-v4.1";
 
 const STATIC_ASSETS = [
   "./",
   "./index.html",
+  "./favicon.ico",
   "./manifest.webmanifest",
   "./css/main.css",
   "./css/themes.css",
@@ -31,7 +32,28 @@ const STATIC_ASSETS = [
   "./js/components/cards.js",
   "./js/components/progress.js",
   "./js/components/loader.js",
-  "./js/features/sandbox/sandbox-placeholder.js"
+  "./js/features/theory/theory-engine.js",
+  "./js/features/theory/lesson-navigation.js",
+  "./js/features/theory/theory-search.js",
+  "./js/features/theory/theory-ui.js",
+  "./js/features/theory/comparison.js",
+  "./js/features/typing/typing-engine.js",
+  "./js/features/typing/typing-progress.js",
+  "./js/features/typing/typing-stats.js",
+  "./js/features/typing/typing-ui.js",
+  "./js/features/debugger/debugger-engine.js",
+  "./js/features/debugger/debugger-stats.js",
+  "./js/features/debugger/debugger-ui.js",
+  "./js/features/quiz/quiz-engine.js",
+  "./js/features/quiz/quiz-stats.js",
+  "./js/features/quiz/quiz-ui.js",
+  "./js/features/sandbox/sandbox-placeholder.js",
+  "./assets/icons/favicon-32x32.png",
+  "./assets/icons/apple-touch-icon.png",
+  "./assets/icons/icon-192.png",
+  "./assets/icons/icon-512.png",
+  "./assets/icons/icon-192.svg",
+  "./assets/icons/icon-512.svg"
 ];
 
 // Install: Cache core application shell

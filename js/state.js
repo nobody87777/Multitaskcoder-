@@ -128,6 +128,27 @@ export function initState() {
   const loaded = getStats();
   const loadedProgress = getProgress();
   const loadedTheme = getTheme();
+
+  // Safe migration for legacy mock seed data (level 8, 870 XP, 870 gems, streak 7)
+  const isLegacyMockSeed =
+    loaded &&
+    loaded.xp === 870 &&
+    loaded.streak === 7 &&
+    loaded.gems === 870 &&
+    (!loaded.completedLessons || loaded.completedLessons.length === 0) &&
+    (!loaded.completedTyping || loaded.completedTyping.length === 0) &&
+    (!loaded.completedQuizzes || loaded.completedQuizzes.length === 0) &&
+    (!loaded.completedDebugger || loaded.completedDebugger.length === 0) &&
+    (!loadedProgress.completedLessons || loadedProgress.completedLessons.length === 0) &&
+    (!loadedProgress.completedTyping || loadedProgress.completedTyping.length === 0);
+
+  if (isLegacyMockSeed) {
+    loaded.xp = 0;
+    loaded.streak = 0;
+    loaded.gems = 0;
+    loaded.level = 1;
+    loaded.badgesCount = 0;
+  }
   
   state = {
     ...getDefaultState(),
@@ -151,6 +172,12 @@ export function initState() {
 
   // Re-verify level based on XP
   state.level = Math.max(1, Math.floor(state.xp / 100));
+
+  // Reset daily challenge if the calendar date has rolled over
+  const today = new Date().toISOString().split("T")[0];
+  if (state.lastDailyDate && state.lastDailyDate !== today) {
+    state.dailyChallengeDone = false;
+  }
 
   // Ensure storage keys are populated
   persist(true);
@@ -286,11 +313,16 @@ export function completeLesson(lessonId) {
  * Solves the home page Daily Challenge.
  */
 export function solveDailyChallenge() {
+  const today = new Date().toISOString().split("T")[0];
+  if (state.dailyChallengeDone && state.lastDailyDate === today) {
+    return false;
+  }
   state.dailyChallengeDone = true;
-  state.lastDailyDate = new Date().toISOString().split("T")[0];
+  state.lastDailyDate = today;
   addXP(XP_REWARDS.DAILY_CHALLENGE, GEM_REWARDS.DAILY_CHALLENGE, "Solved Daily Challenge");
   persist();
   emit("dailyChallengeSolved", state);
+  return true;
 }
 
 /**

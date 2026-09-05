@@ -65,8 +65,8 @@ export async function renderDebuggerPage(container, params = {}) {
       <div class="glass-card rounded-2xl p-3 border border-purple-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
         <!-- Challenge Dropdown -->
         <div class="flex-1">
-          <label class="text-[10px] font-bold opacity-75 block mb-1">Select Challenge:</label>
-          <select id="challengeSelect" class="w-full sub-card rounded-xl p-2 text-xs font-semibold text-purple-300 focus:outline-none cursor-pointer">
+          <label for="challengeSelect" class="text-[10px] font-bold opacity-75 block mb-1">Select Challenge:</label>
+          <select id="challengeSelect" name="challengeSelect" aria-label="Select Debugging Challenge" class="w-full sub-card rounded-xl p-2 text-xs font-semibold text-purple-300 focus:outline-none cursor-pointer">
             <option value="">Loading challenges...</option>
           </select>
         </div>

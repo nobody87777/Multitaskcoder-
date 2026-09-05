@@ -65,8 +65,8 @@ export async function renderQuizzesPage(container, params = {}) {
       <div class="glass-card rounded-2xl p-3 border border-purple-500/20 space-y-2.5">
         <!-- Question Dropdown -->
         <div>
-          <label class="text-[10px] font-bold opacity-75 block mb-1">Select Question:</label>
-          <select id="questionSelect" class="w-full sub-card rounded-xl p-2 text-xs font-semibold text-purple-300 focus:outline-none cursor-pointer">
+          <label for="questionSelect" class="text-[10px] font-bold opacity-75 block mb-1">Select Question:</label>
+          <select id="questionSelect" name="questionSelect" aria-label="Select Quiz Question" class="w-full sub-card rounded-xl p-2 text-xs font-semibold text-purple-300 focus:outline-none cursor-pointer">
             <option value="">Loading questions...</option>
           </select>
         </div>

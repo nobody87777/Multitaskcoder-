@@ -46,6 +46,8 @@
 .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
 .animate-float { animation: subtleFloat 3s ease-in-out infinite; }
 .fa-spin { animation: spin 1s linear infinite; }
+.animate-\[fadeInScale_0\.3s_ease_forwards\] { animation: fadeInScale 0.3s ease forwards; }
+.animate-\[fadeInScale_0\.3s_cubic-bezier\(0\.16\,1\,0\.3\,1\)_forwards\] { animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 /* Slide Menu Item Entrance Animation */
 .menu-item-animate {

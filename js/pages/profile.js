@@ -22,11 +22,11 @@ export async function renderProfilePage(container) {
       <!-- Main Profile Card -->
       <div class="glass-card rounded-3xl p-6 border border-purple-500/30 space-y-5 text-center shadow-xl">
         <div class="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 p-1 shadow-xl">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='assets/icons/icon-192.png';">
         </div>
         <div>
-          <h2 class="text-base font-bold">You (Master Coder)</h2>
-          <p class="text-xs text-purple-400 font-semibold mt-0.5">Level ${state.level} Software Engineer</p>
+          <h2 class="text-base font-bold">${state.xp === 0 ? "You (New Coder)" : "You (Master Coder)"}</h2>
+          <p class="text-xs text-purple-400 font-semibold mt-0.5">${state.xp === 0 ? "Level 1 • Ready to Learn" : `Level ${state.level} Software Engineer`}</p>
         </div>
 
         <!-- Primary Stat Grid -->
@@ -78,6 +78,12 @@ export async function renderProfilePage(container) {
 
         <!-- Activity Breakdown Details -->
         <div class="space-y-2 pt-2 text-left border-t border-black/5 dark:border-white/5">
+          ${lessonCount === 0 && typingCount === 0 && debugCount === 0 && quizCount === 0 ? `
+            <div class="sub-card p-3 rounded-2xl text-center space-y-1 border border-purple-500/20">
+              <p class="text-xs font-bold text-purple-400">Start learning</p>
+              <p class="text-[10px] opacity-75">No progress yet. Practice your first typing drill, debug a challenge, or read a theory lesson to earn XP!</p>
+            </div>
+          ` : ""}
           <div class="sub-card p-3 rounded-2xl flex items-center justify-between text-xs">
             <div class="flex items-center space-x-2.5">
               <div class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs">

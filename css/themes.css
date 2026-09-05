@@ -8,6 +8,9 @@
   --accent-blue: #2563eb;
   --accent-cyan: #06b6d4;
   --neon-glow: #8b5cf6;
+  --tw-gradient-from: #7c3aed;
+  --tw-gradient-to: #4f46e5;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 body.dark {
@@ -81,21 +84,22 @@ body:not(.dark) {
 .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops, #7c3aed, #4f46e5)); }
 .bg-gradient-to-l { background-image: linear-gradient(to left, var(--tw-gradient-stops, #7c3aed, transparent)); }
 .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops, #15122b, #090a10)); }
+.bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-stops, transparent, #7c3aed)); }
 .bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--tw-gradient-stops, #7c3aed, #6366f1)); }
 .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
 
-.from-\[\#15122b\] { --tw-gradient-from: #15122b; }
-.via-\[\#10101d\] { --tw-gradient-via: #10101d; }
+.from-\[\#15122b\] { --tw-gradient-from: #15122b; --tw-gradient-to: rgba(21, 18, 43, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.via-\[\#10101d\] { --tw-gradient-to: rgba(16, 16, 29, 0); --tw-gradient-stops: var(--tw-gradient-from), #10101d, var(--tw-gradient-to); }
 .to-\[\#090a10\] { --tw-gradient-to: #090a10; }
 
-.from-purple-400 { --tw-gradient-from: #c084fc; }
-.from-purple-500 { --tw-gradient-from: #a855f7; }
-.from-purple-600 { --tw-gradient-from: #7c3aed; }
-.from-purple-700 { --tw-gradient-from: #6d28d9; }
-.via-pink-400 { --tw-gradient-via: #f472b6; }
-.via-purple-300 { --tw-gradient-via: #d8b4fe; }
-.via-indigo-500 { --tw-gradient-via: #6366f1; }
-.via-indigo-600 { --tw-gradient-via: #4f46e5; }
+.from-purple-400 { --tw-gradient-from: #c084fc; --tw-gradient-to: rgba(192, 132, 252, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.from-purple-500 { --tw-gradient-from: #a855f7; --tw-gradient-to: rgba(168, 85, 247, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.from-purple-600 { --tw-gradient-from: #7c3aed; --tw-gradient-to: rgba(124, 58, 237, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.from-purple-700 { --tw-gradient-from: #6d28d9; --tw-gradient-to: rgba(109, 40, 217, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.via-pink-400 { --tw-gradient-to: rgba(244, 114, 182, 0); --tw-gradient-stops: var(--tw-gradient-from), #f472b6, var(--tw-gradient-to); }
+.via-purple-300 { --tw-gradient-to: rgba(216, 180, 254, 0); --tw-gradient-stops: var(--tw-gradient-from), #d8b4fe, var(--tw-gradient-to); }
+.via-indigo-500 { --tw-gradient-to: rgba(99, 102, 241, 0); --tw-gradient-stops: var(--tw-gradient-from), #6366f1, var(--tw-gradient-to); }
+.via-indigo-600 { --tw-gradient-to: rgba(79, 70, 229, 0); --tw-gradient-stops: var(--tw-gradient-from), #4f46e5, var(--tw-gradient-to); }
 .to-indigo-300 { --tw-gradient-to: #a5b4fc; }
 .to-indigo-400 { --tw-gradient-to: #818cf8; }
 .to-indigo-500 { --tw-gradient-to: #6366f1; }
@@ -105,10 +109,10 @@ body:not(.dark) {
 .to-cyan-400 { --tw-gradient-to: #22d3ee; }
 .to-pink-500 { --tw-gradient-to: #ec4899; }
 .to-purple-700 { --tw-gradient-to: #6d28d9; }
-.from-blue-600 { --tw-gradient-from: #2563eb; }
-.from-emerald-600 { --tw-gradient-from: #059669; }
+.from-blue-600 { --tw-gradient-from: #2563eb; --tw-gradient-to: rgba(37, 99, 235, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.from-emerald-600 { --tw-gradient-from: #059669; --tw-gradient-to: rgba(5, 150, 105, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .to-teal-700 { --tw-gradient-to: #0f766e; }
-.from-transparent { --tw-gradient-from: transparent; }
+.from-transparent { --tw-gradient-from: transparent; --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .to-purple-500\/50 { --tw-gradient-to: rgba(139, 92, 246, 0.5); }
 
 /* Indigo & Alert Colors */
@@ -138,6 +142,7 @@ body:not(.dark) {
 
 /* Hover States */
 .hover\:bg-purple-500\/10:hover { background-color: rgba(139, 92, 246, 0.1); }
+.hover\:bg-purple-500:hover { background-color: #8b5cf6; }
 .hover\:bg-purple-700:hover { background-color: #6d28d9; }
 .hover\:bg-rose-500\/10:hover { background-color: rgba(244, 63, 94, 0.1); }
 .hover\:bg-white\/5:hover { background-color: rgba(255, 255, 255, 0.05); }

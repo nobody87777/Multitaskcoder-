@@ -9,12 +9,16 @@ let activeConfirmCallback = null;
 export function createModal() {
   const modalEl = document.createElement("div");
   modalEl.id = "appModal";
+  modalEl.setAttribute("role", "dialog");
+  modalEl.setAttribute("aria-modal", "true");
+  modalEl.setAttribute("aria-labelledby", "modalTitle");
+  modalEl.setAttribute("aria-describedby", "modalDesc");
   modalEl.className = "fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4";
   modalEl.innerHTML = `
     <div class="glass-card border border-purple-500/30 rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl relative animate-[fadeInScale_0.3s_cubic-bezier(0.16,1,0.3,1)_forwards]">
       <div class="flex justify-between items-center">
         <h3 id="modalTitle" class="text-base font-bold">Feature</h3>
-        <button id="modalCloseBtn" class="w-8 h-8 rounded-full sub-card flex items-center justify-center opacity-75 hover:opacity-100 hover:rotate-90 transition-all cursor-pointer">
+        <button id="modalCloseBtn" aria-label="Close modal dialog" class="w-8 h-8 rounded-full sub-card flex items-center justify-center opacity-75 hover:opacity-100 hover:rotate-90 transition-all cursor-pointer">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>

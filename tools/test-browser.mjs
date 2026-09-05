@@ -21,8 +21,15 @@
 import { spawn, spawnSync, execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const CHROME_PATH = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+const CHROME_PATH = process.env.CHROME_PATH ||
+  (fs.existsSync("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
+    ? "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    : fs.existsSync("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe")
+      ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      : "google-chrome");
+
 const TARGET_URL = "http://localhost:8080/";
 const CDP_PORT = 9222;
 
@@ -44,6 +51,23 @@ function assert(condition, testName, detail = "") {
 console.log("===============================================================");
 console.log("    MultitaskCoder - Real-Browser Automation Test Suite        ");
 console.log("===============================================================\n");
+
+// Ensure local server is running on port 8080
+let serverProc = null;
+try {
+  await fetch(TARGET_URL);
+} catch {
+  console.log("[Server] Launching local HTTP server on port 8080...");
+  const serverPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "server.js");
+  serverProc = spawn(process.execPath, [serverPath], { stdio: "ignore" });
+  for (let i = 0; i < 25; i++) {
+    await new Promise(r => setTimeout(r, 200));
+    try {
+      const res = await fetch(TARGET_URL);
+      if (res.ok) break;
+    } catch {}
+  }
+}
 
 // 1. Spawn Chrome
 console.log("[Chrome] Spawning headless Chrome instance...");
@@ -557,6 +581,8 @@ try {
   assert(icon192.status === 200, "icon-192.svg returns HTTP 200");
   const icon512 = await fetch("http://localhost:8080/assets/icons/icon-512.svg");
   assert(icon512.status === 200, "icon-512.svg returns HTTP 200");
+  const favRes = await fetch("http://localhost:8080/favicon.ico");
+  assert(favRes.status === 200, "favicon.ico returns HTTP 200");
 
   // Service Worker Registration
   const swRegistered = await evalJs(`
@@ -604,7 +630,11 @@ try {
   }
 
 } finally {
-  ws.close();
-  chromeProc.kill();
+  try { ws.close(); } catch {}
+  try { chromeProc.kill(); } catch {}
+  if (serverProc) {
+    try { serverProc.kill(); } catch {}
+    console.log("[Server] Local test server terminated.");
+  }
   console.log("[Chrome] Headless Chrome process terminated.\n");
 }

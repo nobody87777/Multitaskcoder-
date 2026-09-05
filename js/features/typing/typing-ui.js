@@ -71,7 +71,7 @@ export function renderTypingDrill(container, drill, onNextDrill = null) {
         </div>
 
         <!-- Hidden input overlay that captures user typing accurately -->
-        <textarea id="typingInput" class="absolute inset-0 opacity-0 w-full h-full cursor-pointer resize-none focus:outline-none" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+        <textarea id="typingInput" aria-label="Typing drill keyboard input" class="absolute inset-0 opacity-0 w-full h-full cursor-pointer resize-none focus:outline-none" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
       </div>
 
       <div class="flex items-center justify-between text-[11px] opacity-75 px-1">

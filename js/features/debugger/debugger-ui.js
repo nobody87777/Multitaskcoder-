@@ -88,7 +88,7 @@ export function renderDebuggerCard(container, challenge, onSolved = null, onNext
           </button>
         </div>
         <div class="code-box rounded-2xl p-3.5 code-font text-xs space-y-2 shadow-inner">
-          <textarea id="debugCodeInput" class="w-full h-32 bg-transparent resize-y focus:outline-none leading-relaxed" spellcheck="false">${escapeHtml(challenge.buggyCode)}</textarea>
+          <textarea id="debugCodeInput" aria-label="Code Editor - Fix the Buggy Code" class="w-full h-32 bg-transparent resize-y focus:outline-none leading-relaxed" spellcheck="false">${escapeHtml(challenge.buggyCode)}</textarea>
         </div>
         <details class="text-[10px] opacity-75 cursor-pointer pt-0.5">
           <summary class="hover:text-purple-300 font-semibold select-none">
